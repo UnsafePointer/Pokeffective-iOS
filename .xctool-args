@@ -1,0 +1,5 @@
+[
+  "-workspace", "Pokeffective.xcworkspace",
+  "-scheme", "Pokeffective",
+  "-sdk", "iphonesimulator7.0"
+]

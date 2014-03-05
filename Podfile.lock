@@ -1,0 +1,10 @@
+PODS:
+  - CRGradientNavigationBar (0.3.2)
+
+DEPENDENCIES:
+  - CRGradientNavigationBar
+
+SPEC CHECKSUMS:
+  CRGradientNavigationBar: dc3ffb640685b43c27f096e7d466e80f9fa887fe
+
+COCOAPODS: 0.29.0
