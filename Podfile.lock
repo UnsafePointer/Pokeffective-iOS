@@ -1,10 +1,13 @@
 PODS:
   - CRGradientNavigationBar (0.3.2)
+  - HexColors (2.2.1)
 
 DEPENDENCIES:
-  - CRGradientNavigationBar
+  - CRGradientNavigationBar (~> 0.3)
+  - HexColors (~> 2.2)
 
 SPEC CHECKSUMS:
   CRGradientNavigationBar: dc3ffb640685b43c27f096e7d466e80f9fa887fe
+  HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
 
 COCOAPODS: 0.29.0

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F778FBD18C7AE3400771A9E /* PKESearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F778FBC18C7AE3400771A9E /* PKESearchViewController.m */; };
 		3F87BD8518C7A60F00400F64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8418C7A60F00400F64 /* Foundation.framework */; };
 		3F87BD8718C7A60F00400F64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8618C7A60F00400F64 /* CoreGraphics.framework */; };
 		3F87BD8918C7A60F00400F64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8818C7A60F00400F64 /* UIKit.framework */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F778FBB18C7AE3400771A9E /* PKESearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKESearchViewController.h; path = Controllers/PKESearchViewController.h; sourceTree = "<group>"; };
+		3F778FBC18C7AE3400771A9E /* PKESearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKESearchViewController.m; path = Controllers/PKESearchViewController.m; sourceTree = "<group>"; };
 		3F87BD8118C7A60F00400F64 /* Pokeffective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokeffective.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F87BD8418C7A60F00400F64 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F87BD8618C7A60F00400F64 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -30,7 +33,7 @@
 		3F87BDB918C7A6A500400F64 /* Pokeffective-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Pokeffective-Prefix.pch"; path = "Supporting/Pokeffective-Prefix.pch"; sourceTree = "<group>"; };
 		3F87BDBD18C7A6AE00400F64 /* PKEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEAppDelegate.h; path = Application/PKEAppDelegate.h; sourceTree = "<group>"; };
 		3F87BDBE18C7A6AE00400F64 /* PKEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEAppDelegate.m; path = Application/PKEAppDelegate.m; sourceTree = "<group>"; };
-		3F87BDC118C7A6B700400F64 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3F87BDC118C7A6B700400F64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F87BDC918C7A72F00400F64 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82FCB715879F48319E6F6D82 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8EE4AC78B264D2FB149AB3C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -51,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F778FBA18C7ADFD00771A9E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F778FBB18C7AE3400771A9E /* PKESearchViewController.h */,
+				3F778FBC18C7AE3400771A9E /* PKESearchViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		3F87BD7818C7A60F00400F64 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				3F87BDB518C7A68300400F64 /* Application */,
+				3F778FBA18C7ADFD00771A9E /* Controllers */,
 				3F87BD9618C7A60F00400F64 /* Images.xcassets */,
 				3F87BD8B18C7A60F00400F64 /* Supporting */,
 				3F87BDC318C7A6E500400F64 /* Views */,
@@ -162,8 +175,6 @@
 			mainGroup = 3F87BD7818C7A60F00400F64;
 			productRefGroup = 3F87BD8218C7A60F00400F64 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				3F87BD8018C7A60F00400F64 /* Pokeffective */,
@@ -223,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F87BDBB18C7A6A500400F64 /* main.m in Sources */,
+				3F778FBD18C7AE3400771A9E /* PKESearchViewController.m in Sources */,
 				3F87BDBF18C7A6AE00400F64 /* PKEAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +382,7 @@
 				3F87BDAF18C7A60F00400F64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

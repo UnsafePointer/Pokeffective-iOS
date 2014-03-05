@@ -7,37 +7,36 @@
 //
 
 #import "PKEAppDelegate.h"
+#import <CRGradientNavigationBar/CRGradientNavigationBar.h>
+#import <HexColors/HexColor.h>
+
+@interface PKEAppDelegate ()
+
+- (void)setNavigationBarAppearance;
+
+@end
 
 @implementation PKEAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self setNavigationBarAppearance];
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    
-}
+#pragma mark - Private Methods
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
+- (void)setNavigationBarAppearance
 {
-    
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[CRGradientNavigationBar appearance] setBarTintGradientColors:@[[UIColor colorWithHexString:@"#1AD6FD"],
+            [UIColor colorWithHexString:@"#1D62F0"]]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{
+            NSForegroundColorAttributeName: [UIColor colorWithRed:255.0/255.0
+                                                            green:255.0/255.0
+                                                             blue:255.0/255.0
+                                                            alpha:1.0]
+    }];
 }
 
 @end

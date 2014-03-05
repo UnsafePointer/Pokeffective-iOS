@@ -1,2 +1,3 @@
 platform :ios, '7.0'
-pod 'CRGradientNavigationBar'
+pod 'CRGradientNavigationBar', '~> 0.3'
+pod 'HexColors', '~> 2.2'
