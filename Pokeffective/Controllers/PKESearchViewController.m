@@ -14,9 +14,11 @@
 @interface PKESearchViewController ()
 
 @property (nonatomic, strong) NSArray *dataSource;
+@property (nonatomic, strong) NSMutableArray *filteredDataSource;
 
 - (void)configureTableViewCell:(PKEPokemonCell *)tableViewCell
-                  forIndexPath:(NSIndexPath *)indexPath;
+                  forIndexPath:(NSIndexPath *)indexPath
+                   inTableView:(UITableView *)tableView;
 
 @end
 
@@ -25,8 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[self tableView] setContentOffset:CGPointMake(0, 44)];
     [self setDataSource:[[PKEDataBaseManager sharedManager] getPokemons]];
+    [self setFilteredDataSource:[NSMutableArray array]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,30 +36,66 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Public Methods
+
+- (IBAction)searchButtonTapped:(id)sender
+{
+    
+}
+
+#pragma mark - Private Methods
+
+-(void)filterContentForSearchText:(NSString*)searchText
+{
+    [[self filteredDataSource] removeAllObjects];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", searchText];
+    [[self filteredDataSource] addObjectsFromArray:[[self dataSource] filteredArrayUsingPredicate:predicate]];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self dataSource] count];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [[self filteredDataSource] count];
+    }
+    else {
+        return [[self dataSource] count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"PokemonCell";
-    PKEPokemonCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
-                                                           forIndexPath:indexPath];
+    PKEPokemonCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier
+                                                                forIndexPath:indexPath];
     [self configureTableViewCell:cell
-                    forIndexPath:indexPath];
+                    forIndexPath:indexPath
+                     inTableView:tableView];
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 88.0f;
 }
 
 #pragma mark - Private Methods
 
 - (void)configureTableViewCell:(PKEPokemonCell *)tableViewCell
                   forIndexPath:(NSIndexPath *)indexPath
+                   inTableView:(UITableView *)tableView
 {
     [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
-    PKEPokemon *pokemon = [[self dataSource] objectAtIndex:[indexPath row]];
+    PKEPokemon *pokemon = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        pokemon = [[self filteredDataSource] objectAtIndex:[indexPath row]];
+    }
+    else {
+        pokemon = [[self dataSource] objectAtIndex:[indexPath row]];
+    }
     [[tableViewCell lblName] setText:[pokemon name]];
     [[tableViewCell lblNumber] setText:[pokemon number]];
     [[tableViewCell imgPicture] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [pokemon number]]]];
@@ -70,6 +108,20 @@
         [tableViewCell addBackgroundLayersWithFirstColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:0]]
                                              secondColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:1]]];
     }
+
+}
+
+#pragma mark - UISearchDisplayDelegate
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+        shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString];
+    return YES;
+}
+
+- (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
+{
 
 }
 

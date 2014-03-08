@@ -10,4 +10,6 @@
 
 @interface PKESearchViewController : UITableViewController
 
+- (IBAction)searchButtonTapped:(id)sender;
+
 @end
