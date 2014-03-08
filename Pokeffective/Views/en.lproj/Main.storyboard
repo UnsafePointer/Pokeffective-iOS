@@ -271,7 +271,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="huy-HL-jcy" kind="push" id="a6Y-3R-Ny3"/>
+                                            <segue destination="gze-D5-afD" kind="push" id="61H-4o-lAh"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -290,48 +290,56 @@
             </objects>
             <point key="canvasLocation" x="1435" y="-267"/>
         </scene>
-        <!--Type Selection View Controller - Types-->
-        <scene sceneID="G1H-9q-wFt">
+        <!--Type View Controller - Types-->
+        <scene sceneID="6MV-NR-Tse">
             <objects>
-                <tableViewController id="huy-HL-jcy" customClass="PKETypeSelectionViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="LCZ-LE-JAe">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="gze-D5-afD" customClass="PKETypeViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="VjP-Cx-8Qv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TypeCell" textLabel="02i-gY-PoS" style="IBUITableViewCellStyleDefault" id="pdc-Np-z1f" customClass="PKETableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="gmZ-OI-e1b">
+                            <size key="itemSize" width="158" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="1" minY="1" maxX="1" maxY="1"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TypeCell" id="BM5-4H-TXA" customClass="PKETypeCell">
+                                <rect key="frame" x="1" y="65" width="158" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pdc-Np-z1f" id="JAz-it-9pR">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="158" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Fire" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="02i-gY-PoS">
-                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73D-0a-KeN">
+                                            <rect key="frame" x="20" y="14" width="118" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                </tableViewCellContentView>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="158" height="50"/>
                                 <connections>
-                                    <segue destination="hpG-CC-di1" kind="unwind" unwindAction="exitFromTypeSelection:" id="JH5-CB-gu8"/>
+                                    <outlet property="lblName" destination="73D-0a-KeN" id="cy6-as-N5S"/>
+                                    <segue destination="kxS-pQ-aHh" kind="unwind" unwindAction="exitFromTypeSelection:" id="H2g-Ii-eW5"/>
                                 </connections>
-                            </tableViewCell>
-                        </prototypes>
+                            </collectionViewCell>
+                        </cells>
                         <connections>
-                            <outlet property="dataSource" destination="huy-HL-jcy" id="fT8-Hq-QZq"/>
-                            <outlet property="delegate" destination="huy-HL-jcy" id="Rc5-FO-avS"/>
+                            <outlet property="dataSource" destination="gze-D5-afD" id="MPo-iW-A4l"/>
+                            <outlet property="delegate" destination="gze-D5-afD" id="uRZ-yj-Qw3"/>
                         </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Types" id="Lha-Qv-gC7"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xDA-iV-qDn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="hpG-CC-di1" userLabel="Exit" sceneMemberID="exit"/>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Types" id="Jc6-ow-ZRY"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dr8-hh-VnY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kxS-pQ-aHh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1935" y="-267"/>
+            <point key="canvasLocation" x="1863" y="-267"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zxL-HJ-KiH">

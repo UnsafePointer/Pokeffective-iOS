@@ -1,5 +1,5 @@
 //
-//  PKETypeSelectionViewController.h
+//  PKETypeViewController.h
 //  Pokeffective
 //
 //  Created by Renzo Crisóstomo on 08/03/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PKETypeSelectionViewController : UITableViewController
+@interface PKETypeViewController : UICollectionViewController
 
 @end

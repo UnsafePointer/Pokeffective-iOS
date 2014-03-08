@@ -1,25 +1,22 @@
 //
-//  PKETypeSelectionViewController.m
+//  PKETypeViewController.m
 //  Pokeffective
 //
 //  Created by Renzo Crisóstomo on 08/03/14.
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "PKETypeSelectionViewController.h"
-#import "PKETableViewCell.h"
+#import "PKETypeViewController.h"
+#import "PKETypeCell.h"
 #import "PKEDataBaseManager.h"
 
-@interface PKETypeSelectionViewController ()
+@interface PKETypeViewController ()
 
 @property (nonatomic, strong) NSDictionary *dataSource;
 
-- (void)configureTableViewCell:(PKETableViewCell *)tableViewCell
-                  forIndexPath:(NSIndexPath *)indexPath;
-
 @end
 
-@implementation PKETypeSelectionViewController
+@implementation PKETypeViewController
 
 - (void)viewDidLoad
 {
@@ -33,18 +30,18 @@
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark - UICollectionViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [[[self dataSource] allKeys] count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"TypeCell";
-    PKETableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
-                                                             forIndexPath:indexPath];
+    PKETypeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier
+                                                                  forIndexPath:indexPath];
     [self configureTableViewCell:cell
                     forIndexPath:indexPath];
     return cell;
@@ -52,7 +49,7 @@
 
 #pragma mark - Private Methods
 
-- (void)configureTableViewCell:(PKETableViewCell *)tableViewCell
+- (void)configureTableViewCell:(PKETypeCell *)tableViewCell
                   forIndexPath:(NSIndexPath *)indexPath
 {
     [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
@@ -61,8 +58,9 @@
         return [a compare:b options:NSCaseInsensitiveSearch];
     }];
     NSString *key = [keys objectAtIndex:[indexPath row]];
-    [tableViewCell.textLabel setText:key];
+    [[tableViewCell lblName] setText:key];
     [tableViewCell addBackgroundLayersWithColor:[[PKEDataBaseManager sharedManager] getColorForType:key]];
 }
+
 
 @end

@@ -26,8 +26,10 @@
 		3F13971A18CB66A2009B31A3 /* 012.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970E18CB66A2009B31A3 /* 012.png */; };
 		3F13972118CB97FE009B31A3 /* UIColor+DarkerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13972018CB97FE009B31A3 /* UIColor+DarkerColor.m */; };
 		3F13972418CBA959009B31A3 /* PKEFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13972318CBA959009B31A3 /* PKEFilterViewController.m */; };
-		3F13972718CBABAA009B31A3 /* PKETypeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13972618CBABAA009B31A3 /* PKETypeSelectionViewController.m */; };
 		3F13972E18CBAE1A009B31A3 /* PKETableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13972D18CBAE1A009B31A3 /* PKETableViewCell.m */; };
+		3F13973118CBB3FE009B31A3 /* PKETypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13973018CBB3FE009B31A3 /* PKETypeViewController.m */; };
+		3F13973418CBB551009B31A3 /* PKECollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13973318CBB551009B31A3 /* PKECollectionViewCell.m */; };
+		3F13973718CBBAF7009B31A3 /* PKETypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13973618CBBAF7009B31A3 /* PKETypeCell.m */; };
 		3F778FBD18C7AE3400771A9E /* PKESearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F778FBC18C7AE3400771A9E /* PKESearchViewController.m */; };
 		3F87BD8518C7A60F00400F64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8418C7A60F00400F64 /* Foundation.framework */; };
 		3F87BD8718C7A60F00400F64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8618C7A60F00400F64 /* CoreGraphics.framework */; };
@@ -65,10 +67,14 @@
 		3F13972018CB97FE009B31A3 /* UIColor+DarkerColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+DarkerColor.m"; path = "Extensions/UIColor+DarkerColor.m"; sourceTree = "<group>"; };
 		3F13972218CBA959009B31A3 /* PKEFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEFilterViewController.h; path = Controllers/PKEFilterViewController.h; sourceTree = "<group>"; };
 		3F13972318CBA959009B31A3 /* PKEFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEFilterViewController.m; path = Controllers/PKEFilterViewController.m; sourceTree = "<group>"; };
-		3F13972518CBABAA009B31A3 /* PKETypeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKETypeSelectionViewController.h; path = Controllers/PKETypeSelectionViewController.h; sourceTree = "<group>"; };
-		3F13972618CBABAA009B31A3 /* PKETypeSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKETypeSelectionViewController.m; path = Controllers/PKETypeSelectionViewController.m; sourceTree = "<group>"; };
 		3F13972C18CBAE1A009B31A3 /* PKETableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKETableViewCell.h; path = Extensions/PKETableViewCell.h; sourceTree = "<group>"; };
 		3F13972D18CBAE1A009B31A3 /* PKETableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKETableViewCell.m; path = Extensions/PKETableViewCell.m; sourceTree = "<group>"; };
+		3F13972F18CBB3FE009B31A3 /* PKETypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKETypeViewController.h; path = Controllers/PKETypeViewController.h; sourceTree = "<group>"; };
+		3F13973018CBB3FE009B31A3 /* PKETypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKETypeViewController.m; path = Controllers/PKETypeViewController.m; sourceTree = "<group>"; };
+		3F13973218CBB551009B31A3 /* PKECollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKECollectionViewCell.h; path = Extensions/PKECollectionViewCell.h; sourceTree = "<group>"; };
+		3F13973318CBB551009B31A3 /* PKECollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKECollectionViewCell.m; path = Extensions/PKECollectionViewCell.m; sourceTree = "<group>"; };
+		3F13973518CBBAF7009B31A3 /* PKETypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKETypeCell.h; path = Views/PKETypeCell.h; sourceTree = "<group>"; };
+		3F13973618CBBAF7009B31A3 /* PKETypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKETypeCell.m; path = Views/PKETypeCell.m; sourceTree = "<group>"; };
 		3F778FBB18C7AE3400771A9E /* PKESearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKESearchViewController.h; path = Controllers/PKESearchViewController.h; sourceTree = "<group>"; };
 		3F778FBC18C7AE3400771A9E /* PKESearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKESearchViewController.m; path = Controllers/PKESearchViewController.m; sourceTree = "<group>"; };
 		3F87BD8118C7A60F00400F64 /* Pokeffective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokeffective.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +153,8 @@
 				3F13972018CB97FE009B31A3 /* UIColor+DarkerColor.m */,
 				3F13972C18CBAE1A009B31A3 /* PKETableViewCell.h */,
 				3F13972D18CBAE1A009B31A3 /* PKETableViewCell.m */,
+				3F13973218CBB551009B31A3 /* PKECollectionViewCell.h */,
+				3F13973318CBB551009B31A3 /* PKECollectionViewCell.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -158,8 +166,8 @@
 				3F778FBC18C7AE3400771A9E /* PKESearchViewController.m */,
 				3F13972218CBA959009B31A3 /* PKEFilterViewController.h */,
 				3F13972318CBA959009B31A3 /* PKEFilterViewController.m */,
-				3F13972518CBABAA009B31A3 /* PKETypeSelectionViewController.h */,
-				3F13972618CBABAA009B31A3 /* PKETypeSelectionViewController.m */,
+				3F13972F18CBB3FE009B31A3 /* PKETypeViewController.h */,
+				3F13973018CBB3FE009B31A3 /* PKETypeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -238,6 +246,8 @@
 				3F87BDCA18C7A72F00400F64 /* Main.storyboard */,
 				3F1396F318CB5CA3009B31A3 /* PKEPokemonCell.h */,
 				3F1396F418CB5CA3009B31A3 /* PKEPokemonCell.m */,
+				3F13973518CBBAF7009B31A3 /* PKETypeCell.h */,
+				3F13973618CBBAF7009B31A3 /* PKETypeCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -358,11 +368,13 @@
 			files = (
 				3F1396FD18CB5DC8009B31A3 /* PKEPokemon.m in Sources */,
 				3F13972418CBA959009B31A3 /* PKEFilterViewController.m in Sources */,
+				3F13973718CBBAF7009B31A3 /* PKETypeCell.m in Sources */,
 				3F1396F518CB5CA3009B31A3 /* PKEPokemonCell.m in Sources */,
+				3F13973118CBB3FE009B31A3 /* PKETypeViewController.m in Sources */,
 				3F1396F918CB5D8E009B31A3 /* PKEDataBaseManager.m in Sources */,
 				3F13972118CB97FE009B31A3 /* UIColor+DarkerColor.m in Sources */,
-				3F13972718CBABAA009B31A3 /* PKETypeSelectionViewController.m in Sources */,
 				3F87BDBB18C7A6A500400F64 /* main.m in Sources */,
+				3F13973418CBB551009B31A3 /* PKECollectionViewCell.m in Sources */,
 				3F778FBD18C7AE3400771A9E /* PKESearchViewController.m in Sources */,
 				3F13972E18CBAE1A009B31A3 /* PKETableViewCell.m in Sources */,
 				3F87BDBF18C7A6AE00400F64 /* PKEAppDelegate.m in Sources */,
