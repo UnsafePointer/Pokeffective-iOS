@@ -7,16 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PKETableViewCell.h"
 
-@interface PKEPokemonCell : UITableViewCell
+@interface PKEPokemonCell : PKETableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *lblName;
 @property (nonatomic, weak) IBOutlet UILabel *lblTypes;
 @property (nonatomic, weak) IBOutlet UILabel *lblNumber;
 @property (nonatomic, weak) IBOutlet UIImageView *imgPicture;
-
-- (void)addBackgroundLayersWithColor:(UIColor *)color;
-- (void)addBackgroundLayersWithFirstColor:(UIColor *)firstColor
-                              secondColor:(UIColor *)secondColor;
 
 @end

@@ -1,13 +1,13 @@
 //
-//  PKEPokemonCell.m
+//  PKETypeSelectionViewController.h
 //  Pokeffective
 //
 //  Created by Renzo Crisóstomo on 08/03/14.
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "PKEPokemonCell.h"
+#import <UIKit/UIKit.h>
 
-@implementation PKEPokemonCell
+@interface PKETypeSelectionViewController : UITableViewController
 
 @end

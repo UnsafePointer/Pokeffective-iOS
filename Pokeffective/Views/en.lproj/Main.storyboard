@@ -95,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="908" y="-267"/>
         </scene>
-        <!--Table View Controller - Options-->
+        <!--Filter View Controller - Options-->
         <scene sceneID="7xa-ek-M0k">
             <objects>
-                <tableViewController id="hs2-yD-Aac" sceneMemberID="viewController">
+                <tableViewController id="hs2-yD-Aac" customClass="PKEFilterViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="MZw-rI-kdK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,6 +270,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="huy-HL-jcy" kind="push" id="a6Y-3R-Ny3"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -279,11 +282,56 @@
                             <outlet property="delegate" destination="hs2-yD-Aac" id="VpN-Ht-N9T"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Options" id="dgr-zN-oxW"/>
+                    <navigationItem key="navigationItem" title="Options" id="dgr-zN-oxW">
+                        <barButtonItem key="backBarButtonItem" title=" " id="XiT-mu-5aw"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWk-ga-u4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1435" y="-267"/>
+        </scene>
+        <!--Type Selection View Controller - Types-->
+        <scene sceneID="G1H-9q-wFt">
+            <objects>
+                <tableViewController id="huy-HL-jcy" customClass="PKETypeSelectionViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="LCZ-LE-JAe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TypeCell" textLabel="02i-gY-PoS" style="IBUITableViewCellStyleDefault" id="pdc-Np-z1f" customClass="PKETableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pdc-Np-z1f" id="JAz-it-9pR">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Fire" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="02i-gY-PoS">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="hpG-CC-di1" kind="unwind" unwindAction="exitFromTypeSelection:" id="JH5-CB-gu8"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="huy-HL-jcy" id="fT8-Hq-QZq"/>
+                            <outlet property="delegate" destination="huy-HL-jcy" id="Rc5-FO-avS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Types" id="Lha-Qv-gC7"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xDA-iV-qDn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="hpG-CC-di1" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1935" y="-267"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zxL-HJ-KiH">
