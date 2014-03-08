@@ -8,6 +8,7 @@
 
 #import "PKEDataBaseManager.h"
 #import "PKEPokemon.h"
+#import "HexColor.h"
 
 @interface PKEDataBaseManager ()
 
@@ -40,6 +41,13 @@ static dispatch_once_t oncePredicate;
         [pokemons addObject:model];
     }
     return pokemons;
+}
+
+- (UIColor *)getColorForType:(NSString *)type
+{
+    NSDictionary *colors = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Types"
+                                                                                                      ofType:@"plist"]];
+    return [UIColor colorWithHexString:[colors objectForKey:type]];
 }
 
 @end

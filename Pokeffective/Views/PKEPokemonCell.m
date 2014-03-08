@@ -7,19 +7,15 @@
 //
 
 #import "PKEPokemonCell.h"
+#import "UIColor+DarkerColor.h"
+
+@interface PKEPokemonCell ()
+
+- (void)checkAndRemovePreviousLayers;
+
+@end
 
 @implementation PKEPokemonCell
-
-- (id)initWithStyle:(UITableViewCellStyle)style
-    reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style
-                reuseIdentifier:reuseIdentifier];
-    if (self) {
-        [self setBackgroundView:[[UIView alloc] initWithFrame:self.bounds]];
-    }
-    return self;
-}
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
@@ -28,29 +24,57 @@
     return self;
 }
 
-- (void)addCustomLayerToContentView
+- (void)checkAndRemovePreviousLayers
 {
-    CAGradientLayer *backgroundGradient = [CAGradientLayer layer];
-    backgroundGradient.frame = self.bounds;
-    backgroundGradient.colors = [NSArray arrayWithObjects:(__bridge id)[[UIColor blackColor] CGColor],
-                                 (__bridge id)[[UIColor whiteColor] CGColor],
-                                 nil];
-    [self.contentView.layer insertSublayer:backgroundGradient
-                                   atIndex:0];
-//    CAGradientLayer *selectedBackgroundGradient = [CAGradientLayer layer];
-//    selectedBackgroundGradient.frame = self.bounds;
-//    selectedBackgroundGradient.colors = [NSArray arrayWithObjects:(__bridge id)[[UIColor whiteColor] CGColor],
-//                                         (__bridge id)[[UIColor blackColor] CGColor],
-//                                         nil];
-//    [self.selectedBackgroundView.layer insertSublayer:selectedBackgroundGradient
-//                                              atIndex:0];
+    if (self.backgroundView.layer.sublayers) {
+        for (CALayer *layer in self.backgroundView.layer.sublayers) {
+            [layer removeFromSuperlayer];
+        }
+    }
+    if (self.selectedBackgroundView.layer.sublayers) {
+        for (CALayer *layer in self.selectedBackgroundView.layer.sublayers) {
+            [layer removeFromSuperlayer];
+        }
+    }
 }
 
-- (void)setSelected:(BOOL)selected
-           animated:(BOOL)animated
+- (void)addBackgroundLayersWithColor:(UIColor *)color
 {
-    [super setSelected:selected
-              animated:animated];
+    [self checkAndRemovePreviousLayers];
+    CALayer *backgroundLayer = [CALayer layer];
+    backgroundLayer.backgroundColor = [color CGColor];
+    backgroundLayer.frame = self.bounds;
+    [self.backgroundView.layer insertSublayer:backgroundLayer
+                                      atIndex:0];
+    CALayer *selectedBackgroundLayer = [CALayer layer];
+    selectedBackgroundLayer.backgroundColor = [[color darkerColor] CGColor];
+    selectedBackgroundLayer.frame = self.bounds;
+    [self.selectedBackgroundView.layer insertSublayer:selectedBackgroundLayer
+                                              atIndex:0];
+}
+
+- (void)addBackgroundLayersWithFirstColor:(UIColor *)firstColor
+                              secondColor:(UIColor *)secondColor
+{
+    [self checkAndRemovePreviousLayers];
+    CAGradientLayer *backgroundGradient = [CAGradientLayer layer];
+    backgroundGradient.startPoint = CGPointMake(0, 0.5);
+    backgroundGradient.endPoint = CGPointMake(1.0, 0.5);
+    backgroundGradient.frame = self.bounds;
+    backgroundGradient.colors = [NSArray arrayWithObjects:(__bridge id)[firstColor CGColor],
+                                 (__bridge id)[secondColor CGColor],
+                                 nil];
+    [self.backgroundView.layer insertSublayer:backgroundGradient
+                                      atIndex:0];
+    CAGradientLayer *selectedBackgroundGradient = [CAGradientLayer layer];
+    selectedBackgroundGradient.startPoint = CGPointMake(0, 0.5);
+    selectedBackgroundGradient.endPoint = CGPointMake(1.0, 0.5);
+    selectedBackgroundGradient.frame = self.bounds;
+    selectedBackgroundGradient.colors = [NSArray arrayWithObjects:(__bridge id)[[firstColor darkerColor] CGColor],
+                                         (__bridge id)[[secondColor darkerColor] CGColor],
+                                         nil];
+    [self.selectedBackgroundView.layer insertSublayer:selectedBackgroundGradient
+                                              atIndex:0];
 }
 
 @end

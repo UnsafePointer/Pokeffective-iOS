@@ -15,6 +15,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *lblNumber;
 @property (nonatomic, weak) IBOutlet UIImageView *imgPicture;
 
-- (void)addCustomLayerToContentView;
+- (void)addBackgroundLayersWithColor:(UIColor *)color;
+- (void)addBackgroundLayersWithFirstColor:(UIColor *)firstColor
+                              secondColor:(UIColor *)secondColor;
 
 @end
