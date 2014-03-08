@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1396F518CB5CA3009B31A3 /* PKEPokemonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1396F418CB5CA3009B31A3 /* PKEPokemonCell.m */; };
+		3F1396F918CB5D8E009B31A3 /* PKEDataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1396F818CB5D8E009B31A3 /* PKEDataBaseManager.m */; };
+		3F1396FD18CB5DC8009B31A3 /* PKEPokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1396FC18CB5DC8009B31A3 /* PKEPokemon.m */; };
+		3F1396FF18CB6111009B31A3 /* Pokemons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F1396FE18CB6111009B31A3 /* Pokemons.plist */; };
+		3F13970118CB630E009B31A3 /* Types.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970018CB630E009B31A3 /* Types.plist */; };
+		3F13970F18CB66A2009B31A3 /* 001.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970318CB66A2009B31A3 /* 001.png */; };
+		3F13971018CB66A2009B31A3 /* 002.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970418CB66A2009B31A3 /* 002.png */; };
+		3F13971118CB66A2009B31A3 /* 003.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970518CB66A2009B31A3 /* 003.png */; };
+		3F13971218CB66A2009B31A3 /* 004.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970618CB66A2009B31A3 /* 004.png */; };
+		3F13971318CB66A2009B31A3 /* 005.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970718CB66A2009B31A3 /* 005.png */; };
+		3F13971418CB66A2009B31A3 /* 006.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970818CB66A2009B31A3 /* 006.png */; };
+		3F13971518CB66A2009B31A3 /* 007.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970918CB66A2009B31A3 /* 007.png */; };
+		3F13971618CB66A2009B31A3 /* 008.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970A18CB66A2009B31A3 /* 008.png */; };
+		3F13971718CB66A2009B31A3 /* 009.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970B18CB66A2009B31A3 /* 009.png */; };
+		3F13971818CB66A2009B31A3 /* 010.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970C18CB66A2009B31A3 /* 010.png */; };
+		3F13971918CB66A2009B31A3 /* 011.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970D18CB66A2009B31A3 /* 011.png */; };
+		3F13971A18CB66A2009B31A3 /* 012.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970E18CB66A2009B31A3 /* 012.png */; };
 		3F778FBD18C7AE3400771A9E /* PKESearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F778FBC18C7AE3400771A9E /* PKESearchViewController.m */; };
 		3F87BD8518C7A60F00400F64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8418C7A60F00400F64 /* Foundation.framework */; };
 		3F87BD8718C7A60F00400F64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8618C7A60F00400F64 /* CoreGraphics.framework */; };
@@ -20,6 +37,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F1396F318CB5CA3009B31A3 /* PKEPokemonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemonCell.h; path = Views/PKEPokemonCell.h; sourceTree = "<group>"; };
+		3F1396F418CB5CA3009B31A3 /* PKEPokemonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPokemonCell.m; path = Views/PKEPokemonCell.m; sourceTree = "<group>"; };
+		3F1396F718CB5D8E009B31A3 /* PKEDataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEDataBaseManager.h; path = Managers/PKEDataBaseManager.h; sourceTree = "<group>"; };
+		3F1396F818CB5D8E009B31A3 /* PKEDataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEDataBaseManager.m; path = Managers/PKEDataBaseManager.m; sourceTree = "<group>"; };
+		3F1396FB18CB5DC8009B31A3 /* PKEPokemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemon.h; path = Models/PKEPokemon.h; sourceTree = "<group>"; };
+		3F1396FC18CB5DC8009B31A3 /* PKEPokemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPokemon.m; path = Models/PKEPokemon.m; sourceTree = "<group>"; };
+		3F1396FE18CB6111009B31A3 /* Pokemons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Pokemons.plist; path = Supporting/Pokemons.plist; sourceTree = "<group>"; };
+		3F13970018CB630E009B31A3 /* Types.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Types.plist; path = Supporting/Types.plist; sourceTree = "<group>"; };
+		3F13970318CB66A2009B31A3 /* 001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 001.png; path = Supporting/Pictures/001.png; sourceTree = "<group>"; };
+		3F13970418CB66A2009B31A3 /* 002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 002.png; path = Supporting/Pictures/002.png; sourceTree = "<group>"; };
+		3F13970518CB66A2009B31A3 /* 003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 003.png; path = Supporting/Pictures/003.png; sourceTree = "<group>"; };
+		3F13970618CB66A2009B31A3 /* 004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 004.png; path = Supporting/Pictures/004.png; sourceTree = "<group>"; };
+		3F13970718CB66A2009B31A3 /* 005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 005.png; path = Supporting/Pictures/005.png; sourceTree = "<group>"; };
+		3F13970818CB66A2009B31A3 /* 006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 006.png; path = Supporting/Pictures/006.png; sourceTree = "<group>"; };
+		3F13970918CB66A2009B31A3 /* 007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 007.png; path = Supporting/Pictures/007.png; sourceTree = "<group>"; };
+		3F13970A18CB66A2009B31A3 /* 008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 008.png; path = Supporting/Pictures/008.png; sourceTree = "<group>"; };
+		3F13970B18CB66A2009B31A3 /* 009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 009.png; path = Supporting/Pictures/009.png; sourceTree = "<group>"; };
+		3F13970C18CB66A2009B31A3 /* 010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 010.png; path = Supporting/Pictures/010.png; sourceTree = "<group>"; };
+		3F13970D18CB66A2009B31A3 /* 011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 011.png; path = Supporting/Pictures/011.png; sourceTree = "<group>"; };
+		3F13970E18CB66A2009B31A3 /* 012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 012.png; path = Supporting/Pictures/012.png; sourceTree = "<group>"; };
 		3F778FBB18C7AE3400771A9E /* PKESearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKESearchViewController.h; path = Controllers/PKESearchViewController.h; sourceTree = "<group>"; };
 		3F778FBC18C7AE3400771A9E /* PKESearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKESearchViewController.m; path = Controllers/PKESearchViewController.m; sourceTree = "<group>"; };
 		3F87BD8118C7A60F00400F64 /* Pokeffective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokeffective.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +91,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F1396F618CB5D5C009B31A3 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3F1396F718CB5D8E009B31A3 /* PKEDataBaseManager.h */,
+				3F1396F818CB5D8E009B31A3 /* PKEDataBaseManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		3F1396FA18CB5DA6009B31A3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3F1396FB18CB5DC8009B31A3 /* PKEPokemon.h */,
+				3F1396FC18CB5DC8009B31A3 /* PKEPokemon.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3F13970218CB6683009B31A3 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				3F13970318CB66A2009B31A3 /* 001.png */,
+				3F13970418CB66A2009B31A3 /* 002.png */,
+				3F13970518CB66A2009B31A3 /* 003.png */,
+				3F13970618CB66A2009B31A3 /* 004.png */,
+				3F13970718CB66A2009B31A3 /* 005.png */,
+				3F13970818CB66A2009B31A3 /* 006.png */,
+				3F13970918CB66A2009B31A3 /* 007.png */,
+				3F13970A18CB66A2009B31A3 /* 008.png */,
+				3F13970B18CB66A2009B31A3 /* 009.png */,
+				3F13970C18CB66A2009B31A3 /* 010.png */,
+				3F13970D18CB66A2009B31A3 /* 011.png */,
+				3F13970E18CB66A2009B31A3 /* 012.png */,
+			);
+			name = Pictures;
+			sourceTree = "<group>";
+		};
 		3F778FBA18C7ADFD00771A9E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +173,8 @@
 				3F87BDB518C7A68300400F64 /* Application */,
 				3F778FBA18C7ADFD00771A9E /* Controllers */,
 				3F87BD9618C7A60F00400F64 /* Images.xcassets */,
+				3F1396F618CB5D5C009B31A3 /* Managers */,
+				3F1396FA18CB5DA6009B31A3 /* Models */,
 				3F87BD8B18C7A60F00400F64 /* Supporting */,
 				3F87BDC318C7A6E500400F64 /* Views */,
 			);
@@ -108,10 +184,13 @@
 		3F87BD8B18C7A60F00400F64 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				3F13970218CB6683009B31A3 /* Pictures */,
 				3F87BDC218C7A6B700400F64 /* InfoPlist.strings */,
 				3F87BDB718C7A6A500400F64 /* main.m */,
 				3F87BDB818C7A6A500400F64 /* Pokeffective-Info.plist */,
 				3F87BDB918C7A6A500400F64 /* Pokeffective-Prefix.pch */,
+				3F1396FE18CB6111009B31A3 /* Pokemons.plist */,
+				3F13970018CB630E009B31A3 /* Types.plist */,
 			);
 			name = Supporting;
 			sourceTree = "<group>";
@@ -129,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				3F87BDCA18C7A72F00400F64 /* Main.storyboard */,
+				3F1396F318CB5CA3009B31A3 /* PKEPokemonCell.h */,
+				3F1396F418CB5CA3009B31A3 /* PKEPokemonCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -187,8 +268,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F13971218CB66A2009B31A3 /* 004.png in Resources */,
+				3F1396FF18CB6111009B31A3 /* Pokemons.plist in Resources */,
+				3F13971A18CB66A2009B31A3 /* 012.png in Resources */,
 				3F87BDC818C7A72F00400F64 /* Main.storyboard in Resources */,
+				3F13971818CB66A2009B31A3 /* 010.png in Resources */,
+				3F13971018CB66A2009B31A3 /* 002.png in Resources */,
 				3F87BD9718C7A60F00400F64 /* Images.xcassets in Resources */,
+				3F13971318CB66A2009B31A3 /* 005.png in Resources */,
+				3F13970F18CB66A2009B31A3 /* 001.png in Resources */,
+				3F13971118CB66A2009B31A3 /* 003.png in Resources */,
+				3F13970118CB630E009B31A3 /* Types.plist in Resources */,
+				3F13971718CB66A2009B31A3 /* 009.png in Resources */,
+				3F13971518CB66A2009B31A3 /* 007.png in Resources */,
+				3F13971918CB66A2009B31A3 /* 011.png in Resources */,
+				3F13971418CB66A2009B31A3 /* 006.png in Resources */,
+				3F13971618CB66A2009B31A3 /* 008.png in Resources */,
 				3F87BDC018C7A6B700400F64 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +328,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F1396FD18CB5DC8009B31A3 /* PKEPokemon.m in Sources */,
+				3F1396F518CB5CA3009B31A3 /* PKEPokemonCell.m in Sources */,
+				3F1396F918CB5D8E009B31A3 /* PKEDataBaseManager.m in Sources */,
 				3F87BDBB18C7A6A500400F64 /* main.m in Sources */,
 				3F778FBD18C7AE3400771A9E /* PKESearchViewController.m in Sources */,
 				3F87BDBF18C7A6AE00400F64 /* PKEAppDelegate.m in Sources */,

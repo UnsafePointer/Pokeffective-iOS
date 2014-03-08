@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Bug</key>
+	<string>a5de37</string>
+	<key>Dragon</key>
+	<string>ff667a</string>
+	<key>Fairy</key>
+	<string>fcb4e6</string>
+	<key>Fire</key>
+	<string>fd6631</string>
+	<key>Ghost</key>
+	<string>7b72e9</string>
+	<key>Ground</key>
+	<string>fec418</string>
+	<key>Normal</key>
+	<string>c7c7cc</string>
+	<key>Psychic</key>
+	<string>db49d8</string>
+	<key>Steel</key>
+	<string>8e8e93</string>
+	<key>Dark</key>
+	<string>4a4a4a</string>
+	<key>Electric</key>
+	<string>ffe93b</string>
+	<key>Fighting</key>
+	<string>fc880f</string>
+	<key>Flying</key>
+	<string>55dae1</string>
+	<key>Grass</key>
+	<string>4cd964</string>
+	<key>Ice</key>
+	<string>28cdfb</string>
+	<key>Poison</key>
+	<string>ed4694</string>
+	<key>Rock</key>
+	<string>d6cec3</string>
+	<key>Water</key>
+	<string>1b9af7</string>
+</dict>
+</plist>
