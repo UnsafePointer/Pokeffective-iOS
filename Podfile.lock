@@ -1,13 +1,20 @@
 PODS:
   - CRGradientNavigationBar (0.3.2)
   - HexColors (2.2.1)
+  - TSMessages (0.9.6):
+    - HexColors
+  - VTAcknowledgementsViewController (0.10)
 
 DEPENDENCIES:
   - CRGradientNavigationBar (~> 0.3)
   - HexColors (~> 2.2)
+  - TSMessages
+  - VTAcknowledgementsViewController
 
 SPEC CHECKSUMS:
   CRGradientNavigationBar: dc3ffb640685b43c27f096e7d466e80f9fa887fe
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
+  TSMessages: 839edc3164b99ced48c30af9dde9710cd67bea4d
+  VTAcknowledgementsViewController: 76b8edcea89b58b7be15876aaa5aba7fa8b221d7
 
 COCOAPODS: 0.29.0
