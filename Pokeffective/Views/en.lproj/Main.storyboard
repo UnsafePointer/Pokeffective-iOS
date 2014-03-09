@@ -4,65 +4,23 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller - Pokémon-->
+        <!--List View Controller - Pokémon-->
         <scene sceneID="KNV-QN-r7Y">
             <objects>
-                <tableViewController id="s72-0V-cMJ" customClass="PKESearchViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" id="4rt-c8-dbV">
+                <tableViewController id="s72-0V-cMJ" customClass="PKEListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4rt-c8-dbV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="shc-MM-4qE">
-                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="barTintColor" red="0.11372549019607843" green="0.38431372549019605" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="s72-0V-cMJ" id="cgT-ew-JZb"/>
-                            </connections>
-                        </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PokemonCell" rowHeight="88" id="76e-o0-bfR" customClass="PKEPokemonCell">
-                                <rect key="frame" x="0.0" y="130" width="320" height="88"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="76e-o0-bfR">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="76e-o0-bfR" id="hhl-cb-Yvd">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QTt-bf-epv">
-                                            <rect key="frame" x="0.0" y="0.0" width="88" height="87"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Charizard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRm-NT-V3h">
-                                            <rect key="frame" x="108" y="19" width="142" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Flying / Fire" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjd-OU-UB3">
-                                            <rect key="frame" x="108" y="48" width="142" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="003" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v58-Qn-aGx">
-                                            <rect key="frame" x="258" y="33" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="imgPicture" destination="QTt-bf-epv" id="OS6-AK-cf0"/>
-                                    <outlet property="lblName" destination="YRm-NT-V3h" id="dYa-lB-JDe"/>
-                                    <outlet property="lblNumber" destination="v58-Qn-aGx" id="OqU-Kh-t97"/>
-                                    <outlet property="lblTypes" destination="cjd-OU-UB3" id="eNb-C2-Flj"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -75,6 +33,7 @@
                         <barButtonItem key="leftBarButtonItem" image="Search" id="0wR-5h-Pj1">
                             <connections>
                                 <action selector="searchButtonTapped:" destination="s72-0V-cMJ" id="t5Z-n7-vv3"/>
+                                <segue destination="KY5-fL-3ks" kind="push" id="2JP-nf-hhF"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Filter" id="mEh-M3-LdS">
@@ -83,22 +42,59 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="QG7-pC-Rc1" id="8UJ-n2-wNF"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGc-Js-2u2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="QG7-pC-Rc1">
+            </objects>
+            <point key="canvasLocation" x="908" y="-267"/>
+        </scene>
+        <!--Search View Controller - Search-->
+        <scene sceneID="nYH-E6-YBB">
+            <objects>
+                <tableViewController id="KY5-fL-3ks" customClass="PKESearchViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bdW-No-eow">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="5aA-E9-UJz">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5aA-E9-UJz" id="WKQ-x1-U0x">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="KY5-fL-3ks" id="AGb-CB-9No"/>
+                            <outlet property="delegate" destination="KY5-fL-3ks" id="WJv-qZ-rG2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Search" id="2Vy-CY-Az4"/>
                     <connections>
-                        <outlet property="delegate" destination="s72-0V-cMJ" id="Uag-tK-HLS"/>
-                        <outlet property="searchBar" destination="shc-MM-4qE" id="72M-Av-Y0N"/>
-                        <outlet property="searchContentsController" destination="s72-0V-cMJ" id="J3A-NK-dij"/>
-                        <outlet property="searchResultsDataSource" destination="s72-0V-cMJ" id="Qex-vY-e4u"/>
-                        <outlet property="searchResultsDelegate" destination="s72-0V-cMJ" id="xAh-gE-7Hh"/>
+                        <outlet property="searchDisplayController" destination="i3e-CQ-gHj" id="I8y-Lj-daH"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFY-8Y-7Sc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" showsCancelButton="YES" id="f5q-d7-Up5">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="KY5-fL-3ks" id="fhY-dq-aoK"/>
+                    </connections>
+                </searchBar>
+                <searchDisplayController id="i3e-CQ-gHj">
+                    <connections>
+                        <outlet property="delegate" destination="KY5-fL-3ks" id="Lgq-h2-3Wm"/>
+                        <outlet property="searchBar" destination="f5q-d7-Up5" id="2pf-fg-pO5"/>
+                        <outlet property="searchContentsController" destination="KY5-fL-3ks" id="wDM-ZC-T2k"/>
+                        <outlet property="searchResultsDataSource" destination="KY5-fL-3ks" id="YOm-nl-wm0"/>
+                        <outlet property="searchResultsDelegate" destination="KY5-fL-3ks" id="uLt-dA-axo"/>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="908" y="-267"/>
+            <point key="canvasLocation" x="1446" y="444"/>
         </scene>
         <!--Filter View Controller - Options-->
         <scene sceneID="7xa-ek-M0k">

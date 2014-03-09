@@ -32,10 +32,7 @@
     [[CRGradientNavigationBar appearance] setBarTintGradientColors:@[[UIColor colorWithHexString:@"#1AD6FD"],
             [UIColor colorWithHexString:@"#1D62F0"]]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{
-            NSForegroundColorAttributeName: [UIColor colorWithRed:255.0/255.0
-                                                            green:255.0/255.0
-                                                             blue:255.0/255.0
-                                                            alpha:1.0]
+            NSForegroundColorAttributeName: [UIColor colorWithHexString:@"#ffffff"]
     }];
 }
 
