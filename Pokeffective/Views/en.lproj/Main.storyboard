@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="leV-hV-hnm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="U10-F1-aye">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -39,6 +39,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGc-Js-2u2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="908" y="-267"/>
+        </scene>
+        <!--Party View Controller - Party-->
+        <scene sceneID="rvc-Cp-4Ks">
+            <objects>
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="pPy-XH-DzP" customClass="PKEPartyViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="AaE-9x-Yy2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ABt-jk-xET">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ldd-vj-Hy1">
+                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="pPy-XH-DzP" id="lDw-TH-4ni"/>
+                            <outlet property="delegate" destination="pPy-XH-DzP" id="15F-Yr-gzK"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Party" id="FHU-t9-DoE">
+                        <barButtonItem key="leftBarButtonItem" image="Info" id="zzj-24-oTq"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="s72-0V-cMJ" kind="push" identifier="AddSegue" id="kej-Vo-FIQ"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5L5-Uy-QuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="396" y="-267"/>
         </scene>
         <!--Search View Controller - Search-->
         <scene sceneID="nYH-E6-YBB">
@@ -87,7 +128,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1435" y="444"/>
+            <point key="canvasLocation" x="1435" y="440"/>
         </scene>
         <!--Filter View Controller - Options-->
         <scene sceneID="7xa-ek-M0k">
@@ -336,24 +377,27 @@
             <point key="canvasLocation" x="1863" y="-267"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="zxL-HJ-KiH">
+        <scene sceneID="eNr-dr-lpC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="leV-hV-hnm" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U10-F1-aye" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bHy-3B-JIS" customClass="CRGradientNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XRp-90-yWx" customClass="CRGradientNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="s72-0V-cMJ" kind="relationship" relationship="rootViewController" id="qVW-IH-Tsk"/>
+                        <segue destination="pPy-XH-DzP" kind="relationship" relationship="rootViewController" id="38R-Ge-Nb5"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tPR-rm-0CL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nDU-ut-Em2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="382" y="-267"/>
+            <point key="canvasLocation" x="-154" y="-267"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Info" width="28" height="28"/>
+    </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
