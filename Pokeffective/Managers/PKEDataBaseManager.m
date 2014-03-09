@@ -43,6 +43,18 @@ static dispatch_once_t oncePredicate;
     return pokemons;
 }
 
+- (NSArray *)getParty
+{
+    NSArray *database = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Party"
+                                                                                         ofType:@"plist"]];
+    NSMutableArray *pokemons = [[NSMutableArray alloc] initWithCapacity:[database count]];
+    for(NSDictionary *pokemon in database) {
+        PKEPokemon *model = [PKEPokemon createPokemonWithDictionary:pokemon];
+        [pokemons addObject:model];
+    }
+    return pokemons;
+}
+
 - (UIColor *)getColorForType:(NSString *)type
 {
     NSDictionary *colors = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Types"

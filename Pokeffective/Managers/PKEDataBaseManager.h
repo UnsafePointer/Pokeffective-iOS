@@ -12,6 +12,7 @@
 
 + (instancetype)sharedManager;
 - (NSArray *)getPokemons;
+- (NSArray *)getParty;
 - (UIColor *)getColorForType:(NSString *)type;
 
 @end

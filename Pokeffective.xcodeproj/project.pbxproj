@@ -34,6 +34,14 @@
 		3F375C7A18CC818F00A93DB4 /* PKEPokemonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C7918CC818F00A93DB4 /* PKEPokemonCell.xib */; };
 		3F375C7D18CCA6D300A93DB4 /* PKEPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C7C18CCA6D300A93DB4 /* PKEPartyViewController.m */; };
 		3F375C8018CCA71B00A93DB4 /* PKETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C7F18CCA71B00A93DB4 /* PKETableViewController.m */; };
+		3F375C8218CCB12800A93DB4 /* Party.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C8118CCB12800A93DB4 /* Party.plist */; };
+		3F375C8518CCB27B00A93DB4 /* PKEMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C8418CCB27B00A93DB4 /* PKEMemberCell.m */; };
+		3F375C8718CCBAC400A93DB4 /* 445.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C8618CCBAC400A93DB4 /* 445.png */; };
+		3F375C8918CCBACB00A93DB4 /* 149.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C8818CCBACB00A93DB4 /* 149.png */; };
+		3F375C8B18CCBAD300A93DB4 /* 094.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C8A18CCBAD300A93DB4 /* 094.png */; };
+		3F375C8D18CCBADA00A93DB4 /* 227.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C8C18CCBADA00A93DB4 /* 227.png */; };
+		3F375C8F18CCBAE000A93DB4 /* 242.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C8E18CCBAE000A93DB4 /* 242.png */; };
+		3F375C9118CCBAE500A93DB4 /* 701.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C9018CCBAE500A93DB4 /* 701.png */; };
 		3F778FBD18C7AE3400771A9E /* PKEListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F778FBC18C7AE3400771A9E /* PKEListViewController.m */; };
 		3F87BD8518C7A60F00400F64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8418C7A60F00400F64 /* Foundation.framework */; };
 		3F87BD8718C7A60F00400F64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8618C7A60F00400F64 /* CoreGraphics.framework */; };
@@ -86,6 +94,15 @@
 		3F375C7C18CCA6D300A93DB4 /* PKEPartyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPartyViewController.m; path = Controllers/PKEPartyViewController.m; sourceTree = "<group>"; };
 		3F375C7E18CCA71B00A93DB4 /* PKETableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKETableViewController.h; path = Extensions/PKETableViewController.h; sourceTree = "<group>"; };
 		3F375C7F18CCA71B00A93DB4 /* PKETableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKETableViewController.m; path = Extensions/PKETableViewController.m; sourceTree = "<group>"; };
+		3F375C8118CCB12800A93DB4 /* Party.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Party.plist; path = Supporting/Party.plist; sourceTree = "<group>"; };
+		3F375C8318CCB27B00A93DB4 /* PKEMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMemberCell.h; path = Views/PKEMemberCell.h; sourceTree = "<group>"; };
+		3F375C8418CCB27B00A93DB4 /* PKEMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMemberCell.m; path = Views/PKEMemberCell.m; sourceTree = "<group>"; };
+		3F375C8618CCBAC400A93DB4 /* 445.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 445.png; sourceTree = "<group>"; };
+		3F375C8818CCBACB00A93DB4 /* 149.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 149.png; sourceTree = "<group>"; };
+		3F375C8A18CCBAD300A93DB4 /* 094.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 094.png; sourceTree = "<group>"; };
+		3F375C8C18CCBADA00A93DB4 /* 227.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 227.png; sourceTree = "<group>"; };
+		3F375C8E18CCBAE000A93DB4 /* 242.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 242.png; sourceTree = "<group>"; };
+		3F375C9018CCBAE500A93DB4 /* 701.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 701.png; sourceTree = "<group>"; };
 		3F778FBB18C7AE3400771A9E /* PKEListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEListViewController.h; path = Controllers/PKEListViewController.h; sourceTree = "<group>"; };
 		3F778FBC18C7AE3400771A9E /* PKEListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEListViewController.m; path = Controllers/PKEListViewController.m; sourceTree = "<group>"; };
 		3F87BD8118C7A60F00400F64 /* Pokeffective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokeffective.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +170,12 @@
 				3F13970C18CB66A2009B31A3 /* 010.png */,
 				3F13970D18CB66A2009B31A3 /* 011.png */,
 				3F13970E18CB66A2009B31A3 /* 012.png */,
+				3F375C8618CCBAC400A93DB4 /* 445.png */,
+				3F375C8818CCBACB00A93DB4 /* 149.png */,
+				3F375C8A18CCBAD300A93DB4 /* 094.png */,
+				3F375C8C18CCBADA00A93DB4 /* 227.png */,
+				3F375C8E18CCBAE000A93DB4 /* 242.png */,
+				3F375C9018CCBAE500A93DB4 /* 701.png */,
 			);
 			name = Pictures;
 			sourceTree = "<group>";
@@ -242,6 +265,7 @@
 				3F87BDB718C7A6A500400F64 /* main.m */,
 				3F87BDB818C7A6A500400F64 /* Pokeffective-Info.plist */,
 				3F87BDB918C7A6A500400F64 /* Pokeffective-Prefix.pch */,
+				3F375C8118CCB12800A93DB4 /* Party.plist */,
 				3F1396FE18CB6111009B31A3 /* Pokemons.plist */,
 				3F13970018CB630E009B31A3 /* Types.plist */,
 			);
@@ -266,6 +290,8 @@
 				3F375C7918CC818F00A93DB4 /* PKEPokemonCell.xib */,
 				3F13973518CBBAF7009B31A3 /* PKETypeCell.h */,
 				3F13973618CBBAF7009B31A3 /* PKETypeCell.m */,
+				3F375C8318CCB27B00A93DB4 /* PKEMemberCell.h */,
+				3F375C8418CCB27B00A93DB4 /* PKEMemberCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -330,15 +356,22 @@
 				3F13971A18CB66A2009B31A3 /* 012.png in Resources */,
 				3F87BDC818C7A72F00400F64 /* Main.storyboard in Resources */,
 				3F13971818CB66A2009B31A3 /* 010.png in Resources */,
+				3F375C8918CCBACB00A93DB4 /* 149.png in Resources */,
 				3F13971018CB66A2009B31A3 /* 002.png in Resources */,
 				3F87BD9718C7A60F00400F64 /* Images.xcassets in Resources */,
 				3F13971318CB66A2009B31A3 /* 005.png in Resources */,
 				3F13970F18CB66A2009B31A3 /* 001.png in Resources */,
+				3F375C8B18CCBAD300A93DB4 /* 094.png in Resources */,
+				3F375C8218CCB12800A93DB4 /* Party.plist in Resources */,
+				3F375C8D18CCBADA00A93DB4 /* 227.png in Resources */,
+				3F375C8718CCBAC400A93DB4 /* 445.png in Resources */,
 				3F13971118CB66A2009B31A3 /* 003.png in Resources */,
 				3F13970118CB630E009B31A3 /* Types.plist in Resources */,
 				3F13971718CB66A2009B31A3 /* 009.png in Resources */,
+				3F375C8F18CCBAE000A93DB4 /* 242.png in Resources */,
 				3F13971518CB66A2009B31A3 /* 007.png in Resources */,
 				3F13971918CB66A2009B31A3 /* 011.png in Resources */,
+				3F375C9118CCBAE500A93DB4 /* 701.png in Resources */,
 				3F13971418CB66A2009B31A3 /* 006.png in Resources */,
 				3F13971618CB66A2009B31A3 /* 008.png in Resources */,
 				3F87BDC018C7A6B700400F64 /* InfoPlist.strings in Resources */,
@@ -387,6 +420,7 @@
 			files = (
 				3F1396FD18CB5DC8009B31A3 /* PKEPokemon.m in Sources */,
 				3F13972418CBA959009B31A3 /* PKEFilterViewController.m in Sources */,
+				3F375C8518CCB27B00A93DB4 /* PKEMemberCell.m in Sources */,
 				3F375C7518CC7B6A00A93DB4 /* PKESearchViewController.m in Sources */,
 				3F13973718CBBAF7009B31A3 /* PKETypeCell.m in Sources */,
 				3F375C7D18CCA6D300A93DB4 /* PKEPartyViewController.m in Sources */,

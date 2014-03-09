@@ -62,5 +62,4 @@
     [tableViewCell addBackgroundLayersWithColor:[[PKEDataBaseManager sharedManager] getColorForType:key]];
 }
 
-
 @end

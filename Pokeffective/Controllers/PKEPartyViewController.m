@@ -7,8 +7,13 @@
 //
 
 #import "PKEPartyViewController.h"
+#import "PKEDataBaseManager.h"
+#import "PKEMemberCell.h"
+#import "PKEPokemon.h"
 
 @interface PKEPartyViewController ()
+
+@property (nonatomic, strong) NSArray *dataSource;
 
 - (void)addButtonTapped:(id)sender;
 - (void)chartButtonTapped:(id)sender;
@@ -20,6 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setDataSource:[[PKEDataBaseManager sharedManager] getParty]];
     UIBarButtonItem *searchBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Add"]
                                                                             style:UIBarButtonItemStyleBordered
                                                                            target:self
@@ -47,6 +53,40 @@
 - (void)chartButtonTapped:(id)sender
 {
     
+}
+
+- (void)configureTableViewCell:(PKEMemberCell *)tableViewCell
+                  forIndexPath:(NSIndexPath *)indexPath
+{
+    [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
+    PKEPokemon *pokemon = [[self dataSource] objectAtIndex:[indexPath row]];
+    [[tableViewCell lblName] setText:[pokemon name]];
+    [[tableViewCell imgPicture] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [pokemon number]]]];
+    if ([[pokemon types] count] == 1) {
+        [tableViewCell addBackgroundLayersWithColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:0]]];
+    }
+    else {
+        [tableViewCell addBackgroundLayersWithFirstColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:0]]
+                                             secondColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:1]]];
+    }
+}
+
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [[self dataSource] count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"MemberCell";
+    PKEMemberCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier
+                                                                    forIndexPath:indexPath];
+    [self configureTableViewCell:cell
+                    forIndexPath:indexPath];
+    return cell;
 }
 
 @end
