@@ -29,19 +29,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Pokémon" id="APq-wn-H6Y">
-                        <barButtonItem key="backBarButtonItem" title=" " id="xmd-vd-p4S"/>
-                        <barButtonItem key="leftBarButtonItem" image="Search" id="0wR-5h-Pj1">
-                            <connections>
-                                <action selector="searchButtonTapped:" destination="s72-0V-cMJ" id="t5Z-n7-vv3"/>
-                                <segue destination="KY5-fL-3ks" kind="push" id="2JP-nf-hhF"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Filter" id="mEh-M3-LdS">
-                            <connections>
-                                <segue destination="hs2-yD-Aac" kind="push" id="3Pg-cW-Gst"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title=" " id="cq5-jX-k3T"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="KY5-fL-3ks" kind="push" identifier="SearchSegue" id="b2i-4Z-58g"/>
+                        <segue destination="hs2-yD-Aac" kind="push" identifier="FilterSegue" id="wkv-Dv-9VH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGc-Js-2u2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,7 +87,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1446" y="444"/>
+            <point key="canvasLocation" x="1435" y="444"/>
         </scene>
         <!--Filter View Controller - Options-->
         <scene sceneID="7xa-ek-M0k">
@@ -361,10 +354,6 @@
             <point key="canvasLocation" x="382" y="-267"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Filter" width="28" height="28"/>
-        <image name="Search" width="28" height="28"/>
-    </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
