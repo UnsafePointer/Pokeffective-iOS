@@ -10,6 +10,7 @@
 #import "PKEDataBaseManager.h"
 #import "PKEMemberCell.h"
 #import "PKEPokemon.h"
+#import "PKEMovesetViewController.h"
 
 @interface PKEPartyViewController ()
 
@@ -40,6 +41,17 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"MovesetSegue"]) {
+        PKEMovesetViewController *controller = [segue destinationViewController];
+        NSArray *selectedIndexPaths = [[self collectionView] indexPathsForSelectedItems];
+        NSIndexPath *selectedIndesPath = [selectedIndexPaths objectAtIndex:0];
+        PKEPokemon *selectedPKMN = [[self dataSource] objectAtIndex:[selectedIndesPath row]];
+        controller.pokemon = selectedPKMN;
+    }
 }
 
 #pragma mark - Private Methods

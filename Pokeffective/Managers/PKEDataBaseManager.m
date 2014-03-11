@@ -9,6 +9,7 @@
 #import "PKEDataBaseManager.h"
 #import "PKEPokemon.h"
 #import "HexColor.h"
+#import "PKEMove.h"
 
 @interface PKEDataBaseManager ()
 
@@ -53,6 +54,18 @@ static dispatch_once_t oncePredicate;
         [pokemons addObject:model];
     }
     return pokemons;
+}
+
+- (NSArray *)getMoveset
+{
+    NSArray *database = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Moveset"
+                                                                                         ofType:@"plist"]];
+    NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:[database count]];
+    for(NSDictionary *move in database) {
+        PKEMove *model = [PKEMove createMoveWithDictionary:move];
+        [moves addObject:model];
+    }
+    return moves;
 }
 
 - (UIColor *)getColorForType:(NSString *)type

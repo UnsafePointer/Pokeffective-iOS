@@ -36,6 +36,9 @@
 		3F375C8018CCA71B00A93DB4 /* PKETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C7F18CCA71B00A93DB4 /* PKETableViewController.m */; };
 		3F375C8218CCB12800A93DB4 /* Party.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C8118CCB12800A93DB4 /* Party.plist */; };
 		3F375C8518CCB27B00A93DB4 /* PKEMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C8418CCB27B00A93DB4 /* PKEMemberCell.m */; };
+		3F43557E18CF6AB900806A8F /* PKEMovesetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F43557D18CF6AB900806A8F /* PKEMovesetViewController.m */; };
+		3F43558018CF6B5600806A8F /* Moveset.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F43557F18CF6B5600806A8F /* Moveset.plist */; };
+		3F43558318CF6D7F00806A8F /* PKEMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F43558218CF6D7F00806A8F /* PKEMove.m */; };
 		3F778FBD18C7AE3400771A9E /* PKEListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F778FBC18C7AE3400771A9E /* PKEListViewController.m */; };
 		3F87BD8518C7A60F00400F64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8418C7A60F00400F64 /* Foundation.framework */; };
 		3F87BD8718C7A60F00400F64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8618C7A60F00400F64 /* CoreGraphics.framework */; };
@@ -45,6 +48,8 @@
 		3F87BDBF18C7A6AE00400F64 /* PKEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F87BDBE18C7A6AE00400F64 /* PKEAppDelegate.m */; };
 		3F87BDC018C7A6B700400F64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F87BDC218C7A6B700400F64 /* InfoPlist.strings */; };
 		3F87BDC818C7A72F00400F64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F87BDCA18C7A72F00400F64 /* Main.storyboard */; };
+		3F93181618CF70ED0023E7A5 /* PKEMoveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93181518CF70ED0023E7A5 /* PKEMoveCell.m */; };
+		3F93181918CF7E500023E7A5 /* PKELabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93181818CF7E500023E7A5 /* PKELabel.m */; };
 		3FCC8A9818CCECF500F4F0A3 /* PKEAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC8A9718CCECF500F4F0A3 /* PKEAboutViewController.m */; };
 		3FCC8A9A18CCEE8400F4F0A3 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCC8A9918CCEE8400F4F0A3 /* Social.framework */; };
 		3FCC8A9C18CCEE9000F4F0A3 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCC8A9B18CCEE9000F4F0A3 /* Accounts.framework */; };
@@ -102,6 +107,11 @@
 		3F375C8118CCB12800A93DB4 /* Party.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Party.plist; path = Supporting/Party.plist; sourceTree = "<group>"; };
 		3F375C8318CCB27B00A93DB4 /* PKEMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMemberCell.h; path = Views/PKEMemberCell.h; sourceTree = "<group>"; };
 		3F375C8418CCB27B00A93DB4 /* PKEMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMemberCell.m; path = Views/PKEMemberCell.m; sourceTree = "<group>"; };
+		3F43557C18CF6AB900806A8F /* PKEMovesetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMovesetViewController.h; path = Controllers/PKEMovesetViewController.h; sourceTree = "<group>"; };
+		3F43557D18CF6AB900806A8F /* PKEMovesetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMovesetViewController.m; path = Controllers/PKEMovesetViewController.m; sourceTree = "<group>"; };
+		3F43557F18CF6B5600806A8F /* Moveset.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Moveset.plist; path = Supporting/Moveset.plist; sourceTree = "<group>"; };
+		3F43558118CF6D7F00806A8F /* PKEMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMove.h; path = Models/PKEMove.h; sourceTree = "<group>"; };
+		3F43558218CF6D7F00806A8F /* PKEMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMove.m; path = Models/PKEMove.m; sourceTree = "<group>"; };
 		3F778FBB18C7AE3400771A9E /* PKEListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEListViewController.h; path = Controllers/PKEListViewController.h; sourceTree = "<group>"; };
 		3F778FBC18C7AE3400771A9E /* PKEListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEListViewController.m; path = Controllers/PKEListViewController.m; sourceTree = "<group>"; };
 		3F87BD8118C7A60F00400F64 /* Pokeffective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokeffective.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +127,10 @@
 		3F87BDBE18C7A6AE00400F64 /* PKEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEAppDelegate.m; path = Application/PKEAppDelegate.m; sourceTree = "<group>"; };
 		3F87BDC118C7A6B700400F64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F87BDC918C7A72F00400F64 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3F93181418CF70ED0023E7A5 /* PKEMoveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMoveCell.h; path = Views/PKEMoveCell.h; sourceTree = "<group>"; };
+		3F93181518CF70ED0023E7A5 /* PKEMoveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMoveCell.m; path = Views/PKEMoveCell.m; sourceTree = "<group>"; };
+		3F93181718CF7E500023E7A5 /* PKELabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKELabel.h; path = Extensions/PKELabel.h; sourceTree = "<group>"; };
+		3F93181818CF7E500023E7A5 /* PKELabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKELabel.m; path = Extensions/PKELabel.m; sourceTree = "<group>"; };
 		3FCC8A9618CCECF500F4F0A3 /* PKEAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEAboutViewController.h; path = Controllers/PKEAboutViewController.h; sourceTree = "<group>"; };
 		3FCC8A9718CCECF500F4F0A3 /* PKEAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEAboutViewController.m; path = Controllers/PKEAboutViewController.m; sourceTree = "<group>"; };
 		3FCC8A9918CCEE8400F4F0A3 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -165,6 +179,8 @@
 			children = (
 				3F1396FB18CB5DC8009B31A3 /* PKEPokemon.h */,
 				3F1396FC18CB5DC8009B31A3 /* PKEPokemon.m */,
+				3F43558118CF6D7F00806A8F /* PKEMove.h */,
+				3F43558218CF6D7F00806A8F /* PKEMove.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -205,6 +221,8 @@
 				3F13972D18CBAE1A009B31A3 /* PKETableViewCell.m */,
 				3F13973218CBB551009B31A3 /* PKECollectionViewCell.h */,
 				3F13973318CBB551009B31A3 /* PKECollectionViewCell.m */,
+				3F93181718CF7E500023E7A5 /* PKELabel.h */,
+				3F93181818CF7E500023E7A5 /* PKELabel.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -224,6 +242,8 @@
 				3F375C7C18CCA6D300A93DB4 /* PKEPartyViewController.m */,
 				3FCC8A9618CCECF500F4F0A3 /* PKEAboutViewController.h */,
 				3FCC8A9718CCECF500F4F0A3 /* PKEAboutViewController.m */,
+				3F43557C18CF6AB900806A8F /* PKEMovesetViewController.h */,
+				3F43557D18CF6AB900806A8F /* PKEMovesetViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -288,6 +308,7 @@
 				3F1396FE18CB6111009B31A3 /* Pokemons.plist */,
 				3F13970018CB630E009B31A3 /* Types.plist */,
 				3FCC8A9F18CCEF4300F4F0A3 /* Pods-acknowledgements.plist */,
+				3F43557F18CF6B5600806A8F /* Moveset.plist */,
 			);
 			name = Supporting;
 			sourceTree = "<group>";
@@ -312,6 +333,8 @@
 				3F13973618CBBAF7009B31A3 /* PKETypeCell.m */,
 				3F375C8318CCB27B00A93DB4 /* PKEMemberCell.h */,
 				3F375C8418CCB27B00A93DB4 /* PKEMemberCell.m */,
+				3F93181418CF70ED0023E7A5 /* PKEMoveCell.h */,
+				3F93181518CF70ED0023E7A5 /* PKEMoveCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -392,6 +415,7 @@
 				3F13971518CB66A2009B31A3 /* 007.png in Resources */,
 				3FCC8AAA18CCF03B00F4F0A3 /* 242.png in Resources */,
 				3F13971918CB66A2009B31A3 /* 011.png in Resources */,
+				3F43558018CF6B5600806A8F /* Moveset.plist in Resources */,
 				3F13971418CB66A2009B31A3 /* 006.png in Resources */,
 				3FCC8AA718CCF03B00F4F0A3 /* 094.png in Resources */,
 				3F13971618CB66A2009B31A3 /* 008.png in Resources */,
@@ -439,13 +463,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F43558318CF6D7F00806A8F /* PKEMove.m in Sources */,
 				3F1396FD18CB5DC8009B31A3 /* PKEPokemon.m in Sources */,
 				3F13972418CBA959009B31A3 /* PKEFilterViewController.m in Sources */,
 				3F375C8518CCB27B00A93DB4 /* PKEMemberCell.m in Sources */,
 				3F375C7518CC7B6A00A93DB4 /* PKESearchViewController.m in Sources */,
 				3F13973718CBBAF7009B31A3 /* PKETypeCell.m in Sources */,
 				3F375C7D18CCA6D300A93DB4 /* PKEPartyViewController.m in Sources */,
+				3F93181618CF70ED0023E7A5 /* PKEMoveCell.m in Sources */,
+				3F93181918CF7E500023E7A5 /* PKELabel.m in Sources */,
 				3F1396F518CB5CA3009B31A3 /* PKEPokemonCell.m in Sources */,
+				3F43557E18CF6AB900806A8F /* PKEMovesetViewController.m in Sources */,
 				3F13973118CBB3FE009B31A3 /* PKETypeViewController.m in Sources */,
 				3F1396F918CB5D8E009B31A3 /* PKEDataBaseManager.m in Sources */,
 				3F13972118CB97FE009B31A3 /* UIColor+DarkerColor.m in Sources */,

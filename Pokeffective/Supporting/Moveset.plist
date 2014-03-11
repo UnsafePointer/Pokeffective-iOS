@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Name</key>
+		<string>Flamethrower</string>
+		<key>Type</key>
+		<string>Fire</string>
+		<key>Category</key>
+		<string>Special</string>
+		<key>Power</key>
+		<integer>90</integer>
+		<key>Accuracy</key>
+		<integer>100</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Dragon Pulse</string>
+		<key>Type</key>
+		<string>Dragon</string>
+		<key>Category</key>
+		<string>Special</string>
+		<key>Power</key>
+		<integer>85</integer>
+		<key>Accuracy</key>
+		<integer>100</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Solar Beam</string>
+		<key>Type</key>
+		<string>Grass</string>
+		<key>Category</key>
+		<string>Special</string>
+		<key>Power</key>
+		<integer>120</integer>
+		<key>Accuracy</key>
+		<integer>100</integer>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Focus Blast</string>
+		<key>Type</key>
+		<string>Fighting</string>
+		<key>Category</key>
+		<string>Special</string>
+		<key>Power</key>
+		<integer>120</integer>
+		<key>Accuracy</key>
+		<integer>70</integer>
+	</dict>
+</array>
+</plist>
