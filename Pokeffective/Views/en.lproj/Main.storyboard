@@ -38,7 +38,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGc-Js-2u2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="908" y="-267"/>
+            <point key="canvasLocation" x="936" y="-974"/>
         </scene>
         <!--Party View Controller - Party-->
         <scene sceneID="rvc-Cp-4Ks">
@@ -98,6 +98,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="s72-0V-cMJ" kind="push" identifier="AddSegue" id="kej-Vo-FIQ"/>
+                        <segue destination="g1O-j2-TVl" kind="push" identifier="EffectiveSegue" id="9Ps-bn-uzh"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5L5-Uy-QuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -151,7 +152,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1435" y="440"/>
+            <point key="canvasLocation" x="1463" y="-267"/>
         </scene>
         <!--Filter View Controller - Options-->
         <scene sceneID="7xa-ek-M0k">
@@ -346,7 +347,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWk-ga-u4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1435" y="-267"/>
+            <point key="canvasLocation" x="1463" y="-974"/>
         </scene>
         <!--Type View Controller - Types-->
         <scene sceneID="6MV-NR-Tse">
@@ -397,7 +398,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dr8-hh-VnY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="kxS-pQ-aHh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1863" y="-267"/>
+            <point key="canvasLocation" x="1891" y="-974"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eNr-dr-lpC">
@@ -416,6 +417,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nDU-ut-Em2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-154" y="-267"/>
+        </scene>
+        <!--Effective View Controller - Results-->
+        <scene sceneID="sE5-oG-FW1">
+            <objects>
+                <tableViewController id="g1O-j2-TVl" customClass="PKEEffectiveViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lEy-ey-VX8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EffectiveCell" id="nwG-gL-0us" customClass="PKEEffectiveCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nwG-gL-0us" id="nLh-Wq-U0k">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Grass" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMB-SG-JKA">
+                                            <rect key="frame" x="20" y="11" width="130" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Super-effective" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbA-X9-uDX">
+                                            <rect key="frame" x="170" y="11" width="130" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblEffective" destination="tbA-X9-uDX" id="Fst-pb-Zd7"/>
+                                    <outlet property="lblType" destination="vMB-SG-JKA" id="F2U-Zb-DOS"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="g1O-j2-TVl" id="vTI-gD-tHT"/>
+                            <outlet property="delegate" destination="g1O-j2-TVl" id="oHP-uz-UEg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Results" id="FJU-NG-IAc"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ht5-cT-A7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="396" y="500"/>
         </scene>
         <!--Moveset View Controller-->
         <scene sceneID="2BY-et-Et2">
@@ -474,7 +524,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o6S-lf-sKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="396" y="440"/>
+            <point key="canvasLocation" x="936" y="500"/>
         </scene>
         <!--About View Controller - About-->
         <scene sceneID="i0V-CS-pQA">
@@ -664,7 +714,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7d7-mf-tPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="908" y="440"/>
+            <point key="canvasLocation" x="936" y="-267"/>
         </scene>
     </scenes>
     <resources>

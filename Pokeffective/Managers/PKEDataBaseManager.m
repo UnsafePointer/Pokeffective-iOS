@@ -75,4 +75,37 @@ static dispatch_once_t oncePredicate;
     return [UIColor colorWithHexString:[colors objectForKey:type]];
 }
 
+- (NSString *)getRandomEffective
+{
+    int random = arc4random()%4;
+    switch (random) {
+        case 0:
+            return @"No effect";
+        case 1:
+            return @"Not very effective";
+        case 2:
+            return @"Normal";
+        case 3:
+            return @"Super-effective";
+    }
+    return nil;
+}
+
+- (UIColor *)getColorForEffective:(NSString *)effective
+{
+    if ([effective isEqualToString:@"No effect"]) {
+        return [UIColor colorWithHexString:@"#4A4A4A"];
+    }
+    if ([effective isEqualToString:@"Not very effective"]) {
+        return [UIColor colorWithHexString:@"#FF3A2D"];
+    }
+    if ([effective isEqualToString:@"Normal"]) {
+        return [UIColor colorWithHexString:@"#F7F7F7"];
+    }
+    if ([effective isEqualToString:@"Super-effective"]) {
+        return [UIColor colorWithHexString:@"#0BD318"];
+    }
+    return nil;
+}
+
 @end

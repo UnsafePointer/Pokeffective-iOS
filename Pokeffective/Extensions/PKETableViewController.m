@@ -82,7 +82,7 @@
     else {
         [[tableViewCell lblTypes] setText:[NSString stringWithFormat:@"%@ / %@", [[pokemon types] objectAtIndex:0],  [[pokemon types] objectAtIndex:1]]];
         [tableViewCell addBackgroundLayersWithFirstColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:0]]
-                                             secondColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:1]]];
+                                             secondColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:1]] middleWhitespace:NO];
     }
     
 }

@@ -14,6 +14,8 @@
 - (NSArray *)getPokemons;
 - (NSArray *)getParty;
 - (NSArray *)getMoveset;
+- (NSString *)getRandomEffective;
 - (UIColor *)getColorForType:(NSString *)type;
+- (UIColor *)getColorForEffective:(NSString *)effective;
 
 @end

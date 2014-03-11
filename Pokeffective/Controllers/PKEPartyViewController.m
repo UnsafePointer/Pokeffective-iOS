@@ -64,7 +64,8 @@
 
 - (void)chartButtonTapped:(id)sender
 {
-    
+    [self performSegueWithIdentifier:@"EffectiveSegue"
+                              sender:self];
 }
 
 - (void)configureTableViewCell:(PKEMemberCell *)tableViewCell
