@@ -72,6 +72,7 @@
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     @weakify(self);
     [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+        @strongify(self);
         if(granted) {
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
             if ([accounts count] > 0) {
@@ -93,16 +94,30 @@
                             [TSMessage showNotificationInViewController:self
                                                                   title:@"Success"
                                                                subtitle:@"You're now following me on Twitter."
-                                                                   type:TSMessageNotificationTypeSuccess];
+                                                                   type:TSMessageNotificationTypeSuccess
+                                                               duration:2.0f
+                                                   canBeDismissedByUser:YES];
                         }
                         else {
                             [TSMessage showNotificationInViewController:self
                                                                   title:@"Error"
                                                                subtitle:@"Something wrong happened. Try this later."
-                                                                   type:TSMessageNotificationTypeError];
+                                                                   type:TSMessageNotificationTypeError
+                                                               duration:2.0f
+                                                   canBeDismissedByUser:YES];
                         }
                     });
                 }];
+            }
+            else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [TSMessage showNotificationInViewController:self
+                                                          title:@"Error"
+                                                       subtitle:@"It seems that you don't have a Twitter account configured."
+                                                           type:TSMessageNotificationTypeError
+                                                       duration:2.0f
+                                           canBeDismissedByUser:YES];
+                });
             }
         }
     }];
@@ -122,7 +137,9 @@
         [TSMessage showNotificationInViewController:self
                                               title:@"Error"
                                            subtitle:@"No email account configured."
-                                               type:TSMessageNotificationTypeError];
+                                               type:TSMessageNotificationTypeError
+                                           duration:2.0f
+                               canBeDismissedByUser:YES];
     }
 }
 
@@ -142,13 +159,17 @@
         [TSMessage showNotificationInViewController:self
                                               title:@"Success"
                                            subtitle:@"You have send me an email."
-                                               type:TSMessageNotificationTypeSuccess];
+                                               type:TSMessageNotificationTypeSuccess
+                                           duration:2.0f
+                               canBeDismissedByUser:YES];
     }
     else if (result == MFMailComposeResultFailed) {
         [TSMessage showNotificationInViewController:self
                                               title:@"Error"
                                            subtitle:@"Something wrong happened. Try this later."
-                                               type:TSMessageNotificationTypeError];
+                                               type:TSMessageNotificationTypeError
+                                           duration:2.0f
+                               canBeDismissedByUser:YES];
     }
     [self dismissViewControllerAnimated:true
                              completion:nil];

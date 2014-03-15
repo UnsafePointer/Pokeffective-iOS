@@ -21,10 +21,8 @@
 		3F375C7A18CC818F00A93DB4 /* PKEPokemonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C7918CC818F00A93DB4 /* PKEPokemonCell.xib */; };
 		3F375C7D18CCA6D300A93DB4 /* PKEPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C7C18CCA6D300A93DB4 /* PKEPartyViewController.m */; };
 		3F375C8018CCA71B00A93DB4 /* PKETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C7F18CCA71B00A93DB4 /* PKETableViewController.m */; };
-		3F375C8218CCB12800A93DB4 /* Party.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C8118CCB12800A93DB4 /* Party.plist */; };
 		3F375C8518CCB27B00A93DB4 /* PKEMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C8418CCB27B00A93DB4 /* PKEMemberCell.m */; };
 		3F43557E18CF6AB900806A8F /* PKEMovesetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F43557D18CF6AB900806A8F /* PKEMovesetViewController.m */; };
-		3F43558018CF6B5600806A8F /* Moveset.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F43557F18CF6B5600806A8F /* Moveset.plist */; };
 		3F43558318CF6D7F00806A8F /* PKEMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F43558218CF6D7F00806A8F /* PKEMove.m */; };
 		3F44EFED18D472AB00E02280 /* Pokeffective.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 3F44EFEC18D472AB00E02280 /* Pokeffective.sqlite */; };
 		3F44F2BE18D4747700E02280 /* 001.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F44EFEF18D4747400E02280 /* 001.png */; };
@@ -796,12 +794,10 @@
 		3F375C7C18CCA6D300A93DB4 /* PKEPartyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPartyViewController.m; path = Controllers/PKEPartyViewController.m; sourceTree = "<group>"; };
 		3F375C7E18CCA71B00A93DB4 /* PKETableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKETableViewController.h; path = Extensions/PKETableViewController.h; sourceTree = "<group>"; };
 		3F375C7F18CCA71B00A93DB4 /* PKETableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKETableViewController.m; path = Extensions/PKETableViewController.m; sourceTree = "<group>"; };
-		3F375C8118CCB12800A93DB4 /* Party.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Party.plist; path = Supporting/Party.plist; sourceTree = "<group>"; };
 		3F375C8318CCB27B00A93DB4 /* PKEMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMemberCell.h; path = Views/PKEMemberCell.h; sourceTree = "<group>"; };
 		3F375C8418CCB27B00A93DB4 /* PKEMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMemberCell.m; path = Views/PKEMemberCell.m; sourceTree = "<group>"; };
 		3F43557C18CF6AB900806A8F /* PKEMovesetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMovesetViewController.h; path = Controllers/PKEMovesetViewController.h; sourceTree = "<group>"; };
 		3F43557D18CF6AB900806A8F /* PKEMovesetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMovesetViewController.m; path = Controllers/PKEMovesetViewController.m; sourceTree = "<group>"; };
-		3F43557F18CF6B5600806A8F /* Moveset.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Moveset.plist; path = Supporting/Moveset.plist; sourceTree = "<group>"; };
 		3F43558118CF6D7F00806A8F /* PKEMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMove.h; path = Models/PKEMove.h; sourceTree = "<group>"; };
 		3F43558218CF6D7F00806A8F /* PKEMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMove.m; path = Models/PKEMove.m; sourceTree = "<group>"; };
 		3F44EFE918D46A8A00E02280 /* Includes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Includes.h; path = Supporting/Includes.h; sourceTree = "<group>"; };
@@ -2430,17 +2426,15 @@
 		3F87BD8B18C7A60F00400F64 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				3F44EFE918D46A8A00E02280 /* Includes.h */,
 				3F44EFEE18D4747400E02280 /* Images */,
 				3F44EFEC18D472AB00E02280 /* Pokeffective.sqlite */,
+				3F13970018CB630E009B31A3 /* Types.plist */,
+				3FCC8A9F18CCEF4300F4F0A3 /* Pods-acknowledgements.plist */,
 				3F87BDC218C7A6B700400F64 /* InfoPlist.strings */,
 				3F87BDB718C7A6A500400F64 /* main.m */,
 				3F87BDB818C7A6A500400F64 /* Pokeffective-Info.plist */,
 				3F87BDB918C7A6A500400F64 /* Pokeffective-Prefix.pch */,
-				3F375C8118CCB12800A93DB4 /* Party.plist */,
-				3F13970018CB630E009B31A3 /* Types.plist */,
-				3FCC8A9F18CCEF4300F4F0A3 /* Pods-acknowledgements.plist */,
-				3F43557F18CF6B5600806A8F /* Moveset.plist */,
-				3F44EFE918D46A8A00E02280 /* Includes.h */,
 			);
 			name = Supporting;
 			sourceTree = "<group>";
@@ -3132,7 +3126,6 @@
 				3F44F2C518D4747700E02280 /* 008.png in Resources */,
 				3F44F38A18D4747700E02280 /* 205.png in Resources */,
 				3F44F53718D4747700E02280 /* 634.png in Resources */,
-				3F375C8218CCB12800A93DB4 /* Party.plist in Resources */,
 				3F44F3B618D4747700E02280 /* 249.png in Resources */,
 				3F44F50618D4747700E02280 /* 585.png in Resources */,
 				3F44F4EA18D4747700E02280 /* 557.png in Resources */,
@@ -3184,7 +3177,6 @@
 				3F44F3EF18D4747700E02280 /* 306.png in Resources */,
 				3F44F53618D4747700E02280 /* 633.png in Resources */,
 				3F44F30618D4747700E02280 /* 073.png in Resources */,
-				3F43558018CF6B5600806A8F /* Moveset.plist in Resources */,
 				3F44F46518D4747700E02280 /* 424.png in Resources */,
 				3F44F2DC18D4747700E02280 /* 031.png in Resources */,
 				3F44F41718D4747700E02280 /* 346.png in Resources */,
