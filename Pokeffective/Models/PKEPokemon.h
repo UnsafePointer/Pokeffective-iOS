@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class FMResultSet;
+
 @interface PKEPokemon : NSObject
 
-@property (nonatomic, copy) NSString *identifier;
+@property (nonatomic, assign) NSUInteger identifier;
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSNumber *number;
-@property (nonatomic, copy) NSArray *types;
+@property (nonatomic, assign) NSUInteger pokedexNumber;
+@property (nonatomic, assign) PKEPokemonType firstType;
+@property (nonatomic, assign) PKEPokemonType secondType;
 
-+ (PKEPokemon *)createPokemonWithDictionary:(NSDictionary *)dictionary;
++ (PKEPokemon *)createPokemonWithResultSet:(FMResultSet *)resultSet;
 
 @end

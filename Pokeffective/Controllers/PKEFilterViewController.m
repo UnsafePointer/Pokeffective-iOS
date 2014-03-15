@@ -7,6 +7,7 @@
 //
 
 #import "PKEFilterViewController.h"
+#import "PKEPokemonManager.h"
 
 @interface PKEFilterViewController ()
 
@@ -19,8 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setSelectionIndexPath:[NSIndexPath indexPathForRow:0
-                                                   inSection:0]];
+    [self setSelectionIndexPath:[[PKEPokemonManager sharedManager] indexPathForPokedexType:[[PKEPokemonManager sharedManager] filteringPokedexType]]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -28,11 +28,31 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[self lblTypeFilter] setText:[[PKEPokemonManager sharedManager] nameForType:[[PKEPokemonManager sharedManager] filteringPokemonType]]];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    if ([indexPath section] == [[self selectionIndexPath] section] &&
+        [indexPath row] == [[self selectionIndexPath] row]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    return cell;
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
+        PKEPokedexType pokedexType = [[PKEPokemonManager sharedManager] pokedexTypeForIndexPath:indexPath];
+        [[PKEPokemonManager sharedManager] setFilteringPokedexType:pokedexType];
         UITableViewCell *currentSelectionCell = [[self tableView] cellForRowAtIndexPath:[self selectionIndexPath]];
         currentSelectionCell.accessoryType = UITableViewCellAccessoryNone;
         UITableViewCell *selectionCell = [[self tableView] cellForRowAtIndexPath:indexPath];
@@ -40,13 +60,6 @@
         [[self tableView] deselectRowAtIndexPath:indexPath animated:YES];
         [self setSelectionIndexPath:indexPath];
     }
-}
-
-#pragma mark - Public Methods
-
-- (IBAction)exitFromTypeSelection:(UIStoryboardSegue *)unwindSegue
-{
-
 }
 
 @end

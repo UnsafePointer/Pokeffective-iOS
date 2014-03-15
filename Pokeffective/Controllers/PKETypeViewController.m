@@ -8,11 +8,9 @@
 
 #import "PKETypeViewController.h"
 #import "PKETypeCell.h"
-#import "PKEDataBaseManager.h"
+#import "PKEPokemonManager.h"
 
 @interface PKETypeViewController ()
-
-@property (nonatomic, strong) NSDictionary *dataSource;
 
 @end
 
@@ -21,8 +19,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setDataSource:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Types"
-                                                                                                   ofType:@"plist"]]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,7 +30,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [[[self dataSource] allKeys] count];
+    return TOTAL_POKEMON_TYPES;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -47,19 +43,22 @@
     return cell;
 }
 
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[PKEPokemonManager sharedManager] setFilteringPokemonType:[indexPath row] + 1];
+    [[self navigationController] popViewControllerAnimated:YES];
+}
+
 #pragma mark - Private Methods
 
 - (void)configureTableViewCell:(PKETypeCell *)tableViewCell
                   forIndexPath:(NSIndexPath *)indexPath
 {
     [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
-    NSArray *keys = [[self dataSource] allKeys];
-    keys = [keys sortedArrayUsingComparator:^(id a, id b) {
-        return [a compare:b options:NSCaseInsensitiveSearch];
-    }];
-    NSString *key = [keys objectAtIndex:[indexPath row]];
-    [[tableViewCell lblName] setText:key];
-    [tableViewCell addBackgroundLayersWithColor:[[PKEDataBaseManager sharedManager] getColorForType:key]];
+    [[tableViewCell lblName] setText:[[PKEPokemonManager sharedManager] nameForType:[indexPath row] + 1]];
+    [tableViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[indexPath row] + 1]];
 }
 
 @end

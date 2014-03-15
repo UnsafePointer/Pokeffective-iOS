@@ -1,19 +1,66 @@
 PODS:
   - CRGradientNavigationBar (0.3.2)
+  - FMDB (2.2):
+    - FMDB/standard
+  - FMDB/common (2.2)
+  - FMDB/standard (2.2):
+    - FMDB/common
   - HexColors (2.2.1)
+  - libextobjc (0.4):
+    - libextobjc/EXTADT
+    - libextobjc/EXTConcreteProtocol
+    - libextobjc/EXTKeyPathCoding
+    - libextobjc/EXTNil
+    - libextobjc/EXTSafeCategory
+    - libextobjc/EXTScope
+    - libextobjc/EXTSelectorChecking
+    - libextobjc/EXTSynthesize
+    - libextobjc/NSInvocation+EXT
+    - libextobjc/NSMethodSignature+EXT
+    - libextobjc/RuntimeExtensions
+    - libextobjc/UmbrellaHeader
+  - libextobjc/EXTADT (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTConcreteProtocol (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTKeyPathCoding (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTNil (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSafeCategory (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTScope (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSelectorChecking (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSynthesize (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/NSInvocation+EXT (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/NSMethodSignature+EXT (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/RuntimeExtensions (0.4)
+  - libextobjc/UmbrellaHeader (0.4)
+  - SVProgressHUD (1.0)
   - TSMessages (0.9.6):
     - HexColors
   - VTAcknowledgementsViewController (0.10)
 
 DEPENDENCIES:
-  - CRGradientNavigationBar (~> 0.3)
-  - HexColors (~> 2.2)
-  - TSMessages
-  - VTAcknowledgementsViewController
+  - CRGradientNavigationBar (~> 0.3.2)
+  - FMDB (~> 2.2)
+  - HexColors (~> 2.2.1)
+  - libextobjc (~> 0.4)
+  - SVProgressHUD (~> 1.0)
+  - TSMessages (~> 0.9.6)
+  - VTAcknowledgementsViewController (~> 0.10)
 
 SPEC CHECKSUMS:
   CRGradientNavigationBar: dc3ffb640685b43c27f096e7d466e80f9fa887fe
+  FMDB: 97472cfacf0d9e445e915704fb43b4b142799c36
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
+  libextobjc: 2c9fc8226f0f38e562587f65172f93f0c9b4a47a
+  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
   TSMessages: 839edc3164b99ced48c30af9dde9710cd67bea4d
   VTAcknowledgementsViewController: 76b8edcea89b58b7be15876aaa5aba7fa8b221d7
 

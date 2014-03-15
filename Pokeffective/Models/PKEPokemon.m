@@ -6,17 +6,19 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
+#import <FMDB/FMResultSet.h>
 #import "PKEPokemon.h"
 
 @implementation PKEPokemon
 
-+ (PKEPokemon *)createPokemonWithDictionary:(NSDictionary *)dictionary;
++ (PKEPokemon *)createPokemonWithResultSet:(FMResultSet *)resultSet
 {
     PKEPokemon *pokemon = [PKEPokemon new];
-    [pokemon setIdentifier:[dictionary objectForKey:@"Identifier"]];
-    [pokemon setName:[dictionary objectForKey:@"Name"]];
-    [pokemon setNumber:[dictionary objectForKey:@"Number"]];
-    [pokemon setTypes:[dictionary objectForKey:@"Types"]];
+    [pokemon setIdentifier:[resultSet intForColumn:@"identifier"]];
+    [pokemon setName:[[resultSet stringForColumn:@"name"] capitalizedString]];
+    [pokemon setPokedexNumber:[resultSet intForColumn:@"number"]];
+    [pokemon setFirstType:[resultSet intForColumn:@"type"]];
+    [pokemon setSecondType:PKEPokemonTypeNone];
     return pokemon;
 }
 

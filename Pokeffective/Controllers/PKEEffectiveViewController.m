@@ -8,7 +8,7 @@
 
 #import "PKEEffectiveViewController.h"
 #import "PKEEffectiveCell.h"
-#import "PKEDataBaseManager.h"
+#import "PKEPokemonManager.h"
 
 @interface PKEEffectiveViewController ()
 
@@ -59,11 +59,11 @@
     }];
     NSString *key = [keys objectAtIndex:[indexPath row]];
     [[tableViewCell lblType] setText:key];
-    NSString *randomEffective = [[PKEDataBaseManager sharedManager] getRandomEffective];
+    NSString *randomEffective = [[PKEPokemonManager sharedManager] getRandomEffective];
     [[tableViewCell lblEffective] setText:randomEffective];
-    [tableViewCell addBackgroundLayersWithFirstColor:[[PKEDataBaseManager sharedManager] getColorForType:key]
-                                         secondColor:[[PKEDataBaseManager sharedManager] getColorForEffective:randomEffective]
-                                    middleWhitespace:YES];
+//    [tableViewCell addBackgroundLayersWithFirstColor:[[PKEDataBaseManager sharedManager] getColorForType:key]
+//                                         secondColor:[[PKEDataBaseManager sharedManager] getColorForEffective:randomEffective]
+//                                    middleWhitespace:YES];
 }
 
 @end

@@ -10,6 +10,6 @@
 
 @interface PKEFilterViewController : UITableViewController
 
-- (IBAction)exitFromTypeSelection:(UIStoryboardSegue *)unwindSegue;
+@property (nonatomic, weak) IBOutlet UILabel *lblTypeFilter;
 
 @end

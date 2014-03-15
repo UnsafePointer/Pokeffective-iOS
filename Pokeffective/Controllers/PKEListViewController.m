@@ -7,9 +7,12 @@
 //
 
 #import "PKEListViewController.h"
-#import "PKEDataBaseManager.h"
+#import "PKEPokemonManager.h"
 #import "PKEPokemonCell.h"
 #import "PKEPokemon.h"
+#import "PKESearchViewController.h"
+#import <libextobjc/EXTScope.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface PKEListViewController () <PKETableViewControllerDataSource>
 
@@ -19,6 +22,8 @@
 @end
 
 @implementation PKEListViewController
+
+static void * PKEListViewControllerContext = &PKEListViewControllerContext;
 
 - (void)viewDidLoad
 {
@@ -32,11 +37,69 @@
                                                                            target:self
                                                                            action:@selector(filterButtonTapped:)];
     [self.navigationItem setRightBarButtonItems:@[searchBarButtonItem, filterBarButtonItem]];
+    [[PKEPokemonManager sharedManager] addObserver:self
+                                        forKeyPath:NSStringFromSelector(@selector(filteringPokedexType))
+                                           options:NSKeyValueObservingOptionNew
+                                           context:PKEListViewControllerContext];
+    [[PKEPokemonManager sharedManager] addObserver:self
+                                        forKeyPath:NSStringFromSelector(@selector(filteringPokemonType))
+                                           options:NSKeyValueObservingOptionNew
+                                           context:PKEListViewControllerContext];
+    [SVProgressHUD show];
+    @weakify(self);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        @strongify(self);
+        [self setDataSource:[[PKEPokemonManager sharedManager] getPokemons]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @strongify(self);
+            [SVProgressHUD dismiss];
+            [[self tableView] reloadData];
+        });
+    });
+    
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if (context == PKEListViewControllerContext) {
+        if ([keyPath isEqualToString:NSStringFromSelector(@selector(filteringPokedexType))] ||
+            [keyPath isEqualToString:NSStringFromSelector(@selector(filteringPokemonType))]) {
+            @weakify(self);
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                @strongify(self);
+                [self setDataSource:[[PKEPokemonManager sharedManager] getPokemons]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    @strongify(self);
+                    [[self tableView] reloadData];
+                });
+            });
+        }
+    }
+}
+
+- (void)dealloc
+{
+    [[PKEPokemonManager sharedManager] removeObserver:self
+                                           forKeyPath:NSStringFromSelector(@selector(filteringPokedexType))];
+    [[PKEPokemonManager sharedManager] removeObserver:self
+                                           forKeyPath:NSStringFromSelector(@selector(filteringPokemonType))];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
+        PKESearchViewController *searchViewController = [segue destinationViewController];
+        [searchViewController setDataSource:[self dataSource]];
+    }
 }
 
 #pragma mark - Private Methods

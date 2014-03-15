@@ -7,7 +7,7 @@
 //
 
 #import "PKEMovesetViewController.h"
-#import "PKEDataBaseManager.h"
+#import "PKEPokemonManager.h"
 #import "PKEMoveCell.h"
 #import "PKEMove.h"
 #import "PKELabel.h"
@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setDataSource:[[PKEDataBaseManager sharedManager] getMoveset]];
+    [self setDataSource:[[PKEPokemonManager sharedManager] getMoveset]];
     [self setTitle:[[self pokemon] name]];
 }
 
@@ -82,7 +82,7 @@
     [[tableViewCell lblName] setText:[move name]];
     [[tableViewCell lblCategory] setText:[move category]];
     [[tableViewCell lblDetails] setText:[NSString stringWithFormat:@"%d / %d%%", [[move power] integerValue], [[move accuracy] intValue]]];
-    [tableViewCell addBackgroundLayersWithColor:[[PKEDataBaseManager sharedManager] getColorForType:[move type]]];
+//    [tableViewCell addBackgroundLayersWithColor:[[PKEDataBaseManager sharedManager] getColorForType:[move type]]];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

@@ -7,7 +7,7 @@
 //
 
 #import "PKETableViewController.h"
-#import "PKEDataBaseManager.h"
+#import "PKEPokemonManager.h"
 #import "PKEPokemonCell.h"
 #import "PKEPokemon.h"
 
@@ -24,7 +24,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setDataSource:[[PKEDataBaseManager sharedManager] getPokemons]];
     UINib *nib = [UINib nibWithNibName:@"PKEPokemonCell"
                                 bundle:[NSBundle mainBundle]];
     [[self tableView] registerNib:nib
@@ -73,16 +72,16 @@
     PKEPokemon *pokemon = [self getPokemonForIndexPath:indexPath
                                            inTableView:tableView];
     [[tableViewCell lblName] setText:[pokemon name]];
-    [[tableViewCell lblNumber] setText:[NSString stringWithFormat:@"%03d",[[pokemon number] intValue]]];
-    [[tableViewCell imgPicture] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [pokemon number]]]];
-    if ([[pokemon types] count] == 1) {
-        [[tableViewCell lblTypes] setText:[[pokemon types] firstObject]];
-        [tableViewCell addBackgroundLayersWithColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:0]]];
+    [[tableViewCell lblNumber] setText:[NSString stringWithFormat:@"%03d", [pokemon pokedexNumber]]];
+    [[tableViewCell imgPicture] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%03d.png", [pokemon identifier]]]];
+    if ([pokemon secondType] == PKEPokemonTypeNone) {
+        [[tableViewCell lblTypes] setText:[[PKEPokemonManager sharedManager] nameForType:[pokemon firstType]]];
+        [tableViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon firstType]]];
     }
     else {
-        [[tableViewCell lblTypes] setText:[NSString stringWithFormat:@"%@ / %@", [[pokemon types] objectAtIndex:0],  [[pokemon types] objectAtIndex:1]]];
-        [tableViewCell addBackgroundLayersWithFirstColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:0]]
-                                             secondColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:1]] middleWhitespace:NO];
+        [[tableViewCell lblTypes] setText:[NSString stringWithFormat:@"%@ / %@", [[PKEPokemonManager sharedManager] nameForType:[pokemon firstType]],  [[PKEPokemonManager sharedManager] nameForType:[pokemon secondType]]]];
+        [tableViewCell addBackgroundLayersWithFirstColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon firstType]]
+                                             secondColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon secondType]] middleWhitespace:NO];
     }
     
 }

@@ -7,7 +7,7 @@
 //
 
 #import "PKEPartyViewController.h"
-#import "PKEDataBaseManager.h"
+#import "PKEPokemonManager.h"
 #import "PKEMemberCell.h"
 #import "PKEPokemon.h"
 #import "PKEMovesetViewController.h"
@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setDataSource:[[PKEDataBaseManager sharedManager] getParty]];
+    [self setDataSource:[[PKEPokemonManager sharedManager] getParty]];
     UIBarButtonItem *searchBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Add"]
                                                                             style:UIBarButtonItemStyleBordered
                                                                            target:self
@@ -74,14 +74,14 @@
     [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
     PKEPokemon *pokemon = [[self dataSource] objectAtIndex:[indexPath row]];
     [[tableViewCell lblName] setText:[pokemon name]];
-    [[tableViewCell imgPicture] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [pokemon number]]]];
-    if ([[pokemon types] count] == 1) {
-        [tableViewCell addBackgroundLayersWithColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:0]]];
-    }
-    else {
-        [tableViewCell addBackgroundLayersWithFirstColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:0]]
-                                             secondColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:1]]];
-    }
+//    [[tableViewCell imgPicture] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [pokemon number]]]];
+//    if ([[pokemon types] count] == 1) {
+//        [tableViewCell addBackgroundLayersWithColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:0]]];
+//    }
+//    else {
+//        [tableViewCell addBackgroundLayersWithFirstColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:0]]
+//                                             secondColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:1]]];
+//    }
 }
 
 

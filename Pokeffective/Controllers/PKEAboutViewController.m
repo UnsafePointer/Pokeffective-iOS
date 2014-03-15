@@ -13,6 +13,7 @@
 #import <Accounts/ACAccountType.h>
 #import <Social/SLRequest.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import <libextobjc/EXTScope.h>
 
 @interface PKEAboutViewController () <MFMailComposeViewControllerDelegate>
 
@@ -69,6 +70,7 @@
 {
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    @weakify(self);
     [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
         if(granted) {
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
@@ -86,6 +88,7 @@
                 [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
                     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:false];
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        @strongify(self);
                         if ([urlResponse statusCode] == 200) {
                             [TSMessage showNotificationInViewController:self
                                                                   title:@"Success"
