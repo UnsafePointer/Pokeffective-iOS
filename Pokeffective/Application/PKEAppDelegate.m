@@ -7,8 +7,6 @@
 //
 
 #import "PKEAppDelegate.h"
-#import <CRGradientNavigationBar/CRGradientNavigationBar.h>
-#import <HexColors/HexColor.h>
 
 @interface PKEAppDelegate ()
 
@@ -20,8 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [MagicalRecord setupAutoMigratingCoreDataStack];
     [self setNavigationBarAppearance];
     return YES;
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    [MagicalRecord cleanUp];
 }
 
 #pragma mark - Private Methods

@@ -11,8 +11,6 @@
 #import "PKEPokemonCell.h"
 #import "PKEPokemon.h"
 #import "PKESearchViewController.h"
-#import <libextobjc/EXTScope.h>
-#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface PKEListViewController () <PKETableViewControllerDataSource>
 
@@ -47,16 +45,18 @@ static void * PKEListViewControllerContext = &PKEListViewControllerContext;
                                            context:PKEListViewControllerContext];
     [SVProgressHUD show];
     @weakify(self);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    [[PKEPokemonManager sharedManager] getPokemonsWithCompletion:^(NSArray *array, NSError *error) {
         @strongify(self);
-        [self setDataSource:[[PKEPokemonManager sharedManager] getPokemons]];
         dispatch_async(dispatch_get_main_queue(), ^{
             @strongify(self);
             [SVProgressHUD dismiss];
-            [[self tableView] reloadData];
+            if (!error) {
+                [self setDataSource:array];
+                [[self tableView] reloadData];
+            }
         });
-    });
-    
+        
+    }];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -68,14 +68,16 @@ static void * PKEListViewControllerContext = &PKEListViewControllerContext;
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(filteringPokedexType))] ||
             [keyPath isEqualToString:NSStringFromSelector(@selector(filteringPokemonType))]) {
             @weakify(self);
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            [[PKEPokemonManager sharedManager] getPokemonsWithCompletion:^(NSArray *array, NSError *error) {
                 @strongify(self);
-                [self setDataSource:[[PKEPokemonManager sharedManager] getPokemons]];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     @strongify(self);
-                    [[self tableView] reloadData];
+                    if (!error) {
+                        [self setDataSource:array];
+                        [[self tableView] reloadData];
+                    }
                 });
-            });
+            }];
         }
     }
 }
@@ -98,6 +100,7 @@ static void * PKEListViewControllerContext = &PKEListViewControllerContext;
 {
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
         PKESearchViewController *searchViewController = [segue destinationViewController];
+        searchViewController.delegate = self.delegate;
         [searchViewController setDataSource:[self dataSource]];
     }
 }

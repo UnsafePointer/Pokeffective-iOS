@@ -41,6 +41,12 @@ PODS:
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.4)
   - libextobjc/UmbrellaHeader (0.4)
+  - MagicalRecord (2.2):
+    - MagicalRecord/Core
+  - MagicalRecord/Core (2.2)
+  - Mantle (1.4.1):
+    - Mantle/extobjc
+  - Mantle/extobjc (1.4.1)
   - SVProgressHUD (1.0)
   - TSMessages (0.9.6):
     - HexColors
@@ -51,6 +57,8 @@ DEPENDENCIES:
   - FMDB (~> 2.2)
   - HexColors (~> 2.2.1)
   - libextobjc (~> 0.4)
+  - MagicalRecord (~> 2.2)
+  - Mantle (~> 1.4.1)
   - SVProgressHUD (~> 1.0)
   - TSMessages (~> 0.9.6)
   - VTAcknowledgementsViewController (~> 0.10)
@@ -60,6 +68,8 @@ SPEC CHECKSUMS:
   FMDB: 97472cfacf0d9e445e915704fb43b4b142799c36
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
   libextobjc: 2c9fc8226f0f38e562587f65172f93f0c9b4a47a
+  MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
+  Mantle: 0714cdb2b8559d9e6c2410d6a8529e3307bff189
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
   TSMessages: 839edc3164b99ced48c30af9dde9710cd67bea4d
   VTAcknowledgementsViewController: 76b8edcea89b58b7be15876aaa5aba7fa8b221d7

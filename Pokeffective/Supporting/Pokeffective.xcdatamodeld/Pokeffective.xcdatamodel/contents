@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="PKEMoveManagedObject" representedClassName="PKEMoveManagedObject" syncable="YES">
+        <attribute name="accuracy" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="category" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="power" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="pokemon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PKEPokemonManagedObject" inverseName="moves" inverseEntity="PKEPokemonManagedObject" syncable="YES"/>
+    </entity>
+    <entity name="PKEPokemonManagedObject" representedClassName="PKEPokemonManagedObject" syncable="YES">
+        <attribute name="firstType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secondType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="moves" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PKEMoveManagedObject" inverseName="pokemon" inverseEntity="PKEMoveManagedObject" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="PKEMoveManagedObject" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="PKEPokemonManagedObject" positionX="-272" positionY="-93" width="128" height="118"/>
+    </elements>
+</model>

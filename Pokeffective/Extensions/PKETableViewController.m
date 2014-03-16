@@ -59,7 +59,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[self navigationController] popToRootViewControllerAnimated:YES];
+    PKEPokemon *pokemon = [self getPokemonForIndexPath:indexPath
+                                           inTableView:tableView];
+    @weakify(self);
+    [[PKEPokemonManager sharedManager] addPokemonToParty:pokemon
+                                              completion:^(BOOL result, NSError *error) {
+                                                  @strongify(self);
+                                                  if ([[self delegate] respondsToSelector:@selector(tableViewControllerDidSelectPokemon:error:)]) {
+                                                      [[self delegate] performSelector:@selector(tableViewControllerDidSelectPokemon:error:)
+                                                                            withObject:[pokemon copy]
+                                                                            withObject:error];
+                                                  }
+                                                  [[self navigationController] popToRootViewControllerAnimated:YES];
+                                              }];
 }
 
 #pragma mark - Private Methods

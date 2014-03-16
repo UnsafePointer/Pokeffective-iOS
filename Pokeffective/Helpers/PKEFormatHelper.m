@@ -7,7 +7,6 @@
 //
 
 #import "PKEFormatHelper.h"
-#import <HexColors/HexColor.h>
 
 @interface PKEFormatHelper ()
 

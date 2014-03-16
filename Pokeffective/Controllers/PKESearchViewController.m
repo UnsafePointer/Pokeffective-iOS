@@ -7,7 +7,6 @@
 //
 
 #import "PKESearchViewController.h"
-#import <HexColors/HexColor.h>
 
 @interface PKESearchViewController () <PKETableViewControllerDataSource>
 

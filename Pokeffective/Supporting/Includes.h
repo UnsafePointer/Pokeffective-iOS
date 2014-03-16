@@ -28,10 +28,11 @@ typedef NS_ENUM(NSUInteger, PKEPokemonType) {
     PKEPokemonTypeFairy
 };
 
-typedef NS_ENUM(NSUInteger, PKEMoveType) {
-    PKEMoveTypeNone,
-    PKEMoveTypeNonDamaging,
-    PKEMoveTypeSpecial
+typedef NS_ENUM(NSUInteger, PKEMoveCategory) {
+    PKEMoveCategoryNone,
+    PKEMoveCategoryNonDamaging,
+    PKEMoveCategoryPhysical,
+    PKEMoveCategorySpecial
 };
 
 typedef NS_ENUM(NSUInteger, PKEMoveMethod) {

@@ -10,7 +10,7 @@
 
 @class FMResultSet;
 
-@interface PKEPokemon : NSObject
+@interface PKEPokemon : MTLModel <MTLManagedObjectSerializing>
 
 @property (nonatomic, assign) NSUInteger identifier;
 @property (nonatomic, copy) NSString *name;

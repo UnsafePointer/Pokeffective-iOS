@@ -8,18 +8,17 @@
 
 #import "PKEPokemonManager.h"
 #import "PKEPokemon.h"
-#import "HexColor.h"
 #import "PKEMove.h"
 #import "PKEQueryHelper.h"
 #import "PKEFormatHelper.h"
-#import <FMDB/FMDatabase.h>
+#import "PKESQLiteHelper.h"
+#import "PKECoreDataHelper.h"
 
 @interface PKEPokemonManager ()
 
-@property (nonatomic, strong) FMDatabase *database;
-
-@property (nonatomic, strong) PKEQueryHelper *queryHelper;
 @property (nonatomic, strong) PKEFormatHelper *formatHelper;
+@property (nonatomic, strong) PKESQLiteHelper *sqliteHelper;
+@property (nonatomic, strong) PKECoreDataHelper *coreDataHelper;
 
 @end
 
@@ -36,21 +35,11 @@ static dispatch_once_t oncePredicate;
         _sharedManager = [[self alloc] init];
         [_sharedManager setFilteringPokedexType:PKEPokedexTypeNational];
         [_sharedManager setFilteringPokemonType:PKEPokemonTypeNone];
-        [_sharedManager setDatabase:[FMDatabase databaseWithPath:[[NSBundle mainBundle] pathForResource:@"Pokeffective"
-                                                                                                 ofType:@"sqlite"]]];
     });
     return _sharedManager;
 }
 
 #pragma mark - Private Methods
-
-- (PKEQueryHelper *)queryHelper
-{
-    if (_queryHelper == nil) {
-        _queryHelper = [PKEQueryHelper new];
-    }
-    return _queryHelper;
-}
 
 - (PKEFormatHelper *)formatHelper
 {
@@ -60,74 +49,41 @@ static dispatch_once_t oncePredicate;
     return _formatHelper;
 }
 
-#pragma mark - Public Methods
-
-- (NSArray *)getPokemons
+- (PKESQLiteHelper *)sqliteHelper
 {
-    [[self database] open];
-    NSMutableDictionary *pokemons = [[NSMutableDictionary alloc] init];
-    if ([self filteringPokemonType] == PKEPokemonTypeNone) {
-        NSString *query = [[self queryHelper] pokemonSearchQueryFilterByPokedexType:[self filteringPokedexType]
-                                                                        pokemonType:[self filteringPokemonType]
-                                                                           typeSlot:FIRST_TYPE_SLOT];
-        FMResultSet *resultSet = [[self database] executeQuery:query];
-        while ([resultSet next]) {
-            PKEPokemon *model = [PKEPokemon createPokemonWithResultSet:resultSet];
-            [pokemons setObject:model forKey:[model name]];
-        }
-        query = [[self queryHelper] pokemonSearchQueryFilterByPokedexType:[self filteringPokedexType]
-                                                              pokemonType:[self filteringPokemonType]
-                                                                 typeSlot:SECOND_TYPE_SLOT];
-        resultSet = [[self database] executeQuery:query];
-        while ([resultSet next]) {
-            NSString *name = [resultSet stringForColumn:@"name"];
-            PKEPokemon *model = [pokemons objectForKey:[name capitalizedString]];
-            [model setSecondType:[resultSet intForColumn:@"type"]];
-        }
+    if (_sqliteHelper == nil) {
+        _sqliteHelper = [PKESQLiteHelper new];
     }
-    else {
-        NSString *query = [[self queryHelper] pokemonSearchQueryFilterByPokedexType:[self filteringPokedexType]
-                                                                        pokemonType:[self filteringPokemonType]
-                                                                           typeSlot:FIRST_TYPE_SLOT];
-        FMResultSet *resultSet = [[self database] executeQuery:query];
-        while ([resultSet next]) {
-            PKEPokemon *model = [PKEPokemon createPokemonWithResultSet:resultSet];
-            [pokemons setObject:model forKey:[model name]];
-            NSString *secondTypeQuery = [[self queryHelper] pokemonTypeQueryByIdentifier:[model identifier]
-                                                                                typeSlot:SECOND_TYPE_SLOT];
-            FMResultSet *secondTypeResultSet = [[self database] executeQuery:secondTypeQuery];
-            while ([secondTypeResultSet next]) {
-                [model setSecondType:[secondTypeResultSet intForColumn:@"type"]];
-            }
-        }
-        query = [[self queryHelper] pokemonSearchQueryFilterByPokedexType:[self filteringPokedexType]
-                                                              pokemonType:[self filteringPokemonType]
-                                                                 typeSlot:SECOND_TYPE_SLOT];
-        resultSet = [[self database] executeQuery:query];
-        while ([resultSet next]) {
-            PKEPokemon *model = [PKEPokemon createPokemonWithResultSet:resultSet];
-            [pokemons setObject:model forKey:[model name]];
-            NSString *firstTypeQuery = [[self queryHelper] pokemonTypeQueryByIdentifier:[model identifier]
-                                                                                typeSlot:FIRST_TYPE_SLOT];
-            FMResultSet *firstTypeResultSet = [[self database] executeQuery:firstTypeQuery];
-            while ([firstTypeResultSet next]) {
-                [model setSecondType:[model firstType]];
-                [model setFirstType:[firstTypeResultSet intForColumn:@"type"]];
-            }
-        }
-    }
-    [[self database] close];
-    return [[pokemons allValues] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [(PKEPokemon *)obj1 pokedexNumber] > [(PKEPokemon *)obj2 pokedexNumber];
-    }];
+    return _sqliteHelper;
 }
 
-- (NSArray *)getParty
+- (PKECoreDataHelper *)coreDataHelper
 {
-    NSArray *database = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Party"
-                                                                                         ofType:@"plist"]];
-    NSMutableArray *pokemons = [[NSMutableArray alloc] initWithCapacity:[database count]];
-    return pokemons;
+    if (_coreDataHelper == nil) {
+        _coreDataHelper = [PKECoreDataHelper new];
+    }
+    return _coreDataHelper;
+}
+
+#pragma mark - Public Methods
+
+- (void)getPokemonsWithCompletion:(ArrayCompletionBlock)completionBlock
+{
+    [[self sqliteHelper] getPokemonsWithFilteringPokemonType:[self filteringPokemonType]
+                                        filteringPokedexType:[self filteringPokedexType]
+                                                  completion:completionBlock];
+}
+
+- (void)addPokemonToParty:(PKEPokemon *)pokemon
+               completion:(BooleanCompletionBlock)completionBlock;
+{
+    [[self coreDataHelper] addPokemonToParty:pokemon
+                                  completion:completionBlock];
+}
+
+- (void)getPartyWithCompletion:(ArrayCompletionBlock)completionBlock
+{
+    [[self coreDataHelper] getPartyWithCompletion:completionBlock];
 }
 
 - (NSArray *)getMoveset

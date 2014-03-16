@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PKEMove : NSObject
+@interface PKEMove : MTLModel <MTLManagedObjectSerializing>
 
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *type;
-@property (nonatomic, copy) NSString *category;
-@property (nonatomic, copy) NSNumber *power;
-@property (nonatomic, copy) NSNumber *accuracy;
+@property (nonatomic, assign) PKEPokemonType type;
+@property (nonatomic, assign) PKEMoveCategory category;
+@property (nonatomic, assign) NSUInteger power;
+@property (nonatomic, assign) NSUInteger accuracy;
 
 + (PKEMove *)createMoveWithDictionary:(NSDictionary *)dictionary;
 

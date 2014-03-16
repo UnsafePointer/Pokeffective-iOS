@@ -11,8 +11,9 @@
 #import "PKEMemberCell.h"
 #import "PKEPokemon.h"
 #import "PKEMovesetViewController.h"
+#import "PKETableViewController.h"
 
-@interface PKEPartyViewController ()
+@interface PKEPartyViewController () <PKETableViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *dataSource;
 
@@ -26,7 +27,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setDataSource:[[PKEPokemonManager sharedManager] getParty]];
     UIBarButtonItem *searchBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Add"]
                                                                             style:UIBarButtonItemStyleBordered
                                                                            target:self
@@ -36,6 +36,17 @@
                                                                            target:self
                                                                            action:@selector(chartButtonTapped:)];
     [self.navigationItem setRightBarButtonItems:@[searchBarButtonItem, filterBarButtonItem]];
+    @weakify(self)
+    [[PKEPokemonManager sharedManager] getPartyWithCompletion:^(NSArray *array, NSError *error) {
+        @strongify(self)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @strongify(self);
+            if (!error) {
+                [self setDataSource:array];
+                [[self collectionView] reloadData];
+            }
+        });
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +62,10 @@
         NSIndexPath *selectedIndesPath = [selectedIndexPaths objectAtIndex:0];
         PKEPokemon *selectedPKMN = [[self dataSource] objectAtIndex:[selectedIndesPath row]];
         controller.pokemon = selectedPKMN;
+    }
+    if ([[segue identifier] isEqualToString:@"AddSegue"]) {
+        PKETableViewController *controller = [segue destinationViewController];
+        [controller setDelegate:self];
     }
 }
 
@@ -74,16 +89,15 @@
     [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
     PKEPokemon *pokemon = [[self dataSource] objectAtIndex:[indexPath row]];
     [[tableViewCell lblName] setText:[pokemon name]];
-//    [[tableViewCell imgPicture] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [pokemon number]]]];
-//    if ([[pokemon types] count] == 1) {
-//        [tableViewCell addBackgroundLayersWithColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:0]]];
-//    }
-//    else {
-//        [tableViewCell addBackgroundLayersWithFirstColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:0]]
-//                                             secondColor:[[PKEDataBaseManager sharedManager] getColorForType:[[pokemon types] objectAtIndex:1]]];
-//    }
+    [[tableViewCell imgPicture] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%03d.png", [pokemon identifier]]]];
+    if ([pokemon secondType] == PKEPokemonTypeNone) {
+        [tableViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon firstType]]];
+    }
+    else {
+        [tableViewCell addBackgroundLayersWithFirstColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon firstType]]
+                                             secondColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon secondType]]];
+    }
 }
-
 
 #pragma mark - UICollectionViewDataSource
 
@@ -100,6 +114,19 @@
     [self configureTableViewCell:cell
                     forIndexPath:indexPath];
     return cell;
+}
+
+#pragma mark - PKETableViewControllerDelegate
+
+- (void)tableViewControllerDidSelectPokemon:(PKEPokemon *)pokemon
+                                      error:(NSError *)error
+{
+    if (!error) {
+        NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
+        [mutableDataSource addObject:pokemon];
+        [self setDataSource:mutableDataSource];
+        [[self collectionView] reloadData];
+    }
 }
 
 @end

@@ -6,10 +6,13 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import <FMDB/FMResultSet.h>
 #import "PKEPokemon.h"
 
 @implementation PKEPokemon
+{
+}
+
+#pragma mark - Public Methods
 
 + (PKEPokemon *)createPokemonWithResultSet:(FMResultSet *)resultSet
 {
@@ -20,6 +23,31 @@
     [pokemon setFirstType:[resultSet intForColumn:@"type"]];
     [pokemon setSecondType:PKEPokemonTypeNone];
     return pokemon;
+}
+
+#pragma mark - MTLManagedObjectSerializing
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return @{
+             @"identifier" : @"identifier",
+             @"name" : @"name",
+             @"firstType" : @"firstType",
+             @"secondType" : @"secondType",
+             @"pokedexNumber" : [NSNull null]
+            };
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey
+{
+    return @{
+             @"moves" : @"PKEMoveManagedObject",
+            };
+}
+
++ (NSString *)managedObjectEntityName
+{
+    return @"PKEPokemonManagedObject";
 }
 
 @end

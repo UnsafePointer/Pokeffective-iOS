@@ -12,7 +12,6 @@
 #import "PKEMove.h"
 #import "PKELabel.h"
 #import "PKEPokemon.h"
-#import <HexColors/HexColor.h>
 
 @interface PKEMovesetViewController ()
 
@@ -80,8 +79,8 @@
     [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
     PKEMove *move = [[self dataSource] objectAtIndex:[indexPath row]];
     [[tableViewCell lblName] setText:[move name]];
-    [[tableViewCell lblCategory] setText:[move category]];
-    [[tableViewCell lblDetails] setText:[NSString stringWithFormat:@"%d / %d%%", [[move power] integerValue], [[move accuracy] intValue]]];
+//    [[tableViewCell lblCategory] setText:[move category]];
+//    [[tableViewCell lblDetails] setText:[NSString stringWithFormat:@"%d / %d%%", [[move power] integerValue], [[move accuracy] intValue]]];
 //    [tableViewCell addBackgroundLayersWithColor:[[PKEDataBaseManager sharedManager] getColorForType:[move type]]];
 }
 

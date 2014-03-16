@@ -7,13 +7,6 @@
 //
 
 #import "PKEAboutViewController.h"
-#import <TSMessages/TSMessage.h>
-#import <VTAcknowledgementsViewController/VTAcknowledgementsViewController.h>
-#import <Accounts/ACAccountStore.h>
-#import <Accounts/ACAccountType.h>
-#import <Social/SLRequest.h>
-#import <MessageUI/MFMailComposeViewController.h>
-#import <libextobjc/EXTScope.h>
 
 @interface PKEAboutViewController () <MFMailComposeViewControllerDelegate>
 
