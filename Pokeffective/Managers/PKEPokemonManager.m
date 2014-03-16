@@ -35,9 +35,9 @@ static dispatch_once_t oncePredicate;
         _sharedManager = [[self alloc] init];
         [_sharedManager setFilteringPokedexType:PKEPokedexTypeNational];
         [_sharedManager setFilteringPokemonType:PKEPokemonTypeNone];
-        [_sharedManager setFilteringMoveMethod:PKEMoveMethodNone];
+        [_sharedManager setFilteringMoveMethod:PKEMoveMethodAll];
         [_sharedManager setFilteringMoveType:PKEPokemonTypeNone];
-        [_sharedManager setFilteringMoveCategory:PKEMoveCategoryNone];
+        [_sharedManager setFilteringMoveCategory:PKEMoveCategoryAll];
     });
     return _sharedManager;
 }
@@ -133,9 +133,29 @@ static dispatch_once_t oncePredicate;
     return [[self formatHelper] pokedexTypeForIndexPath:indexPath];
 }
 
+- (PKEMoveCategory)moveCategoryForIndexPath:(NSIndexPath *)indexPath
+{
+    return [[self formatHelper] moveCategoryForIndexPath:indexPath];
+}
+
+- (PKEMoveMethod)moveMethodForIndexPath:(NSIndexPath *)indexPath
+{
+    return [[self formatHelper] moveMethodForIndexPath:indexPath];
+}
+
 - (NSIndexPath *)indexPathForPokedexType:(PKEPokedexType)pokedexType
 {
     return [[self formatHelper] indexPathForPokedexType:pokedexType];
+}
+
+- (NSIndexPath *)indexPathForMoveMethod:(PKEMoveMethod)moveMethod
+{
+    return [[self formatHelper] indexPathForMoveMethod:moveMethod];
+}
+
+- (NSIndexPath *)indexPathForMoveCategory:(PKEMoveCategory)moveCategory
+{
+    return [[self formatHelper] indexPathForMoveCategory:moveCategory];
 }
 
 - (NSString *)getRandomEffective

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PKEPokemonFilterViewController : UITableViewController
+@interface PKEFilterViewController : UITableViewController
 
 @property (nonatomic, weak) IBOutlet UILabel *lblTypeFilter;
+@property (nonatomic, assign) PKEFilerType filterType;
 
 @end

@@ -84,8 +84,8 @@
 - (NSString *)nameForCategory:(PKEMoveCategory)moveCategory
 {
     switch (moveCategory) {
-        case PKEMoveCategoryNone:
-            return @"None";
+        case PKEMoveCategoryAll:
+            return @"All";
         case PKEMoveCategoryNonDamaging:
             return @"Non damaging";
         case PKEMoveCategoryPhysical:
@@ -127,6 +127,43 @@
     return PKEPokedexTypeNone;
 }
 
+- (PKEMoveMethod)moveMethodForIndexPath:(NSIndexPath *)indexPath
+{
+    if ([indexPath row] == 0) {
+        return PKEMoveMethodAll;
+    }
+    else if ([indexPath row] == 1) {
+        return PKEMoveMethodLevelUp;
+    }
+    else if ([indexPath row] == 2) {
+        return PKEMoveMethodEgg;
+    }
+    else if ([indexPath row] == 3) {
+        return PKEMoveMethodTutor;
+    }
+    else if ([indexPath row] == 4) {
+        return PKEMoveMethodMachine;
+    }
+    return PKEMoveMethodAll;
+}
+
+- (PKEMoveCategory)moveCategoryForIndexPath:(NSIndexPath *)indexPath
+{
+    if ([indexPath row] == 0) {
+        return PKEMoveCategoryAll;
+    }
+    else if ([indexPath row] == 1) {
+        return PKEMoveCategoryNonDamaging;
+    }
+    else if ([indexPath row] == 2) {
+        return PKEMoveCategoryPhysical;
+    }
+    else if ([indexPath row] == 3) {
+        return PKEMoveCategorySpecial;
+    }
+    return PKEMoveCategoryAll;
+}
+
 - (NSIndexPath *)indexPathForPokedexType:(PKEPokedexType)pokedexType
 {
     if (pokedexType == PKEPokedexTypeNational) {
@@ -166,6 +203,52 @@
                                   inSection:0];
     }
     return PKEPokedexTypeNone;
+}
+
+- (NSIndexPath *)indexPathForMoveCategory:(PKEMoveCategory)moveCategory
+{
+    if (moveCategory == PKEMoveCategoryAll) {
+        return [NSIndexPath indexPathForRow:0
+                                  inSection:1];
+    }
+    else if (moveCategory == PKEMoveCategoryNonDamaging) {
+        return [NSIndexPath indexPathForRow:1
+                                  inSection:1];
+    }
+    else if (moveCategory == PKEMoveCategoryPhysical) {
+        return [NSIndexPath indexPathForRow:2
+                                  inSection:1];
+    }
+    else if (moveCategory == PKEMoveCategorySpecial) {
+        return [NSIndexPath indexPathForRow:3
+                                  inSection:1];
+    }
+    return nil;
+}
+
+- (NSIndexPath *)indexPathForMoveMethod:(PKEMoveMethod)moveMethod
+{
+    if (moveMethod == PKEMoveMethodAll) {
+        return [NSIndexPath indexPathForRow:0
+                                  inSection:0];
+    }
+    else if (moveMethod == PKEMoveMethodLevelUp) {
+        return [NSIndexPath indexPathForRow:1
+                                  inSection:0];
+    }
+    else if (moveMethod == PKEMoveMethodEgg) {
+        return [NSIndexPath indexPathForRow:2
+                                  inSection:0];
+    }
+    else if (moveMethod == PKEMoveMethodTutor) {
+        return [NSIndexPath indexPathForRow:3
+                                  inSection:0];
+    }
+    else if (moveMethod == PKEMoveMethodMachine) {
+        return [NSIndexPath indexPathForRow:4
+                                  inSection:0];
+    }
+    return nil;
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "PKEMoveListViewController.h"
 #import "PKEPokemonManager.h"
 #import "PKEMoveSearchViewController.h"
+#import "PKEFilterViewController.h"
 
 @interface PKEMoveListViewController () <PKEMoveTableViewControllerDataSource>
 
@@ -105,6 +106,10 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
         searchViewController.delegate = self.delegate;
         searchViewController.pokemon = self.pokemon;
         [searchViewController setDataSource:[self dataSource]];
+    }
+    if ([[segue identifier] isEqualToString:@"FilterSegue"]) {
+        PKEFilterViewController *filterViewController = [segue destinationViewController];
+        filterViewController.filterType = kPKEFilerTypeMoves;
     }
 }
 

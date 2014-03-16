@@ -68,13 +68,13 @@
             "    join move_damage_classes as mdc "
             "      on m.damage_class_id = mdc.id "
             "where "];
-    if (moveMethod != PKEMoveMethodNone) {
+    if (moveMethod != PKEMoveMethodAll) {
         [query appendFormat:@" pm.pokemon_move_method_id = %d and ", moveMethod];
     }
     if (moveType != PKEPokemonTypeNone) {
         [query appendFormat:@" m.type_id = %d and ", moveType];
     }
-    if (moveCategory != PKEMoveCategoryNone) {
+    if (moveCategory != PKEMoveCategoryAll) {
         [query appendFormat:@" m.damage_class_id = %d and ", moveCategory];
     }
     [query appendFormat:@" pokemon_id = %d "

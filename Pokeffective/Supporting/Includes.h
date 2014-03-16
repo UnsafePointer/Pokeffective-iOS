@@ -29,14 +29,14 @@ typedef NS_ENUM(NSUInteger, PKEPokemonType) {
 };
 
 typedef NS_ENUM(NSUInteger, PKEMoveCategory) {
-    PKEMoveCategoryNone,
+    PKEMoveCategoryAll,
     PKEMoveCategoryNonDamaging,
     PKEMoveCategoryPhysical,
     PKEMoveCategorySpecial
 };
 
 typedef NS_ENUM(NSUInteger, PKEMoveMethod) {
-    PKEMoveMethodNone,
+    PKEMoveMethodAll,
     PKEMoveMethodLevelUp,
     PKEMoveMethodEgg,
     PKEMoveMethodTutor,
@@ -63,6 +63,11 @@ typedef NS_ENUM(NSUInteger, PKEPokedexType) {
 typedef NS_ENUM(NSInteger, PKEErrorCode) {
     kPKEErrorCodeSavingMoreThanSixPokemons,
     kPKEErrorCodeSavingSamePokemon
+};
+
+typedef NS_ENUM(NSInteger, PKEFilerType) {
+    kPKEFilerTypePokemon,
+    kPKEFilerTypeMoves
 };
 
 #define FIRST_TYPE_SLOT 1

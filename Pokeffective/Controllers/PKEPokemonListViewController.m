@@ -11,6 +11,7 @@
 #import "PKEPokemonCell.h"
 #import "PKEPokemon.h"
 #import "PKEPokemonSearchViewController.h"
+#import "PKEFilterViewController.h"
 
 @interface PKEPokemonListViewController () <PKEPokemonTableViewControllerDataSource>
 
@@ -100,6 +101,10 @@ static void * PKEPokemonListViewControllerContext = &PKEPokemonListViewControlle
         PKEPokemonSearchViewController *searchViewController = [segue destinationViewController];
         searchViewController.delegate = self.delegate;
         [searchViewController setDataSource:[self dataSource]];
+    }
+    if ([[segue identifier] isEqualToString:@"FilterSegue"]) {
+        PKEFilterViewController *filterViewController = [segue destinationViewController];
+        filterViewController.filterType = kPKEFilerTypePokemon;
     }
 }
 
