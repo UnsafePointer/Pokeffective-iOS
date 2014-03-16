@@ -60,6 +60,11 @@ typedef NS_ENUM(NSUInteger, PKEPokedexType) {
     PKEPokedexTypeKalosMountain,
 };
 
+typedef NS_ENUM(NSInteger, PKEErrorCode) {
+    kPKEErrorCodeSavingMoreThanSixPokemons,
+    kPKEErrorCodeSavingSamePokemon
+};
+
 #define FIRST_TYPE_SLOT 1
 #define SECOND_TYPE_SLOT 2
 #define TOTAL_POKEMON_TYPES 18

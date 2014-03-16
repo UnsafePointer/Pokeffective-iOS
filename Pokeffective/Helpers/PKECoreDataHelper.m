@@ -11,6 +11,7 @@
 #import "PKEPokemon.h"
 #import "PKETranslatorHelper.h"
 #import "PKEPokemonManagedObject.h"
+#import "NSError+PokemonError.h"
 
 @interface PKECoreDataHelper ()
 
@@ -58,17 +59,39 @@
 - (void)addPokemonToParty:(PKEPokemon *)pokemon
                completion:(BooleanCompletionBlock)completionBlock;
 {
+    __block NSError *pokemonError;
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-        NSError *error;
-        [MTLManagedObjectAdapter managedObjectFromModel:pokemon
-                                   insertingIntoContext:localContext
-                                                  error:&error];
-        if (error) {
-            NSLog(@"%@", [error localizedDescription]);
+        NSArray *storedParty = [PKEPokemonManagedObject MR_findAllInContext:localContext];
+        BOOL shouldSave = YES;
+        if ([storedParty count] > 6) {
+            pokemonError = [NSError errorSavingMoreThanSixPokemons];
+            shouldSave = NO;
+        }
+        else {
+            for (PKEPokemonManagedObject *pokemonManagedObject in storedParty) {
+                if ([[pokemonManagedObject identifier] unsignedIntegerValue] == [pokemon identifier]) {
+                    pokemonError = [NSError errorSavingSamePokemon];
+                    shouldSave = NO;
+                }
+            }
+        }
+        if (shouldSave) {
+            NSError *error;
+            [MTLManagedObjectAdapter managedObjectFromModel:pokemon
+                                       insertingIntoContext:localContext
+                                                      error:&error];
+            if (error) {
+                NSLog(@"%@", [error localizedDescription]);
+            }
         }
     } completion:^(BOOL success, NSError *error) {
         if (completionBlock) {
-            completionBlock(success, error);
+            if (!success) {
+                completionBlock(success, pokemonError);
+            }
+            else {
+                completionBlock(success, error);
+            }
         }
     }];
 }
@@ -79,7 +102,7 @@
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
         PKEPokemonManagedObject *pokemonManagedObject =
         [PKEPokemonManagedObject MR_findFirstByAttribute:@"identifier"
-                                               withValue:[NSNumber numberWithInt:pokemon.identifier]
+                                               withValue:[NSNumber numberWithUnsignedInteger:pokemon.identifier]
                                                inContext:localContext];
         [pokemonManagedObject MR_deleteInContext:localContext];
     } completion:^(BOOL success, NSError *error) {

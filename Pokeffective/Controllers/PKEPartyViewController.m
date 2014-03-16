@@ -12,6 +12,7 @@
 #import "PKEPokemon.h"
 #import "PKEMovesetViewController.h"
 #import "PKETableViewController.h"
+#import "NSError+PokemonError.h"
 
 @interface PKEPartyViewController () <PKETableViewControllerDelegate, UIActionSheetDelegate>
 
@@ -123,10 +124,47 @@
                                       error:(NSError *)error
 {
     if (!error) {
-        NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
-        [mutableDataSource addObject:pokemon];
-        [self setDataSource:[mutableDataSource copy]];
-        [[self collectionView] reloadData];
+        @weakify(self)
+        [[self collectionView] performBatchUpdates:^{
+            @strongify(self)
+            NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
+            [mutableDataSource addObject:pokemon];
+            [self setDataSource:[mutableDataSource copy]];
+            [[self collectionView] insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:[mutableDataSource count] - 1
+                                                                                 inSection:0]]];
+        }
+                                        completion:^(BOOL finished) {
+                                            @strongify(self)
+                                            if (finished) {
+                                                [[self collectionView] scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:[[self dataSource] count] - 1
+                                                                                                                   inSection:0]
+                                                                              atScrollPosition:UICollectionViewScrollPositionCenteredVertically
+                                                                                      animated:YES];
+                                            }
+                                        }];
+    }
+    else {
+        if ([[error domain] isEqualToString:PKEErrorDomain]) {
+            PKEErrorCode code = [error code];
+            switch (code) {
+                case kPKEErrorCodeSavingMoreThanSixPokemons:
+                    [TSMessage showNotificationInViewController:self
+                                                          title:@"Error"
+                                                       subtitle:@"You can't save more than six pokemons in your party."
+                                                           type:TSMessageNotificationTypeError
+                                                       duration:2.0f
+                                           canBeDismissedByUser:YES];
+                    break;
+                case kPKEErrorCodeSavingSamePokemon:
+                    [TSMessage showNotificationInViewController:self
+                                                          title:@"Error"
+                                                       subtitle:@"You can't save the same pokemon twice in your party."
+                                                           type:TSMessageNotificationTypeError
+                                                       duration:2.0f
+                                           canBeDismissedByUser:YES];
+                    break;
+            }
+        }
     }
 }
 

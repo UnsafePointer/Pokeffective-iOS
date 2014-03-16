@@ -766,6 +766,7 @@
 		3FB70A0C18D59F25007F1C7C /* PKEPokemonManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB70A0B18D59F25007F1C7C /* PKEPokemonManagedObject.m */; };
 		3FB70A0F18D59F25007F1C7C /* PKEMoveManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB70A0E18D59F25007F1C7C /* PKEMoveManagedObject.m */; };
 		3FB70A1218D5A3E7007F1C7C /* PKETranslatorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB70A1118D5A3E7007F1C7C /* PKETranslatorHelper.m */; };
+		3FB70A1518D5CE55007F1C7C /* NSError+PokemonError.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB70A1418D5CE55007F1C7C /* NSError+PokemonError.m */; };
 		3FCC8A9818CCECF500F4F0A3 /* PKEAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC8A9718CCECF500F4F0A3 /* PKEAboutViewController.m */; };
 		3FCC8A9A18CCEE8400F4F0A3 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCC8A9918CCEE8400F4F0A3 /* Social.framework */; };
 		3FCC8A9C18CCEE9000F4F0A3 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCC8A9B18CCEE9000F4F0A3 /* Accounts.framework */; };
@@ -1569,6 +1570,8 @@
 		3FB70A0E18D59F25007F1C7C /* PKEMoveManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMoveManagedObject.m; path = Models/PKEMoveManagedObject.m; sourceTree = "<group>"; };
 		3FB70A1018D5A3E7007F1C7C /* PKETranslatorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKETranslatorHelper.h; path = Helpers/PKETranslatorHelper.h; sourceTree = "<group>"; };
 		3FB70A1118D5A3E7007F1C7C /* PKETranslatorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKETranslatorHelper.m; path = Helpers/PKETranslatorHelper.m; sourceTree = "<group>"; };
+		3FB70A1318D5CE55007F1C7C /* NSError+PokemonError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+PokemonError.h"; path = "Extensions/NSError+PokemonError.h"; sourceTree = "<group>"; };
+		3FB70A1418D5CE55007F1C7C /* NSError+PokemonError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSError+PokemonError.m"; path = "Extensions/NSError+PokemonError.m"; sourceTree = "<group>"; };
 		3FCC8A9618CCECF500F4F0A3 /* PKEAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEAboutViewController.h; path = Controllers/PKEAboutViewController.h; sourceTree = "<group>"; };
 		3FCC8A9718CCECF500F4F0A3 /* PKEAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEAboutViewController.m; path = Controllers/PKEAboutViewController.m; sourceTree = "<group>"; };
 		3FCC8A9918CCEE8400F4F0A3 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -1636,6 +1639,8 @@
 				3F93181818CF7E500023E7A5 /* PKELabel.m */,
 				3F81401B18D4E61A00003ABD /* NSManagedObjectContext+BackgroundFetch.h */,
 				3F81401C18D4E61A00003ABD /* NSManagedObjectContext+BackgroundFetch.m */,
+				3FB70A1318D5CE55007F1C7C /* NSError+PokemonError.h */,
+				3FB70A1418D5CE55007F1C7C /* NSError+PokemonError.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -3340,6 +3345,7 @@
 				3FB70A0918D59D74007F1C7C /* PKECoreDataHelper.m in Sources */,
 				3F1396F518CB5CA3009B31A3 /* PKEPokemonCell.m in Sources */,
 				3F43557E18CF6AB900806A8F /* PKEMovesetViewController.m in Sources */,
+				3FB70A1518D5CE55007F1C7C /* NSError+PokemonError.m in Sources */,
 				3F13973118CBB3FE009B31A3 /* PKETypeViewController.m in Sources */,
 				3FB70A0C18D59F25007F1C7C /* PKEPokemonManagedObject.m in Sources */,
 				3F1396F918CB5D8E009B31A3 /* PKEPokemonManager.m in Sources */,
