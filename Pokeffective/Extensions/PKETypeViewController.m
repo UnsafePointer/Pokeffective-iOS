@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "PKEPokemonTypeViewController.h"
+#import "PKETypeViewController.h"
 #import "PKETypeCell.h"
 #import "PKEPokemonManager.h"
 
-@interface PKEPokemonTypeViewController ()
+@interface PKETypeViewController ()
 
 @end
 
-@implementation PKEPokemonTypeViewController
+@implementation PKETypeViewController
 
 - (void)viewDidLoad
 {
@@ -30,11 +30,27 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if ([[PKEPokemonManager sharedManager] filteringPokemonType] != PKEPokemonTypeNone) {
-        [[self collectionView] selectItemAtIndexPath:
-         [NSIndexPath indexPathForItem:
-          [[PKEPokemonManager sharedManager] filteringPokemonType] - 1
-                             inSection:0]
+    BOOL isSelected = NO;
+    switch ([self filterType]) {
+        case kPKEFilerTypePokemon:
+            isSelected = [[PKEPokemonManager sharedManager] filteringPokemonType] != PKEPokemonTypeNone;
+            break;
+        case kPKEFilerTypeMoves:
+            isSelected = [[PKEPokemonManager sharedManager] filteringMoveType] != PKEPokemonTypeNone;
+            break;
+    }
+    if (isSelected) {
+        PKEPokemonType pokemonType = PKEPokemonTypeNone;
+        switch ([self filterType]) {
+            case kPKEFilerTypePokemon:
+                pokemonType = [[PKEPokemonManager sharedManager] filteringPokemonType];
+                break;
+            case kPKEFilerTypeMoves:
+                pokemonType = [[PKEPokemonManager sharedManager] filteringMoveType];
+                break;
+        }
+        [[self collectionView] selectItemAtIndexPath:[NSIndexPath indexPathForItem:pokemonType - 1
+                                                                         inSection:0]
                                             animated:YES
                                       scrollPosition:UICollectionViewScrollPositionCenteredVertically];
     }
@@ -49,7 +65,14 @@
 
 - (IBAction)clearButtonTapped:(id)sender
 {
-    [[PKEPokemonManager sharedManager] setFilteringPokemonType:PKEPokemonTypeNone];
+    switch ([self filterType]) {
+        case kPKEFilerTypePokemon:
+            [[PKEPokemonManager sharedManager] setFilteringPokemonType:PKEPokemonTypeNone];
+            break;
+        case kPKEFilerTypeMoves:
+            [[PKEPokemonManager sharedManager] setFilteringMoveType:PKEPokemonTypeNone];
+            break;
+    }
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
@@ -74,7 +97,14 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[PKEPokemonManager sharedManager] setFilteringPokemonType:[indexPath row] + 1];
+    switch ([self filterType]) {
+        case kPKEFilerTypePokemon:
+            [[PKEPokemonManager sharedManager] setFilteringPokemonType:[indexPath row] + 1];
+            break;
+        case kPKEFilerTypeMoves:
+            [[PKEPokemonManager sharedManager] setFilteringMoveType:[indexPath row] + 1];
+            break;
+    }
     [[self navigationController] popViewControllerAnimated:YES];
 }
 

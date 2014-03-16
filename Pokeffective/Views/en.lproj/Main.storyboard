@@ -354,7 +354,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="gze-D5-afD" kind="push" id="61H-4o-lAh"/>
+                                            <segue destination="gze-D5-afD" kind="push" identifier="TypeSegue" id="61H-4o-lAh"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -376,10 +376,10 @@
             </objects>
             <point key="canvasLocation" x="1463" y="-974"/>
         </scene>
-        <!--Pokemon Type View Controller - Types-->
+        <!--Type View Controller - Types-->
         <scene sceneID="6MV-NR-Tse">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="gze-D5-afD" customClass="PKEPokemonTypeViewController" sceneMemberID="viewController">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="gze-D5-afD" customClass="PKETypeViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="VjP-Cx-8Qv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -769,7 +769,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="gze-D5-afD" kind="push" id="z9n-un-3kW"/>
+                                            <segue destination="gze-D5-afD" kind="push" identifier="TypeSegue" id="z9n-un-3kW"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1022,6 +1022,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="z9n-un-3kW"/>
+        <segue reference="61H-4o-lAh"/>
     </inferredMetricsTieBreakers>
 </document>

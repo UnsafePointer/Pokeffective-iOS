@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PKEPokemonTypeViewController : UICollectionViewController
+@interface PKETypeViewController : UICollectionViewController
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *clearButton;
+@property (nonatomic, assign) PKEFilerType filterType;
 
 - (IBAction)clearButtonTapped:(id)sender;
 

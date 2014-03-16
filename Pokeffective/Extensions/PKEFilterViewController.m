@@ -8,6 +8,7 @@
 
 #import "PKEFilterViewController.h"
 #import "PKEPokemonManager.h"
+#import "PKETypeViewController.h"
 
 @interface PKEFilterViewController ()
 
@@ -52,6 +53,15 @@
             break;
     }
     
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"TypeSegue"]) {
+        PKETypeViewController *viewController = [segue destinationViewController];
+        [viewController setFilterType:[self filterType]];
+    }
 }
 
 #pragma mark - UITableViewDataSource
