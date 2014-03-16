@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "PKEPokemonTableViewController.h"
 
-@interface PKESearchViewController : PKEPokemonTableViewController
+@interface PKEPokemonSearchViewController : PKEPokemonTableViewController
 
 @end

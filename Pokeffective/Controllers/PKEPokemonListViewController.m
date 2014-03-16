@@ -6,20 +6,20 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "PKEListViewController.h"
+#import "PKEPokemonListViewController.h"
 #import "PKEPokemonManager.h"
 #import "PKEPokemonCell.h"
 #import "PKEPokemon.h"
-#import "PKESearchViewController.h"
+#import "PKEPokemonSearchViewController.h"
 
-@interface PKEListViewController () <PKEPokemonTableViewControllerDataSource>
+@interface PKEPokemonListViewController () <PKEPokemonTableViewControllerDataSource>
 
 - (void)searchButtonTapped:(id)sender;
 - (void)filterButtonTapped:(id)sender;
 
 @end
 
-@implementation PKEListViewController
+@implementation PKEPokemonListViewController
 
 static void * PKEListViewControllerContext = &PKEListViewControllerContext;
 
@@ -97,7 +97,7 @@ static void * PKEListViewControllerContext = &PKEListViewControllerContext;
                  sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
-        PKESearchViewController *searchViewController = [segue destinationViewController];
+        PKEPokemonSearchViewController *searchViewController = [segue destinationViewController];
         searchViewController.delegate = self.delegate;
         [searchViewController setDataSource:[self dataSource]];
     }

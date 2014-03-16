@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "PKETypeViewController.h"
+#import "PKEPokemonTypeViewController.h"
 #import "PKETypeCell.h"
 #import "PKEPokemonManager.h"
 
-@interface PKETypeViewController ()
+@interface PKEPokemonTypeViewController ()
 
 @end
 
-@implementation PKETypeViewController
+@implementation PKEPokemonTypeViewController
 
 - (void)viewDidLoad
 {

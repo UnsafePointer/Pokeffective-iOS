@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "PKEFilterViewController.h"
+#import "PKEPokemonFilterViewController.h"
 #import "PKEPokemonManager.h"
 
-@interface PKEFilterViewController ()
+@interface PKEPokemonFilterViewController ()
 
 @property (nonatomic, strong) NSIndexPath *selectionIndexPath;
 
 @end
 
-@implementation PKEFilterViewController
+@implementation PKEPokemonFilterViewController
 
 - (void)viewDidLoad
 {

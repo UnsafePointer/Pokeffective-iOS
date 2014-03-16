@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PKETypeViewController : UICollectionViewController
+@interface PKEPokemonTypeViewController : UICollectionViewController
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *clearButton;
 

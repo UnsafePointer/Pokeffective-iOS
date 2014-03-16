@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "PKESearchViewController.h"
+#import "PKEPokemonSearchViewController.h"
 
-@interface PKESearchViewController () <PKEPokemonTableViewControllerDataSource>
+@interface PKEPokemonSearchViewController () <PKEPokemonTableViewControllerDataSource>
 
 @property (nonatomic, strong) NSMutableArray *filteredDataSource;
 
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation PKESearchViewController
+@implementation PKEPokemonSearchViewController
 
 - (void)viewDidLoad
 {
