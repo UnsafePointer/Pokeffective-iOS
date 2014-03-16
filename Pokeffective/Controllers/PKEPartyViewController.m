@@ -124,7 +124,7 @@
     if (!error) {
         NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
         [mutableDataSource addObject:pokemon];
-        [self setDataSource:mutableDataSource];
+        [self setDataSource:[mutableDataSource copy]];
         [[self collectionView] reloadData];
     }
 }

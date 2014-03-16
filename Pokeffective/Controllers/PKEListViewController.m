@@ -101,7 +101,7 @@ static void * PKEListViewControllerContext = &PKEListViewControllerContext;
     if ([[segue identifier] isEqualToString:@"SearchSegue"]) {
         PKESearchViewController *searchViewController = [segue destinationViewController];
         searchViewController.delegate = self.delegate;
-        [searchViewController setDataSource:[self dataSource]];
+        [searchViewController setDataSource:[[self dataSource] copy]];
     }
 }
 

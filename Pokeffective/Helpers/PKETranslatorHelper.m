@@ -36,7 +36,7 @@
                                                withClass:objectClass];
             [collection addObject:model];
         }
-        return collection;
+        return [collection copy];
     }
     return nil;
 }
