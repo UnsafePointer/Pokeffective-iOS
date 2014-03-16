@@ -27,7 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setDataSource:[[PKEPokemonManager sharedManager] getMoveset]];
+    NSMutableArray *moves = [[NSMutableArray alloc] init];
+    if ([[self pokemon] moves]) {
+        [moves addObjectsFromArray:[[[self pokemon] moves] allObjects]];
+    }
+    [self setDataSource:moves];
     [self setTitle:[[self pokemon] name]];
 }
 
@@ -57,6 +61,9 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    if ([[self dataSource] count] == 0) {
+        return nil;
+    }
     PKELabel *lblHeader = [[PKELabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 22.0f)
                                             andEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 15.0f)];
     [lblHeader setText:@"Power / Accuracy"];

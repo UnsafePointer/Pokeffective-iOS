@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PKETableViewController.h"
+#import "PKEPokemonTableViewController.h"
 
-@interface PKESearchViewController : PKETableViewController
+@interface PKESearchViewController : PKEPokemonTableViewController
 
 @end

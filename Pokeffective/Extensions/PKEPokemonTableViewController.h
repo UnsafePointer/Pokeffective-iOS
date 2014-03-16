@@ -10,7 +10,7 @@
 
 @class PKEPokemon;
 
-@protocol PKETableViewControllerDataSource <UITableViewDataSource>
+@protocol PKEPokemonTableViewControllerDataSource <UITableViewDataSource>
 
 @optional
 
@@ -19,16 +19,16 @@
 
 @end
 
-@protocol PKETableViewControllerDelegate <NSObject>
+@protocol PKEPokemonTableViewControllerDelegate <NSObject>
 
 - (void)tableViewControllerDidSelectPokemon:(PKEPokemon *)pokemon
                                       error:(NSError *)error;
 
 @end
 
-@interface PKETableViewController : UITableViewController
+@interface PKEPokemonTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *dataSource;
-@property (nonatomic, weak) id<PKETableViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<PKEPokemonTableViewControllerDelegate> delegate;
 
 @end

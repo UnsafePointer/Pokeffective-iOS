@@ -12,7 +12,7 @@
 #import "PKEPokemon.h"
 #import "PKESearchViewController.h"
 
-@interface PKEListViewController () <PKETableViewControllerDataSource>
+@interface PKEListViewController () <PKEPokemonTableViewControllerDataSource>
 
 - (void)searchButtonTapped:(id)sender;
 - (void)filterButtonTapped:(id)sender;

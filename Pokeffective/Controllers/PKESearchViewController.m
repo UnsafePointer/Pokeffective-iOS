@@ -8,7 +8,7 @@
 
 #import "PKESearchViewController.h"
 
-@interface PKESearchViewController () <PKETableViewControllerDataSource>
+@interface PKESearchViewController () <PKEPokemonTableViewControllerDataSource>
 
 @property (nonatomic, strong) NSMutableArray *filteredDataSource;
 

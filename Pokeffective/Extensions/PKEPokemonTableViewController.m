@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "PKETableViewController.h"
+#import "PKEPokemonTableViewController.h"
 #import "PKEPokemonManager.h"
 #import "PKEPokemonCell.h"
 #import "PKEPokemon.h"
 
-@interface PKETableViewController () <PKETableViewControllerDataSource>
+@interface PKEPokemonTableViewController () <PKEPokemonTableViewControllerDataSource>
 
 - (void)configureTableViewCell:(PKEPokemonCell *)tableViewCell
                   forIndexPath:(NSIndexPath *)indexPath
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation PKETableViewController
+@implementation PKEPokemonTableViewController
 
 - (void)viewDidLoad
 {

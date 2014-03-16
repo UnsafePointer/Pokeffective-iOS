@@ -18,6 +18,8 @@
 @property (nonatomic, assign) PKEPokemonType firstType;
 @property (nonatomic, assign) PKEPokemonType secondType;
 
+@property (nonatomic, strong) NSSet *moves;
+
 + (PKEPokemon *)createPokemonWithResultSet:(FMResultSet *)resultSet;
 
 @end
