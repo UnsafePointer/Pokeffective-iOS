@@ -23,7 +23,6 @@
     #import <Social/Social.h>
     #import <MessageUI/MessageUI.h>
     #import <Mantle/Mantle.h>
-    #define MR_SHORTHAND
     #import <MagicalRecord/CoreData+MagicalRecord.h>
     #import <FMDB/FMDatabase.h>
     #import <FMDB/FMDatabaseQueue.h>

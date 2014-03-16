@@ -20,6 +20,8 @@
 - (void)getPokemonsWithCompletion:(ArrayCompletionBlock)completionBlock;
 - (void)addPokemonToParty:(PKEPokemon *)pokemon
                completion:(BooleanCompletionBlock)completionBlock;
+- (void)removePokemonFromParty:(PKEPokemon *)pokemon
+                    completion:(BooleanCompletionBlock)completionBlock;
 - (void)getPartyWithCompletion:(ArrayCompletionBlock)completionBlock;
 
 - (UIColor *)colorForType:(PKEPokemonType)pokemonType;

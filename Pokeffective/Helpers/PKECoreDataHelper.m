@@ -10,6 +10,7 @@
 #import "NSManagedObjectContext+BackgroundFetch.h"
 #import "PKEPokemon.h"
 #import "PKETranslatorHelper.h"
+#import "PKEPokemonManagedObject.h"
 
 @interface PKECoreDataHelper ()
 
@@ -65,6 +66,22 @@
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
         }
+    } completion:^(BOOL success, NSError *error) {
+        if (completionBlock) {
+            completionBlock(success, error);
+        }
+    }];
+}
+
+- (void)removePokemonFromParty:(PKEPokemon *)pokemon
+                    completion:(BooleanCompletionBlock)completionBlock
+{
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+        PKEPokemonManagedObject *pokemonManagedObject =
+        [PKEPokemonManagedObject MR_findFirstByAttribute:@"identifier"
+                                               withValue:[NSNumber numberWithInt:pokemon.identifier]
+                                               inContext:localContext];
+        [pokemonManagedObject MR_deleteInContext:localContext];
     } completion:^(BOOL success, NSError *error) {
         if (completionBlock) {
             completionBlock(success, error);

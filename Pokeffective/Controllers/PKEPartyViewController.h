@@ -10,4 +10,6 @@
 
 @interface PKEPartyViewController : UICollectionViewController
 
+- (IBAction)onLongPressMemberCell:(id)sender;
+
 @end

@@ -48,6 +48,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="ABt-jk-xET">
                             <size key="itemSize" width="158" height="199"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -86,6 +87,7 @@
                         <connections>
                             <outlet property="dataSource" destination="pPy-XH-DzP" id="lDw-TH-4ni"/>
                             <outlet property="delegate" destination="pPy-XH-DzP" id="15F-Yr-gzK"/>
+                            <outletCollection property="gestureRecognizers" destination="Fjn-9d-Cw7" appends="YES" id="LkY-mK-WL7"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Party" id="FHU-t9-DoE">
@@ -102,6 +104,11 @@
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5L5-Uy-QuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Fjn-9d-Cw7">
+                    <connections>
+                        <action selector="onLongPressMemberCell:" destination="pPy-XH-DzP" id="RVs-ac-IPA"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="396" y="-267"/>
         </scene>
@@ -679,15 +686,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Licenses" id="j59-is-XeH">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="xrS-nT-LaU" style="IBUITableViewCellStyleDefault" id="NQe-rq-ZF3">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="xrS-nT-LaU" style="IBUITableViewCellStyleDefault" id="NQe-rq-ZF3">
                                         <rect key="frame" x="0.0" y="387" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NQe-rq-ZF3" id="p5w-CC-42L">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Acknowledgments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xrS-nT-LaU">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

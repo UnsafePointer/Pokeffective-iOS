@@ -13,9 +13,11 @@
 #import "PKEMovesetViewController.h"
 #import "PKETableViewController.h"
 
-@interface PKEPartyViewController () <PKETableViewControllerDelegate>
+@interface PKEPartyViewController () <PKETableViewControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) NSArray *dataSource;
+
+@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 
 - (void)addButtonTapped:(id)sender;
 - (void)chartButtonTapped:(id)sender;
@@ -126,6 +128,46 @@
         [mutableDataSource addObject:pokemon];
         [self setDataSource:[mutableDataSource copy]];
         [[self collectionView] reloadData];
+    }
+}
+
+#pragma mark - Public Methods
+
+- (IBAction)onLongPressMemberCell:(id)sender
+{
+    UILongPressGestureRecognizer *gestureRecognizer = (UILongPressGestureRecognizer *)sender;
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[gestureRecognizer locationInView:[self collectionView]]];
+        if (indexPath != nil) {
+            [self setSelectedIndexPath:indexPath];
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Remove from party"
+                                                                     delegate:self
+                                                            cancelButtonTitle:@"Cancel"
+                                                       destructiveButtonTitle:@"Remove"
+                                                            otherButtonTitles:nil];
+            [actionSheet showInView:[self view]];
+        }
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
+{
+    if (buttonIndex == 0) {
+        PKEPokemon *pokemon = [[self dataSource] objectAtIndex:[[self selectedIndexPath] row]];
+        @weakify(self)
+        [[PKEPokemonManager sharedManager] removePokemonFromParty:pokemon
+                                                       completion:^(BOOL result, NSError *error) {
+                                                           @weakify(self)
+                                                           [[self collectionView] performBatchUpdates:^{
+                                                               @strongify(self);
+                                                               if (!error) {
+                                                                   NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
+                                                                   [mutableDataSource removeObject:pokemon];
+                                                                   [self setDataSource:[mutableDataSource copy]];
+                                                                   [[self collectionView] deleteItemsAtIndexPaths:@[[self selectedIndexPath]]];
+                                                               }
+                                                           } completion:nil];
+                                                       }];
     }
 }
 

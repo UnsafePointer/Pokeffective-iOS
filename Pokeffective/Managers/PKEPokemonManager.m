@@ -81,6 +81,13 @@ static dispatch_once_t oncePredicate;
                                   completion:completionBlock];
 }
 
+- (void)removePokemonFromParty:(PKEPokemon *)pokemon
+                    completion:(BooleanCompletionBlock)completionBlock
+{
+    [[self coreDataHelper] removePokemonFromParty:pokemon
+                                       completion:completionBlock];
+}
+
 - (void)getPartyWithCompletion:(ArrayCompletionBlock)completionBlock
 {
     [[self coreDataHelper] getPartyWithCompletion:completionBlock];
