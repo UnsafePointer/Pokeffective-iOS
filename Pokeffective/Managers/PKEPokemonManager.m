@@ -35,6 +35,9 @@ static dispatch_once_t oncePredicate;
         _sharedManager = [[self alloc] init];
         [_sharedManager setFilteringPokedexType:PKEPokedexTypeNational];
         [_sharedManager setFilteringPokemonType:PKEPokemonTypeNone];
+        [_sharedManager setFilteringMoveMethod:PKEMoveMethodNone];
+        [_sharedManager setFilteringMoveType:PKEPokemonTypeNone];
+        [_sharedManager setFilteringMoveCategory:PKEMoveCategoryNone];
     });
     return _sharedManager;
 }
@@ -96,7 +99,11 @@ static dispatch_once_t oncePredicate;
 - (void)getMovesForPokemon:(PKEPokemon *)pokemon
                 completion:(ArrayCompletionBlock)completionBlock
 {
-    
+    [[self sqliteHelper] getMovesForPokemon:pokemon
+                          filteringMoveType:[self filteringMoveType]
+                        filteringMoveMethod:[self filteringMoveMethod]
+                      filteringMoveCategory:[self filteringMoveCategory]
+                                 completion:completionBlock];
 }
 
 - (void)addMove:(PKEMove *)move
@@ -106,23 +113,10 @@ static dispatch_once_t oncePredicate;
     
 }
 
-- (NSArray *)getMoveset
-{
-    NSArray *database = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Moveset"
-                                                                                         ofType:@"plist"]];
-    NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:[database count]];
-    for(NSDictionary *move in database) {
-        PKEMove *model = [PKEMove createMoveWithDictionary:move];
-        [moves addObject:model];
-    }
-    return moves;
-}
-
 - (UIColor *)colorForType:(PKEPokemonType)pokemonType
 {
     return [[self formatHelper] colorForType:pokemonType];
 }
-
 
 - (NSString *)nameForType:(PKEPokemonType)pokemonType
 {

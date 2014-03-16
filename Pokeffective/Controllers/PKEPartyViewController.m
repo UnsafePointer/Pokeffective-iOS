@@ -63,7 +63,7 @@
         NSArray *selectedIndexPaths = [[self collectionView] indexPathsForSelectedItems];
         NSIndexPath *selectedIndesPath = [selectedIndexPaths objectAtIndex:0];
         PKEPokemon *selectedPKMN = [[self dataSource] objectAtIndex:[selectedIndesPath row]];
-        controller.pokemon = selectedPKMN;
+        [controller setPokemon:selectedPKMN];
     }
     if ([[segue identifier] isEqualToString:@"AddSegue"]) {
         PKEPokemonTableViewController *controller = [segue destinationViewController];

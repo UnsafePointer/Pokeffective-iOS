@@ -528,7 +528,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="B53-oy-fao"/>
                         <barButtonItem key="rightBarButtonItem" image="Add" id="JRE-72-yIi">
                             <connections>
-                                <segue destination="FMn-40-Pm3" kind="push" id="vse-Q2-E03"/>
+                                <segue destination="FMn-40-Pm3" kind="push" identifier="MovesSegue" id="vse-Q2-E03"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

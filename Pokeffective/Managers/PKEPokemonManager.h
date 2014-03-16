@@ -17,6 +17,7 @@
 @property (nonatomic, assign) PKEPokemonType filteringPokemonType;
 @property (nonatomic, assign) PKEPokemonType filteringMoveType;
 @property (nonatomic, assign) PKEMoveMethod filteringMoveMethod;
+@property (nonatomic, assign) PKEMoveCategory filteringMoveCategory;
 
 + (instancetype)sharedManager;
 
@@ -38,7 +39,6 @@
 - (PKEPokedexType)pokedexTypeForIndexPath:(NSIndexPath *)indexPath;
 - (NSIndexPath *)indexPathForPokedexType:(PKEPokedexType)pokedexType;
 
-- (NSArray *)getMoveset;
 - (NSString *)getRandomEffective;
 - (UIColor *)getColorForEffective:(NSString *)effective;
 

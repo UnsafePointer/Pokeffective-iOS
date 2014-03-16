@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class PKEPokemon;
+
 @interface PKEQueryHelper : NSObject
 
 - (NSString *)pokemonSearchQueryFilterByPokedexType:(PKEPokedexType)pokedexType
@@ -15,5 +17,9 @@
                                            typeSlot:(NSUInteger)typeSlot;
 - (NSString *)pokemonTypeQueryByIdentifier:(NSUInteger)identifier
                                   typeSlot:(NSUInteger)typeSlot;
+- (NSString *)moveSearchQueryFilterByMoveMethod:(PKEMoveMethod)moveMethod
+                                       moveType:(PKEPokemonType)moveType
+                                   moveCategory:(PKEMoveCategory)moveCategory
+                                    fromPokemon:(PKEPokemon *)pokemon;
 
 @end

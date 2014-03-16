@@ -9,6 +9,7 @@
 #import "PKESQLiteHelper.h"
 #import "PKEQueryHelper.h"
 #import "PKEPokemon.h"
+#import "PKEMove.h"
 
 @interface PKESQLiteHelper ()
 
@@ -36,9 +37,9 @@
                        filteringPokedexType:(PKEPokedexType)pokedexType
                                  completion:(ArrayCompletionBlock)completionBlock
 {
-    NSMutableDictionary *pokemons = [[NSMutableDictionary alloc] init];
-    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[[NSBundle mainBundle] pathForResource:@"PokeffectiveData"
-                                                                                                    ofType:@"sqlite"]];
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[[NSBundle mainBundle]
+                                                                     pathForResource:@"PokeffectiveData"
+                                                                     ofType:@"sqlite"]];
     if (pokemonType == PKEPokemonTypeNone) {
         @weakify(self);
         [queue inDatabase:^(FMDatabase *db) {
@@ -49,19 +50,19 @@
             NSString *secondTypeQuery = [[self queryHelper] pokemonSearchQueryFilterByPokedexType:pokedexType
                                                                                       pokemonType:pokemonType
                                                                                          typeSlot:SECOND_TYPE_SLOT];
+            NSMutableDictionary *pokemons = [[NSMutableDictionary alloc] init];
             FMResultSet *firstTypeResultSet = [db executeQuery:firstTypeQuery];
             while ([firstTypeResultSet next]) {
                 PKEPokemon *model = [PKEPokemon createPokemonWithResultSet:firstTypeResultSet];
                 [pokemons setObject:model forKey:[model name]];
             }
-            [firstTypeResultSet close];
             FMResultSet *secondTypeResultSet = [db executeQuery:secondTypeQuery];
             while ([secondTypeResultSet next]) {
                 NSString *name = [secondTypeResultSet stringForColumn:@"name"];
                 PKEPokemon *model = [pokemons objectForKey:[name capitalizedString]];
                 [model setSecondType:[secondTypeResultSet intForColumn:@"type"]];
             }
-            [secondTypeResultSet close];
+            [db close];
             if (completionBlock) {
                 completionBlock([[pokemons allValues] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
                     return [(PKEPokemon *)obj1 pokedexNumber] > [(PKEPokemon *)obj2 pokedexNumber];
@@ -79,6 +80,7 @@
             NSString *secondTypeQuery = [[self queryHelper] pokemonSearchQueryFilterByPokedexType:pokedexType
                                                                                       pokemonType:pokemonType
                                                                                          typeSlot:SECOND_TYPE_SLOT];
+            NSMutableDictionary *pokemons = [[NSMutableDictionary alloc] init];
             FMResultSet *firstTypeResultSet = [db executeQuery:firstTypeQuery];
             while ([firstTypeResultSet next]) {
                 PKEPokemon *model = [PKEPokemon createPokemonWithResultSet:firstTypeResultSet];
@@ -90,7 +92,6 @@
                     [model setSecondType:[secondInnerTypeResultSet intForColumn:@"type"]];
                 }
             }
-            [firstTypeResultSet close];
             FMResultSet *secondTypeResultSet = [db executeQuery:secondTypeQuery];
             while ([secondTypeResultSet next]) {
                 PKEPokemon *model = [PKEPokemon createPokemonWithResultSet:secondTypeResultSet];
@@ -103,7 +104,7 @@
                     [model setFirstType:[firstInnerTypeResultSet intForColumn:@"type"]];
                 }
             }
-            [secondTypeResultSet close];
+            [db close];
             if (completionBlock) {
                 completionBlock([[pokemons allValues] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
                     return [(PKEPokemon *)obj1 pokedexNumber] > [(PKEPokemon *)obj2 pokedexNumber];
@@ -111,6 +112,35 @@
             }
         }];
     }
+}
+
+- (void)getMovesForPokemon:(PKEPokemon *)pokemon
+         filteringMoveType:(PKEPokemonType)moveType
+       filteringMoveMethod:(PKEMoveMethod)moveMethod
+     filteringMoveCategory:(PKEMoveCategory)moveCategory
+                completion:(ArrayCompletionBlock)completionBlock
+{
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[[NSBundle mainBundle]
+                                                                      pathForResource:@"PokeffectiveData"
+                                                                      ofType:@"sqlite"]];
+    @weakify(self);
+    [queue inDatabase:^(FMDatabase *db) {
+        @strongify(self);
+        NSString *query = [[self queryHelper] moveSearchQueryFilterByMoveMethod:moveMethod
+                                                                       moveType:moveType
+                                                                   moveCategory:moveCategory
+                                                                    fromPokemon:pokemon];
+        FMResultSet *resultSet = [db executeQuery:query];
+        NSMutableArray *moves = [[NSMutableArray alloc] init];
+        while ([resultSet next]) {
+            PKEMove *model = [PKEMove createMoveWithResultSet:resultSet];
+            [moves addObject:model];
+        }
+        [db close];
+        if (completionBlock) {
+            completionBlock(moves, nil);
+        }
+    }];
 }
 
 @end

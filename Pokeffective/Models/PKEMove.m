@@ -10,15 +10,40 @@
 
 @implementation PKEMove
 
-+ (PKEMove *)createMoveWithDictionary:(NSDictionary *)dictionary;
++ (PKEMove *)createMoveWithResultSet:(FMResultSet *)resultSet
 {
     PKEMove *move = [PKEMove new];
-    [move setName:[dictionary objectForKey:@"Name"]];
-    [move setType:[dictionary objectForKey:@"Type"]];
-    [move setCategory:[dictionary objectForKey:@"Category"]];
-    [move setPower:[dictionary objectForKey:@"Power"]];
-    [move setAccuracy:[dictionary objectForKey:@"Accuracy"]];
+    [move setType:[resultSet intForColumn:@"type"]];
+    [move setName:[[resultSet stringForColumn:@"name"] capitalizedString]];
+    [move setCategory:[resultSet intForColumn:@"category"]];
+    [move setPower:[resultSet intForColumn:@"power"]];
+    [move setAccuracy:[resultSet intForColumn:@"accuracy"]];
     return move;
+}
+
+#pragma mark - MTLManagedObjectSerializing
+
++ (NSDictionary *)managedObjectKeysByPropertyKey
+{
+    return @{
+             @"type" : @"type",
+             @"name" : @"name",
+             @"category" : @"category",
+             @"power" : @"power",
+             @"accuracy" : @"accuracy"
+            };
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey
+{
+    return @{
+             @"pokemon" : @"PKEPokemonManagedObject",
+            };
+}
+
++ (NSString *)managedObjectEntityName
+{
+    return @"PKEMoveManagedObject";
 }
 
 @end

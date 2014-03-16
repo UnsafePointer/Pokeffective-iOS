@@ -124,7 +124,7 @@ static void * PKEPokemonListViewControllerContext = &PKEPokemonListViewControlle
     return [[self dataSource] count];
 }
 
-#pragma mark - PKETableViewControllerDataSource
+#pragma mark - PKEPokemonTableViewControllerDataSource
 
 - (PKEPokemon *)getPokemonForIndexPath:(NSIndexPath *)indexPath
                            inTableView:(UITableView *)tableView

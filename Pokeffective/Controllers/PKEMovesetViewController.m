@@ -12,6 +12,7 @@
 #import "PKEMove.h"
 #import "PKELabel.h"
 #import "PKEPokemon.h"
+#import "PKEMoveListViewController.h"
 
 @interface PKEMovesetViewController ()
 
@@ -38,6 +39,14 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"MovesSegue"]) {
+        PKEMoveListViewController *controller = [segue destinationViewController];
+        [controller setPokemon:[self pokemon]];
+    }
 }
 
 #pragma mark - UITableViewDataSource

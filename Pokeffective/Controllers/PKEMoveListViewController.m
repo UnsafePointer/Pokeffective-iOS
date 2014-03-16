@@ -41,6 +41,10 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
                                         forKeyPath:NSStringFromSelector(@selector(filteringMoveType))
                                            options:NSKeyValueObservingOptionNew
                                            context:PKEMoveListViewControllerContext];
+    [[PKEPokemonManager sharedManager] addObserver:self
+                                        forKeyPath:NSStringFromSelector(@selector(filteringMoveCategory))
+                                           options:NSKeyValueObservingOptionNew
+                                           context:PKEMoveListViewControllerContext];
     [SVProgressHUD show];
     [[PKEPokemonManager sharedManager] getMovesForPokemon:[self pokemon]
                                                completion:^(NSArray *array, NSError *error) {
@@ -63,7 +67,8 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
 {
     if (context == PKEMoveListViewControllerContext) {
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(filteringMoveMethod))] ||
-            [keyPath isEqualToString:NSStringFromSelector(@selector(filteringMoveType))]) {
+            [keyPath isEqualToString:NSStringFromSelector(@selector(filteringMoveType))] ||
+            [keyPath isEqualToString:NSStringFromSelector(@selector(filteringMoveCategory))]) {
             [[PKEPokemonManager sharedManager] getMovesForPokemon:[self pokemon]
                                                        completion:^(NSArray *array, NSError *error) {
                                                            @weakify(self);
@@ -124,10 +129,10 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
     return [[self dataSource] count];
 }
 
-#pragma mark - PKETableViewControllerDataSource
+#pragma mark - PKEMoveTableViewControllerDataSource
 
-- (PKEPokemon *)getPokemonForIndexPath:(NSIndexPath *)indexPath
-                           inTableView:(UITableView *)tableView
+- (PKEMove *)getMoveForIndexPath:(NSIndexPath *)indexPath
+                        inTableView:(UITableView *)tableView
 {
     return [[self dataSource] objectAtIndex:[indexPath row]];
 }

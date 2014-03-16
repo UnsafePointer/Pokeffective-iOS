@@ -7,6 +7,7 @@
 //
 
 #import "PKEQueryHelper.h"
+#import "PKEPokemon.h"
 
 @implementation PKEQueryHelper
 
@@ -47,6 +48,38 @@
                 "  pt.slot = %d "
                 "order by pdn.pokedex_number ", pokedexType, typeSlot];
     }
+}
+
+- (NSString *)moveSearchQueryFilterByMoveMethod:(PKEMoveMethod)moveMethod
+                                       moveType:(PKEPokemonType)moveType
+                                   moveCategory:(PKEMoveCategory)moveCategory
+                                    fromPokemon:(PKEPokemon *)pokemon
+{
+    NSMutableString *query = [NSMutableString string];
+    [query appendString:@"select m.identifier as name,"
+            "  m.type_id as type, "
+            "  mdc.identifier as category, "
+            "  m.power, "
+            "  m.accuracy "
+            "from "
+            "  pokemon_moves as pm "
+            "    join moves as m "
+            "      on pm.move_id = m.id "
+            "    join move_damage_classes as mdc "
+            "      on m.damage_class_id = mdc.id "
+            "where "];
+    if (moveMethod != PKEMoveMethodNone) {
+        [query appendFormat:@" pm.pokemon_move_method_id = %d and ", moveMethod];
+    }
+    if (moveType != PKEPokemonTypeNone) {
+        [query appendFormat:@" m.type_id = %d and ", moveType];
+    }
+    if (moveCategory != PKEMoveCategoryNone) {
+        [query appendFormat:@" m.damage_class_id = %d and ", moveCategory];
+    }
+    [query appendFormat:@" pokemon_id = %d "
+                         "order by m.identifier", [pokemon identifier]];
+    return [query copy];
 }
 
 - (NSString *)pokemonTypeQueryByIdentifier:(NSUInteger)identifier

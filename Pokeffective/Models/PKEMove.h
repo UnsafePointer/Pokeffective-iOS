@@ -16,6 +16,6 @@
 @property (nonatomic, assign) NSUInteger power;
 @property (nonatomic, assign) NSUInteger accuracy;
 
-+ (PKEMove *)createMoveWithDictionary:(NSDictionary *)dictionary;
++ (PKEMove *)createMoveWithResultSet:(FMResultSet *)resultSet;
 
 @end
