@@ -19,11 +19,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self collectionView] setAllowsMultipleSelection:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if ([[PKEPokemonManager sharedManager] filteringPokemonType] != PKEPokemonTypeNone) {
+        [[self collectionView] selectItemAtIndexPath:
+         [NSIndexPath indexPathForItem:
+          [[PKEPokemonManager sharedManager] filteringPokemonType] - 1
+                             inSection:0]
+                                            animated:YES
+                                      scrollPosition:UICollectionViewScrollPositionCenteredVertically];
+    }
+    else {
+        NSMutableArray *barButtoms = [[[self navigationItem] rightBarButtonItems] mutableCopy];
+        [barButtoms removeObject:[self clearButton]];
+        [[self navigationItem] setRightBarButtonItems:[barButtoms copy]];
+    }
+}
+
+#pragma mark - Public Methods
+
+- (IBAction)clearButtonTapped:(id)sender
+{
+    [[PKEPokemonManager sharedManager] setFilteringPokemonType:PKEPokemonTypeNone];
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource

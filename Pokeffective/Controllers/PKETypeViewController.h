@@ -10,4 +10,8 @@
 
 @interface PKETypeViewController : UICollectionViewController
 
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *clearButton;
+
+- (IBAction)clearButtonTapped:(id)sender;
+
 @end
