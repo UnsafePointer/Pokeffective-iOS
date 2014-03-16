@@ -63,9 +63,7 @@
 {
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    @weakify(self);
     [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-        @strongify(self);
         if(granted) {
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
             if ([accounts count] > 0) {
@@ -81,6 +79,7 @@
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:true];
                 [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
                     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:false];
+                    @weakify(self);
                     dispatch_async(dispatch_get_main_queue(), ^{
                         @strongify(self);
                         if ([urlResponse statusCode] == 200) {

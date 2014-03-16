@@ -44,9 +44,8 @@ static void * PKEListViewControllerContext = &PKEListViewControllerContext;
                                            options:NSKeyValueObservingOptionNew
                                            context:PKEListViewControllerContext];
     [SVProgressHUD show];
-    @weakify(self);
     [[PKEPokemonManager sharedManager] getPokemonsWithCompletion:^(NSArray *array, NSError *error) {
-        @strongify(self);
+        @weakify(self);
         dispatch_async(dispatch_get_main_queue(), ^{
             @strongify(self);
             [SVProgressHUD dismiss];
@@ -67,9 +66,8 @@ static void * PKEListViewControllerContext = &PKEListViewControllerContext;
     if (context == PKEListViewControllerContext) {
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(filteringPokedexType))] ||
             [keyPath isEqualToString:NSStringFromSelector(@selector(filteringPokemonType))]) {
-            @weakify(self);
             [[PKEPokemonManager sharedManager] getPokemonsWithCompletion:^(NSArray *array, NSError *error) {
-                @strongify(self);
+                @weakify(self);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     @strongify(self);
                     if (!error) {

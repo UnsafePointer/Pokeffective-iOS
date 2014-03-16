@@ -38,9 +38,8 @@
                                                                            target:self
                                                                            action:@selector(chartButtonTapped:)];
     [self.navigationItem setRightBarButtonItems:@[searchBarButtonItem, filterBarButtonItem]];
-    @weakify(self)
     [[PKEPokemonManager sharedManager] getPartyWithCompletion:^(NSArray *array, NSError *error) {
-        @strongify(self)
+        @weakify(self)
         dispatch_async(dispatch_get_main_queue(), ^{
             @strongify(self);
             if (!error) {
@@ -154,7 +153,6 @@
 {
     if (buttonIndex == 0) {
         PKEPokemon *pokemon = [[self dataSource] objectAtIndex:[[self selectedIndexPath] row]];
-        @weakify(self)
         [[PKEPokemonManager sharedManager] removePokemonFromParty:pokemon
                                                        completion:^(BOOL result, NSError *error) {
                                                            @weakify(self)
