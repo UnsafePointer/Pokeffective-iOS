@@ -21,7 +21,7 @@
 
 @implementation PKEPokemonListViewController
 
-static void * PKEListViewControllerContext = &PKEListViewControllerContext;
+static void * PKEPokemonListViewControllerContext = &PKEPokemonListViewControllerContext;
 
 - (void)viewDidLoad
 {
@@ -38,11 +38,11 @@ static void * PKEListViewControllerContext = &PKEListViewControllerContext;
     [[PKEPokemonManager sharedManager] addObserver:self
                                         forKeyPath:NSStringFromSelector(@selector(filteringPokedexType))
                                            options:NSKeyValueObservingOptionNew
-                                           context:PKEListViewControllerContext];
+                                           context:PKEPokemonListViewControllerContext];
     [[PKEPokemonManager sharedManager] addObserver:self
                                         forKeyPath:NSStringFromSelector(@selector(filteringPokemonType))
                                            options:NSKeyValueObservingOptionNew
-                                           context:PKEListViewControllerContext];
+                                           context:PKEPokemonListViewControllerContext];
     [SVProgressHUD show];
     [[PKEPokemonManager sharedManager] getPokemonsWithCompletion:^(NSArray *array, NSError *error) {
         @weakify(self);
@@ -63,7 +63,7 @@ static void * PKEListViewControllerContext = &PKEListViewControllerContext;
                         change:(NSDictionary *)change
                        context:(void *)context
 {
-    if (context == PKEListViewControllerContext) {
+    if (context == PKEPokemonListViewControllerContext) {
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(filteringPokedexType))] ||
             [keyPath isEqualToString:NSStringFromSelector(@selector(filteringPokemonType))]) {
             [[PKEPokemonManager sharedManager] getPokemonsWithCompletion:^(NSArray *array, NSError *error) {

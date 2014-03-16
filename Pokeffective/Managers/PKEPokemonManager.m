@@ -93,6 +93,19 @@ static dispatch_once_t oncePredicate;
     [[self coreDataHelper] getPartyWithCompletion:completionBlock];
 }
 
+- (void)getMovesForPokemon:(PKEPokemon *)pokemon
+                completion:(ArrayCompletionBlock)completionBlock
+{
+    
+}
+
+- (void)addMove:(PKEMove *)move
+      toPokemon:(PKEPokemon *)pokemon
+     completion:(BooleanCompletionBlock)completionBlock
+{
+    
+}
+
 - (NSArray *)getMoveset
 {
     NSArray *database = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Moveset"
@@ -114,6 +127,11 @@ static dispatch_once_t oncePredicate;
 - (NSString *)nameForType:(PKEPokemonType)pokemonType
 {
     return [[self formatHelper] nameForType:pokemonType];
+}
+
+- (NSString *)nameForCategory:(PKEMoveCategory)moveCategory
+{
+    return [[self formatHelper] nameForCategory:moveCategory];
 }
 
 - (PKEPokedexType)pokedexTypeForIndexPath:(NSIndexPath *)indexPath

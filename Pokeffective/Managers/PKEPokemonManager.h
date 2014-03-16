@@ -9,23 +9,32 @@
 #import <Foundation/Foundation.h>
 
 @class PKEPokemon;
+@class PKEMove;
 
 @interface PKEPokemonManager : NSObject
 
 @property (nonatomic, assign) PKEPokedexType filteringPokedexType;
 @property (nonatomic, assign) PKEPokemonType filteringPokemonType;
+@property (nonatomic, assign) PKEPokemonType filteringMoveType;
+@property (nonatomic, assign) PKEMoveMethod filteringMoveMethod;
 
 + (instancetype)sharedManager;
 
 - (void)getPokemonsWithCompletion:(ArrayCompletionBlock)completionBlock;
+- (void)getPartyWithCompletion:(ArrayCompletionBlock)completionBlock;
 - (void)addPokemonToParty:(PKEPokemon *)pokemon
                completion:(BooleanCompletionBlock)completionBlock;
 - (void)removePokemonFromParty:(PKEPokemon *)pokemon
                     completion:(BooleanCompletionBlock)completionBlock;
-- (void)getPartyWithCompletion:(ArrayCompletionBlock)completionBlock;
+- (void)getMovesForPokemon:(PKEPokemon *)pokemon
+                completion:(ArrayCompletionBlock)completionBlock;
+- (void)addMove:(PKEMove *)move
+      toPokemon:(PKEPokemon *)pokemon
+     completion:(BooleanCompletionBlock)completionBlock;
 
 - (UIColor *)colorForType:(PKEPokemonType)pokemonType;
 - (NSString *)nameForType:(PKEPokemonType)pokemonType;
+- (NSString *)nameForCategory:(PKEMoveCategory)moveCategory;
 - (PKEPokedexType)pokedexTypeForIndexPath:(NSIndexPath *)indexPath;
 - (NSIndexPath *)indexPathForPokedexType:(PKEPokedexType)pokedexType;
 

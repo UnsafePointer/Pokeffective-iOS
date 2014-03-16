@@ -81,6 +81,20 @@
     }
 }
 
+- (NSString *)nameForCategory:(PKEMoveCategory)moveCategory
+{
+    switch (moveCategory) {
+        case PKEMoveCategoryNone:
+            return @"None";
+        case PKEMoveCategoryNonDamaging:
+            return @"Non damaging";
+        case PKEMoveCategoryPhysical:
+            return @"Physical";
+        case PKEMoveCategorySpecial:
+            return @"Special";
+    }
+}
+
 - (PKEPokedexType)pokedexTypeForIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath row] == 0) {

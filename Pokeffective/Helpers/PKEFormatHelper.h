@@ -12,6 +12,7 @@
 
 - (UIColor *)colorForType:(PKEPokemonType)pokemonType;
 - (NSString *)nameForType:(PKEPokemonType)pokemonType;
+- (NSString *)nameForCategory:(PKEMoveCategory)moveCategory;
 - (PKEPokedexType)pokedexTypeForIndexPath:(NSIndexPath *)indexPath;
 - (NSIndexPath *)indexPathForPokedexType:(PKEPokedexType)pokedexType;
 
