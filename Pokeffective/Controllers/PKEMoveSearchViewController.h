@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "PKEMoveTableViewController.h"
 
 @interface PKEMoveSearchViewController : PKEMoveTableViewController

@@ -141,7 +141,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFY-8Y-7Sc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchBar contentMode="redraw" showsCancelButton="YES" id="f5q-d7-Up5">
+                <searchBar contentMode="redraw" placeholder="Search for a pokémon" showsCancelButton="YES" id="f5q-d7-Up5">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textInputTraits key="textInputTraits"/>
@@ -791,10 +791,10 @@
             </objects>
             <point key="canvasLocation" x="2003" y="500"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Move Search View Controller - Search-->
         <scene sceneID="4LT-Lo-8XM">
             <objects>
-                <tableViewController id="M6b-5r-MpP" sceneMemberID="viewController">
+                <tableViewController id="M6b-5r-MpP" customClass="PKEMoveSearchViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AJF-FM-IWR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -814,9 +814,29 @@
                             <outlet property="delegate" destination="M6b-5r-MpP" id="sI4-8n-zDn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="z6V-FD-LUB"/>
+                    <navigationItem key="navigationItem" title="Search" id="z6V-FD-LUB"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="IzV-yj-axM" id="z5s-q9-LHj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="drE-6B-8yA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" placeholder="Search for a move" showsCancelButton="YES" id="1lm-Ub-LUv">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="M6b-5r-MpP" id="QbI-ZO-u3I"/>
+                    </connections>
+                </searchBar>
+                <searchDisplayController id="IzV-yj-axM">
+                    <connections>
+                        <outlet property="delegate" destination="M6b-5r-MpP" id="7bS-ph-rQb"/>
+                        <outlet property="searchBar" destination="1lm-Ub-LUv" id="Z1S-2Q-dgM"/>
+                        <outlet property="searchContentsController" destination="M6b-5r-MpP" id="Pve-YQ-cY1"/>
+                        <outlet property="searchResultsDataSource" destination="M6b-5r-MpP" id="0Op-Vm-qCQ"/>
+                        <outlet property="searchResultsDelegate" destination="M6b-5r-MpP" id="XdJ-UQ-6aQ"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2003" y="1257"/>
         </scene>

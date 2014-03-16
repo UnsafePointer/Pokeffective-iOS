@@ -79,7 +79,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - PKETableViewControllerDataSource
+#pragma mark - PKEPokemonTableViewControllerDataSource
 
 - (PKEPokemon *)getPokemonForIndexPath:(NSIndexPath *)indexPath
                            inTableView:(UITableView *)tableView
