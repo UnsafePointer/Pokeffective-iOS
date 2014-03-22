@@ -12,7 +12,6 @@
 
 - (void)addBackgroundLayersWithColor:(UIColor *)color;
 - (void)addBackgroundLayersWithFirstColor:(UIColor *)firstColor
-                              secondColor:(UIColor *)secondColor
-                         middleWhitespace:(BOOL)middleWhitespace;
+                              secondColor:(UIColor *)secondColor;
 
 @end

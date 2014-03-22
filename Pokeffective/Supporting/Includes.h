@@ -75,6 +75,13 @@ typedef NS_ENUM(NSInteger, PKEFilerType) {
     kPKEFilerTypeMoves
 };
 
+typedef NS_ENUM(NSInteger, PKEEffectiveness) {
+    PKEEffectivenessNoEffect = 0,
+    PKEEffectivenessNotVeryEffective = 50,
+    PKEEffectivenessNormal = 100,
+    PKEEffectivenessSuperEffective = 200
+};
+
 #define FIRST_TYPE_SLOT 1
 #define SECOND_TYPE_SLOT 2
 #define TOTAL_POKEMON_TYPES 18

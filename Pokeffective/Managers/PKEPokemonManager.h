@@ -35,10 +35,13 @@
 - (void)removeMove:(PKEMove *)move
          toPokemon:(PKEPokemon *)pokemon
         completion:(BooleanCompletionBlock)completionBlock;
+- (void)calculatePokeffectiveWithParty:(NSArray *)party
+                            completion:(ArrayCompletionBlock)completionBlock;
 
 - (UIColor *)colorForType:(PKEPokemonType)pokemonType;
 - (NSString *)nameForType:(PKEPokemonType)pokemonType;
 - (NSString *)nameForCategory:(PKEMoveCategory)moveCategory;
+- (NSString *)nameForEffectiveness:(PKEEffectiveness)effectiveness;
 
 - (PKEPokedexType)pokedexTypeForIndexPath:(NSIndexPath *)indexPath;
 - (PKEMoveCategory)moveCategoryForIndexPath:(NSIndexPath *)indexPath;
@@ -48,7 +51,6 @@
 - (NSIndexPath *)indexPathForMoveMethod:(PKEMoveMethod)moveMethod;
 - (NSIndexPath *)indexPathForMoveCategory:(PKEMoveCategory)moveCategory;
 
-- (NSString *)getRandomEffective;
 - (UIColor *)getColorForEffective:(NSString *)effective;
 
 @end

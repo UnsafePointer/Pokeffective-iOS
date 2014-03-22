@@ -16,6 +16,7 @@
 #import "PKELabel.h"
 #import "PKEPartyCollectionViewFlowLayout.h"
 #import "TLAlertView.h"
+#import "PKEEffectiveViewController.h"
 
 @interface PKEPartyViewController () <PKEPokemonTableViewControllerDelegate, UIActionSheetDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -90,6 +91,10 @@
     if ([[segue identifier] isEqualToString:@"AddSegue"]) {
         PKEPokemonListViewController *controller = [segue destinationViewController];
         [controller setDelegate:self];
+    }
+    if ([[segue identifier] isEqualToString:@"EffectiveSegue"]) {
+        PKEEffectiveViewController *controller = [segue destinationViewController];
+        [controller setParty:[self dataSource]];
     }
 }
 

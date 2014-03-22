@@ -419,52 +419,61 @@
             </objects>
             <point key="canvasLocation" x="-154" y="-267"/>
         </scene>
-        <!--Effective View Controller - Results-->
-        <scene sceneID="sE5-oG-FW1">
+        <!--Effective View Controller - Pokeffective-->
+        <scene sceneID="Ecc-y6-Gqz">
             <objects>
-                <tableViewController id="g1O-j2-TVl" customClass="PKEEffectiveViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lEy-ey-VX8">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="VBk-pe-gkc" customClass="PKEEffectiveViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="w2Y-gY-j7E">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EffectiveCell" id="nwG-gL-0us" customClass="PKEEffectiveCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1lG-tA-AET" customClass="PKEEffectiveCollectionViewFlow">
+                            <size key="itemSize" width="300" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EffectiveCollectionViewCell" id="Xaz-G8-wWL" customClass="PKEEffectiveCollectionViewCell">
+                                <rect key="frame" x="10" y="10" width="300" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nwG-gL-0us" id="nLh-Wq-U0k">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Grass" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMB-SG-JKA">
-                                            <rect key="frame" x="20" y="11" width="130" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ground" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNz-1d-UkI">
+                                            <rect key="frame" x="20" y="14" width="120" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Super-effective" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbA-X9-uDX">
-                                            <rect key="frame" x="170" y="11" width="130" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Super Effective" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Xp-Bq-KEU">
+                                            <rect key="frame" x="160" y="14" width="120" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                </tableViewCellContentView>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
                                 <connections>
-                                    <outlet property="lblEffective" destination="tbA-X9-uDX" id="Fst-pb-Zd7"/>
-                                    <outlet property="lblType" destination="vMB-SG-JKA" id="F2U-Zb-DOS"/>
+                                    <outlet property="lblEffective" destination="5Xp-Bq-KEU" id="vlJ-LC-jsX"/>
+                                    <outlet property="lblType" destination="HNz-1d-UkI" id="5UM-ke-uPN"/>
                                 </connections>
-                            </tableViewCell>
-                        </prototypes>
+                            </collectionViewCell>
+                        </cells>
                         <connections>
-                            <outlet property="dataSource" destination="g1O-j2-TVl" id="vTI-gD-tHT"/>
-                            <outlet property="delegate" destination="g1O-j2-TVl" id="oHP-uz-UEg"/>
+                            <outlet property="dataSource" destination="VBk-pe-gkc" id="yPG-kI-sBw"/>
+                            <outlet property="delegate" destination="VBk-pe-gkc" id="MU9-Qj-V8n"/>
                         </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Results" id="FJU-NG-IAc"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ht5-cT-A7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Pokeffective" id="QrB-Vd-irI">
+                        <barButtonItem key="backBarButtonItem" title=" " id="8sA-hQ-bRR"/>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SFq-ea-4ek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="396" y="500"/>
         </scene>
@@ -809,9 +818,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="g1O-j2-TVl" kind="push" identifier="EffectiveSegue" id="8V2-EM-v65"/>
                         <segue destination="ala-hg-4dS" kind="push" identifier="AddSegue" id="fba-kO-RCo"/>
                         <segue destination="moo-MJ-wWl" kind="push" identifier="MovesetSegue" id="sEc-bv-0Ky"/>
+                        <segue destination="VBk-pe-gkc" kind="push" identifier="EffectiveSegue" id="rb3-bx-Vnh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GPz-3L-IQB" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PKETableViewCell.h"
+#import "PKECollectionViewCell.h"
 
-@interface PKEEffectiveCell : PKETableViewCell
+@interface PKEEffectiveCollectionViewCell : PKECollectionViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *lblType;
 @property (nonatomic, weak) IBOutlet UILabel *lblEffective;

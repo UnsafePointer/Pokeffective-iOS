@@ -13,12 +13,16 @@
 #import "PKEFormatHelper.h"
 #import "PKESQLiteHelper.h"
 #import "PKECoreDataHelper.h"
+#import "PKEEffective.h"
+#import "PKESTAB.h"
 
 @interface PKEPokemonManager ()
 
 @property (nonatomic, strong) PKEFormatHelper *formatHelper;
 @property (nonatomic, strong) PKESQLiteHelper *sqliteHelper;
 @property (nonatomic, strong) PKECoreDataHelper *coreDataHelper;
+
+- (void)getEfficacyWithCompletion:(ObjectCompletionBlock)completionBlock;
 
 @end
 
@@ -124,6 +128,60 @@ static dispatch_once_t oncePredicate;
                            completion:completionBlock];
 }
 
+- (void)getEfficacyWithCompletion:(ObjectCompletionBlock)completionBlock
+{
+    [[self sqliteHelper] getEfficacyWithCompletion:completionBlock];
+}
+
+- (void)calculatePokeffectiveWithParty:(NSArray *)party
+                            completion:(ArrayCompletionBlock)completionBlock;
+{
+    [self getEfficacyWithCompletion:^(id object, NSError *error) {
+        NSDictionary *efficacy = (NSDictionary *)object;
+        NSMutableArray *pokeffective = [NSMutableArray arrayWithCapacity:TOTAL_POKEMON_TYPES];
+        for (PKEPokemonType pokemonTypeTarget = PKEPokemonTypeNormal; pokemonTypeTarget <= TOTAL_POKEMON_TYPES; pokemonTypeTarget++) {
+            NSArray *typeEfficacy = [efficacy objectForKey:[NSNumber numberWithInt:pokemonTypeTarget]];
+            PKEEffectiveness effectiviness = PKEEffectivenessNoEffect;
+            NSMutableArray *STABers = [NSMutableArray array];
+            for (PKEPokemon *pokemon in party) {
+                PKESTAB *STAB = nil;
+                for (PKEMove *move in [pokemon moves]) {
+                    PKEEffectiveness comparison = [[typeEfficacy objectAtIndex:([move type] - 1)] unsignedIntegerValue];
+                    if (comparison > effectiviness) {
+                        effectiviness = comparison;
+                    }
+                    if (effectiviness == PKEEffectivenessSuperEffective) {
+                        if ([move type] == [pokemon firstType] || [move type] == [pokemon secondType]) {
+                            NSMutableArray *moves = nil;
+                            if (STAB == nil) {
+                                STAB = [PKESTAB new];
+                                [STAB setPokemon:pokemon];
+                                moves = [[NSMutableArray alloc] init];
+                            }
+                            else {
+                                moves = [NSMutableArray arrayWithArray:[STAB moves]];
+                            }
+                            [moves addObject:move];
+                            [STAB setMoves:[moves copy]];
+                        }
+                    }
+                }
+                if (STAB) {
+                    [STABers addObject:STAB];
+                }
+            }
+            PKEEffective *effective = [PKEEffective new];
+            [effective setPokemonType:pokemonTypeTarget];
+            [effective setEffectiveness:effectiviness];
+            [effective setSTABers:[STABers copy]];
+            [pokeffective addObject:effective];
+        }
+        if (completionBlock) {
+            completionBlock(pokeffective, nil);
+        }
+    }];
+}
+
 - (UIColor *)colorForType:(PKEPokemonType)pokemonType
 {
     return [[self formatHelper] colorForType:pokemonType];
@@ -137,6 +195,11 @@ static dispatch_once_t oncePredicate;
 - (NSString *)nameForCategory:(PKEMoveCategory)moveCategory
 {
     return [[self formatHelper] nameForCategory:moveCategory];
+}
+
+- (NSString *)nameForEffectiveness:(PKEEffectiveness)effectiveness
+{
+    return [[self formatHelper] nameForEffectiveness:effectiveness];
 }
 
 - (PKEPokedexType)pokedexTypeForIndexPath:(NSIndexPath *)indexPath

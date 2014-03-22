@@ -95,6 +95,20 @@
     }
 }
 
+- (NSString *)nameForEffectiveness:(PKEEffectiveness)effectiveness;
+{
+    switch (effectiveness) {
+        case PKEEffectivenessNoEffect:
+            return @"No effect";
+        case PKEEffectivenessNotVeryEffective:
+            return @"No very effective";
+        case PKEEffectivenessNormal:
+            return @"Normal";
+        case PKEEffectivenessSuperEffective:
+            return @"Super effective";
+    }
+}
+
 - (PKEPokedexType)pokedexTypeForIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath row] == 0) {

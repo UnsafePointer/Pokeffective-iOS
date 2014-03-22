@@ -143,4 +143,38 @@
     }];
 }
 
+- (void)getEfficacyWithCompletion:(ObjectCompletionBlock)completionBlock
+{
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[[NSBundle mainBundle]
+                                                                     pathForResource:@"PokeffectiveData"
+                                                                     ofType:@"sqlite"]];
+    @weakify(self);
+    [queue inDatabase:^(FMDatabase *db) {
+        @strongify(self);
+        NSString *query = [[self queryHelper] efficacy];
+        FMResultSet *resultSet = [db executeQuery:query];
+        NSMutableDictionary *efficacy = [[NSMutableDictionary alloc] init];
+        while ([resultSet next]) {
+            PKEPokemonType damager = [resultSet intForColumn:@"damager"];
+            PKEPokemonType target = [resultSet intForColumn:@"target"];
+            PKEEffectiveness effectiveness = [resultSet intForColumn:@"factor"];
+            NSMutableArray *type = [efficacy objectForKey:[NSNumber numberWithInt:damager]];
+            if (!type) {
+                type = [[NSMutableArray alloc] initWithCapacity:TOTAL_POKEMON_TYPES];
+                for (int i = 0; i < TOTAL_POKEMON_TYPES; i++) {
+                    [type addObject:[NSNull null]];
+                }
+            }
+            [type replaceObjectAtIndex:(target - 1)
+                            withObject:[NSNumber numberWithInt:effectiveness]];
+            [efficacy setObject:type
+                         forKey:[NSNumber numberWithInt:damager]];
+        }
+        [db close];
+        if (completionBlock) {
+            completionBlock([efficacy copy], nil);
+        }
+    }];
+}
+
 @end

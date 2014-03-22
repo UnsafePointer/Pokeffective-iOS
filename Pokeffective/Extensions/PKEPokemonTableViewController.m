@@ -94,7 +94,7 @@
     else {
         [[tableViewCell lblTypes] setText:[NSString stringWithFormat:@"%@ / %@", [[PKEPokemonManager sharedManager] nameForType:[pokemon firstType]],  [[PKEPokemonManager sharedManager] nameForType:[pokemon secondType]]]];
         [tableViewCell addBackgroundLayersWithFirstColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon firstType]]
-                                             secondColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon secondType]] middleWhitespace:NO];
+                                             secondColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon secondType]]];
     }
     
 }

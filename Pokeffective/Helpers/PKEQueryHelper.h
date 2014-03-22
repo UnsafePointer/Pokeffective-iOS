@@ -21,5 +21,6 @@
                                        moveType:(PKEPokemonType)moveType
                                    moveCategory:(PKEMoveCategory)moveCategory
                                     fromPokemon:(PKEPokemon *)pokemon;
+- (NSString *)efficacy;
 
 @end

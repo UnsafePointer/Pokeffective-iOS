@@ -97,4 +97,12 @@
             "  pt.slot = %d", identifier, typeSlot];
 }
 
+- (NSString *)efficacy
+{
+    return @"select damage_type_id as damager, "
+            " target_type_id as target, "
+            " damage_factor as factor "
+            "from type_efficacy ";
+}
+
 @end

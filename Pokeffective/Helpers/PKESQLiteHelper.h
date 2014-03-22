@@ -20,5 +20,6 @@
        filteringMoveMethod:(PKEMoveMethod)moveMethod
      filteringMoveCategory:(PKEMoveCategory)moveCategory
                 completion:(ArrayCompletionBlock)completionBlock;
+- (void)getEfficacyWithCompletion:(ObjectCompletionBlock)completionBlock;
 
 @end

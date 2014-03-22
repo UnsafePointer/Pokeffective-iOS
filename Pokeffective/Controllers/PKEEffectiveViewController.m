@@ -7,12 +7,13 @@
 //
 
 #import "PKEEffectiveViewController.h"
-#import "PKEEffectiveCell.h"
+#import "PKEEffectiveCollectionViewCell.h"
 #import "PKEPokemonManager.h"
+#import "PKEEffective.h"
 
 @interface PKEEffectiveViewController ()
 
-@property (nonatomic, strong) NSDictionary *dataSource;
+@property (nonatomic, strong) NSArray *dataSource;
 
 @end
 
@@ -21,8 +22,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setDataSource:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Types"
-                                                                                                   ofType:@"plist"]]];
+    [SVProgressHUD show];
+    [[PKEPokemonManager sharedManager] calculatePokeffectiveWithParty:[self party]
+                                                           completion:^(NSArray *array, NSError *error) {
+                                                               @weakify(self);
+                                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                                   @strongify(self);
+                                                                   [SVProgressHUD dismiss];
+                                                                   if (!error) {
+                                                                       [self setDataSource:array];
+                                                                       [[self collectionView] reloadData];
+                                                                   }
+                                                               });
+                                                           }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -30,40 +42,32 @@
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark - UICollectionViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section;
 {
-    return [[[self dataSource] allKeys] count];
+    return [[self dataSource] count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    static NSString *CellIdentifier = @"EffectiveCell";
-    PKEEffectiveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
-                                                             forIndexPath:indexPath];
-    [self configureTableViewCell:cell
-                    forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"EffectiveCollectionViewCell";
+    PKEEffectiveCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier
+                                                                                     forIndexPath:indexPath];
+    [self configureCollectionViewCell:cell
+                         forIndexPath:indexPath];
     return cell;
 }
 
 #pragma mark - Private Methods
 
-- (void)configureTableViewCell:(PKEEffectiveCell *)tableViewCell
+- (void)configureCollectionViewCell:(PKEEffectiveCollectionViewCell *)collectionViewCell
                   forIndexPath:(NSIndexPath *)indexPath
 {
-    [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
-    NSArray *keys = [[self dataSource] allKeys];
-    keys = [keys sortedArrayUsingComparator:^(id a, id b) {
-        return [a compare:b options:NSCaseInsensitiveSearch];
-    }];
-    NSString *key = [keys objectAtIndex:[indexPath row]];
-    [[tableViewCell lblType] setText:key];
-    NSString *randomEffective = [[PKEPokemonManager sharedManager] getRandomEffective];
-    [[tableViewCell lblEffective] setText:randomEffective];
-//    [tableViewCell addBackgroundLayersWithFirstColor:[[PKEDataBaseManager sharedManager] getColorForType:key]
-//                                         secondColor:[[PKEDataBaseManager sharedManager] getColorForEffective:randomEffective]
-//                                    middleWhitespace:YES];
+    PKEEffective *effective = [[self dataSource] objectAtIndex:[indexPath row]];
+    [[collectionViewCell lblType] setText:[[PKEPokemonManager sharedManager] nameForType:[effective pokemonType]]];
+    [[collectionViewCell lblEffective] setText:[[PKEPokemonManager sharedManager] nameForEffectiveness:[effective effectiveness]]];
+    [collectionViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[effective pokemonType]]];
 }
 
 @end

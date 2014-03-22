@@ -55,41 +55,24 @@
 
 - (void)addBackgroundLayersWithFirstColor:(UIColor *)firstColor
                               secondColor:(UIColor *)secondColor
-                         middleWhitespace:(BOOL)middleWhitespace
 {
     [self checkAndRemovePreviousLayers];
     CAGradientLayer *backgroundGradient = [CAGradientLayer layer];
     backgroundGradient.startPoint = CGPointMake(0, 0.5);
     backgroundGradient.endPoint = CGPointMake(1.0, 0.5);
     backgroundGradient.frame = self.bounds;
-    if (middleWhitespace) {
-        backgroundGradient.colors = [NSArray arrayWithObjects:(__bridge id)[firstColor CGColor],
-                                     (__bridge id)[[UIColor whiteColor] CGColor],
-                                     (__bridge id)[secondColor CGColor],
-                                     nil];
-    }
-    else {
-        backgroundGradient.colors = [NSArray arrayWithObjects:(__bridge id)[firstColor CGColor],
-                                     (__bridge id)[secondColor CGColor],
-                                     nil];
-    }
+    backgroundGradient.colors = [NSArray arrayWithObjects:(__bridge id)[firstColor CGColor],
+                                 (__bridge id)[secondColor CGColor],
+                                 nil];
     [self.backgroundView.layer insertSublayer:backgroundGradient
                                       atIndex:0];
     CAGradientLayer *selectedBackgroundGradient = [CAGradientLayer layer];
     selectedBackgroundGradient.startPoint = CGPointMake(0, 0.5);
     selectedBackgroundGradient.endPoint = CGPointMake(1.0, 0.5);
     selectedBackgroundGradient.frame = self.bounds;
-    if (middleWhitespace) {
-        backgroundGradient.colors = [NSArray arrayWithObjects:(__bridge id)[[firstColor darkerColor] CGColor],
-                                     (__bridge id)[[UIColor whiteColor] CGColor],
-                                     (__bridge id)[[secondColor darkerColor] CGColor],
-                                     nil];
-    }
-    else {
-        selectedBackgroundGradient.colors = [NSArray arrayWithObjects:(__bridge id)[[firstColor darkerColor] CGColor],
-                                             (__bridge id)[[secondColor darkerColor] CGColor],
-                                             nil];
-    }
+    selectedBackgroundGradient.colors = [NSArray arrayWithObjects:(__bridge id)[[firstColor darkerColor] CGColor],
+                                         (__bridge id)[[secondColor darkerColor] CGColor],
+                                         nil];
     [self.selectedBackgroundView.layer insertSublayer:selectedBackgroundGradient
                                               atIndex:0];
 }

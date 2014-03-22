@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PKEEffectiveViewController : UITableViewController
+@interface PKEEffectiveViewController : UICollectionViewController
+
+@property (nonatomic, strong) NSArray *party;
 
 @end
