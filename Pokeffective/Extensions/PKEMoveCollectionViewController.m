@@ -43,7 +43,7 @@
 - (void)configureNoContentLabel
 {
     PKELabel *lblNoContent = [[PKELabel alloc] initWithFrame:self.view.bounds
-                                               andEdgeInsets:UIEdgeInsetsMake(44 + 20 + 50, 50, 50, 50)];
+                                               andEdgeInsets:UIEdgeInsetsMake(0, 50, 0, 50)];
     [lblNoContent setNumberOfLines:0];
     [lblNoContent setTextAlignment:NSTextAlignmentCenter];
     [lblNoContent setTextColor:[UIColor colorWithHexString:@"#898C90"]];
@@ -61,7 +61,6 @@
     [collectionView setDelegate:self];
     [collectionView setBackgroundColor:[UIColor whiteColor]];
     [collectionView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
-    [collectionView setContentInset:UIEdgeInsetsMake(44 + 20, 0, 0, 0)];
     [[self view] addSubview:collectionView];
     [self setCollectionView:collectionView];
 }
