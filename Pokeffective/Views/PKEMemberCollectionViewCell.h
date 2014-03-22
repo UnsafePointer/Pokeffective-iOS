@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PKECollectionViewCell.h"
 
-@interface PKEMemberCell : PKECollectionViewCell
+@interface PKEMemberCollectionViewCell : PKECollectionViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *lblName;
 @property (nonatomic, weak) IBOutlet UIImageView *imgPicture;

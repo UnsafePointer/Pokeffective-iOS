@@ -4,78 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Party View Controller - Party-->
-        <scene sceneID="rvc-Cp-4Ks">
-            <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="pPy-XH-DzP" customClass="PKEPartyViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="AaE-9x-Yy2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="ABt-jk-xET" customClass="PKEPartyCollectionViewFlowLayout">
-                            <size key="itemSize" width="145" height="186"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemberCell" id="Ldd-vj-Hy1" customClass="PKEMemberCell">
-                                <rect key="frame" x="10" y="74" width="145" height="186"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="145" height="186"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Charizard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUw-Gl-atn">
-                                            <rect key="frame" x="20" y="155" width="105" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eHu-ch-ZQG">
-                                            <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <connections>
-                                    <outlet property="imgPicture" destination="eHu-ch-ZQG" id="7FT-9N-zNb"/>
-                                    <outlet property="lblName" destination="gUw-Gl-atn" id="b3a-k2-w4g"/>
-                                    <segue destination="lc0-hS-ftr" kind="push" identifier="MovesetSegue" id="i3D-95-3XG"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="pPy-XH-DzP" id="lDw-TH-4ni"/>
-                            <outlet property="delegate" destination="pPy-XH-DzP" id="15F-Yr-gzK"/>
-                            <outletCollection property="gestureRecognizers" destination="Fjn-9d-Cw7" appends="YES" id="LkY-mK-WL7"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="Party" id="FHU-t9-DoE">
-                        <barButtonItem key="backBarButtonItem" title=" " id="Db7-Jy-CaH"/>
-                        <barButtonItem key="leftBarButtonItem" image="Info" id="zzj-24-oTq">
-                            <connections>
-                                <segue destination="JIf-bl-h57" kind="push" id="3jl-lP-Smy"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="g1O-j2-TVl" kind="push" identifier="EffectiveSegue" id="9Ps-bn-uzh"/>
-                        <segue destination="ala-hg-4dS" kind="push" identifier="AddSegue" id="ksN-cu-6Em"/>
-                    </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5L5-Uy-QuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Fjn-9d-Cw7">
-                    <connections>
-                        <action selector="onLongPressMemberCell:" destination="pPy-XH-DzP" id="RVs-ac-IPA"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="396" y="-267"/>
-        </scene>
         <!--Pokemon Search View Controller - Search-->
         <scene sceneID="nYH-E6-YBB">
             <objects>
@@ -484,7 +412,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="pPy-XH-DzP" kind="relationship" relationship="rootViewController" id="38R-Ge-Nb5"/>
+                        <segue destination="JD2-fe-fBj" kind="relationship" relationship="rootViewController" id="tUW-16-YXp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nDU-ut-Em2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -899,6 +827,42 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2003" y="1257"/>
+        </scene>
+        <!--Party View Controller - Party-->
+        <scene sceneID="03d-jG-pYk">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="JD2-fe-fBj" customClass="PKEPartyViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="51K-gA-86H"/>
+                        <viewControllerLayoutGuide type="bottom" id="Aca-hc-84j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O6a-rp-JNy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Party" id="6H3-99-Hz2">
+                        <barButtonItem key="backBarButtonItem" title=" " id="oMR-tN-DTZ"/>
+                        <barButtonItem key="leftBarButtonItem" image="Info" id="LxC-am-PBi">
+                            <connections>
+                                <segue destination="JIf-bl-h57" kind="push" id="JIa-4C-WmP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="g1O-j2-TVl" kind="push" identifier="EffectiveSegue" id="8V2-EM-v65"/>
+                        <segue destination="ala-hg-4dS" kind="push" identifier="AddSegue" id="fba-kO-RCo"/>
+                        <segue destination="lc0-hS-ftr" kind="push" identifier="MovesetSegue" id="rio-Fq-c06"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GPz-3L-IQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="fHE-Gu-vdy">
+                    <connections>
+                        <action selector="onLongPressMemberCell:" destination="JD2-fe-fBj" id="HzV-zT-20q"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="396" y="-267"/>
         </scene>
         <!--About View Controller - About-->
         <scene sceneID="i0V-CS-pQA">

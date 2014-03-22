@@ -10,7 +10,6 @@
 #import "PKEPokemonManager.h"
 #import "PKEMoveTableViewCell.h"
 #import "PKEMove.h"
-#import "PKELabel.h"
 #import "PKEPokemon.h"
 #import "PKEMoveListViewController.h"
 #import "PKEMoveCollectionViewCell.h"
@@ -29,10 +28,6 @@
 {
     [super viewDidLoad];
     [self setTitle:[[self pokemon] name]];
-    UINib *nib = [UINib nibWithNibName:@"PKEMoveCollectionViewCell"
-                                bundle:[NSBundle mainBundle]];
-    [[self collectionView] registerNib:nib
-            forCellWithReuseIdentifier:@"MoveCollectionViewCell"];
     if (![[self pokemon] moves]) {
         [self setDataSource:[NSArray array]];
     }

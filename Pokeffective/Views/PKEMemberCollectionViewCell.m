@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "PKEMemberCell.h"
+#import "PKEMemberCollectionViewCell.h"
 
-@implementation PKEMemberCell
+@implementation PKEMemberCollectionViewCell
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

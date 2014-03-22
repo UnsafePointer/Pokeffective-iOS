@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PKEPartyViewController : UICollectionViewController
-
-- (IBAction)onLongPressMemberCell:(id)sender;
+@interface PKEPartyViewController : UIViewController
 
 @end
