@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const PKEErrorDomain;
+extern NSString * const PKEErrorPokemonDomain;
+extern NSString * const PKEErrorMoveDomain;
 
 @interface NSError (PokemonError)
 
 + (NSError *)errorSavingMoreThanSixPokemons;
 + (NSError *)errorSavingSamePokemon;
++ (NSError *)errorSavingMoreThanFourMoves;
++ (NSError *)errorSavingSameMove;
 
 @end

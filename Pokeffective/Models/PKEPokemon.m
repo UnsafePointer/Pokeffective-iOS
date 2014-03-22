@@ -7,6 +7,7 @@
 //
 
 #import "PKEPokemon.h"
+#import "PKEMove.h"
 
 @implementation PKEPokemon
 {
@@ -34,14 +35,15 @@
              @"name" : @"name",
              @"firstType" : @"firstType",
              @"secondType" : @"secondType",
-             @"pokedexNumber" : [NSNull null]
+             @"pokedexNumber" : [NSNull null],
+             @"moves" : @"moves"
             };
 }
 
 + (NSDictionary *)relationshipModelClassesByPropertyKey
 {
     return @{
-             @"moves" : @"PKEMoveManagedObject",
+             @"moves" : [PKEMove class],
             };
 }
 

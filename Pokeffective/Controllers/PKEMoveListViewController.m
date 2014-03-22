@@ -32,6 +32,10 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UINib *nib = [UINib nibWithNibName:@"PKEMoveCollectionViewCell"
+                                bundle:[NSBundle mainBundle]];
+    [[self collectionView] registerNib:nib
+            forCellWithReuseIdentifier:@"MoveCollectionViewCell"];
     UIBarButtonItem *searchBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Search"]
                                                                             style:UIBarButtonItemStyleBordered
                                                                            target:self

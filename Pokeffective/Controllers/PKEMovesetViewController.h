@@ -10,8 +10,10 @@
 
 @class PKEPokemon;
 
-@interface PKEMovesetViewController : UITableViewController
+@interface PKEMovesetViewController : UICollectionViewController
 
 @property (nonatomic, strong) PKEPokemon *pokemon;
+
+- (IBAction)onLongPressMoveCell:(id)sender;
 
 @end

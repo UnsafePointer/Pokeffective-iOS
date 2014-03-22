@@ -60,9 +60,14 @@ typedef NS_ENUM(NSUInteger, PKEPokedexType) {
     PKEPokedexTypeKalosMountain,
 };
 
-typedef NS_ENUM(NSInteger, PKEErrorCode) {
+typedef NS_ENUM(NSInteger, PKEErrorCodePokemon) {
     kPKEErrorCodeSavingMoreThanSixPokemons,
     kPKEErrorCodeSavingSamePokemon
+};
+
+typedef NS_ENUM(NSInteger, PKEErrorCodeMove) {
+    kPKEErrorCodeSavingMoreThanFourMoves,
+    kPKEErrorCodeSavingSameMove
 };
 
 typedef NS_ENUM(NSInteger, PKEFilerType) {

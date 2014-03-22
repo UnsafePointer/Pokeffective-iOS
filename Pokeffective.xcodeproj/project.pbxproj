@@ -783,6 +783,7 @@
 		3FDEF34218DD8866006C2D7B /* PKEPokemonCollectionViewFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEF34118DD8866006C2D7B /* PKEPokemonCollectionViewFlow.m */; };
 		3FDEF34518DD914D006C2D7B /* PKEMoveCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEF34418DD914D006C2D7B /* PKEMoveCollectionViewCell.m */; };
 		3FDEF34818DD9456006C2D7B /* PKEMoveCollectionViewFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEF34718DD9456006C2D7B /* PKEMoveCollectionViewFlow.m */; };
+		3FDEF34A18DDA3B6006C2D7B /* PKEMoveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FDEF34918DDA3B6006C2D7B /* PKEMoveCollectionViewCell.xib */; };
 		89EF30601966462586F702FA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82FCB715879F48319E6F6D82 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1610,6 +1611,7 @@
 		3FDEF34418DD914D006C2D7B /* PKEMoveCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMoveCollectionViewCell.m; path = Views/PKEMoveCollectionViewCell.m; sourceTree = "<group>"; };
 		3FDEF34618DD9456006C2D7B /* PKEMoveCollectionViewFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMoveCollectionViewFlow.h; path = Extensions/PKEMoveCollectionViewFlow.h; sourceTree = "<group>"; };
 		3FDEF34718DD9456006C2D7B /* PKEMoveCollectionViewFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMoveCollectionViewFlow.m; path = Extensions/PKEMoveCollectionViewFlow.m; sourceTree = "<group>"; };
+		3FDEF34918DDA3B6006C2D7B /* PKEMoveCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PKEMoveCollectionViewCell.xib; path = Views/PKEMoveCollectionViewCell.xib; sourceTree = "<group>"; };
 		82FCB715879F48319E6F6D82 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8EE4AC78B264D2FB149AB3C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2550,6 +2552,7 @@
 				3F05523D18D6051300AF72D4 /* PKEMoveTableViewCell.xib */,
 				3FDEF34318DD914D006C2D7B /* PKEMoveCollectionViewCell.h */,
 				3FDEF34418DD914D006C2D7B /* PKEMoveCollectionViewCell.m */,
+				3FDEF34918DDA3B6006C2D7B /* PKEMoveCollectionViewCell.xib */,
 				3F13973518CBBAF7009B31A3 /* PKETypeCell.h */,
 				3F13973618CBBAF7009B31A3 /* PKETypeCell.m */,
 				3F375C8318CCB27B00A93DB4 /* PKEMemberCell.h */,
@@ -2770,6 +2773,7 @@
 				3F44F2F718D4747700E02280 /* 058.png in Resources */,
 				3F44F35418D4747700E02280 /* 151.png in Resources */,
 				3F44F34218D4747700E02280 /* 133.png in Resources */,
+				3FDEF34A18DDA3B6006C2D7B /* PKEMoveCollectionViewCell.xib in Resources */,
 				3F44F54718D4747700E02280 /* 650.png in Resources */,
 				3F44F2D118D4747700E02280 /* 020.png in Resources */,
 				3F44F4CC18D4747700E02280 /* 527.png in Resources */,

@@ -44,7 +44,7 @@
                                 <connections>
                                     <outlet property="imgPicture" destination="eHu-ch-ZQG" id="7FT-9N-zNb"/>
                                     <outlet property="lblName" destination="gUw-Gl-atn" id="b3a-k2-w4g"/>
-                                    <segue destination="aHP-iO-nzX" kind="push" identifier="MovesetSegue" id="USa-jX-U1Y"/>
+                                    <segue destination="lc0-hS-ftr" kind="push" identifier="MovesetSegue" id="i3D-95-3XG"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -541,40 +541,54 @@
             <point key="canvasLocation" x="396" y="500"/>
         </scene>
         <!--Moveset View Controller-->
-        <scene sceneID="2BY-et-Et2">
+        <scene sceneID="QIT-Ce-nvu">
             <objects>
-                <tableViewController id="aHP-iO-nzX" customClass="PKEMovesetViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="IJ1-HU-MMd">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="lc0-hS-ftr" customClass="PKEMovesetViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="N5W-7j-BNg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VtB-EL-EiL">
-                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VtB-EL-EiL" id="44t-0J-ouG">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QH6-c4-JRz" customClass="PKEMoveCollectionViewFlow">
+                            <size key="itemSize" width="300" height="65"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="myW-Rz-8sZ">
+                                <rect key="frame" x="10" y="74" width="300" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
                         <connections>
-                            <outlet property="dataSource" destination="aHP-iO-nzX" id="8GJ-61-IZm"/>
-                            <outlet property="delegate" destination="aHP-iO-nzX" id="MRA-uA-PkC"/>
+                            <outlet property="dataSource" destination="lc0-hS-ftr" id="axv-hY-oCu"/>
+                            <outlet property="delegate" destination="lc0-hS-ftr" id="qgg-FL-b5d"/>
+                            <outletCollection property="gestureRecognizers" destination="HDm-jb-vjj" appends="YES" id="6On-ba-zbw"/>
                         </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="dBN-0I-qda">
-                        <barButtonItem key="backBarButtonItem" title=" " id="B53-oy-fao"/>
-                        <barButtonItem key="rightBarButtonItem" image="Add" id="JRE-72-yIi">
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="28n-D4-2Oc">
+                        <barButtonItem key="backBarButtonItem" title=" " id="22t-0x-O5x"/>
+                        <barButtonItem key="rightBarButtonItem" image="Add" id="Qyn-eL-pqa">
                             <connections>
-                                <segue destination="YI5-Da-YgW" kind="push" identifier="MovesSegue" id="iMK-s2-4W4"/>
+                                <segue destination="YI5-Da-YgW" kind="push" identifier="MovesSegue" id="D3P-Uw-C4a"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="o6S-lf-sKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yA1-xT-K0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="HDm-jb-vjj">
+                    <connections>
+                        <action selector="onLongPressMoveCell:" destination="lc0-hS-ftr" id="Jr5-er-WXi"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="936" y="500"/>
+            <point key="canvasLocation" x="942" y="500"/>
         </scene>
         <!--Move List View Controller - Moves-->
         <scene sceneID="QLG-mR-0xA">
@@ -591,42 +605,14 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MoveCollectionViewCell" id="Ceh-Y0-DDk" customClass="PKEMoveCollectionViewCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="Ceh-Y0-DDk">
                                 <rect key="frame" x="10" y="74" width="300" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Special" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OB-tt-4Vw">
-                                            <rect key="frame" x="20" y="30" width="150" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Flamethrower" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Pm-Vv-ajm">
-                                            <rect key="frame" x="20" y="12" width="150" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100 / 100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euV-iT-w0x">
-                                            <rect key="frame" x="178" y="22" width="102" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <connections>
-                                    <outlet property="lblCategory" destination="3OB-tt-4Vw" id="dST-rS-s5y"/>
-                                    <outlet property="lblDetails" destination="euV-iT-w0x" id="vzm-XN-YfY"/>
-                                    <outlet property="lblName" destination="0Pm-Vv-ajm" id="UFj-nc-gJy"/>
-                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

@@ -144,8 +144,8 @@
                                         }];
     }
     else {
-        if ([[error domain] isEqualToString:PKEErrorDomain]) {
-            PKEErrorCode code = [error code];
+        if ([[error domain] isEqualToString:PKEErrorPokemonDomain]) {
+            PKEErrorCodePokemon code = [error code];
             switch (code) {
                 case kPKEErrorCodeSavingMoreThanSixPokemons:
                     [TSMessage showNotificationInViewController:self
@@ -186,6 +186,8 @@
         }
     }
 }
+
+#pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 {

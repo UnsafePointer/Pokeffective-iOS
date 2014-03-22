@@ -13,13 +13,16 @@
 #import "PKELabel.h"
 #import "PKEPokemon.h"
 #import "PKEMoveListViewController.h"
+#import "PKEMoveCollectionViewCell.h"
+#import "NSError+PokemonError.h"
 
-@interface PKEMovesetViewController ()
+@interface PKEMovesetViewController () <PKEMoveTableViewControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) NSArray *dataSource;
+@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 
-- (void)configureTableViewCell:(PKEMoveTableViewCell *)tableViewCell
-                  forIndexPath:(NSIndexPath *)indexPath;
+- (void)configureCollectionViewCell:(PKEMoveCollectionViewCell *)tableViewCell
+                       forIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -28,12 +31,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSMutableArray *moves = [[NSMutableArray alloc] init];
-    if ([[self pokemon] moves]) {
-        [moves addObjectsFromArray:[[[self pokemon] moves] allObjects]];
-    }
-    [self setDataSource:moves];
     [self setTitle:[[self pokemon] name]];
+    UINib *nib = [UINib nibWithNibName:@"PKEMoveCollectionViewCell"
+                                bundle:[NSBundle mainBundle]];
+    [[self collectionView] registerNib:nib
+            forCellWithReuseIdentifier:@"MoveCollectionViewCell"];
+    if (![[self pokemon] moves]) {
+        [self setDataSource:[NSArray array]];
+    }
+    else {
+        [self setDataSource:[[[self pokemon] moves] allObjects]];
+    }
+    [[self collectionView] reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,70 +54,137 @@
 {
     if ([[segue identifier] isEqualToString:@"MovesSegue"]) {
         PKEMoveListViewController *controller = [segue destinationViewController];
+        controller.delegate = self;
         [controller setPokemon:[self pokemon]];
     }
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark - UICollectionViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [[self dataSource] count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"MoveCell";
-    PKEMoveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
-                                                           forIndexPath:indexPath];
-    [self configureTableViewCell:cell
-                    forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"MoveCollectionViewCell";
+    PKEMoveCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier
+                                                                                forIndexPath:indexPath];
+    [self configureCollectionViewCell:cell
+                         forIndexPath:indexPath];
     return cell;
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark - Public Methods
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (IBAction)onLongPressMoveCell:(id)sender
 {
-    if ([[self dataSource] count] == 0) {
-        return nil;
+    UILongPressGestureRecognizer *gestureRecognizer = (UILongPressGestureRecognizer *)sender;
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[gestureRecognizer locationInView:[self collectionView]]];
+        if (indexPath != nil) {
+            [self setSelectedIndexPath:indexPath];
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Remove from party"
+                                                                     delegate:self
+                                                            cancelButtonTitle:@"Cancel"
+                                                       destructiveButtonTitle:@"Remove"
+                                                            otherButtonTitles:nil];
+            [actionSheet showInView:[self view]];
+        }
     }
-    PKELabel *lblHeader = [[PKELabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 22.0f)
-                                            andEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 15.0f)];
-    [lblHeader setText:@"Power / Accuracy"];
-    [lblHeader setTextAlignment:NSTextAlignmentRight];
-    [lblHeader setTextColor:[UIColor colorWithHexString:@"#1D62F0"]];
-    [lblHeader setFont:[UIFont systemFontOfSize:13.0f]];
-    return lblHeader;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 22;
 }
 
 #pragma mark - Private Methods
 
-- (void)configureTableViewCell:(PKEMoveTableViewCell *)tableViewCell
-                  forIndexPath:(NSIndexPath *)indexPath
+- (PKEMove *)getMoveForIndexPath:(NSIndexPath *)indexPath
+{
+    return [[self dataSource] objectAtIndex:[indexPath row]];
+}
+
+- (void)configureCollectionViewCell:(PKEMoveCollectionViewCell *)tableViewCell
+                       forIndexPath:(NSIndexPath *)indexPath
 {
     [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
-    PKEMove *move = [[self dataSource] objectAtIndex:[indexPath row]];
+    PKEMove *move = [self getMoveForIndexPath:indexPath];
     [[tableViewCell lblName] setText:[move name]];
-//    [[tableViewCell lblCategory] setText:[move category]];
-//    [[tableViewCell lblDetails] setText:[NSString stringWithFormat:@"%d / %d%%", [[move power] integerValue], [[move accuracy] intValue]]];
-//    [tableViewCell addBackgroundLayersWithColor:[[PKEDataBaseManager sharedManager] getColorForType:[move type]]];
+    [[tableViewCell lblCategory] setText:[[PKEPokemonManager sharedManager] nameForCategory:[move category]]];
+    [[tableViewCell lblDetails] setText:[NSString stringWithFormat:@"%d / %d", [move power], [move accuracy]]];
+    [tableViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[move type]]];
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - PKEMoveTableViewControllerDelegate
+
+- (void)tableViewControllerDidSelectMove:(PKEMove *)move
+                                   error:(NSError *)error
 {
-    return YES;
+    if (!error) {
+        @weakify(self)
+        [[self collectionView] performBatchUpdates:^{
+            @strongify(self)
+            NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
+            [mutableDataSource addObject:move];
+            [self setDataSource:[mutableDataSource copy]];
+            [[self pokemon] setMoves:[NSSet setWithArray:[self dataSource]]];
+            [[self collectionView] insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:[mutableDataSource count] - 1
+                                                                                 inSection:0]]];
+        }
+                                        completion:^(BOOL finished) {
+                                            @strongify(self)
+                                            if (finished) {
+                                                [[self collectionView] scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:[[self dataSource] count] - 1
+                                                                                                                   inSection:0]
+                                                                              atScrollPosition:UICollectionViewScrollPositionCenteredVertically
+                                                                                      animated:YES];
+                                            }
+                                        }];
+    }
+    else {
+        if ([[error domain] isEqualToString:PKEErrorMoveDomain]) {
+            PKEErrorCodeMove code = [error code];
+            switch (code) {
+                case kPKEErrorCodeSavingMoreThanFourMoves:
+                    [TSMessage showNotificationInViewController:self
+                                                          title:@"Error"
+                                                       subtitle:@"You can't save more than four moves for a pokemon in your party."
+                                                           type:TSMessageNotificationTypeError
+                                                       duration:2.0f
+                                           canBeDismissedByUser:YES];
+                    break;
+                case kPKEErrorCodeSavingSameMove:
+                    [TSMessage showNotificationInViewController:self
+                                                          title:@"Error"
+                                                       subtitle:@"You can't save the same move twice for a pokemon in your party."
+                                                           type:TSMessageNotificationTypeError
+                                                       duration:2.0f
+                                           canBeDismissedByUser:YES];
+                    break;
+            }
+        }
+    }
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
+    if (buttonIndex == 0) {
+        PKEMove *move = [[self dataSource] objectAtIndex:[[self selectedIndexPath] row]];
+        [[PKEPokemonManager sharedManager] removeMove:move
+                                            toPokemon:[self pokemon]
+                                           completion:^(BOOL result, NSError *error) {
+                                               @weakify(self)
+                                               [[self collectionView] performBatchUpdates:^{
+                                                   @strongify(self);
+                                                   if (!error) {
+                                                       NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
+                                                       [mutableDataSource removeObject:move];
+                                                       [self setDataSource:[mutableDataSource copy]];
+                                                       [[self pokemon] setMoves:[NSSet setWithArray:[self dataSource]]];
+                                                       [[self collectionView] deleteItemsAtIndexPaths:@[[self selectedIndexPath]]];
+                                                   }
+                                               } completion:nil];
+                                           }];
     }
 }
 

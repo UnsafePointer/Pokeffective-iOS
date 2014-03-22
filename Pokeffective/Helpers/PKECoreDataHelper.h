@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class PKEPokemon;
+@class PKEMove;
 
 @interface PKECoreDataHelper : NSObject
 
@@ -17,5 +18,11 @@
 - (void)removePokemonFromParty:(PKEPokemon *)pokemon
                     completion:(BooleanCompletionBlock)completionBlock;
 - (void)getPartyWithCompletion:(ArrayCompletionBlock)completionBlock;
+- (void)addMove:(PKEMove *)move
+      toPokemon:(PKEPokemon *)pokemon
+     completion:(BooleanCompletionBlock)completionBlock;
+- (void)removeMove:(PKEMove *)move
+         toPokemon:(PKEPokemon *)pokemon
+        completion:(BooleanCompletionBlock)completionBlock;
 
 @end

@@ -32,6 +32,9 @@
 - (void)addMove:(PKEMove *)move
       toPokemon:(PKEPokemon *)pokemon
      completion:(BooleanCompletionBlock)completionBlock;
+- (void)removeMove:(PKEMove *)move
+         toPokemon:(PKEPokemon *)pokemon
+        completion:(BooleanCompletionBlock)completionBlock;
 
 - (UIColor *)colorForType:(PKEPokemonType)pokemonType;
 - (NSString *)nameForType:(PKEPokemonType)pokemonType;

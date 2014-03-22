@@ -110,7 +110,18 @@ static dispatch_once_t oncePredicate;
       toPokemon:(PKEPokemon *)pokemon
      completion:(BooleanCompletionBlock)completionBlock
 {
-    
+    [[self coreDataHelper] addMove:move
+                         toPokemon:pokemon
+                        completion:completionBlock];
+}
+
+- (void)removeMove:(PKEMove *)move
+         toPokemon:(PKEPokemon *)pokemon
+        completion:(BooleanCompletionBlock)completionBlock
+{
+    [[self coreDataHelper] removeMove:move
+                            toPokemon:pokemon
+                           completion:completionBlock];
 }
 
 - (UIColor *)colorForType:(PKEPokemonType)pokemonType

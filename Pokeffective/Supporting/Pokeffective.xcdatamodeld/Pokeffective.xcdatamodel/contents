@@ -13,7 +13,7 @@
         <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="secondType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="moves" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PKEMoveManagedObject" inverseName="pokemon" inverseEntity="PKEMoveManagedObject" syncable="YES"/>
+        <relationship name="moves" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PKEMoveManagedObject" inverseName="pokemon" inverseEntity="PKEMoveManagedObject" syncable="YES"/>
     </entity>
     <elements>
         <element name="PKEMoveManagedObject" positionX="-54" positionY="-9" width="128" height="133"/>

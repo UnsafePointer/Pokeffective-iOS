@@ -12,6 +12,8 @@
 #import "PKETranslatorHelper.h"
 #import "PKEPokemonManagedObject.h"
 #import "NSError+PokemonError.h"
+#import "PKEMove.h"
+#import "PKEMoveManagedObject.h"
 
 @interface PKECoreDataHelper ()
 
@@ -96,6 +98,51 @@
     }];
 }
 
+- (void)addMove:(PKEMove *)move
+      toPokemon:(PKEPokemon *)pokemon
+     completion:(BooleanCompletionBlock)completionBlock
+{
+    __block NSError *pokemonError;
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+        PKEPokemonManagedObject *pokemonManagedObject = [PKEPokemonManagedObject MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"identifier == %d", pokemon.identifier]
+                                                                                                 inContext:localContext];
+        NSArray *storedMoves = [PKEMoveManagedObject MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"pokemon == %@", pokemonManagedObject]
+                                                                   inContext:localContext];
+        BOOL shouldSave = YES;
+        if ([storedMoves count] > 4) {
+            pokemonError = [NSError errorSavingMoreThanFourMoves];
+            shouldSave = NO;
+        }
+        else {
+            for (PKEMoveManagedObject *moveManagedObject in storedMoves) {
+                if ([[moveManagedObject name] isEqualToString:[move name]]) {
+                    pokemonError = [NSError errorSavingSameMove];
+                    shouldSave = NO;
+                }
+            }
+        }
+        if (shouldSave) {
+            NSError *error;
+            PKEMoveManagedObject *moveManagedObject = [MTLManagedObjectAdapter managedObjectFromModel:move
+                                                                                 insertingIntoContext:localContext
+                                                                                                error:&error];
+            [pokemonManagedObject addMovesObject:moveManagedObject];
+            if (error) {
+                NSLog(@"%@", [error localizedDescription]);
+            }
+        }
+    } completion:^(BOOL success, NSError *error) {
+        if (completionBlock) {
+            if (!success) {
+                completionBlock(success, pokemonError);
+            }
+            else {
+                completionBlock(success, error);
+            }
+        }
+    }];
+}
+
 - (void)removePokemonFromParty:(PKEPokemon *)pokemon
                     completion:(BooleanCompletionBlock)completionBlock
 {
@@ -105,6 +152,26 @@
                                                withValue:[NSNumber numberWithUnsignedInteger:pokemon.identifier]
                                                inContext:localContext];
         [pokemonManagedObject MR_deleteInContext:localContext];
+    } completion:^(BOOL success, NSError *error) {
+        if (completionBlock) {
+            completionBlock(success, error);
+        }
+    }];
+}
+
+- (void)removeMove:(PKEMove *)move
+         toPokemon:(PKEPokemon *)pokemon
+        completion:(BooleanCompletionBlock)completionBlock
+{
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+        PKEPokemonManagedObject *pokemonManagedObject =
+        [PKEPokemonManagedObject MR_findFirstByAttribute:@"identifier"
+                                               withValue:[NSNumber numberWithUnsignedInteger:pokemon.identifier]
+                                               inContext:localContext];
+        PKEMoveManagedObject *moveManagedObject =
+        [PKEMoveManagedObject MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"pokemon == %@ and name ==%@", pokemonManagedObject, [move name]]
+                                              inContext:localContext];
+        [moveManagedObject MR_deleteInContext:localContext];
     } completion:^(BOOL success, NSError *error) {
         if (completionBlock) {
             completionBlock(success, error);

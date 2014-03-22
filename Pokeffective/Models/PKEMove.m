@@ -7,6 +7,7 @@
 //
 
 #import "PKEMove.h"
+#import "PKEPokemon.h"
 
 @implementation PKEMove
 
@@ -30,14 +31,15 @@
              @"name" : @"name",
              @"category" : @"category",
              @"power" : @"power",
-             @"accuracy" : @"accuracy"
+             @"accuracy" : @"accuracy",
+             @"pokemon" : @"pokemon"
             };
 }
 
 + (NSDictionary *)relationshipModelClassesByPropertyKey
 {
     return @{
-             @"pokemon" : @"PKEPokemonManagedObject",
+             @"pokemon" : [PKEPokemon class]
             };
 }
 

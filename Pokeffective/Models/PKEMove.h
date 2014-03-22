@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class PKEPokemon;
+
 @interface PKEMove : MTLModel <MTLManagedObjectSerializing>
 
 @property (nonatomic, copy) NSString *name;
@@ -15,6 +17,7 @@
 @property (nonatomic, assign) PKEMoveCategory category;
 @property (nonatomic, assign) NSUInteger power;
 @property (nonatomic, assign) NSUInteger accuracy;
+@property (nonatomic, copy) PKEPokemon *pokemon;
 
 + (PKEMove *)createMoveWithResultSet:(FMResultSet *)resultSet;
 
