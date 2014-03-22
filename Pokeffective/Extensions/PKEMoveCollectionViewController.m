@@ -72,7 +72,11 @@
     [[collectionViewCell contentView] setBackgroundColor:[UIColor clearColor]];
     PKEMove *move = [self getMoveForIndexPath:indexPath
                              inCollectionView:collectionView];
-    [[collectionViewCell lblName] setText:[move name]];
+    NSString *moveName = [[move name] lowercaseString];
+    moveName = [moveName stringByReplacingOccurrencesOfString:@"-" withString:@" "];
+    NSString *firstCapitalizedCharacter = [[moveName substringToIndex:1] capitalizedString];
+    moveName = [moveName stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:firstCapitalizedCharacter];
+    [[collectionViewCell lblName] setText:moveName];
     [[collectionViewCell lblCategory] setText:[[PKEPokemonManager sharedManager] nameForCategory:[move category]]];
     [[collectionViewCell lblPower] setText:[NSString stringWithFormat:@"Pwr: %d", [move power]]];
     if ([move accuracy] == 0) {
