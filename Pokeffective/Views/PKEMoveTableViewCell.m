@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "PKEMoveCell.h"
+#import "PKEMoveTableViewCell.h"
 
-@implementation PKEMoveCell
+@implementation PKEMoveTableViewCell
 
 @end

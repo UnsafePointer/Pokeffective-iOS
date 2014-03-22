@@ -11,12 +11,14 @@
 @class PKEMove;
 @class PKEPokemon;
 
-@protocol PKEMoveTableViewControllerDataSource <UITableViewDataSource>
+@protocol PKEMoveTableViewControllerDataSource 
 
 @optional
 
 - (PKEMove *)getMoveForIndexPath:(NSIndexPath *)indexPath
                      inTableView:(UITableView *)tableView;
+
+- (PKEMove *)getMoveForIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

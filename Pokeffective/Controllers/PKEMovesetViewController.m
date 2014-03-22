@@ -8,7 +8,7 @@
 
 #import "PKEMovesetViewController.h"
 #import "PKEPokemonManager.h"
-#import "PKEMoveCell.h"
+#import "PKEMoveTableViewCell.h"
 #import "PKEMove.h"
 #import "PKELabel.h"
 #import "PKEPokemon.h"
@@ -18,7 +18,7 @@
 
 @property (nonatomic, strong) NSArray *dataSource;
 
-- (void)configureTableViewCell:(PKEMoveCell *)tableViewCell
+- (void)configureTableViewCell:(PKEMoveTableViewCell *)tableViewCell
                   forIndexPath:(NSIndexPath *)indexPath;
 
 @end
@@ -59,7 +59,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MoveCell";
-    PKEMoveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
+    PKEMoveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
                                                            forIndexPath:indexPath];
     [self configureTableViewCell:cell
                     forIndexPath:indexPath];
@@ -89,7 +89,7 @@
 
 #pragma mark - Private Methods
 
-- (void)configureTableViewCell:(PKEMoveCell *)tableViewCell
+- (void)configureTableViewCell:(PKEMoveTableViewCell *)tableViewCell
                   forIndexPath:(NSIndexPath *)indexPath
 {
     [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];

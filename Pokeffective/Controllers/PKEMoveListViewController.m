@@ -10,11 +10,18 @@
 #import "PKEPokemonManager.h"
 #import "PKEMoveSearchViewController.h"
 #import "PKEFilterViewController.h"
+#import "PKEMoveCollectionViewCell.h"
+#import "PKEMove.h"
 
 @interface PKEMoveListViewController () <PKEMoveTableViewControllerDataSource>
 
+@property (nonatomic, strong) NSArray *dataSource;
+
 - (void)searchButtonTapped:(id)sender;
 - (void)filterButtonTapped:(id)sender;
+
+- (void)configureCollectionViewCell:(PKEMoveCollectionViewCell *)tableViewCell
+                       forIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -55,7 +62,7 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
                                                        [SVProgressHUD dismiss];
                                                        if (!error) {
                                                            [self setDataSource:array];
-                                                           [[self tableView] reloadData];
+                                                           [[self collectionView] reloadData];
                                                        }
                                                    });
                                                }];
@@ -77,7 +84,7 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
                                                                @strongify(self);
                                                                if (!error) {
                                                                    [self setDataSource:array];
-                                                                   [[self tableView] reloadData];
+                                                                   [[self collectionView] reloadData];
                                                                }
                                                            });
                                                        }];
@@ -91,6 +98,8 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
                                            forKeyPath:NSStringFromSelector(@selector(filteringMoveMethod))];
     [[PKEPokemonManager sharedManager] removeObserver:self
                                            forKeyPath:NSStringFromSelector(@selector(filteringMoveType))];
+    [[PKEPokemonManager sharedManager] removeObserver:self
+                                           forKeyPath:NSStringFromSelector(@selector(filteringMoveCategory))];
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,17 +136,58 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
                               sender:self];
 }
 
-#pragma mark - UITableViewDataSource
+- (void)configureCollectionViewCell:(PKEMoveCollectionViewCell *)tableViewCell
+                       forIndexPath:(NSIndexPath *)indexPath
+{
+    [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
+    PKEMove *move = [self getMoveForIndexPath:indexPath];
+    [[tableViewCell lblName] setText:[move name]];
+    [[tableViewCell lblCategory] setText:[[PKEPokemonManager sharedManager] nameForCategory:[move category]]];
+    [[tableViewCell lblDetails] setText:[NSString stringWithFormat:@"%d / %d", [move power], [move accuracy]]];
+    [tableViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[move type]]];
+}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [[self dataSource] count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"MoveCollectionViewCell";
+    PKEMoveCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier
+                                                                                forIndexPath:indexPath];
+    [self configureCollectionViewCell:cell
+                         forIndexPath:indexPath];
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PKEMove *move = [self getMoveForIndexPath:indexPath];
+    @weakify(self);
+    [[PKEPokemonManager sharedManager] addMove:move
+                                     toPokemon:[self pokemon]
+                                    completion:^(BOOL result, NSError *error) {
+                                        @strongify(self);
+                                        if ([[self delegate] respondsToSelector:@selector(tableViewControllerDidSelectMove:error:)]) {
+                                            [[self delegate] performSelector:@selector(tableViewControllerDidSelectMove:error:)
+                                                                  withObject:[move copy]
+                                                                  withObject:error];
+                                        }
+                                        NSArray *controllers = [[self navigationController] viewControllers];
+                                        [[self navigationController] popToViewController:[controllers objectAtIndex:1]
+                                                                                animated:YES];
+                                    }];
 }
 
 #pragma mark - PKEMoveTableViewControllerDataSource
 
 - (PKEMove *)getMoveForIndexPath:(NSIndexPath *)indexPath
-                        inTableView:(UITableView *)tableView
 {
     return [[self dataSource] objectAtIndex:[indexPath row]];
 }

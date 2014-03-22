@@ -7,13 +7,13 @@
 //
 
 #import "PKEMoveTableViewController.h"
-#import "PKEMoveCell.h"
+#import "PKEMoveTableViewCell.h"
 #import "PKEPokemonManager.h"
 #import "PKEMove.h"
 
 @interface PKEMoveTableViewController () <PKEMoveTableViewControllerDataSource>
 
-- (void)configureTableViewCell:(PKEMoveCell *)tableViewCell
+- (void)configureTableViewCell:(PKEMoveTableViewCell *)tableViewCell
                   forIndexPath:(NSIndexPath *)indexPath
                    inTableView:(UITableView *)tableView;
 
@@ -24,12 +24,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UINib *nib = [UINib nibWithNibName:@"PKEMoveCell"
+    UINib *nib = [UINib nibWithNibName:@"PKEMoveTableViewCell"
                                 bundle:[NSBundle mainBundle]];
     [[self tableView] registerNib:nib
-           forCellReuseIdentifier:@"MoveCell"];
+           forCellReuseIdentifier:@"MoveTableViewCell"];
     [[[self searchDisplayController] searchResultsTableView] registerNib:nib
-                                                  forCellReuseIdentifier:@"MoveCell"];
+                                                  forCellReuseIdentifier:@"MoveTableViewCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,8 +41,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"MoveCell";
-    PKEMoveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
+    static NSString *CellIdentifier = @"MoveTableViewCell";
+    PKEMoveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
                                                         forIndexPath:indexPath];
     [self configureTableViewCell:cell
                     forIndexPath:indexPath
@@ -79,7 +79,7 @@
 
 #pragma mark - Private Methods
 
-- (void)configureTableViewCell:(PKEMoveCell *)tableViewCell
+- (void)configureTableViewCell:(PKEMoveTableViewCell *)tableViewCell
                   forIndexPath:(NSIndexPath *)indexPath
                    inTableView:(UITableView *)tableView
 {

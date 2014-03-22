@@ -1,15 +1,14 @@
 //
-//  PKEMoveCell.h
+//  PKEMoveCollectionViewCell.h
 //  Pokeffective
 //
-//  Created by Renzo Crisóstomo on 11/03/14.
+//  Created by Renzo Crisóstomo on 22/03/14.
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "PKETableViewCell.h"
+#import "PKECollectionViewCell.h"
 
-@interface PKEMoveCell : PKETableViewCell
+@interface PKEMoveCollectionViewCell : PKECollectionViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *lblName;
 @property (nonatomic, weak) IBOutlet UILabel *lblCategory;
