@@ -15,14 +15,11 @@
 #import "PKEMoveListViewController.h"
 #import "PKEMoveCollectionViewCell.h"
 #import "NSError+PokemonError.h"
+#import "PKEMoveControllerDelegate.h"
 
-@interface PKEMovesetViewController () <PKEMoveTableViewControllerDelegate, UIActionSheetDelegate>
+@interface PKEMovesetViewController () <PKEMoveControllerDelegate, UIActionSheetDelegate>
 
-@property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
-
-- (void)configureCollectionViewCell:(PKEMoveCollectionViewCell *)collectionViewCell
-                       forIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -59,23 +56,6 @@
     }
 }
 
-#pragma mark - UICollectionViewDataSource
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return [[self dataSource] count];
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"MoveCollectionViewCell";
-    PKEMoveCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier
-                                                                                forIndexPath:indexPath];
-    [self configureCollectionViewCell:cell
-                         forIndexPath:indexPath];
-    return cell;
-}
-
 #pragma mark - UICollectionViewDelegate
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -102,34 +82,10 @@
     }
 }
 
-#pragma mark - Private Methods
+#pragma mark - PKEMoveControllerDelegate
 
-- (PKEMove *)getMoveForIndexPath:(NSIndexPath *)indexPath
-{
-    return [[self dataSource] objectAtIndex:[indexPath row]];
-}
-
-- (void)configureCollectionViewCell:(PKEMoveCollectionViewCell *)collectionViewCell
-                       forIndexPath:(NSIndexPath *)indexPath;
-{
-    [[collectionViewCell contentView] setBackgroundColor:[UIColor clearColor]];
-    PKEMove *move = [self getMoveForIndexPath:indexPath];
-    [[collectionViewCell lblName] setText:[move name]];
-    [[collectionViewCell lblCategory] setText:[[PKEPokemonManager sharedManager] nameForCategory:[move category]]];
-    [[collectionViewCell lblPower] setText:[NSString stringWithFormat:@"Pwr: %d", [move power]]];
-    if ([move accuracy] == 0) {
-        [[collectionViewCell lblAccuracy] setText:@"Acc: 100%"];
-    }
-    else {
-        [[collectionViewCell lblAccuracy] setText:[NSString stringWithFormat:@"Acc: %d%%", [move accuracy]]];
-    }
-    [collectionViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[move type]]];
-}
-
-#pragma mark - PKEMoveTableViewControllerDelegate
-
-- (void)tableViewControllerDidSelectMove:(PKEMove *)move
-                                   error:(NSError *)error
+- (void)controllerDidSelectMove:(PKEMove *)move
+                          error:(NSError *)error
 {
     if (!error) {
         @weakify(self)
@@ -182,7 +138,8 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 {
     if (buttonIndex == 0) {
-        PKEMove *move = [[self dataSource] objectAtIndex:[[self selectedIndexPath] row]];
+        PKEMove *move = [self getMoveForIndexPath:[self selectedIndexPath]
+                                 inCollectionView:[self collectionView]];
         [[PKEPokemonManager sharedManager] removeMove:move
                                             toPokemon:[self pokemon]
                                            completion:^(BOOL result, NSError *error) {

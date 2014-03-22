@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PKEMoveControllerDelegate.h"
 
 @class PKEMove;
 @class PKEPokemon;
@@ -18,21 +19,12 @@
 - (PKEMove *)getMoveForIndexPath:(NSIndexPath *)indexPath
                      inTableView:(UITableView *)tableView;
 
-- (PKEMove *)getMoveForIndexPath:(NSIndexPath *)indexPath;
-
-@end
-
-@protocol PKEMoveTableViewControllerDelegate <NSObject>
-
-- (void)tableViewControllerDidSelectMove:(PKEMove *)move
-                                   error:(NSError *)error;
-
 @end
 
 @interface PKEMoveTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, strong) PKEPokemon *pokemon;
-@property (nonatomic, weak) id<PKEMoveTableViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<PKEMoveControllerDelegate> delegate;
 
 @end

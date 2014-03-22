@@ -66,8 +66,8 @@
                                      toPokemon:[self pokemon]
                                     completion:^(BOOL result, NSError *error) {
                                         @strongify(self);
-                                        if ([[self delegate] respondsToSelector:@selector(tableViewControllerDidSelectMove:error:)]) {
-                                            [[self delegate] performSelector:@selector(tableViewControllerDidSelectMove:error:)
+                                        if ([[self delegate] respondsToSelector:@selector(controllerDidSelectMove:error:)]) {
+                                            [[self delegate] performSelector:@selector(controllerDidSelectMove:error:)
                                                                   withObject:[move copy]
                                                                   withObject:error];
                                         }

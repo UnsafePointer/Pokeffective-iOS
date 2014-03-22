@@ -784,6 +784,7 @@
 		3FDEF34518DD914D006C2D7B /* PKEMoveCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEF34418DD914D006C2D7B /* PKEMoveCollectionViewCell.m */; };
 		3FDEF34818DD9456006C2D7B /* PKEMoveCollectionViewFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEF34718DD9456006C2D7B /* PKEMoveCollectionViewFlow.m */; };
 		3FDEF34A18DDA3B6006C2D7B /* PKEMoveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FDEF34918DDA3B6006C2D7B /* PKEMoveCollectionViewCell.xib */; };
+		3FDEF34D18DDB07A006C2D7B /* PKEMoveCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEF34C18DDB07A006C2D7B /* PKEMoveCollectionViewController.m */; };
 		89EF30601966462586F702FA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82FCB715879F48319E6F6D82 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1612,6 +1613,9 @@
 		3FDEF34618DD9456006C2D7B /* PKEMoveCollectionViewFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMoveCollectionViewFlow.h; path = Extensions/PKEMoveCollectionViewFlow.h; sourceTree = "<group>"; };
 		3FDEF34718DD9456006C2D7B /* PKEMoveCollectionViewFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMoveCollectionViewFlow.m; path = Extensions/PKEMoveCollectionViewFlow.m; sourceTree = "<group>"; };
 		3FDEF34918DDA3B6006C2D7B /* PKEMoveCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PKEMoveCollectionViewCell.xib; path = Views/PKEMoveCollectionViewCell.xib; sourceTree = "<group>"; };
+		3FDEF34B18DDB07A006C2D7B /* PKEMoveCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMoveCollectionViewController.h; path = Extensions/PKEMoveCollectionViewController.h; sourceTree = "<group>"; };
+		3FDEF34C18DDB07A006C2D7B /* PKEMoveCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMoveCollectionViewController.m; path = Extensions/PKEMoveCollectionViewController.m; sourceTree = "<group>"; };
+		3FDEF34F18DDB193006C2D7B /* PKEMoveControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PKEMoveControllerDelegate.h; path = Definitions/PKEMoveControllerDelegate.h; sourceTree = "<group>"; };
 		82FCB715879F48319E6F6D82 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8EE4AC78B264D2FB149AB3C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1665,6 +1669,8 @@
 				3F375C7F18CCA71B00A93DB4 /* PKEPokemonTableViewController.m */,
 				3F05523A18D6042C00AF72D4 /* PKEMoveTableViewController.h */,
 				3F05523B18D6042C00AF72D4 /* PKEMoveTableViewController.m */,
+				3FDEF34B18DDB07A006C2D7B /* PKEMoveCollectionViewController.h */,
+				3FDEF34C18DDB07A006C2D7B /* PKEMoveCollectionViewController.m */,
 				3F05524518D61BCA00AF72D4 /* PKEFilterViewController.h */,
 				3F05524618D61BCA00AF72D4 /* PKEFilterViewController.m */,
 				3F05524818D6264200AF72D4 /* PKETypeViewController.h */,
@@ -2501,6 +2507,7 @@
 				3F87BDB518C7A68300400F64 /* Application */,
 				3F778FBA18C7ADFD00771A9E /* Controllers */,
 				3F13971E18CB97CD009B31A3 /* Extensions */,
+				3FDEF34E18DDB17C006C2D7B /* Definitions */,
 				3F44F58D18D4776300E02280 /* Helpers */,
 				3F87BD9618C7A60F00400F64 /* Images.xcassets */,
 				3F1396F618CB5D5C009B31A3 /* Managers */,
@@ -2561,6 +2568,14 @@
 				3F93181E18CF899C0023E7A5 /* PKEEffectiveCell.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		3FDEF34E18DDB17C006C2D7B /* Definitions */ = {
+			isa = PBXGroup;
+			children = (
+				3FDEF34F18DDB193006C2D7B /* PKEMoveControllerDelegate.h */,
+			);
+			name = Definitions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3430,6 +3445,7 @@
 				3F05523918D5FD9500AF72D4 /* PKETypeCollectionViewFlowLayout.m in Sources */,
 				3F05524418D60B8D00AF72D4 /* PKEMoveSearchViewController.m in Sources */,
 				3FB70A0618D59929007F1C7C /* PKESQLiteHelper.m in Sources */,
+				3FDEF34D18DDB07A006C2D7B /* PKEMoveCollectionViewController.m in Sources */,
 				3F87BDBF18C7A6AE00400F64 /* PKEAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

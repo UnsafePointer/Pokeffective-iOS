@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PKEMoveCollectionViewController.h"
 
 @class PKEPokemon;
 
-@interface PKEMovesetViewController : UICollectionViewController
-
-@property (nonatomic, strong) PKEPokemon *pokemon;
+@interface PKEMovesetViewController : PKEMoveCollectionViewController
 
 - (IBAction)onLongPressMoveCell:(id)sender;
 

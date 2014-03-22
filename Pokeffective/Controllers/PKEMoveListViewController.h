@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PKEMoveTableViewController.h"
+#import "PKEMoveCollectionViewController.h"
+#import "PKEMoveControllerDelegate.h"
 
-@interface PKEMoveListViewController : UICollectionViewController
+@interface PKEMoveListViewController : PKEMoveCollectionViewController
 
-@property (nonatomic, strong) PKEPokemon *pokemon;
-@property (nonatomic, weak) id<PKEMoveTableViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<PKEMoveControllerDelegate> delegate;
 
 @end
