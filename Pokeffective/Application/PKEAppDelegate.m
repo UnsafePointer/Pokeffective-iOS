@@ -11,6 +11,7 @@
 @interface PKEAppDelegate ()
 
 - (void)setNavigationBarAppearance;
+- (void)setTabBarAppearance;
 
 @end
 
@@ -20,6 +21,7 @@
 {
     [MagicalRecord setupAutoMigratingCoreDataStack];
     [self setNavigationBarAppearance];
+    [self setTabBarAppearance];
     return YES;
 }
 
@@ -36,8 +38,21 @@
     [[CRGradientNavigationBar appearance] setBarTintGradientColors:@[[UIColor colorWithHexString:@"#1AD6FD"],
             [UIColor colorWithHexString:@"#1D62F0"]]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{
-            NSForegroundColorAttributeName: [UIColor colorWithHexString:@"#ffffff"]
+            NSForegroundColorAttributeName : [UIColor colorWithHexString:@"#ffffff"]
     }];
+}
+
+- (void)setTabBarAppearance
+{
+    UITabBarController *tabBarController = (UITabBarController *)[[self window] rootViewController];
+    UITabBarItem *partyTabBarItem = [[[tabBarController tabBar] items] objectAtIndex:0];
+    UITabBarItem *onlineTabBarItem = [[[tabBarController tabBar] items] objectAtIndex:1];
+    partyTabBarItem.image = [[UIImage imageNamed:@"Party"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    onlineTabBarItem.image = [[UIImage imageNamed:@"Online"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    partyTabBarItem.selectedImage = [UIImage imageNamed:@"Party-Selected"];
+    onlineTabBarItem.selectedImage = [UIImage imageNamed:@"Online-Selected"];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }
+                                             forState:UIControlStateNormal];
 }
 
 @end

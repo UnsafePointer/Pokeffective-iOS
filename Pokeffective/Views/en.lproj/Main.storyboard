@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="U10-F1-aye">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9Ad-we-e47">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -9,7 +9,7 @@
             <objects>
                 <tableViewController id="KY5-fL-3ks" customClass="PKEPokemonSearchViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bdW-No-eow">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -51,14 +51,14 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1463" y="-267"/>
+            <point key="canvasLocation" x="1463" y="-235"/>
         </scene>
         <!--Pokemon List View Controller - Pokémon-->
         <scene sceneID="Gtm-pr-rbU">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="ala-hg-4dS" customClass="PKEPokemonListViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="eKR-uV-P8R">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bir-ed-pUP" customClass="PKEPokemonCollectionViewFlow">
@@ -133,7 +133,7 @@
             <objects>
                 <tableViewController id="hs2-yD-Aac" customClass="PKEFilterViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="MZw-rI-kdK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" red="0.1137254902" green="0.38431372549999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -348,7 +348,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="gze-D5-afD" customClass="PKETypeViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="VjP-Cx-8Qv">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="gmZ-OI-e1b" customClass="PKETypeCollectionViewFlowLayout">
@@ -399,32 +399,42 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dr8-hh-VnY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2003" y="-267"/>
+            <point key="canvasLocation" x="2547" y="-235"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="eNr-dr-lpC">
+        <!--View Controller - Online-->
+        <scene sceneID="zyX-ZL-hdU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U10-F1-aye" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="XRp-90-yWx" customClass="CRGradientNavigationBar">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="JD2-fe-fBj" kind="relationship" relationship="rootViewController" id="tUW-16-YXp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nDU-ut-Em2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="w6s-00-GFC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CJo-Qe-JQy"/>
+                        <viewControllerLayoutGuide type="bottom" id="peG-vN-XRL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2b9-bJ-vhK">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We'll let you know when this is ready ;)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="fAb-2o-5y1">
+                                <rect key="frame" x="73" y="199" width="175" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.53725490196078429" green="0.5490196078431373" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Online" id="3kr-CV-GAe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a22-hN-qog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-154" y="-267"/>
+            <point key="canvasLocation" x="360" y="537"/>
         </scene>
         <!--Effective View Controller - Pokeffective-->
         <scene sceneID="Ecc-y6-Gqz">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="VBk-pe-gkc" customClass="PKEEffectiveViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="w2Y-gY-j7E">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1lG-tA-AET" customClass="PKEEffectiveCollectionViewFlow">
@@ -483,14 +493,14 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFq-ea-4ek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="396" y="500"/>
+            <point key="canvasLocation" x="922" y="500"/>
         </scene>
         <!--Bs View Controller - STABs-->
         <scene sceneID="69F-Ki-w4Z">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="YSK-mL-b9d" customClass="PKESTABsViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="TcU-dm-WGA">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hAJ-a8-8f9" customClass="PKESTABCollectionViewFlowLayout">
@@ -552,7 +562,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5sD-i3-8OP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9rv-Vy-PAD">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -567,7 +577,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Abo-R5-O4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="942" y="500"/>
+            <point key="canvasLocation" x="1468" y="500"/>
         </scene>
         <!--Move List View Controller - Moves-->
         <scene sceneID="vIf-am-YXK">
@@ -578,7 +588,7 @@
                         <viewControllerLayoutGuide type="bottom" id="37d-BK-C71"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="b1i-QT-fPf">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -592,14 +602,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oy4-qP-FA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1463" y="500"/>
+            <point key="canvasLocation" x="1989" y="500"/>
         </scene>
         <!--Filter View Controller - Options-->
         <scene sceneID="RM2-3k-2Zm">
             <objects>
                 <tableViewController id="kLH-FC-JQk" customClass="PKEFilterViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="B4o-B2-227">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" red="0.1137254902" green="0.38431372549999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -811,14 +821,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqN-Xs-Kha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2003" y="500"/>
+            <point key="canvasLocation" x="2529" y="500"/>
         </scene>
         <!--Move Search View Controller - Search-->
         <scene sceneID="4LT-Lo-8XM">
             <objects>
                 <tableViewController id="M6b-5r-MpP" customClass="PKEMoveSearchViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AJF-FM-IWR">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -871,7 +881,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Aca-hc-84j"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="O6a-rp-JNy">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -896,14 +906,14 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="396" y="-267"/>
+            <point key="canvasLocation" x="396" y="-235"/>
         </scene>
         <!--About View Controller - About-->
         <scene sceneID="i0V-CS-pQA">
             <objects>
                 <tableViewController title="About" id="JIf-bl-h57" customClass="PKEAboutViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="bfn-ky-2HX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1103,12 +1113,77 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7d7-mf-tPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="936" y="-267"/>
+            <point key="canvasLocation" x="942" y="-235"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="zmF-7b-uuI">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="9Ad-we-e47" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" itemPositioning="fill" id="pSV-DE-CLN">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.1137254902" green="0.38431372549999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="x3i-0g-uuQ" kind="relationship" relationship="viewControllers" id="yka-Kx-ayO"/>
+                        <segue destination="wv0-I9-rKf" kind="relationship" relationship="viewControllers" id="Jyi-eb-bGL"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TBV-7N-oRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-692" y="-235"/>
+        </scene>
+        <!--Navigation Controller - Party-->
+        <scene sceneID="Pcv-dy-RnA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x3i-0g-uuQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Party" image="Party" id="dTC-CV-NMk">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="WpK-aH-QGC" customClass="CRGradientNavigationBar">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JD2-fe-fBj" kind="relationship" relationship="rootViewController" id="5eP-qD-Dgz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MCl-bD-B26" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-166" y="-235"/>
+        </scene>
+        <!--Navigation Controller - Online-->
+        <scene sceneID="B5W-PZ-eEx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wv0-I9-rKf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Online" image="Online" id="13L-pl-gwx">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Eaj-Cc-lzG" customClass="CRGradientNavigationBar">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="w6s-00-GFC" kind="relationship" relationship="rootViewController" id="xlK-lD-o0n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MkL-iD-mTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-166" y="537"/>
         </scene>
     </scenes>
     <resources>
         <image name="Add" width="28" height="28"/>
         <image name="Info" width="28" height="28"/>
+        <image name="Online" width="28" height="28"/>
+        <image name="Party" width="28" height="26"/>
         <image name="Right" width="14" height="28"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
