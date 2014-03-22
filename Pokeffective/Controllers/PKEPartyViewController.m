@@ -11,7 +11,7 @@
 #import "PKEMemberCell.h"
 #import "PKEPokemon.h"
 #import "PKEMovesetViewController.h"
-#import "PKEPokemonTableViewController.h"
+#import "PKEPokemonListViewController.h"
 #import "NSError+PokemonError.h"
 
 @interface PKEPartyViewController () <PKEPokemonTableViewControllerDelegate, UIActionSheetDelegate>
@@ -66,7 +66,7 @@
         [controller setPokemon:selectedPKMN];
     }
     if ([[segue identifier] isEqualToString:@"AddSegue"]) {
-        PKEPokemonTableViewController *controller = [segue destinationViewController];
+        PKEPokemonListViewController *controller = [segue destinationViewController];
         [controller setDelegate:self];
     }
 }

@@ -16,7 +16,7 @@
 		3F05524418D60B8D00AF72D4 /* PKEMoveSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F05524318D60B8D00AF72D4 /* PKEMoveSearchViewController.m */; };
 		3F05524718D61BCA00AF72D4 /* PKEFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F05524618D61BCA00AF72D4 /* PKEFilterViewController.m */; };
 		3F05524A18D6264200AF72D4 /* PKETypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F05524918D6264200AF72D4 /* PKETypeViewController.m */; };
-		3F1396F518CB5CA3009B31A3 /* PKEPokemonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1396F418CB5CA3009B31A3 /* PKEPokemonCell.m */; };
+		3F1396F518CB5CA3009B31A3 /* PKEPokemonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1396F418CB5CA3009B31A3 /* PKEPokemonTableViewCell.m */; };
 		3F1396F918CB5D8E009B31A3 /* PKEPokemonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1396F818CB5D8E009B31A3 /* PKEPokemonManager.m */; };
 		3F1396FD18CB5DC8009B31A3 /* PKEPokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1396FC18CB5DC8009B31A3 /* PKEPokemon.m */; };
 		3F13970118CB630E009B31A3 /* Types.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970018CB630E009B31A3 /* Types.plist */; };
@@ -25,7 +25,7 @@
 		3F13973418CBB551009B31A3 /* PKECollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13973318CBB551009B31A3 /* PKECollectionViewCell.m */; };
 		3F13973718CBBAF7009B31A3 /* PKETypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13973618CBBAF7009B31A3 /* PKETypeCell.m */; };
 		3F375C7518CC7B6A00A93DB4 /* PKEPokemonSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C7418CC7B6A00A93DB4 /* PKEPokemonSearchViewController.m */; };
-		3F375C7A18CC818F00A93DB4 /* PKEPokemonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C7918CC818F00A93DB4 /* PKEPokemonCell.xib */; };
+		3F375C7A18CC818F00A93DB4 /* PKEPokemonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C7918CC818F00A93DB4 /* PKEPokemonTableViewCell.xib */; };
 		3F375C7D18CCA6D300A93DB4 /* PKEPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C7C18CCA6D300A93DB4 /* PKEPartyViewController.m */; };
 		3F375C8018CCA71B00A93DB4 /* PKEPokemonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C7F18CCA71B00A93DB4 /* PKEPokemonTableViewController.m */; };
 		3F375C8518CCB27B00A93DB4 /* PKEMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C8418CCB27B00A93DB4 /* PKEMemberCell.m */; };
@@ -779,6 +779,8 @@
 		3FCC8A9C18CCEE9000F4F0A3 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCC8A9B18CCEE9000F4F0A3 /* Accounts.framework */; };
 		3FCC8A9E18CCEE9500F4F0A3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCC8A9D18CCEE9500F4F0A3 /* MessageUI.framework */; };
 		3FCC8AA018CCEF4300F4F0A3 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FCC8A9F18CCEF4300F4F0A3 /* Pods-acknowledgements.plist */; };
+		3FDEF33F18DD83BD006C2D7B /* PKEPokemonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEF33E18DD83BD006C2D7B /* PKEPokemonCollectionViewCell.m */; };
+		3FDEF34218DD8866006C2D7B /* PKEPokemonCollectionViewFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEF34118DD8866006C2D7B /* PKEPokemonCollectionViewFlow.m */; };
 		89EF30601966462586F702FA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82FCB715879F48319E6F6D82 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -800,8 +802,8 @@
 		3F05524618D61BCA00AF72D4 /* PKEFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEFilterViewController.m; path = Extensions/PKEFilterViewController.m; sourceTree = "<group>"; };
 		3F05524818D6264200AF72D4 /* PKETypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKETypeViewController.h; path = Extensions/PKETypeViewController.h; sourceTree = "<group>"; };
 		3F05524918D6264200AF72D4 /* PKETypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKETypeViewController.m; path = Extensions/PKETypeViewController.m; sourceTree = "<group>"; };
-		3F1396F318CB5CA3009B31A3 /* PKEPokemonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemonCell.h; path = Views/PKEPokemonCell.h; sourceTree = "<group>"; };
-		3F1396F418CB5CA3009B31A3 /* PKEPokemonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPokemonCell.m; path = Views/PKEPokemonCell.m; sourceTree = "<group>"; };
+		3F1396F318CB5CA3009B31A3 /* PKEPokemonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemonTableViewCell.h; path = Views/PKEPokemonTableViewCell.h; sourceTree = "<group>"; };
+		3F1396F418CB5CA3009B31A3 /* PKEPokemonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPokemonTableViewCell.m; path = Views/PKEPokemonTableViewCell.m; sourceTree = "<group>"; };
 		3F1396F718CB5D8E009B31A3 /* PKEPokemonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemonManager.h; path = Managers/PKEPokemonManager.h; sourceTree = "<group>"; };
 		3F1396F818CB5D8E009B31A3 /* PKEPokemonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPokemonManager.m; path = Managers/PKEPokemonManager.m; sourceTree = "<group>"; };
 		3F1396FB18CB5DC8009B31A3 /* PKEPokemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemon.h; path = Models/PKEPokemon.h; sourceTree = "<group>"; };
@@ -817,7 +819,7 @@
 		3F13973618CBBAF7009B31A3 /* PKETypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKETypeCell.m; path = Views/PKETypeCell.m; sourceTree = "<group>"; };
 		3F375C7318CC7B6A00A93DB4 /* PKEPokemonSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemonSearchViewController.h; path = Controllers/PKEPokemonSearchViewController.h; sourceTree = "<group>"; };
 		3F375C7418CC7B6A00A93DB4 /* PKEPokemonSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPokemonSearchViewController.m; path = Controllers/PKEPokemonSearchViewController.m; sourceTree = "<group>"; };
-		3F375C7918CC818F00A93DB4 /* PKEPokemonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PKEPokemonCell.xib; path = Views/PKEPokemonCell.xib; sourceTree = "<group>"; };
+		3F375C7918CC818F00A93DB4 /* PKEPokemonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PKEPokemonTableViewCell.xib; path = Views/PKEPokemonTableViewCell.xib; sourceTree = "<group>"; };
 		3F375C7B18CCA6D300A93DB4 /* PKEPartyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPartyViewController.h; path = Controllers/PKEPartyViewController.h; sourceTree = "<group>"; };
 		3F375C7C18CCA6D300A93DB4 /* PKEPartyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPartyViewController.m; path = Controllers/PKEPartyViewController.m; sourceTree = "<group>"; };
 		3F375C7E18CCA71B00A93DB4 /* PKEPokemonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemonTableViewController.h; path = Extensions/PKEPokemonTableViewController.h; sourceTree = "<group>"; };
@@ -1598,6 +1600,10 @@
 		3FCC8A9B18CCEE9000F4F0A3 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3FCC8A9D18CCEE9500F4F0A3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		3FCC8A9F18CCEF4300F4F0A3 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-acknowledgements.plist"; path = "Pods/Pods-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
+		3FDEF33D18DD83BD006C2D7B /* PKEPokemonCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemonCollectionViewCell.h; path = Views/PKEPokemonCollectionViewCell.h; sourceTree = "<group>"; };
+		3FDEF33E18DD83BD006C2D7B /* PKEPokemonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPokemonCollectionViewCell.m; path = Views/PKEPokemonCollectionViewCell.m; sourceTree = "<group>"; };
+		3FDEF34018DD8866006C2D7B /* PKEPokemonCollectionViewFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemonCollectionViewFlow.h; path = Extensions/PKEPokemonCollectionViewFlow.h; sourceTree = "<group>"; };
+		3FDEF34118DD8866006C2D7B /* PKEPokemonCollectionViewFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPokemonCollectionViewFlow.m; path = Extensions/PKEPokemonCollectionViewFlow.m; sourceTree = "<group>"; };
 		82FCB715879F48319E6F6D82 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8EE4AC78B264D2FB149AB3C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1673,6 +1679,8 @@
 				3F05523518D5FBCF00AF72D4 /* PKEPartyCollectionViewFlowLayout.m */,
 				3F05523718D5FD9500AF72D4 /* PKETypeCollectionViewFlowLayout.h */,
 				3F05523818D5FD9500AF72D4 /* PKETypeCollectionViewFlowLayout.m */,
+				3FDEF34018DD8866006C2D7B /* PKEPokemonCollectionViewFlow.h */,
+				3FDEF34118DD8866006C2D7B /* PKEPokemonCollectionViewFlow.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -2524,9 +2532,11 @@
 			isa = PBXGroup;
 			children = (
 				3F87BDCA18C7A72F00400F64 /* Main.storyboard */,
-				3F1396F318CB5CA3009B31A3 /* PKEPokemonCell.h */,
-				3F1396F418CB5CA3009B31A3 /* PKEPokemonCell.m */,
-				3F375C7918CC818F00A93DB4 /* PKEPokemonCell.xib */,
+				3F1396F318CB5CA3009B31A3 /* PKEPokemonTableViewCell.h */,
+				3F1396F418CB5CA3009B31A3 /* PKEPokemonTableViewCell.m */,
+				3F375C7918CC818F00A93DB4 /* PKEPokemonTableViewCell.xib */,
+				3FDEF33D18DD83BD006C2D7B /* PKEPokemonCollectionViewCell.h */,
+				3FDEF33E18DD83BD006C2D7B /* PKEPokemonCollectionViewCell.m */,
 				3F93181418CF70ED0023E7A5 /* PKEMoveCell.h */,
 				3F93181518CF70ED0023E7A5 /* PKEMoveCell.m */,
 				3F05523D18D6051300AF72D4 /* PKEMoveCell.xib */,
@@ -2878,7 +2888,7 @@
 				3F44F39F18D4747700E02280 /* 226.png in Resources */,
 				3F44F4BB18D4747700E02280 /* 510.png in Resources */,
 				3F44F39A18D4747700E02280 /* 221.png in Resources */,
-				3F375C7A18CC818F00A93DB4 /* PKEPokemonCell.xib in Resources */,
+				3F375C7A18CC818F00A93DB4 /* PKEPokemonTableViewCell.xib in Resources */,
 				3F44F3C818D4747700E02280 /* 267.png in Resources */,
 				3F44F4DE18D4747700E02280 /* 545.png in Resources */,
 				3F44F38118D4747700E02280 /* 196.png in Resources */,
@@ -3368,6 +3378,7 @@
 				3F1396FD18CB5DC8009B31A3 /* PKEPokemon.m in Sources */,
 				3F05524A18D6264200AF72D4 /* PKETypeViewController.m in Sources */,
 				3F93181F18CF899C0023E7A5 /* PKEEffectiveCell.m in Sources */,
+				3FDEF34218DD8866006C2D7B /* PKEPokemonCollectionViewFlow.m in Sources */,
 				3F375C8518CCB27B00A93DB4 /* PKEMemberCell.m in Sources */,
 				3F375C7518CC7B6A00A93DB4 /* PKEPokemonSearchViewController.m in Sources */,
 				3FB70A0F18D59F25007F1C7C /* PKEMoveManagedObject.m in Sources */,
@@ -3378,7 +3389,7 @@
 				3F93181618CF70ED0023E7A5 /* PKEMoveCell.m in Sources */,
 				3F93181918CF7E500023E7A5 /* PKELabel.m in Sources */,
 				3FB70A0918D59D74007F1C7C /* PKECoreDataHelper.m in Sources */,
-				3F1396F518CB5CA3009B31A3 /* PKEPokemonCell.m in Sources */,
+				3F1396F518CB5CA3009B31A3 /* PKEPokemonTableViewCell.m in Sources */,
 				3F43557E18CF6AB900806A8F /* PKEMovesetViewController.m in Sources */,
 				3FB70A1518D5CE55007F1C7C /* NSError+PokemonError.m in Sources */,
 				3FB70A0C18D59F25007F1C7C /* PKEPokemonManagedObject.m in Sources */,
@@ -3397,6 +3408,7 @@
 				3F44F59618D4D74500E02280 /* Pokeffective.xcdatamodeld in Sources */,
 				3FCC8A9818CCECF500F4F0A3 /* PKEAboutViewController.m in Sources */,
 				3F05523C18D6042C00AF72D4 /* PKEMoveTableViewController.m in Sources */,
+				3FDEF33F18DD83BD006C2D7B /* PKEPokemonCollectionViewCell.m in Sources */,
 				3F05524718D61BCA00AF72D4 /* PKEFilterViewController.m in Sources */,
 				3F375C8018CCA71B00A93DB4 /* PKEPokemonTableViewController.m in Sources */,
 				3F05523918D5FD9500AF72D4 /* PKETypeCollectionViewFlowLayout.m in Sources */,

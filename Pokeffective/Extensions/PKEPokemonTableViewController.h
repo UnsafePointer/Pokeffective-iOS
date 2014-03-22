@@ -10,12 +10,14 @@
 
 @class PKEPokemon;
 
-@protocol PKEPokemonTableViewControllerDataSource <UITableViewDataSource>
+@protocol PKEPokemonTableViewControllerDataSource
 
 @optional
 
 - (PKEPokemon *)getPokemonForIndexPath:(NSIndexPath *)indexPath
                            inTableView:(UITableView *)tableView;
+
+- (PKEPokemon *)getPokemonForIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

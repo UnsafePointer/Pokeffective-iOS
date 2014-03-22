@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PKETableViewCell.h"
 
-@interface PKEPokemonCell : PKETableViewCell
+@interface PKEPokemonTableViewCell : PKETableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *lblName;
 @property (nonatomic, weak) IBOutlet UILabel *lblTypes;

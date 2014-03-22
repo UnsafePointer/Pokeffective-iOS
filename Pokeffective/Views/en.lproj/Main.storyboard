@@ -4,42 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Pokemon List View Controller - Pokémon-->
-        <scene sceneID="KNV-QN-r7Y">
-            <objects>
-                <tableViewController id="s72-0V-cMJ" customClass="PKEPokemonListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4rt-c8-dbV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="76e-o0-bfR">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="76e-o0-bfR" id="hhl-cb-Yvd">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="s72-0V-cMJ" id="qnu-1c-k4A"/>
-                            <outlet property="delegate" destination="s72-0V-cMJ" id="ZWB-t1-0ee"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Pokémon" id="APq-wn-H6Y">
-                        <barButtonItem key="backBarButtonItem" title=" " id="cq5-jX-k3T"/>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="KY5-fL-3ks" kind="push" identifier="SearchSegue" id="b2i-4Z-58g"/>
-                        <segue destination="hs2-yD-Aac" kind="push" identifier="FilterSegue" id="wkv-Dv-9VH"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DGc-Js-2u2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="936" y="-974"/>
-        </scene>
         <!--Party View Controller - Party-->
         <scene sceneID="rvc-Cp-4Ks">
             <objects>
@@ -99,8 +63,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="s72-0V-cMJ" kind="push" identifier="AddSegue" id="kej-Vo-FIQ"/>
                         <segue destination="g1O-j2-TVl" kind="push" identifier="EffectiveSegue" id="9Ps-bn-uzh"/>
+                        <segue destination="ala-hg-4dS" kind="push" identifier="AddSegue" id="ksN-cu-6Em"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5L5-Uy-QuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,6 +124,81 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1463" y="-267"/>
+        </scene>
+        <!--Pokemon List View Controller - Pokémon-->
+        <scene sceneID="Gtm-pr-rbU">
+            <objects>
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="ala-hg-4dS" customClass="PKEPokemonListViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="eKR-uV-P8R">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bir-ed-pUP" customClass="PKEPokemonCollectionViewFlow">
+                            <size key="itemSize" width="300" height="88"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokemonCollectionViewCell" id="eez-XF-wHl" customClass="PKEPokemonCollectionViewCell">
+                                <rect key="frame" x="10" y="74" width="300" height="88"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="88"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Flying / Fire" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyL-Ju-fYm">
+                                            <rect key="frame" x="98" y="48" width="142" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e4c-J9-WZn">
+                                            <rect key="frame" x="0.0" y="1" width="88" height="87"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="003" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4p-i3-yYq">
+                                            <rect key="frame" x="248" y="34" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Charizard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ur2-eA-P9j">
+                                            <rect key="frame" x="98" y="19" width="142" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="imgPicture" destination="e4c-J9-WZn" id="UO2-AD-Ncd"/>
+                                    <outlet property="lblName" destination="Ur2-eA-P9j" id="58W-kd-40d"/>
+                                    <outlet property="lblNumber" destination="C4p-i3-yYq" id="VW2-ZX-AzG"/>
+                                    <outlet property="lblTypes" destination="CyL-Ju-fYm" id="2f1-3s-sdx"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="ala-hg-4dS" id="vGZ-EU-qSI"/>
+                            <outlet property="delegate" destination="ala-hg-4dS" id="CYq-gk-jQQ"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Pokémon" id="1CG-Wm-WGT">
+                        <barButtonItem key="backBarButtonItem" title=" " id="4IH-HT-8oF"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="hs2-yD-Aac" kind="push" identifier="FilterSegue" id="Neh-ho-7B8"/>
+                        <segue destination="KY5-fL-3ks" kind="push" identifier="SearchSegue" id="sfJ-dc-942"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pJa-yx-UJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="942" y="-974"/>
         </scene>
         <!--Filter View Controller - Options-->
         <scene sceneID="7xa-ek-M0k">

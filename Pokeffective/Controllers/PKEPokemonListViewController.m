@@ -8,15 +8,21 @@
 
 #import "PKEPokemonListViewController.h"
 #import "PKEPokemonManager.h"
-#import "PKEPokemonCell.h"
+#import "PKEPokemonTableViewCell.h"
 #import "PKEPokemon.h"
 #import "PKEPokemonSearchViewController.h"
 #import "PKEFilterViewController.h"
+#import "PKEPokemonCollectionViewCell.h"
 
 @interface PKEPokemonListViewController () <PKEPokemonTableViewControllerDataSource>
 
+@property (nonatomic, strong) NSArray *dataSource;
+
 - (void)searchButtonTapped:(id)sender;
 - (void)filterButtonTapped:(id)sender;
+
+- (void)configureCollectionViewCell:(PKEPokemonCollectionViewCell *)tableViewCell
+                       forIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -52,7 +58,7 @@ static void * PKEPokemonListViewControllerContext = &PKEPokemonListViewControlle
             [SVProgressHUD dismiss];
             if (!error) {
                 [self setDataSource:array];
-                [[self tableView] reloadData];
+                [[self collectionView] reloadData];
             }
         });
         
@@ -73,7 +79,7 @@ static void * PKEPokemonListViewControllerContext = &PKEPokemonListViewControlle
                     @strongify(self);
                     if (!error) {
                         [self setDataSource:array];
-                        [[self tableView] reloadData];
+                        [[self collectionView] reloadData];
                     }
                 });
             }];
@@ -122,17 +128,65 @@ static void * PKEPokemonListViewControllerContext = &PKEPokemonListViewControlle
                               sender:self];
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark - UICollectionViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [[self dataSource] count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"PokemonCollectionViewCell";
+    PKEPokemonCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier
+                                                                                   forIndexPath:indexPath];
+    [self configureCollectionViewCell:cell
+                         forIndexPath:indexPath];
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PKEPokemon *pokemon = [self getPokemonForIndexPath:indexPath];
+    @weakify(self);
+    [[PKEPokemonManager sharedManager] addPokemonToParty:pokemon
+                                              completion:^(BOOL result, NSError *error) {
+                                                  @strongify(self);
+                                                  if ([[self delegate] respondsToSelector:@selector(tableViewControllerDidSelectPokemon:error:)]) {
+                                                      [[self delegate] performSelector:@selector(tableViewControllerDidSelectPokemon:error:)
+                                                                            withObject:[pokemon copy]
+                                                                            withObject:error];
+                                                  }
+                                                  [[self navigationController] popToRootViewControllerAnimated:YES];
+                                              }];
+}
+
+#pragma mark - Private Methods
+
+- (void)configureCollectionViewCell:(PKEPokemonCollectionViewCell *)tableViewCell
+                       forIndexPath:(NSIndexPath *)indexPath
+{
+    [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
+    PKEPokemon *pokemon = [self getPokemonForIndexPath:indexPath];
+    [[tableViewCell lblName] setText:[pokemon name]];
+    [[tableViewCell lblNumber] setText:[NSString stringWithFormat:@"%03d", [pokemon pokedexNumber]]];
+    [[tableViewCell imgPicture] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%03d.png", [pokemon identifier]]]];
+    if ([pokemon secondType] == PKEPokemonTypeNone) {
+        [[tableViewCell lblTypes] setText:[[PKEPokemonManager sharedManager] nameForType:[pokemon firstType]]];
+        [tableViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon firstType]]];
+    }
+    else {
+        [[tableViewCell lblTypes] setText:[NSString stringWithFormat:@"%@ / %@", [[PKEPokemonManager sharedManager] nameForType:[pokemon firstType]],  [[PKEPokemonManager sharedManager] nameForType:[pokemon secondType]]]];
+        [tableViewCell addBackgroundLayersWithFirstColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon firstType]]
+                                             secondColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon secondType]]];
+    }
 }
 
 #pragma mark - PKEPokemonTableViewControllerDataSource
 
 - (PKEPokemon *)getPokemonForIndexPath:(NSIndexPath *)indexPath
-                           inTableView:(UITableView *)tableView
 {
     return [[self dataSource] objectAtIndex:[indexPath row]];
 }

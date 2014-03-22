@@ -8,12 +8,12 @@
 
 #import "PKEPokemonTableViewController.h"
 #import "PKEPokemonManager.h"
-#import "PKEPokemonCell.h"
+#import "PKEPokemonTableViewCell.h"
 #import "PKEPokemon.h"
 
 @interface PKEPokemonTableViewController () <PKEPokemonTableViewControllerDataSource>
 
-- (void)configureTableViewCell:(PKEPokemonCell *)tableViewCell
+- (void)configureTableViewCell:(PKEPokemonTableViewCell *)tableViewCell
                   forIndexPath:(NSIndexPath *)indexPath
                    inTableView:(UITableView *)tableView;
 
@@ -24,12 +24,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UINib *nib = [UINib nibWithNibName:@"PKEPokemonCell"
+    UINib *nib = [UINib nibWithNibName:@"PKEPokemonTableViewCell"
                                 bundle:[NSBundle mainBundle]];
     [[self tableView] registerNib:nib
-           forCellReuseIdentifier:@"PokemonCell"];
+           forCellReuseIdentifier:@"PokemonTableViewCell"];
     [[[self searchDisplayController] searchResultsTableView] registerNib:nib
-           forCellReuseIdentifier:@"PokemonCell"];
+           forCellReuseIdentifier:@"PokemonTableViewCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,8 +41,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"PokemonCell";
-    PKEPokemonCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
+    static NSString *CellIdentifier = @"PokemonTableViewCell";
+    PKEPokemonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
                                                            forIndexPath:indexPath];
     [self configureTableViewCell:cell
                     forIndexPath:indexPath
@@ -76,7 +76,7 @@
 
 #pragma mark - Private Methods
 
-- (void)configureTableViewCell:(PKEPokemonCell *)tableViewCell
+- (void)configureTableViewCell:(PKEPokemonTableViewCell *)tableViewCell
                   forIndexPath:(NSIndexPath *)indexPath
                    inTableView:(UITableView *)tableView
 {

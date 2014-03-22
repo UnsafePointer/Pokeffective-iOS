@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "PKEPokemonCell.h"
+#import "PKEPokemonTableViewCell.h"
 
-@implementation PKEPokemonCell
+@implementation PKEPokemonTableViewCell
 
 @end
