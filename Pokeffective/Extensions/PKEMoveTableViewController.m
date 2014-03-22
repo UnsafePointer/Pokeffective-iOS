@@ -30,6 +30,7 @@
            forCellReuseIdentifier:@"MoveTableViewCell"];
     [[[self searchDisplayController] searchResultsTableView] registerNib:nib
                                                   forCellReuseIdentifier:@"MoveTableViewCell"];
+    [self setExtendedLayoutIncludesOpaqueBars:YES];
 }
 
 - (void)didReceiveMemoryWarning

@@ -30,6 +30,7 @@
            forCellReuseIdentifier:@"PokemonTableViewCell"];
     [[[self searchDisplayController] searchResultsTableView] registerNib:nib
            forCellReuseIdentifier:@"PokemonTableViewCell"];
+    [self setExtendedLayoutIncludesOpaqueBars:YES];
 }
 
 - (void)didReceiveMemoryWarning
