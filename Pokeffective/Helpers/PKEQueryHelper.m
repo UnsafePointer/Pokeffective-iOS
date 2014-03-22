@@ -58,7 +58,7 @@
     NSMutableString *query = [NSMutableString string];
     [query appendString:@"select m.identifier as name,"
             "  m.type_id as type, "
-            "  mdc.identifier as category, "
+            "  mdc.id as category, "
             "  m.power, "
             "  m.accuracy "
             "from "

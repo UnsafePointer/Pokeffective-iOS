@@ -12,6 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *lblName;
 @property (nonatomic, weak) IBOutlet UILabel *lblCategory;
-@property (nonatomic, weak) IBOutlet UILabel *lblDetails;
+@property (nonatomic, weak) IBOutlet UILabel *lblPower;
+@property (nonatomic, weak) IBOutlet UILabel *lblAccuracy;
 
 @end

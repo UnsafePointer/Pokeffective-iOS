@@ -20,7 +20,7 @@
 - (void)searchButtonTapped:(id)sender;
 - (void)filterButtonTapped:(id)sender;
 
-- (void)configureCollectionViewCell:(PKEMoveCollectionViewCell *)tableViewCell
+- (void)configureCollectionViewCell:(PKEMoveCollectionViewCell *)collectionViewCell
                        forIndexPath:(NSIndexPath *)indexPath;
 
 @end
@@ -140,15 +140,21 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
                               sender:self];
 }
 
-- (void)configureCollectionViewCell:(PKEMoveCollectionViewCell *)tableViewCell
-                       forIndexPath:(NSIndexPath *)indexPath
+- (void)configureCollectionViewCell:(PKEMoveCollectionViewCell *)collectionViewCell
+                       forIndexPath:(NSIndexPath *)indexPath;
 {
-    [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
+    [[collectionViewCell contentView] setBackgroundColor:[UIColor clearColor]];
     PKEMove *move = [self getMoveForIndexPath:indexPath];
-    [[tableViewCell lblName] setText:[move name]];
-    [[tableViewCell lblCategory] setText:[[PKEPokemonManager sharedManager] nameForCategory:[move category]]];
-    [[tableViewCell lblDetails] setText:[NSString stringWithFormat:@"%d / %d", [move power], [move accuracy]]];
-    [tableViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[move type]]];
+    [[collectionViewCell lblName] setText:[move name]];
+    [[collectionViewCell lblCategory] setText:[[PKEPokemonManager sharedManager] nameForCategory:[move category]]];
+    [[collectionViewCell lblPower] setText:[NSString stringWithFormat:@"Pwr: %d", [move power]]];
+    if ([move accuracy] == 0) {
+        [[collectionViewCell lblAccuracy] setText:@"Acc: 100%"];
+    }
+    else {
+        [[collectionViewCell lblAccuracy] setText:[NSString stringWithFormat:@"Acc: %d%%", [move accuracy]]];
+    }
+    [collectionViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[move type]]];
 }
 
 #pragma mark - UICollectionViewDataSource
