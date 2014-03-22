@@ -143,7 +143,7 @@
     [lblNoContent setNumberOfLines:0];
     [lblNoContent setTextAlignment:NSTextAlignmentCenter];
     [lblNoContent setTextColor:[UIColor colorWithHexString:@"#898C90"]];
-    [lblNoContent setText:@"No pokemon added to the party found. Add one to get started."];
+    [lblNoContent setText:@"No pokemon added to the party found. Add one to get started.\nYou can remove them later holding the cells."];
     [lblNoContent setAlpha:0.0f];
     [[self view] addSubview:lblNoContent];
     [self setLblNoContent:lblNoContent];
@@ -243,6 +243,7 @@
                                  [[self lblNoContent] setAlpha:0.0f];
                              }
                              completion:^(BOOL finished) {
+                                 @strongify(self)
                                  if (finished) {
                                      [self updatePartyWithPokemon:pokemon];
                                  }

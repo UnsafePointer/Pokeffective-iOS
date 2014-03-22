@@ -15,10 +15,14 @@
 #import "PKEMoveCollectionViewCell.h"
 #import "NSError+PokemonError.h"
 #import "PKEMoveControllerDelegate.h"
+#import "PKELabel.h"
 
 @interface PKEMovesetViewController () <PKEMoveControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
+
+- (void)updateMovesetWithMove:(PKEMove *)move;
+- (void)onLongPressMoveCell:(UIGestureRecognizer *)gestureRecognizer;
 
 @end
 
@@ -28,13 +32,18 @@
 {
     [super viewDidLoad];
     [self setTitle:[[self pokemon] name]];
-    if (![[self pokemon] moves]) {
+    if (![[self pokemon] moves] || [[[self pokemon] moves] count] == 0) {
         [self setDataSource:[NSArray array]];
+        [[self lblNoContent] setAlpha:1.0f];
     }
     else {
         [self setDataSource:[[[self pokemon] moves] allObjects]];
     }
     [[self collectionView] reloadData];
+    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                             action:@selector(onLongPressMoveCell:)];
+    [[self collectionView] addGestureRecognizer:recognizer];
+    [[self lblNoContent] setText:@"No move added to moveset found. Add one to get started.\nYou can remove them later holding the cells."];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,11 +67,10 @@
     return NO;
 }
 
-#pragma mark - Public Methods
+#pragma mark - Private Methods
 
-- (IBAction)onLongPressMoveCell:(id)sender
+- (void)onLongPressMoveCell:(UIGestureRecognizer *)gestureRecognizer;
 {
-    UILongPressGestureRecognizer *gestureRecognizer = (UILongPressGestureRecognizer *)sender;
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
         NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[gestureRecognizer locationInView:[self collectionView]]];
         if (indexPath != nil) {
@@ -77,6 +85,29 @@
     }
 }
 
+- (void)updateMovesetWithMove:(PKEMove *)move
+{
+    @weakify(self)
+    [[self collectionView] performBatchUpdates:^{
+        @strongify(self)
+        NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
+        [mutableDataSource addObject:move];
+        [self setDataSource:[mutableDataSource copy]];
+        [[self pokemon] setMoves:[NSSet setWithArray:[self dataSource]]];
+        [[self collectionView] insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:[mutableDataSource count] - 1
+                                                                             inSection:0]]];
+    }
+                                    completion:^(BOOL finished) {
+                                        @strongify(self)
+                                        if (finished) {
+                                            [[self collectionView] scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:[[self dataSource] count] - 1
+                                                                                                               inSection:0]
+                                                                          atScrollPosition:UICollectionViewScrollPositionCenteredVertically
+                                                                                  animated:YES];
+                                        }
+                                    }];
+}
+
 #pragma mark - PKEMoveControllerDelegate
 
 - (void)controllerDidSelectMove:(PKEMove *)move
@@ -84,24 +115,22 @@
 {
     if (!error) {
         @weakify(self)
-        [[self collectionView] performBatchUpdates:^{
-            @strongify(self)
-            NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
-            [mutableDataSource addObject:move];
-            [self setDataSource:[mutableDataSource copy]];
-            [[self pokemon] setMoves:[NSSet setWithArray:[self dataSource]]];
-            [[self collectionView] insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:[mutableDataSource count] - 1
-                                                                                 inSection:0]]];
+        if ([[self lblNoContent] alpha]) {
+            [UIView animateWithDuration:0.5f
+                             animations:^{
+                                 @strongify(self)
+                                 [[self lblNoContent] setAlpha:0.0f];
+                             }
+                             completion:^(BOOL finished) {
+                                 @strongify(self)
+                                 if (finished) {
+                                     [self updateMovesetWithMove:move];
+                                 }
+                             }];
         }
-                                        completion:^(BOOL finished) {
-                                            @strongify(self)
-                                            if (finished) {
-                                                [[self collectionView] scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:[[self dataSource] count] - 1
-                                                                                                                   inSection:0]
-                                                                              atScrollPosition:UICollectionViewScrollPositionCenteredVertically
-                                                                                      animated:YES];
-                                            }
-                                        }];
+        else {
+            [self updateMovesetWithMove:move];
+        }
     }
     else {
         if ([[error domain] isEqualToString:PKEErrorMoveDomain]) {
@@ -139,16 +168,30 @@
                                             toPokemon:[self pokemon]
                                            completion:^(BOOL result, NSError *error) {
                                                @weakify(self)
-                                               [[self collectionView] performBatchUpdates:^{
-                                                   @strongify(self);
-                                                   if (!error) {
-                                                       NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
-                                                       [mutableDataSource removeObject:move];
-                                                       [self setDataSource:[mutableDataSource copy]];
-                                                       [[self pokemon] setMoves:[NSSet setWithArray:[self dataSource]]];
-                                                       [[self collectionView] deleteItemsAtIndexPaths:@[[self selectedIndexPath]]];
-                                                   }
-                                               } completion:nil];
+                                               if (!error) {
+                                                   [[self collectionView] performBatchUpdates:^{
+                                                       @strongify(self);
+                                                       if (!error) {
+                                                           NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
+                                                           [mutableDataSource removeObject:move];
+                                                           [self setDataSource:[mutableDataSource copy]];
+                                                           [[self pokemon] setMoves:[NSSet setWithArray:[self dataSource]]];
+                                                           [[self collectionView] deleteItemsAtIndexPaths:@[[self selectedIndexPath]]];
+                                                       }
+                                                   } completion:^(BOOL finished) {
+                                                       if (finished) {
+                                                           if ([[self dataSource] count] <= 0) {
+                                                               if (![[self lblNoContent] alpha]) {
+                                                                   [UIView animateWithDuration:0.5f
+                                                                                    animations:^{
+                                                                                        @strongify(self)
+                                                                                        [[self lblNoContent] setAlpha:1.0f];
+                                                                                    }];
+                                                               }
+                                                           }
+                                                       }
+                                                   }];
+                                               }
                                            }];
     }
 }

@@ -12,6 +12,8 @@
 #import "PKEFilterViewController.h"
 #import "PKEMoveCollectionViewCell.h"
 #import "PKEMove.h"
+#import "PKELabel.h"
+#import "TLAlertView.h"
 
 @interface PKEMoveListViewController () <PKEMoveTableViewControllerDataSource>
 
@@ -27,6 +29,7 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self lblNoContent] setText:@"No results for this filter values. Please, try others."];
     UIBarButtonItem *searchBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Search"]
                                                                             style:UIBarButtonItemStyleBordered
                                                                            target:self
@@ -55,8 +58,11 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
                                                    dispatch_async(dispatch_get_main_queue(), ^{
                                                        @strongify(self);
                                                        [SVProgressHUD dismiss];
-                                                       if (!error) {
-                                                           [self setDataSource:array];
+                                                       [self setDataSource:array];
+                                                       if ([[self dataSource] count] == 0) {
+                                                           [[self lblNoContent] setAlpha:1.0f];
+                                                       }
+                                                       else {
                                                            [[self collectionView] reloadData];
                                                        }
                                                    });
@@ -77,9 +83,13 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
                                                            @weakify(self);
                                                            dispatch_async(dispatch_get_main_queue(), ^{
                                                                @strongify(self);
-                                                               if (!error) {
-                                                                   [self setDataSource:array];
-                                                                   [[self collectionView] reloadData];
+                                                               [self setDataSource:array];
+                                                               [[self collectionView] reloadData];
+                                                               if ([[self dataSource] count] == 0) {
+                                                                   [[self lblNoContent] setAlpha:1.0f];
+                                                               }
+                                                               else {
+                                                                   [[self lblNoContent] setAlpha:0.0f];
                                                                }
                                                            });
                                                        }];
@@ -121,8 +131,16 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
 
 - (void)searchButtonTapped:(id)sender
 {
-    [self performSegueWithIdentifier:@"SearchSegue"
-                              sender:self];
+    if ([[self dataSource] count] > 0) {
+        [self performSegueWithIdentifier:@"SearchSegue"
+                                  sender:self];
+    }
+    else {
+        TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"Please, try other filter values first."
+                                                        buttonTitle:@"OK"];
+        [alertView show];
+    }
 }
 
 - (void)filterButtonTapped:(id)sender

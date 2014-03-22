@@ -13,6 +13,4 @@
 
 @interface PKEMovesetViewController : PKEMoveCollectionViewController
 
-- (IBAction)onLongPressMoveCell:(id)sender;
-
 @end

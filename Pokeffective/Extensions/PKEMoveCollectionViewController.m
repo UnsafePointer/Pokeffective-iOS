@@ -11,9 +11,13 @@
 #import "PKEPokemon.h"
 #import "PKEMove.h"
 #import "PKEPokemonManager.h"
+#import "PKELabel.h"
+#import "PKEMoveCollectionViewFlow.h"
 
-@interface PKEMoveCollectionViewController ()
+@interface PKEMoveCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
+- (void)configureNoContentLabel;
+- (void)configureCollectionView;
 - (void)configureCollectionViewCell:(PKEMoveCollectionViewCell *)collectionViewCell
                        forIndexPath:(NSIndexPath *)indexPath
                    inCollectionView:(UICollectionView *)collectionView;
@@ -25,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self configureCollectionView];
+    [self configureNoContentLabel];
     [self setTitle:[[self pokemon] name]];
     UINib *nib = [UINib nibWithNibName:@"PKEMoveCollectionViewCell"
                                 bundle:[NSBundle mainBundle]];
@@ -33,6 +39,32 @@
 }
 
 #pragma mark - Private Methods
+
+- (void)configureNoContentLabel
+{
+    PKELabel *lblNoContent = [[PKELabel alloc] initWithFrame:self.view.bounds
+                                               andEdgeInsets:UIEdgeInsetsMake(44 + 20 + 50, 50, 50, 50)];
+    [lblNoContent setNumberOfLines:0];
+    [lblNoContent setTextAlignment:NSTextAlignmentCenter];
+    [lblNoContent setTextColor:[UIColor colorWithHexString:@"#898C90"]];
+    [lblNoContent setAlpha:0.0f];
+    [[self view] addSubview:lblNoContent];
+    [self setLblNoContent:lblNoContent];
+}
+
+- (void)configureCollectionView
+{
+    PKEMoveCollectionViewFlow *layout = [[PKEMoveCollectionViewFlow alloc] initWithCoder:nil];
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds
+                                                          collectionViewLayout:layout];
+    [collectionView setDataSource:self];
+    [collectionView setDelegate:self];
+    [collectionView setBackgroundColor:[UIColor whiteColor]];
+    [collectionView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+    [collectionView setContentInset:UIEdgeInsetsMake(44 + 20, 0, 0, 0)];
+    [[self view] addSubview:collectionView];
+    [self setCollectionView:collectionView];
+}
 
 - (void)configureCollectionViewCell:(PKEMoveCollectionViewCell *)collectionViewCell
                        forIndexPath:(NSIndexPath *)indexPath
