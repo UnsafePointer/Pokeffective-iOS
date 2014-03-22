@@ -65,7 +65,7 @@
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
         NSArray *storedParty = [PKEPokemonManagedObject MR_findAllInContext:localContext];
         BOOL shouldSave = YES;
-        if ([storedParty count] > 6) {
+        if ([storedParty count] >= 6) {
             pokemonError = [NSError errorSavingMoreThanSixPokemons];
             shouldSave = NO;
         }
@@ -109,7 +109,7 @@
         NSArray *storedMoves = [PKEMoveManagedObject MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"pokemon == %@", pokemonManagedObject]
                                                                    inContext:localContext];
         BOOL shouldSave = YES;
-        if ([storedMoves count] > 4) {
+        if ([storedMoves count] >= 4) {
             pokemonError = [NSError errorSavingMoreThanFourMoves];
             shouldSave = NO;
         }
