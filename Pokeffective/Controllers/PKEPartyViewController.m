@@ -15,6 +15,7 @@
 #import "NSError+PokemonError.h"
 #import "PKELabel.h"
 #import "PKEPartyCollectionViewFlowLayout.h"
+#import "TLAlertView.h"
 
 @interface PKEPartyViewController () <PKEPokemonTableViewControllerDelegate, UIActionSheetDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -107,8 +108,16 @@
 
 - (void)chartButtonTapped:(id)sender
 {
-    [self performSegueWithIdentifier:@"EffectiveSegue"
-                              sender:self];
+    if (NO) {
+        [self performSegueWithIdentifier:@"EffectiveSegue"
+                                  sender:self];
+    }
+    else {
+        TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"Please, complete your party and movesets first."
+                                                        buttonTitle:@"OK"];
+        [alertView show];
+    }
 }
 
 - (void)configureTableViewCell:(PKEMemberCollectionViewCell *)tableViewCell
