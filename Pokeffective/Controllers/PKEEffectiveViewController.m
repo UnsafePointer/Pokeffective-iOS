@@ -94,6 +94,12 @@
     PKEEffective *effective = [[self dataSource] objectAtIndex:[indexPath row]];
     [[collectionViewCell lblType] setText:[[PKEPokemonManager sharedManager] nameForType:[effective pokemonType]]];
     [[collectionViewCell lblEffective] setText:[[PKEPokemonManager sharedManager] nameForEffectiveness:[effective effectiveness]]];
+    if ([[effective STABs] count] > 0) {
+        [[collectionViewCell imgViewDisclosure] setHidden:NO];
+    }
+    else {
+        [[collectionViewCell imgViewDisclosure] setHidden:YES];
+    }
     [collectionViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[effective pokemonType]]];
 }
 

@@ -158,17 +158,17 @@
             PKEPokemonType damager = [resultSet intForColumn:@"damager"];
             PKEPokemonType target = [resultSet intForColumn:@"target"];
             PKEEffectiveness effectiveness = [resultSet intForColumn:@"factor"];
-            NSMutableArray *type = [efficacy objectForKey:[NSNumber numberWithInt:damager]];
+            NSMutableArray *type = [efficacy objectForKey:[NSNumber numberWithInt:target]];
             if (!type) {
                 type = [[NSMutableArray alloc] initWithCapacity:TOTAL_POKEMON_TYPES];
                 for (int i = 0; i < TOTAL_POKEMON_TYPES; i++) {
                     [type addObject:[NSNull null]];
                 }
             }
-            [type replaceObjectAtIndex:(target - 1)
+            [type replaceObjectAtIndex:(damager - 1)
                             withObject:[NSNumber numberWithInt:effectiveness]];
             [efficacy setObject:type
-                         forKey:[NSNumber numberWithInt:damager]];
+                         forKey:[NSNumber numberWithInt:target]];
         }
         [db close];
         if (completionBlock) {

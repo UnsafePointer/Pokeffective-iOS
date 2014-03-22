@@ -13,5 +13,6 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *lblType;
 @property (nonatomic, weak) IBOutlet UILabel *lblEffective;
+@property (nonatomic, weak) IBOutlet UIImageView *imgViewDisclosure;
 
 @end

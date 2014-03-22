@@ -149,12 +149,14 @@ static dispatch_once_t oncePredicate;
                     if (comparison > effectiviness) {
                         effectiviness = comparison;
                     }
-                    if (effectiviness == PKEEffectivenessSuperEffective) {
+                    if (comparison == PKEEffectivenessSuperEffective) {
                         if ([move type] == [pokemon firstType] || [move type] == [pokemon secondType]) {
-                            PKESTAB *STAB = [PKESTAB new];
-                            [STAB setPokemon:pokemon];
-                            [STAB setMove:move];
-                            [STABs addObject:STAB];
+                            if ([move category] != PKEMoveCategoryNonDamaging) {
+                                PKESTAB *STAB = [PKESTAB new];
+                                [STAB setPokemon:pokemon];
+                                [STAB setMove:move];
+                                [STABs addObject:STAB];
+                            }
                         }
                     }
                 }
