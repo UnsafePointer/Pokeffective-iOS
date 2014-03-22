@@ -55,6 +55,9 @@
             case 0:
                 [self acknowledgements];
                 break;
+            case 1:
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/veekun/pokedex"]];
+                break;
         }
     }
 }
