@@ -773,6 +773,9 @@
 		3F9DF09A18DE1253001ACA19 /* PKEEffectiveCollectionViewFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DF09918DE1253001ACA19 /* PKEEffectiveCollectionViewFlow.m */; };
 		3F9DF09D18DE1C4C001ACA19 /* PKEEffective.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DF09C18DE1C4C001ACA19 /* PKEEffective.m */; };
 		3F9DF0A018DE1CCB001ACA19 /* PKESTAB.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DF09F18DE1CCB001ACA19 /* PKESTAB.m */; };
+		3F9DF0A318DE3B24001ACA19 /* PKESTABsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DF0A218DE3B24001ACA19 /* PKESTABsViewController.m */; };
+		3F9DF0A618DE3BB9001ACA19 /* PKESTABCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DF0A518DE3BB9001ACA19 /* PKESTABCollectionViewCell.m */; };
+		3FACDFE918DE40CF00BD6963 /* PKESTABCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FACDFE818DE40CF00BD6963 /* PKESTABCollectionViewFlowLayout.m */; };
 		3FB70A0618D59929007F1C7C /* PKESQLiteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB70A0518D59929007F1C7C /* PKESQLiteHelper.m */; };
 		3FB70A0918D59D74007F1C7C /* PKECoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB70A0818D59D74007F1C7C /* PKECoreDataHelper.m */; };
 		3FB70A0C18D59F25007F1C7C /* PKEPokemonManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB70A0B18D59F25007F1C7C /* PKEPokemonManagedObject.m */; };
@@ -1600,6 +1603,12 @@
 		3F9DF09C18DE1C4C001ACA19 /* PKEEffective.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEEffective.m; path = Models/PKEEffective.m; sourceTree = "<group>"; };
 		3F9DF09E18DE1CCB001ACA19 /* PKESTAB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKESTAB.h; path = Models/PKESTAB.h; sourceTree = "<group>"; };
 		3F9DF09F18DE1CCB001ACA19 /* PKESTAB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKESTAB.m; path = Models/PKESTAB.m; sourceTree = "<group>"; };
+		3F9DF0A118DE3B24001ACA19 /* PKESTABsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKESTABsViewController.h; path = Controllers/PKESTABsViewController.h; sourceTree = "<group>"; };
+		3F9DF0A218DE3B24001ACA19 /* PKESTABsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKESTABsViewController.m; path = Controllers/PKESTABsViewController.m; sourceTree = "<group>"; };
+		3F9DF0A418DE3BB9001ACA19 /* PKESTABCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKESTABCollectionViewCell.h; path = Views/PKESTABCollectionViewCell.h; sourceTree = "<group>"; };
+		3F9DF0A518DE3BB9001ACA19 /* PKESTABCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKESTABCollectionViewCell.m; path = Views/PKESTABCollectionViewCell.m; sourceTree = "<group>"; };
+		3FACDFE718DE40CF00BD6963 /* PKESTABCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKESTABCollectionViewFlowLayout.h; path = Extensions/PKESTABCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		3FACDFE818DE40CF00BD6963 /* PKESTABCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKESTABCollectionViewFlowLayout.m; path = Extensions/PKESTABCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		3FB70A0418D59929007F1C7C /* PKESQLiteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKESQLiteHelper.h; path = Helpers/PKESQLiteHelper.h; sourceTree = "<group>"; };
 		3FB70A0518D59929007F1C7C /* PKESQLiteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKESQLiteHelper.m; path = Helpers/PKESQLiteHelper.m; sourceTree = "<group>"; };
 		3FB70A0718D59D74007F1C7C /* PKECoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKECoreDataHelper.h; path = Helpers/PKECoreDataHelper.h; sourceTree = "<group>"; };
@@ -1717,6 +1726,8 @@
 				3FDEF34718DD9456006C2D7B /* PKEMoveCollectionViewFlow.m */,
 				3F9DF09818DE1253001ACA19 /* PKEEffectiveCollectionViewFlow.h */,
 				3F9DF09918DE1253001ACA19 /* PKEEffectiveCollectionViewFlow.m */,
+				3FACDFE718DE40CF00BD6963 /* PKESTABCollectionViewFlowLayout.h */,
+				3FACDFE818DE40CF00BD6963 /* PKESTABCollectionViewFlowLayout.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -2484,6 +2495,8 @@
 				3F05524318D60B8D00AF72D4 /* PKEMoveSearchViewController.m */,
 				3F93181A18CF88DF0023E7A5 /* PKEEffectiveViewController.h */,
 				3F93181B18CF88DF0023E7A5 /* PKEEffectiveViewController.m */,
+				3F9DF0A118DE3B24001ACA19 /* PKESTABsViewController.h */,
+				3F9DF0A218DE3B24001ACA19 /* PKESTABsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -2586,6 +2599,8 @@
 				3F13973618CBBAF7009B31A3 /* PKETypeCell.m */,
 				3F93181D18CF899C0023E7A5 /* PKEEffectiveCollectionViewCell.h */,
 				3F93181E18CF899C0023E7A5 /* PKEEffectiveCollectionViewCell.m */,
+				3F9DF0A418DE3BB9001ACA19 /* PKESTABCollectionViewCell.h */,
+				3F9DF0A518DE3BB9001ACA19 /* PKESTABCollectionViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -3465,8 +3480,10 @@
 				3F05524118D609BD00AF72D4 /* PKEMoveListViewController.m in Sources */,
 				3F44F59018D483ED00E02280 /* PKEQueryHelper.m in Sources */,
 				3F81401D18D4E61A00003ABD /* NSManagedObjectContext+BackgroundFetch.m in Sources */,
+				3FACDFE918DE40CF00BD6963 /* PKESTABCollectionViewFlowLayout.m in Sources */,
 				3F13973418CBB551009B31A3 /* PKECollectionViewCell.m in Sources */,
 				3FDEF34518DD914D006C2D7B /* PKEMoveCollectionViewCell.m in Sources */,
+				3F9DF0A618DE3BB9001ACA19 /* PKESTABCollectionViewCell.m in Sources */,
 				3F778FBD18C7AE3400771A9E /* PKEPokemonListViewController.m in Sources */,
 				3F13972E18CBAE1A009B31A3 /* PKETableViewCell.m in Sources */,
 				3FB70A1218D5A3E7007F1C7C /* PKETranslatorHelper.m in Sources */,
@@ -3479,6 +3496,7 @@
 				3F9DF09718DDED6B001ACA19 /* TLAlertView.m in Sources */,
 				3F05523918D5FD9500AF72D4 /* PKETypeCollectionViewFlowLayout.m in Sources */,
 				3F05524418D60B8D00AF72D4 /* PKEMoveSearchViewController.m in Sources */,
+				3F9DF0A318DE3B24001ACA19 /* PKESTABsViewController.m in Sources */,
 				3FB70A0618D59929007F1C7C /* PKESQLiteHelper.m in Sources */,
 				3FDEF34D18DDB07A006C2D7B /* PKEMoveCollectionViewController.m in Sources */,
 				3F9DF0A018DE1CCB001ACA19 /* PKESTAB.m in Sources */,

@@ -142,9 +142,8 @@ static dispatch_once_t oncePredicate;
         for (PKEPokemonType pokemonTypeTarget = PKEPokemonTypeNormal; pokemonTypeTarget <= TOTAL_POKEMON_TYPES; pokemonTypeTarget++) {
             NSArray *typeEfficacy = [efficacy objectForKey:[NSNumber numberWithInt:pokemonTypeTarget]];
             PKEEffectiveness effectiviness = PKEEffectivenessNoEffect;
-            NSMutableArray *STABers = [NSMutableArray array];
+            NSMutableArray *STABs = [NSMutableArray array];
             for (PKEPokemon *pokemon in party) {
-                PKESTAB *STAB = nil;
                 for (PKEMove *move in [pokemon moves]) {
                     PKEEffectiveness comparison = [[typeEfficacy objectAtIndex:([move type] - 1)] unsignedIntegerValue];
                     if (comparison > effectiviness) {
@@ -152,28 +151,18 @@ static dispatch_once_t oncePredicate;
                     }
                     if (effectiviness == PKEEffectivenessSuperEffective) {
                         if ([move type] == [pokemon firstType] || [move type] == [pokemon secondType]) {
-                            NSMutableArray *moves = nil;
-                            if (STAB == nil) {
-                                STAB = [PKESTAB new];
-                                [STAB setPokemon:pokemon];
-                                moves = [[NSMutableArray alloc] init];
-                            }
-                            else {
-                                moves = [NSMutableArray arrayWithArray:[STAB moves]];
-                            }
-                            [moves addObject:move];
-                            [STAB setMoves:[moves copy]];
+                            PKESTAB *STAB = [PKESTAB new];
+                            [STAB setPokemon:pokemon];
+                            [STAB setMove:move];
+                            [STABs addObject:STAB];
                         }
                     }
-                }
-                if (STAB) {
-                    [STABers addObject:STAB];
                 }
             }
             PKEEffective *effective = [PKEEffective new];
             [effective setPokemonType:pokemonTypeTarget];
             [effective setEffectiveness:effectiviness];
-            [effective setSTABers:[STABers copy]];
+            [effective setSTABs:[STABs copy]];
             [pokeffective addObject:effective];
         }
         if (completionBlock) {

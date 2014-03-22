@@ -10,6 +10,7 @@
 #import "PKEEffectiveCollectionViewCell.h"
 #import "PKEPokemonManager.h"
 #import "PKEEffective.h"
+#import "PKESTABsViewController.h"
 
 @interface PKEEffectiveViewController ()
 
@@ -42,6 +43,15 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"STABsSegue"]) {
+        PKEEffective *effective = [[self dataSource] objectAtIndex:[[[[self collectionView] indexPathsForSelectedItems] firstObject] row]];
+        PKESTABsViewController *controller = [segue destinationViewController];
+        controller.dataSource = [effective STABs];
+    }
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section;
@@ -57,6 +67,23 @@
     [self configureCollectionViewCell:cell
                          forIndexPath:indexPath];
     return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"STABsSegue"
+                              sender:self];
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PKEEffective *effective = [[self dataSource] objectAtIndex:[indexPath row]];
+    if ([[effective STABs] count] > 0) {
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - Private Methods

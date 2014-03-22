@@ -14,6 +14,6 @@
 @interface PKESTAB : NSObject
 
 @property (nonatomic, strong) PKEPokemon *pokemon;
-@property (nonatomic, strong) NSArray *moves;
+@property (nonatomic, strong) PKEMove *move;
 
 @end

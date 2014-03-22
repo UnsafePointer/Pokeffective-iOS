@@ -12,6 +12,6 @@
 
 @property (nonatomic, assign) PKEPokemonType pokemonType;
 @property (nonatomic, assign) PKEEffectiveness effectiveness;
-@property (nonatomic, strong) NSArray *STABers;
+@property (nonatomic, strong) NSArray *STABs;
 
 @end
