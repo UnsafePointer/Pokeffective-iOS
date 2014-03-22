@@ -32,6 +32,7 @@
 - (void)configureCollectionView;
 - (void)onLongPressMemberCell:(UIGestureRecognizer *)gestureRecognizer;
 - (void)updatePartyWithPokemon:(PKEPokemon *)pokemon;
+- (BOOL)validateParty;
 
 @end
 
@@ -100,6 +101,21 @@
 
 #pragma mark - Private Methods
 
+- (BOOL)validateParty
+{
+    if ([[self dataSource] count] < 6) {
+        return NO;
+    }
+    BOOL isPartyValid = YES;
+    for (PKEPokemon *pokemon in [self dataSource]) {
+        if ([[pokemon moves] count] < 4) {
+            isPartyValid = NO;
+            break;
+        }
+    }
+    return isPartyValid;
+}
+
 - (void)addButtonTapped:(id)sender
 {
     [self performSegueWithIdentifier:@"AddSegue"
@@ -108,7 +124,7 @@
 
 - (void)chartButtonTapped:(id)sender
 {
-    if (NO) {
+    if ([self validateParty]) {
         [self performSegueWithIdentifier:@"EffectiveSegue"
                                   sender:self];
     }
