@@ -76,6 +76,13 @@
     return cell;
 }
 
+#pragma mark - UICollectionViewDelegate
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
 #pragma mark - Public Methods
 
 - (IBAction)onLongPressMoveCell:(id)sender
@@ -85,7 +92,7 @@
         NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[gestureRecognizer locationInView:[self collectionView]]];
         if (indexPath != nil) {
             [self setSelectedIndexPath:indexPath];
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Remove from party"
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Remove from moveset"
                                                                      delegate:self
                                                             cancelButtonTitle:@"Cancel"
                                                        destructiveButtonTitle:@"Remove"
