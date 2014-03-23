@@ -12,6 +12,7 @@
 
 - (void)setNavigationBarAppearance;
 - (void)setTabBarAppearance;
+- (void)configureHockeyApp;
 
 @end
 
@@ -22,6 +23,7 @@
     [MagicalRecord setupAutoMigratingCoreDataStack];
     [self setNavigationBarAppearance];
     [self setTabBarAppearance];
+    [self configureHockeyApp];
     return YES;
 }
 
@@ -30,7 +32,28 @@
     [MagicalRecord cleanUp];
 }
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    if( [[[BITHockeyManager sharedHockeyManager] authenticator] handleOpenURL:url
+                                                            sourceApplication:sourceApplication
+                                                                   annotation:annotation]) {
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark - Private Methods
+
+- (void)configureHockeyApp
+{
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"985be260844cf58133850a264ae0466a"];
+    [[[BITHockeyManager sharedHockeyManager] authenticator] setIdentificationType:BITAuthenticatorIdentificationTypeDevice];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[[BITHockeyManager sharedHockeyManager] authenticator] authenticateInstallation];
+}
 
 - (void)setNavigationBarAppearance
 {

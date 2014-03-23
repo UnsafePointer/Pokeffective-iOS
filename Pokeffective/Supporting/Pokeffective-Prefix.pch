@@ -27,6 +27,7 @@
     #import <FMDB/FMDatabase.h>
     #import <FMDB/FMDatabaseQueue.h>
     #import <FMDB/FMResultSet.h>
+    #import <HockeySDK/HockeySDK.h>
     #import "Includes.h"
     #import "Blocks.h"
 #endif
