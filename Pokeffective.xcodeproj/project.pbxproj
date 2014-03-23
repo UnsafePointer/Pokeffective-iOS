@@ -3610,6 +3610,7 @@
 				GCC_PREFIX_HEADER = "Pokeffective/Supporting/Pokeffective-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Pokeffective/Supporting/Pokeffective-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "09568585-07A6-45C3-9F21-C046588D2A72";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3624,6 +3625,7 @@
 				GCC_PREFIX_HEADER = "Pokeffective/Supporting/Pokeffective-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Pokeffective/Supporting/Pokeffective-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "F7298735-0368-4DC9-86ED-435647A048CF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
