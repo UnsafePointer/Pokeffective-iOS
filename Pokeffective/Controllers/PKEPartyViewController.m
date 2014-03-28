@@ -214,12 +214,13 @@
         NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[gestureRecognizer locationInView:[self collectionView]]];
         if (indexPath != nil) {
             [self setSelectedIndexPath:indexPath];
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Remove from party"
+            PKEPokemon *pokemon = [[self dataSource] objectAtIndex:[indexPath row]];
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Remove %@ from party?", [pokemon name]]
                                                                      delegate:self
                                                             cancelButtonTitle:@"Cancel"
                                                        destructiveButtonTitle:@"Remove"
                                                             otherButtonTitles:nil];
-            [actionSheet showInView:[self view]];
+            [actionSheet showFromTabBar:[[self tabBarController] tabBar]];
         }
     }
 }
@@ -302,7 +303,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 {
-    if (buttonIndex == 0) {
+    if (buttonIndex == [actionSheet destructiveButtonIndex]) {
         PKEPokemon *pokemon = [[self dataSource] objectAtIndex:[[self selectedIndexPath] row]];
         [[PKEPokemonManager sharedManager] removePokemonFromParty:pokemon
                                                        completion:^(BOOL result, NSError *error) {
