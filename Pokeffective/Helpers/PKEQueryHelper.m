@@ -78,7 +78,7 @@
         [query appendFormat:@" m.damage_class_id = %d and ", moveCategory];
     }
     [query appendFormat:@" pokemon_id = %d "
-                         "order by m.identifier", [pokemon identifier]];
+                         "group by m.identifier order by m.identifier", [pokemon identifier]];
     return [query copy];
 }
 
