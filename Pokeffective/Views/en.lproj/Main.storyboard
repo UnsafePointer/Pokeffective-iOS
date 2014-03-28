@@ -401,10 +401,10 @@
             </objects>
             <point key="canvasLocation" x="2547" y="-235"/>
         </scene>
-        <!--View Controller - Online-->
+        <!--Temporal View Controller - Online-->
         <scene sceneID="zyX-ZL-hdU">
             <objects>
-                <viewController id="w6s-00-GFC" sceneMemberID="viewController">
+                <viewController id="w6s-00-GFC" customClass="PKETemporalViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CJo-Qe-JQy"/>
                         <viewControllerLayoutGuide type="bottom" id="peG-vN-XRL"/>
@@ -412,15 +412,6 @@
                     <view key="view" contentMode="scaleToFill" id="2b9-bJ-vhK">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We'll let you know when this is ready ;)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="175" translatesAutoresizingMaskIntoConstraints="NO" id="fAb-2o-5y1">
-                                <rect key="frame" x="73" y="199" width="175" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.53725490196078429" green="0.5490196078431373" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Online" id="3kr-CV-GAe"/>
