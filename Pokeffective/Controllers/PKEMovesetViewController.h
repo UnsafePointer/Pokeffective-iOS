@@ -13,4 +13,6 @@
 
 @interface PKEMovesetViewController : PKEMoveCollectionViewController
 
+- (IBAction)onTapAddButton:(id)sender;
+
 @end

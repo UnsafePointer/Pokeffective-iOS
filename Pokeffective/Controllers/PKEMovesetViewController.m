@@ -15,6 +15,7 @@
 #import "PKEMoveCollectionViewCell.h"
 #import "NSError+PKEPokemonError.h"
 #import "PKEMoveControllerDelegate.h"
+#import "TLAlertView.h"
 
 @interface PKEMovesetViewController () <PKEMoveControllerDelegate, UIActionSheetDelegate>
 
@@ -64,6 +65,22 @@
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return NO;
+}
+
+#pragma mark - Public Methods
+
+- (IBAction)onTapAddButton:(id)sender
+{
+    if ([[self dataSource] count] < MAX_POKEMON_MOVES) {
+        [self performSegueWithIdentifier:@"MovesSegue"
+                                  sender:self];
+    }
+    else {
+        TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"You can't save more than four moves for a pokemon in your party. Remove one first in order to add another."
+                                                        buttonTitle:@"OK"];
+        [alertView show];
+    }
 }
 
 #pragma mark - Private Methods
@@ -136,14 +153,6 @@
         if ([[error domain] isEqualToString:PKEErrorMoveDomain]) {
             PKEErrorCodeMove code = [error code];
             switch (code) {
-                case kPKEErrorCodeSavingMoreThanFourMoves:
-                    [TSMessage showNotificationInViewController:self
-                                                          title:@"Error"
-                                                       subtitle:@"You can't save more than four moves for a pokemon in your party."
-                                                           type:TSMessageNotificationTypeError
-                                                       duration:3.0f
-                                           canBeDismissedByUser:YES];
-                    break;
                 case kPKEErrorCodeSavingSameMove:
                     [TSMessage showNotificationInViewController:self
                                                           title:@"Error"

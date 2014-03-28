@@ -511,10 +511,13 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="atx-eW-4Cx"/>
                         <barButtonItem key="rightBarButtonItem" image="Add" id="Tr3-Lu-yUe">
                             <connections>
-                                <segue destination="CUY-GV-vMy" kind="push" identifier="MovesSegue" id="2Xs-vY-Rgk"/>
+                                <action selector="onTapAddButton:" destination="moo-MJ-wWl" id="xL6-wU-Z7p"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="CUY-GV-vMy" kind="push" identifier="MovesSegue" id="ax3-3i-231"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Abo-R5-O4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

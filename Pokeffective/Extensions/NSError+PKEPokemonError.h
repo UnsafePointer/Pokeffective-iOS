@@ -14,7 +14,6 @@ extern NSString * const PKEErrorMoveDomain;
 @interface NSError (PKEPokemonError)
 
 + (NSError *)PKE_errorSavingSamePokemon;
-+ (NSError *)PKE_errorSavingMoreThanFourMoves;
 + (NSError *)PKE_errorSavingSameMove;
 
 @end

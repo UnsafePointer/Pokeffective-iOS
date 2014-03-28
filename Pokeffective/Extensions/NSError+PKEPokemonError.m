@@ -20,13 +20,6 @@ NSString * const PKEErrorMoveDomain = @"PKEErrorMoveDomain";
                            userInfo:nil];
 }
 
-+ (NSError *)PKE_errorSavingMoreThanFourMoves
-{
-    return [NSError errorWithDomain:PKEErrorMoveDomain
-                               code:kPKEErrorCodeSavingMoreThanFourMoves
-                           userInfo:nil];
-}
-
 + (NSError *)PKE_errorSavingSameMove
 {
     return [NSError errorWithDomain:PKEErrorMoveDomain

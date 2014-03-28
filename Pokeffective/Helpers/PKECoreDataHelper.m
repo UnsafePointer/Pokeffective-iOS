@@ -103,16 +103,10 @@
         NSArray *storedMoves = [PKEMoveManagedObject MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"pokemon == %@", pokemonManagedObject]
                                                                    inContext:localContext];
         BOOL shouldSave = YES;
-        if ([storedMoves count] >= 4) {
-            pokemonError = [NSError PKE_errorSavingMoreThanFourMoves];
-            shouldSave = NO;
-        }
-        else {
-            for (PKEMoveManagedObject *moveManagedObject in storedMoves) {
-                if ([[moveManagedObject name] isEqualToString:[move name]]) {
-                    pokemonError = [NSError PKE_errorSavingSameMove];
-                    shouldSave = NO;
-                }
+        for (PKEMoveManagedObject *moveManagedObject in storedMoves) {
+            if ([[moveManagedObject name] isEqualToString:[move name]]) {
+                pokemonError = [NSError PKE_errorSavingSameMove];
+                shouldSave = NO;
             }
         }
         if (shouldSave) {
