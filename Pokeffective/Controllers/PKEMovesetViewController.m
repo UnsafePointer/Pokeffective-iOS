@@ -141,7 +141,7 @@
                                                           title:@"Error"
                                                        subtitle:@"You can't save more than four moves for a pokemon in your party."
                                                            type:TSMessageNotificationTypeError
-                                                       duration:2.0f
+                                                       duration:3.0f
                                            canBeDismissedByUser:YES];
                     break;
                 case kPKEErrorCodeSavingSameMove:
@@ -149,7 +149,7 @@
                                                           title:@"Error"
                                                        subtitle:@"You can't save the same move twice for a pokemon in your party."
                                                            type:TSMessageNotificationTypeError
-                                                       duration:2.0f
+                                                       duration:3.0f
                                            canBeDismissedByUser:YES];
                     break;
             }

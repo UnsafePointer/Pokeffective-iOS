@@ -285,7 +285,7 @@
                                                           title:@"Error"
                                                        subtitle:@"You can't save more than six pokemons in your party."
                                                            type:TSMessageNotificationTypeError
-                                                       duration:2.0f
+                                                       duration:3.0f
                                            canBeDismissedByUser:YES];
                     break;
                 case kPKEErrorCodeSavingSamePokemon:
@@ -293,7 +293,7 @@
                                                           title:@"Error"
                                                        subtitle:@"You can't save the same pokemon twice in your party."
                                                            type:TSMessageNotificationTypeError
-                                                       duration:2.0f
+                                                       duration:3.0f
                                            canBeDismissedByUser:YES];
                     break;
             }

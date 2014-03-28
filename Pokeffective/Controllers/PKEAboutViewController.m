@@ -90,7 +90,7 @@
                                                                   title:@"Success"
                                                                subtitle:@"You're now following me on Twitter."
                                                                    type:TSMessageNotificationTypeSuccess
-                                                               duration:2.0f
+                                                               duration:3.0f
                                                    canBeDismissedByUser:YES];
                         }
                         else {
@@ -98,7 +98,7 @@
                                                                   title:@"Error"
                                                                subtitle:@"Something wrong happened. Try this later."
                                                                    type:TSMessageNotificationTypeError
-                                                               duration:2.0f
+                                                               duration:3.0f
                                                    canBeDismissedByUser:YES];
                         }
                     });
@@ -110,7 +110,7 @@
                                                           title:@"Error"
                                                        subtitle:@"It seems that you don't have a Twitter account configured."
                                                            type:TSMessageNotificationTypeError
-                                                       duration:2.0f
+                                                       duration:3.0f
                                            canBeDismissedByUser:YES];
                 });
             }
@@ -133,7 +133,7 @@
                                               title:@"Error"
                                            subtitle:@"No email account configured."
                                                type:TSMessageNotificationTypeError
-                                           duration:2.0f
+                                           duration:3.0f
                                canBeDismissedByUser:YES];
     }
 }
@@ -155,7 +155,7 @@
                                               title:@"Success"
                                            subtitle:@"You have send me an email."
                                                type:TSMessageNotificationTypeSuccess
-                                           duration:2.0f
+                                           duration:3.0f
                                canBeDismissedByUser:YES];
     }
     else if (result == MFMailComposeResultFailed) {
@@ -163,7 +163,7 @@
                                               title:@"Error"
                                            subtitle:@"Something wrong happened. Try this later."
                                                type:TSMessageNotificationTypeError
-                                           duration:2.0f
+                                           duration:3.0f
                                canBeDismissedByUser:YES];
     }
     [self dismissViewControllerAnimated:true
