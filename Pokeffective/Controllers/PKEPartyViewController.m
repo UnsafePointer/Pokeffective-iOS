@@ -22,7 +22,7 @@
 
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
-@property (nonatomic, weak) PKELabel *lblNoContent;
+@property (nonatomic, weak) UILabel *lblNoContent;
 @property (nonatomic, weak) UICollectionView *collectionView;
 
 - (void)addButtonTapped:(id)sender;
@@ -159,14 +159,17 @@
 
 - (void)configureNoContentLabel
 {
-    PKELabel *lblNoContent = [[PKELabel alloc] initWithFrame:self.view.bounds
-                                               andEdgeInsets:UIEdgeInsetsMake(0, 50, 0, 50)];
+    UILabel *lblNoContent = [[UILabel alloc] initWithFrame:CGRectZero];
+    lblNoContent.backgroundColor = [UIColor clearColor];
     [lblNoContent setNumberOfLines:0];
     [lblNoContent setTextAlignment:NSTextAlignmentCenter];
     [lblNoContent setTextColor:[UIColor colorWithHexString:@"#898C90"]];
-    [lblNoContent setText:@"No pokemon added to the party found. Add one to get started.\nYou can remove them later holding the cells."];
+    [lblNoContent setText:EMPTY_PARTY];
     [lblNoContent setAlpha:0.0f];
     [[self view] addSubview:lblNoContent];
+    [lblNoContent mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(50, 50, 50, 50));
+    }];
     [self setLblNoContent:lblNoContent];
 }
 

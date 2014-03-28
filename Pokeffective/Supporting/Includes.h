@@ -85,3 +85,4 @@ typedef NS_ENUM(NSInteger, PKEEffectiveness) {
 #define FIRST_TYPE_SLOT 1
 #define SECOND_TYPE_SLOT 2
 #define TOTAL_POKEMON_TYPES 18
+#define EMPTY_PARTY @"No pokemon added to the party found. Add one to get started.\nYou can remove them later holding the cells."
