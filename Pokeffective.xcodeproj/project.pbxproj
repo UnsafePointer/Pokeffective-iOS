@@ -20,7 +20,7 @@
 		3F1396F918CB5D8E009B31A3 /* PKEPokemonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1396F818CB5D8E009B31A3 /* PKEPokemonManager.m */; };
 		3F1396FD18CB5DC8009B31A3 /* PKEPokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1396FC18CB5DC8009B31A3 /* PKEPokemon.m */; };
 		3F13970118CB630E009B31A3 /* Types.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F13970018CB630E009B31A3 /* Types.plist */; };
-		3F13972118CB97FE009B31A3 /* UIColor+DarkerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13972018CB97FE009B31A3 /* UIColor+DarkerColor.m */; };
+		3F13972118CB97FE009B31A3 /* UIColor+PKEDarkerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13972018CB97FE009B31A3 /* UIColor+PKEDarkerColor.m */; };
 		3F13972E18CBAE1A009B31A3 /* PKETableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13972D18CBAE1A009B31A3 /* PKETableViewCell.m */; };
 		3F13973418CBB551009B31A3 /* PKECollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13973318CBB551009B31A3 /* PKECollectionViewCell.m */; };
 		3F13973718CBBAF7009B31A3 /* PKETypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F13973618CBBAF7009B31A3 /* PKETypeCell.m */; };
@@ -755,7 +755,7 @@
 		3F44F59318D48A0F00E02280 /* PKEFormatHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F44F59218D48A0F00E02280 /* PKEFormatHelper.m */; };
 		3F44F59618D4D74500E02280 /* Pokeffective.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F44F59418D4D74500E02280 /* Pokeffective.xcdatamodeld */; };
 		3F778FBD18C7AE3400771A9E /* PKEPokemonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F778FBC18C7AE3400771A9E /* PKEPokemonListViewController.m */; };
-		3F81401D18D4E61A00003ABD /* NSManagedObjectContext+BackgroundFetch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F81401C18D4E61A00003ABD /* NSManagedObjectContext+BackgroundFetch.m */; };
+		3F81401D18D4E61A00003ABD /* NSManagedObjectContext+PKEBackgroundFetch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F81401C18D4E61A00003ABD /* NSManagedObjectContext+PKEBackgroundFetch.m */; };
 		3F87BD8518C7A60F00400F64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8418C7A60F00400F64 /* Foundation.framework */; };
 		3F87BD8718C7A60F00400F64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8618C7A60F00400F64 /* CoreGraphics.framework */; };
 		3F87BD8918C7A60F00400F64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87BD8818C7A60F00400F64 /* UIKit.framework */; };
@@ -768,6 +768,7 @@
 		3F93181918CF7E500023E7A5 /* PKELabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93181818CF7E500023E7A5 /* PKELabel.m */; };
 		3F93181C18CF88DF0023E7A5 /* PKEEffectiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93181B18CF88DF0023E7A5 /* PKEEffectiveViewController.m */; };
 		3F93181F18CF899C0023E7A5 /* PKEEffectiveCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93181E18CF899C0023E7A5 /* PKEEffectiveCollectionViewCell.m */; };
+		3F99192E18E5F3F2007185AD /* TSMessageView+PKEFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F99192D18E5F3F2007185AD /* TSMessageView+PKEFixes.m */; };
 		3F9DF09318DDCF8D001ACA19 /* PKEMemberCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F9DF09218DDCF8D001ACA19 /* PKEMemberCollectionViewCell.xib */; };
 		3F9DF09718DDED6B001ACA19 /* TLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DF09618DDED6B001ACA19 /* TLAlertView.m */; };
 		3F9DF09A18DE1253001ACA19 /* PKEEffectiveCollectionViewFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DF09918DE1253001ACA19 /* PKEEffectiveCollectionViewFlow.m */; };
@@ -781,7 +782,7 @@
 		3FB70A0C18D59F25007F1C7C /* PKEPokemonManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB70A0B18D59F25007F1C7C /* PKEPokemonManagedObject.m */; };
 		3FB70A0F18D59F25007F1C7C /* PKEMoveManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB70A0E18D59F25007F1C7C /* PKEMoveManagedObject.m */; };
 		3FB70A1218D5A3E7007F1C7C /* PKETranslatorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB70A1118D5A3E7007F1C7C /* PKETranslatorHelper.m */; };
-		3FB70A1518D5CE55007F1C7C /* NSError+PokemonError.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB70A1418D5CE55007F1C7C /* NSError+PokemonError.m */; };
+		3FB70A1518D5CE55007F1C7C /* NSError+PKEPokemonError.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB70A1418D5CE55007F1C7C /* NSError+PKEPokemonError.m */; };
 		3FCC8A9818CCECF500F4F0A3 /* PKEAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FCC8A9718CCECF500F4F0A3 /* PKEAboutViewController.m */; };
 		3FCC8A9A18CCEE8400F4F0A3 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCC8A9918CCEE8400F4F0A3 /* Social.framework */; };
 		3FCC8A9C18CCEE9000F4F0A3 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCC8A9B18CCEE9000F4F0A3 /* Accounts.framework */; };
@@ -821,8 +822,8 @@
 		3F1396FB18CB5DC8009B31A3 /* PKEPokemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemon.h; path = Models/PKEPokemon.h; sourceTree = "<group>"; };
 		3F1396FC18CB5DC8009B31A3 /* PKEPokemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPokemon.m; path = Models/PKEPokemon.m; sourceTree = "<group>"; };
 		3F13970018CB630E009B31A3 /* Types.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Types.plist; path = Supporting/Types.plist; sourceTree = "<group>"; };
-		3F13971F18CB97FE009B31A3 /* UIColor+DarkerColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+DarkerColor.h"; path = "Extensions/UIColor+DarkerColor.h"; sourceTree = "<group>"; };
-		3F13972018CB97FE009B31A3 /* UIColor+DarkerColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+DarkerColor.m"; path = "Extensions/UIColor+DarkerColor.m"; sourceTree = "<group>"; };
+		3F13971F18CB97FE009B31A3 /* UIColor+PKEDarkerColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+PKEDarkerColor.h"; path = "Extensions/UIColor+PKEDarkerColor.h"; sourceTree = "<group>"; };
+		3F13972018CB97FE009B31A3 /* UIColor+PKEDarkerColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+PKEDarkerColor.m"; path = "Extensions/UIColor+PKEDarkerColor.m"; sourceTree = "<group>"; };
 		3F13972C18CBAE1A009B31A3 /* PKETableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKETableViewCell.h; path = Extensions/PKETableViewCell.h; sourceTree = "<group>"; };
 		3F13972D18CBAE1A009B31A3 /* PKETableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKETableViewCell.m; path = Extensions/PKETableViewCell.m; sourceTree = "<group>"; };
 		3F13973218CBB551009B31A3 /* PKECollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKECollectionViewCell.h; path = Extensions/PKECollectionViewCell.h; sourceTree = "<group>"; };
@@ -1571,8 +1572,8 @@
 		3F778FBB18C7AE3400771A9E /* PKEPokemonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemonListViewController.h; path = Controllers/PKEPokemonListViewController.h; sourceTree = "<group>"; };
 		3F778FBC18C7AE3400771A9E /* PKEPokemonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPokemonListViewController.m; path = Controllers/PKEPokemonListViewController.m; sourceTree = "<group>"; };
 		3F81401718D4DE8F00003ABD /* Blocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Blocks.h; path = Supporting/Blocks.h; sourceTree = "<group>"; };
-		3F81401B18D4E61A00003ABD /* NSManagedObjectContext+BackgroundFetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+BackgroundFetch.h"; path = "Extensions/NSManagedObjectContext+BackgroundFetch.h"; sourceTree = "<group>"; };
-		3F81401C18D4E61A00003ABD /* NSManagedObjectContext+BackgroundFetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+BackgroundFetch.m"; path = "Extensions/NSManagedObjectContext+BackgroundFetch.m"; sourceTree = "<group>"; };
+		3F81401B18D4E61A00003ABD /* NSManagedObjectContext+PKEBackgroundFetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+PKEBackgroundFetch.h"; path = "Extensions/NSManagedObjectContext+PKEBackgroundFetch.h"; sourceTree = "<group>"; };
+		3F81401C18D4E61A00003ABD /* NSManagedObjectContext+PKEBackgroundFetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+PKEBackgroundFetch.m"; path = "Extensions/NSManagedObjectContext+PKEBackgroundFetch.m"; sourceTree = "<group>"; };
 		3F87BD8118C7A60F00400F64 /* Pokeffective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokeffective.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F87BD8418C7A60F00400F64 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F87BD8618C7A60F00400F64 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1594,6 +1595,8 @@
 		3F93181B18CF88DF0023E7A5 /* PKEEffectiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEEffectiveViewController.m; path = Controllers/PKEEffectiveViewController.m; sourceTree = "<group>"; };
 		3F93181D18CF899C0023E7A5 /* PKEEffectiveCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEEffectiveCollectionViewCell.h; path = Views/PKEEffectiveCollectionViewCell.h; sourceTree = "<group>"; };
 		3F93181E18CF899C0023E7A5 /* PKEEffectiveCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEEffectiveCollectionViewCell.m; path = Views/PKEEffectiveCollectionViewCell.m; sourceTree = "<group>"; };
+		3F99192C18E5F3F2007185AD /* TSMessageView+PKEFixes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TSMessageView+PKEFixes.h"; path = "Extensions/TSMessageView+PKEFixes.h"; sourceTree = "<group>"; };
+		3F99192D18E5F3F2007185AD /* TSMessageView+PKEFixes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TSMessageView+PKEFixes.m"; path = "Extensions/TSMessageView+PKEFixes.m"; sourceTree = "<group>"; };
 		3F9DF09218DDCF8D001ACA19 /* PKEMemberCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PKEMemberCollectionViewCell.xib; path = Views/PKEMemberCollectionViewCell.xib; sourceTree = "<group>"; };
 		3F9DF09518DDED6B001ACA19 /* TLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TLAlertView.h; path = External/TLAlertView/TLAlertView.h; sourceTree = SOURCE_ROOT; };
 		3F9DF09618DDED6B001ACA19 /* TLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TLAlertView.m; path = External/TLAlertView/TLAlertView.m; sourceTree = SOURCE_ROOT; };
@@ -1619,8 +1622,8 @@
 		3FB70A0E18D59F25007F1C7C /* PKEMoveManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMoveManagedObject.m; path = Models/PKEMoveManagedObject.m; sourceTree = "<group>"; };
 		3FB70A1018D5A3E7007F1C7C /* PKETranslatorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKETranslatorHelper.h; path = Helpers/PKETranslatorHelper.h; sourceTree = "<group>"; };
 		3FB70A1118D5A3E7007F1C7C /* PKETranslatorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKETranslatorHelper.m; path = Helpers/PKETranslatorHelper.m; sourceTree = "<group>"; };
-		3FB70A1318D5CE55007F1C7C /* NSError+PokemonError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+PokemonError.h"; path = "Extensions/NSError+PokemonError.h"; sourceTree = "<group>"; };
-		3FB70A1418D5CE55007F1C7C /* NSError+PokemonError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSError+PokemonError.m"; path = "Extensions/NSError+PokemonError.m"; sourceTree = "<group>"; };
+		3FB70A1318D5CE55007F1C7C /* NSError+PKEPokemonError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+PKEPokemonError.h"; path = "Extensions/NSError+PKEPokemonError.h"; sourceTree = "<group>"; };
+		3FB70A1418D5CE55007F1C7C /* NSError+PKEPokemonError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSError+PKEPokemonError.m"; path = "Extensions/NSError+PKEPokemonError.m"; sourceTree = "<group>"; };
 		3FCC8A9618CCECF500F4F0A3 /* PKEAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEAboutViewController.h; path = Controllers/PKEAboutViewController.h; sourceTree = "<group>"; };
 		3FCC8A9718CCECF500F4F0A3 /* PKEAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEAboutViewController.m; path = Controllers/PKEAboutViewController.m; sourceTree = "<group>"; };
 		3FCC8A9918CCEE8400F4F0A3 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -1702,18 +1705,18 @@
 				3F05524618D61BCA00AF72D4 /* PKEFilterViewController.m */,
 				3F05524818D6264200AF72D4 /* PKETypeViewController.h */,
 				3F05524918D6264200AF72D4 /* PKETypeViewController.m */,
-				3F13971F18CB97FE009B31A3 /* UIColor+DarkerColor.h */,
-				3F13972018CB97FE009B31A3 /* UIColor+DarkerColor.m */,
+				3F13971F18CB97FE009B31A3 /* UIColor+PKEDarkerColor.h */,
+				3F13972018CB97FE009B31A3 /* UIColor+PKEDarkerColor.m */,
 				3F13972C18CBAE1A009B31A3 /* PKETableViewCell.h */,
 				3F13972D18CBAE1A009B31A3 /* PKETableViewCell.m */,
 				3F13973218CBB551009B31A3 /* PKECollectionViewCell.h */,
 				3F13973318CBB551009B31A3 /* PKECollectionViewCell.m */,
 				3F93181718CF7E500023E7A5 /* PKELabel.h */,
 				3F93181818CF7E500023E7A5 /* PKELabel.m */,
-				3F81401B18D4E61A00003ABD /* NSManagedObjectContext+BackgroundFetch.h */,
-				3F81401C18D4E61A00003ABD /* NSManagedObjectContext+BackgroundFetch.m */,
-				3FB70A1318D5CE55007F1C7C /* NSError+PokemonError.h */,
-				3FB70A1418D5CE55007F1C7C /* NSError+PokemonError.m */,
+				3F81401B18D4E61A00003ABD /* NSManagedObjectContext+PKEBackgroundFetch.h */,
+				3F81401C18D4E61A00003ABD /* NSManagedObjectContext+PKEBackgroundFetch.m */,
+				3FB70A1318D5CE55007F1C7C /* NSError+PKEPokemonError.h */,
+				3FB70A1418D5CE55007F1C7C /* NSError+PKEPokemonError.m */,
 				3F05523118D5F39B00AF72D4 /* PKECollectionViewFlowLayout.h */,
 				3F05523218D5F39B00AF72D4 /* PKECollectionViewFlowLayout.m */,
 				3F05523418D5FBCF00AF72D4 /* PKEPartyCollectionViewFlowLayout.h */,
@@ -1728,6 +1731,8 @@
 				3F9DF09918DE1253001ACA19 /* PKEEffectiveCollectionViewFlow.m */,
 				3FACDFE718DE40CF00BD6963 /* PKESTABCollectionViewFlowLayout.h */,
 				3FACDFE818DE40CF00BD6963 /* PKESTABCollectionViewFlowLayout.m */,
+				3F99192C18E5F3F2007185AD /* TSMessageView+PKEFixes.h */,
+				3F99192D18E5F3F2007185AD /* TSMessageView+PKEFixes.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -3466,20 +3471,21 @@
 				3F93181618CF70ED0023E7A5 /* PKEMoveTableViewCell.m in Sources */,
 				3F93181918CF7E500023E7A5 /* PKELabel.m in Sources */,
 				3FB70A0918D59D74007F1C7C /* PKECoreDataHelper.m in Sources */,
+				3F99192E18E5F3F2007185AD /* TSMessageView+PKEFixes.m in Sources */,
 				3F1396F518CB5CA3009B31A3 /* PKEPokemonTableViewCell.m in Sources */,
 				3F43557E18CF6AB900806A8F /* PKEMovesetViewController.m in Sources */,
-				3FB70A1518D5CE55007F1C7C /* NSError+PokemonError.m in Sources */,
+				3FB70A1518D5CE55007F1C7C /* NSError+PKEPokemonError.m in Sources */,
 				3FB70A0C18D59F25007F1C7C /* PKEPokemonManagedObject.m in Sources */,
 				3F1396F918CB5D8E009B31A3 /* PKEPokemonManager.m in Sources */,
 				3F9DF09A18DE1253001ACA19 /* PKEEffectiveCollectionViewFlow.m in Sources */,
 				3F05523318D5F39B00AF72D4 /* PKECollectionViewFlowLayout.m in Sources */,
-				3F13972118CB97FE009B31A3 /* UIColor+DarkerColor.m in Sources */,
+				3F13972118CB97FE009B31A3 /* UIColor+PKEDarkerColor.m in Sources */,
 				3F44F59318D48A0F00E02280 /* PKEFormatHelper.m in Sources */,
 				3FDEF34818DD9456006C2D7B /* PKEMoveCollectionViewFlow.m in Sources */,
 				3F87BDBB18C7A6A500400F64 /* main.m in Sources */,
 				3F05524118D609BD00AF72D4 /* PKEMoveListViewController.m in Sources */,
 				3F44F59018D483ED00E02280 /* PKEQueryHelper.m in Sources */,
-				3F81401D18D4E61A00003ABD /* NSManagedObjectContext+BackgroundFetch.m in Sources */,
+				3F81401D18D4E61A00003ABD /* NSManagedObjectContext+PKEBackgroundFetch.m in Sources */,
 				3FACDFE918DE40CF00BD6963 /* PKESTABCollectionViewFlowLayout.m in Sources */,
 				3F13973418CBB551009B31A3 /* PKECollectionViewCell.m in Sources */,
 				3FDEF34518DD914D006C2D7B /* PKEMoveCollectionViewCell.m in Sources */,

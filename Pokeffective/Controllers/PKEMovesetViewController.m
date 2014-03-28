@@ -13,7 +13,7 @@
 #import "PKEPokemon.h"
 #import "PKEMoveListViewController.h"
 #import "PKEMoveCollectionViewCell.h"
-#import "NSError+PokemonError.h"
+#import "NSError+PKEPokemonError.h"
 #import "PKEMoveControllerDelegate.h"
 #import "PKELabel.h"
 

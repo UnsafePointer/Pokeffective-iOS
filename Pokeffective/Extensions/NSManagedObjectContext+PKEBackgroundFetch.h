@@ -8,9 +8,9 @@
 
 #import <CoreData/CoreData.h>
 
-@interface NSManagedObjectContext (BackgroundFetch)
+@interface NSManagedObjectContext (PKEBackgroundFetch)
 
-- (void)executeFetchRequest:(NSFetchRequest *)request
-                 completion:(ArrayCompletionBlock)completion;
+- (void)PKE_executeFetchRequest:(NSFetchRequest *)request
+                     completion:(ArrayCompletionBlock)completion;
 
 @end

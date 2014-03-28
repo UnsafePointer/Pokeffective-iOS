@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "UIColor+DarkerColor.h"
+#import "UIColor+PKEDarkerColor.h"
 
-@implementation UIColor (DarkerColor)
+@implementation UIColor (PKEDarkerColor)
 
-- (UIColor *)darkerColor
+- (UIColor *)PKE_darkerColor
 {
     CGFloat r, g, b, a;
     if ([self getRed:&r

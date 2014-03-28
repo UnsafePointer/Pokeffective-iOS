@@ -7,11 +7,11 @@
 //
 
 #import "PKECoreDataHelper.h"
-#import "NSManagedObjectContext+BackgroundFetch.h"
+#import "NSManagedObjectContext+PKEBackgroundFetch.h"
 #import "PKEPokemon.h"
 #import "PKETranslatorHelper.h"
 #import "PKEPokemonManagedObject.h"
-#import "NSError+PokemonError.h"
+#import "NSError+PKEPokemonError.h"
 #import "PKEMove.h"
 #import "PKEMoveManagedObject.h"
 
@@ -66,13 +66,13 @@
         NSArray *storedParty = [PKEPokemonManagedObject MR_findAllInContext:localContext];
         BOOL shouldSave = YES;
         if ([storedParty count] >= 6) {
-            pokemonError = [NSError errorSavingMoreThanSixPokemons];
+            pokemonError = [NSError PKE_errorSavingMoreThanSixPokemons];
             shouldSave = NO;
         }
         else {
             for (PKEPokemonManagedObject *pokemonManagedObject in storedParty) {
                 if ([[pokemonManagedObject identifier] unsignedIntegerValue] == [pokemon identifier]) {
-                    pokemonError = [NSError errorSavingSamePokemon];
+                    pokemonError = [NSError PKE_errorSavingSamePokemon];
                     shouldSave = NO;
                 }
             }
@@ -110,13 +110,13 @@
                                                                    inContext:localContext];
         BOOL shouldSave = YES;
         if ([storedMoves count] >= 4) {
-            pokemonError = [NSError errorSavingMoreThanFourMoves];
+            pokemonError = [NSError PKE_errorSavingMoreThanFourMoves];
             shouldSave = NO;
         }
         else {
             for (PKEMoveManagedObject *moveManagedObject in storedMoves) {
                 if ([[moveManagedObject name] isEqualToString:[move name]]) {
-                    pokemonError = [NSError errorSavingSameMove];
+                    pokemonError = [NSError PKE_errorSavingSameMove];
                     shouldSave = NO;
                 }
             }
@@ -186,22 +186,21 @@
                                                                    ascending:YES
                                                                 andPredicate:nil];
     NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
-    [context executeFetchRequest:fetchRequest
-                      completion:^(NSArray *array, NSError *error) {
-                          
-                          if (array) {
-                              if (completionBlock) {
-                                  completionBlock([[self translatorHelper]
-                                                   translateCollectionfromManagedObjects:array
-                                                   withClass:[PKEPokemon class]], nil);
+    [context PKE_executeFetchRequest:fetchRequest
+                          completion:^(NSArray *array, NSError *error) {
+                              if (array) {
+                                  if (completionBlock) {
+                                      completionBlock([[self translatorHelper]
+                                                       translateCollectionfromManagedObjects:array
+                                                       withClass:[PKEPokemon class]], nil);
+                                  }
                               }
-                          }
-                          else {
-                              if (completionBlock) {
-                                  completionBlock(nil, error);
+                              else {
+                                  if (completionBlock) {
+                                      completionBlock(nil, error);
+                                  }
                               }
-                          }
-                      }];
+                          }];
 }
 
 @end

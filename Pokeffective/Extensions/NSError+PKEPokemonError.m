@@ -6,35 +6,35 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "NSError+PokemonError.h"
+#import "NSError+PKEPokemonError.h"
 
 NSString * const PKEErrorPokemonDomain = @"PKEErrorPokemonDomain";
 NSString * const PKEErrorMoveDomain = @"PKEErrorMoveDomain";
 
-@implementation NSError (PokemonError)
+@implementation NSError (PKEPokemonError)
 
-+ (NSError *)errorSavingMoreThanSixPokemons
++ (NSError *)PKE_errorSavingMoreThanSixPokemons
 {
     return [NSError errorWithDomain:PKEErrorPokemonDomain
                                code:kPKEErrorCodeSavingMoreThanSixPokemons
                            userInfo:nil];
 }
 
-+ (NSError *)errorSavingSamePokemon
++ (NSError *)PKE_errorSavingSamePokemon
 {
     return [NSError errorWithDomain:PKEErrorPokemonDomain
                                code:kPKEErrorCodeSavingSamePokemon
                            userInfo:nil];
 }
 
-+ (NSError *)errorSavingMoreThanFourMoves
++ (NSError *)PKE_errorSavingMoreThanFourMoves
 {
     return [NSError errorWithDomain:PKEErrorMoveDomain
                                code:kPKEErrorCodeSavingMoreThanFourMoves
                            userInfo:nil];
 }
 
-+ (NSError *)errorSavingSameMove
++ (NSError *)PKE_errorSavingSameMove
 {
     return [NSError errorWithDomain:PKEErrorMoveDomain
                                code:kPKEErrorCodeSavingSameMove

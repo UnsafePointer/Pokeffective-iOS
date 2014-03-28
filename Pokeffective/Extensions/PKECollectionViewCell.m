@@ -7,7 +7,7 @@
 //
 
 #import "PKECollectionViewCell.h"
-#import "UIColor+DarkerColor.h"
+#import "UIColor+PKEDarkerColor.h"
 
 @interface PKECollectionViewCell ()
 
@@ -48,7 +48,7 @@
     [self.backgroundView.layer insertSublayer:backgroundLayer
                                       atIndex:0];
     CALayer *selectedBackgroundLayer = [CALayer layer];
-    selectedBackgroundLayer.backgroundColor = [[color darkerColor] CGColor];
+    selectedBackgroundLayer.backgroundColor = [[color PKE_darkerColor] CGColor];
     selectedBackgroundLayer.frame = self.bounds;
     [self.selectedBackgroundView.layer insertSublayer:selectedBackgroundLayer
                                               atIndex:0];
@@ -71,8 +71,8 @@
     selectedBackgroundGradient.startPoint = CGPointMake(0, 0.5);
     selectedBackgroundGradient.endPoint = CGPointMake(1.0, 0.5);
     selectedBackgroundGradient.frame = self.bounds;
-    selectedBackgroundGradient.colors = [NSArray arrayWithObjects:(__bridge id)[[firstColor darkerColor] CGColor],
-                                         (__bridge id)[[secondColor darkerColor] CGColor],
+    selectedBackgroundGradient.colors = [NSArray arrayWithObjects:(__bridge id)[[firstColor PKE_darkerColor] CGColor],
+                                         (__bridge id)[[secondColor PKE_darkerColor] CGColor],
                                          nil];
     [self.selectedBackgroundView.layer insertSublayer:selectedBackgroundGradient
                                               atIndex:0];

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (DarkerColor)
+@interface UIColor (PKEDarkerColor)
 
-- (UIColor *)darkerColor;
+- (UIColor *)PKE_darkerColor;
 
 @end

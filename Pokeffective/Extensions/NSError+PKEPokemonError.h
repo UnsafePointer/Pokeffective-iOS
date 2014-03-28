@@ -11,11 +11,11 @@
 extern NSString * const PKEErrorPokemonDomain;
 extern NSString * const PKEErrorMoveDomain;
 
-@interface NSError (PokemonError)
+@interface NSError (PKEPokemonError)
 
-+ (NSError *)errorSavingMoreThanSixPokemons;
-+ (NSError *)errorSavingSamePokemon;
-+ (NSError *)errorSavingMoreThanFourMoves;
-+ (NSError *)errorSavingSameMove;
++ (NSError *)PKE_errorSavingMoreThanSixPokemons;
++ (NSError *)PKE_errorSavingSamePokemon;
++ (NSError *)PKE_errorSavingMoreThanFourMoves;
++ (NSError *)PKE_errorSavingSameMove;
 
 @end

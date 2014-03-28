@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "NSManagedObjectContext+BackgroundFetch.h"
+#import "NSManagedObjectContext+PKEBackgroundFetch.h"
 
-@implementation NSManagedObjectContext (BackgroundFetch)
+@implementation NSManagedObjectContext (PKEBackgroundFetch)
 
-- (void)executeFetchRequest:(NSFetchRequest *)request
-                 completion:(ArrayCompletionBlock)completion
+- (void)PKE_executeFetchRequest:(NSFetchRequest *)request
+                     completion:(ArrayCompletionBlock)completion
 {
     NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
     NSManagedObjectContext *backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
