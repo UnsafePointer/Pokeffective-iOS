@@ -11,7 +11,6 @@
 #import "PKEPokemon.h"
 #import "PKEMove.h"
 #import "PKEPokemonManager.h"
-#import "PKELabel.h"
 #import "PKEMoveCollectionViewFlow.h"
 
 @interface PKEMoveCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -42,13 +41,15 @@
 
 - (void)configureNoContentLabel
 {
-    PKELabel *lblNoContent = [[PKELabel alloc] initWithFrame:self.view.bounds
-                                               andEdgeInsets:UIEdgeInsetsMake(0, 50, 0, 50)];
+    UILabel *lblNoContent = [[UILabel alloc] initWithFrame:CGRectZero];
     [lblNoContent setNumberOfLines:0];
     [lblNoContent setTextAlignment:NSTextAlignmentCenter];
     [lblNoContent setTextColor:[UIColor colorWithHexString:@"#898C90"]];
     [lblNoContent setAlpha:0.0f];
     [[self view] addSubview:lblNoContent];
+    [lblNoContent mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(lblNoContent.superview).with.insets(UIEdgeInsetsMake(50, 50, 50, 50));
+    }];
     [self setLblNoContent:lblNoContent];
 }
 

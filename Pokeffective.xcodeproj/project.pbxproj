@@ -765,7 +765,6 @@
 		3F87BDC018C7A6B700400F64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F87BDC218C7A6B700400F64 /* InfoPlist.strings */; };
 		3F87BDC818C7A72F00400F64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F87BDCA18C7A72F00400F64 /* Main.storyboard */; };
 		3F93181618CF70ED0023E7A5 /* PKEMoveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93181518CF70ED0023E7A5 /* PKEMoveTableViewCell.m */; };
-		3F93181918CF7E500023E7A5 /* PKELabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93181818CF7E500023E7A5 /* PKELabel.m */; };
 		3F93181C18CF88DF0023E7A5 /* PKEEffectiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93181B18CF88DF0023E7A5 /* PKEEffectiveViewController.m */; };
 		3F93181F18CF899C0023E7A5 /* PKEEffectiveCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93181E18CF899C0023E7A5 /* PKEEffectiveCollectionViewCell.m */; };
 		3F99192E18E5F3F2007185AD /* TSMessageView+PKEFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F99192D18E5F3F2007185AD /* TSMessageView+PKEFixes.m */; };
@@ -1589,8 +1588,6 @@
 		3F87BDC918C7A72F00400F64 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F93181418CF70ED0023E7A5 /* PKEMoveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMoveTableViewCell.h; path = Views/PKEMoveTableViewCell.h; sourceTree = "<group>"; };
 		3F93181518CF70ED0023E7A5 /* PKEMoveTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMoveTableViewCell.m; path = Views/PKEMoveTableViewCell.m; sourceTree = "<group>"; };
-		3F93181718CF7E500023E7A5 /* PKELabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKELabel.h; path = Extensions/PKELabel.h; sourceTree = "<group>"; };
-		3F93181818CF7E500023E7A5 /* PKELabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKELabel.m; path = Extensions/PKELabel.m; sourceTree = "<group>"; };
 		3F93181A18CF88DF0023E7A5 /* PKEEffectiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEEffectiveViewController.h; path = Controllers/PKEEffectiveViewController.h; sourceTree = "<group>"; };
 		3F93181B18CF88DF0023E7A5 /* PKEEffectiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEEffectiveViewController.m; path = Controllers/PKEEffectiveViewController.m; sourceTree = "<group>"; };
 		3F93181D18CF899C0023E7A5 /* PKEEffectiveCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEEffectiveCollectionViewCell.h; path = Views/PKEEffectiveCollectionViewCell.h; sourceTree = "<group>"; };
@@ -1711,8 +1708,6 @@
 				3F13972D18CBAE1A009B31A3 /* PKETableViewCell.m */,
 				3F13973218CBB551009B31A3 /* PKECollectionViewCell.h */,
 				3F13973318CBB551009B31A3 /* PKECollectionViewCell.m */,
-				3F93181718CF7E500023E7A5 /* PKELabel.h */,
-				3F93181818CF7E500023E7A5 /* PKELabel.m */,
 				3F81401B18D4E61A00003ABD /* NSManagedObjectContext+PKEBackgroundFetch.h */,
 				3F81401C18D4E61A00003ABD /* NSManagedObjectContext+PKEBackgroundFetch.m */,
 				3FB70A1318D5CE55007F1C7C /* NSError+PKEPokemonError.h */,
@@ -3469,7 +3464,6 @@
 				3F93181C18CF88DF0023E7A5 /* PKEEffectiveViewController.m in Sources */,
 				3F05523618D5FBCF00AF72D4 /* PKEPartyCollectionViewFlowLayout.m in Sources */,
 				3F93181618CF70ED0023E7A5 /* PKEMoveTableViewCell.m in Sources */,
-				3F93181918CF7E500023E7A5 /* PKELabel.m in Sources */,
 				3FB70A0918D59D74007F1C7C /* PKECoreDataHelper.m in Sources */,
 				3F99192E18E5F3F2007185AD /* TSMessageView+PKEFixes.m in Sources */,
 				3F1396F518CB5CA3009B31A3 /* PKEPokemonTableViewCell.m in Sources */,

@@ -12,7 +12,6 @@
 #import "PKEFilterViewController.h"
 #import "PKEMoveCollectionViewCell.h"
 #import "PKEMove.h"
-#import "PKELabel.h"
 #import "TLAlertView.h"
 
 @interface PKEMoveListViewController () <PKEMoveTableViewControllerDataSource>

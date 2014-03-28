@@ -15,7 +15,6 @@
 #import "PKEMoveCollectionViewCell.h"
 #import "NSError+PKEPokemonError.h"
 #import "PKEMoveControllerDelegate.h"
-#import "PKELabel.h"
 
 @interface PKEMovesetViewController () <PKEMoveControllerDelegate, UIActionSheetDelegate>
 

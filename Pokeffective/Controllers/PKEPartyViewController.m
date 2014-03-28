@@ -13,7 +13,6 @@
 #import "PKEMovesetViewController.h"
 #import "PKEPokemonListViewController.h"
 #import "NSError+PKEPokemonError.h"
-#import "PKELabel.h"
 #import "PKEPartyCollectionViewFlowLayout.h"
 #import "TLAlertView.h"
 #import "PKEEffectiveViewController.h"
@@ -168,7 +167,7 @@
     [lblNoContent setAlpha:0.0f];
     [[self view] addSubview:lblNoContent];
     [lblNoContent mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(50, 50, 50, 50));
+        make.edges.equalTo(lblNoContent.superview).with.insets(UIEdgeInsetsMake(50, 50, 50, 50));
     }];
     [self setLblNoContent:lblNoContent];
 }

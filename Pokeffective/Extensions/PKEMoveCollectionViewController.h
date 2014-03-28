@@ -10,7 +10,6 @@
 
 @class PKEMove;
 @class PKEPokemon;
-@class PKELabel;
 
 @protocol PKEMoveCollectionViewControllerDataSource
 
@@ -24,7 +23,7 @@
 @interface PKEMoveCollectionViewController : UIViewController <PKEMoveCollectionViewControllerDataSource>
 
 @property (nonatomic, weak) UICollectionView *collectionView;
-@property (nonatomic, weak) PKELabel *lblNoContent;
+@property (nonatomic, weak) UILabel *lblNoContent;
 @property (nonatomic, strong) PKEPokemon *pokemon;
 @property (nonatomic, strong) NSArray *dataSource;
 
