@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PKEPokemonTableViewController.h"
 
-@interface PKEPokemonListViewController : UICollectionViewController
+@interface PKEPokemonListViewController : UIViewController
 
 @property (nonatomic, weak) id<PKEPokemonTableViewControllerDelegate> delegate;
 

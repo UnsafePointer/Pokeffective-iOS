@@ -42,7 +42,7 @@
     UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                                                              action:@selector(onLongPressMoveCell:)];
     [[self collectionView] addGestureRecognizer:recognizer];
-    [[self lblNoContent] setText:@"No move added to moveset found. Add one to get started.\nYou can remove them later holding the cells."];
+    [[self lblNoContent] setText:EMPTY_MOVESET];
 }
 
 - (void)didReceiveMemoryWarning

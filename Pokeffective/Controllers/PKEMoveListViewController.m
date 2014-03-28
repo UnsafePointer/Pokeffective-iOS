@@ -28,7 +28,7 @@ static void * PKEMoveListViewControllerContext = &PKEMoveListViewControllerConte
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[self lblNoContent] setText:@"No results for this filter values. Please, try others."];
+    [[self lblNoContent] setText:EMPTY_RESULTS];
     UIBarButtonItem *searchBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Search"]
                                                                             style:UIBarButtonItemStyleBordered
                                                                            target:self

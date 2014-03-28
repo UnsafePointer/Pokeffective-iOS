@@ -13,14 +13,19 @@
 #import "PKEPokemonSearchViewController.h"
 #import "PKEFilterViewController.h"
 #import "PKEPokemonCollectionViewCell.h"
+#import "PKEPokemonCollectionViewFlow.h"
+#import "TLAlertView.h"
 
-@interface PKEPokemonListViewController () <PKEPokemonTableViewControllerDataSource>
+@interface PKEPokemonListViewController () <PKEPokemonTableViewControllerDataSource, UICollectionViewDataSource, UICollectionViewDelegate>
 
+@property (nonatomic, weak) UICollectionView *collectionView;;
 @property (nonatomic, strong) NSArray *dataSource;
+@property (nonatomic, weak) UILabel *lblNoContent;
 
 - (void)searchButtonTapped:(id)sender;
 - (void)filterButtonTapped:(id)sender;
-
+- (void)configureNoContentLabel;
+- (void)configureCollectionView;
 - (void)configureCollectionViewCell:(PKEPokemonCollectionViewCell *)tableViewCell
                        forIndexPath:(NSIndexPath *)indexPath;
 
@@ -33,6 +38,8 @@ static void * PKEPokemonListViewControllerContext = &PKEPokemonListViewControlle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self configureCollectionView];
+    [self configureNoContentLabel];
     UIBarButtonItem *searchBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Search"]
                                                                             style:UIBarButtonItemStyleBordered
                                                                            target:self
@@ -42,6 +49,10 @@ static void * PKEPokemonListViewControllerContext = &PKEPokemonListViewControlle
                                                                            target:self
                                                                            action:@selector(filterButtonTapped:)];
     [self.navigationItem setRightBarButtonItems:@[searchBarButtonItem, filterBarButtonItem]];
+    UINib *nib = [UINib nibWithNibName:@"PKEPokemonCollectionViewCell"
+                                bundle:[NSBundle mainBundle]];
+    [[self collectionView] registerNib:nib
+            forCellWithReuseIdentifier:@"PokemonCollectionViewCell"];
     [[PKEPokemonManager sharedManager] addObserver:self
                                         forKeyPath:NSStringFromSelector(@selector(filteringPokedexType))
                                            options:NSKeyValueObservingOptionNew
@@ -56,8 +67,11 @@ static void * PKEPokemonListViewControllerContext = &PKEPokemonListViewControlle
         dispatch_async(dispatch_get_main_queue(), ^{
             @strongify(self);
             [SVProgressHUD dismiss];
-            if (!error) {
-                [self setDataSource:array];
+            [self setDataSource:array];
+            if ([[self dataSource] count] == 0) {
+                [[self lblNoContent] setAlpha:1.0f];
+            }
+            else {
                 [[self collectionView] reloadData];
             }
         });
@@ -77,9 +91,13 @@ static void * PKEPokemonListViewControllerContext = &PKEPokemonListViewControlle
                 @weakify(self);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     @strongify(self);
-                    if (!error) {
-                        [self setDataSource:array];
-                        [[self collectionView] reloadData];
+                    [self setDataSource:array];
+                    [[self collectionView] reloadData];
+                    if ([[self dataSource] count] == 0) {
+                        [[self lblNoContent] setAlpha:1.0f];
+                    }
+                    else {
+                        [[self lblNoContent] setAlpha:0.0f];
                     }
                 });
             }];
@@ -118,14 +136,50 @@ static void * PKEPokemonListViewControllerContext = &PKEPokemonListViewControlle
 
 - (void)searchButtonTapped:(id)sender
 {
-    [self performSegueWithIdentifier:@"SearchSegue"
-                              sender:self];
+    if ([[self dataSource] count] > 0) {
+        [self performSegueWithIdentifier:@"SearchSegue"
+                                  sender:self];
+    }
+    else {
+        TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"Please, try other filter values first."
+                                                        buttonTitle:@"OK"];
+        [alertView show];
+    }
 }
 
 - (void)filterButtonTapped:(id)sender
 {
     [self performSegueWithIdentifier:@"FilterSegue"
                               sender:self];
+}
+
+- (void)configureCollectionView
+{
+    PKEPokemonCollectionViewFlow *layout = [[PKEPokemonCollectionViewFlow alloc] initWithCoder:nil];
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds
+                                                          collectionViewLayout:layout];
+    [collectionView setDataSource:self];
+    [collectionView setDelegate:self];
+    [collectionView setBackgroundColor:[UIColor whiteColor]];
+    [collectionView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+    [[self view] addSubview:collectionView];
+    [self setCollectionView:collectionView];
+}
+
+- (void)configureNoContentLabel
+{
+    UILabel *lblNoContent = [[UILabel alloc] initWithFrame:CGRectZero];
+    [lblNoContent setNumberOfLines:0];
+    [lblNoContent setText:EMPTY_RESULTS];
+    [lblNoContent setTextAlignment:NSTextAlignmentCenter];
+    [lblNoContent setTextColor:[UIColor colorWithHexString:@"#898C90"]];
+    [lblNoContent setAlpha:0.0f];
+    [[self view] addSubview:lblNoContent];
+    [lblNoContent mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(lblNoContent.superview).with.insets(UIEdgeInsetsMake(50, 50, 50, 50));
+    }];
+    [self setLblNoContent:lblNoContent];
 }
 
 #pragma mark - UICollectionViewDataSource
