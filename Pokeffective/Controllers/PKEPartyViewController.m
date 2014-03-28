@@ -122,8 +122,16 @@
 
 - (void)addButtonTapped:(id)sender
 {
-    [self performSegueWithIdentifier:@"AddSegue"
-                              sender:self];
+    if ([[self dataSource] count] < MAX_POKEMON_PARTY) {
+        [self performSegueWithIdentifier:@"AddSegue"
+                                  sender:self];
+    }
+    else {
+        TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"You can't save more than six pokemons in your party. Remove one first in order to add another."
+                                                        buttonTitle:@"OK"];
+        [alertView show];
+    }
 }
 
 - (void)chartButtonTapped:(id)sender
@@ -280,14 +288,6 @@
         if ([[error domain] isEqualToString:PKEErrorPokemonDomain]) {
             PKEErrorCodePokemon code = [error code];
             switch (code) {
-                case kPKEErrorCodeSavingMoreThanSixPokemons:
-                    [TSMessage showNotificationInViewController:self
-                                                          title:@"Error"
-                                                       subtitle:@"You can't save more than six pokemons in your party."
-                                                           type:TSMessageNotificationTypeError
-                                                       duration:3.0f
-                                           canBeDismissedByUser:YES];
-                    break;
                 case kPKEErrorCodeSavingSamePokemon:
                     [TSMessage showNotificationInViewController:self
                                                           title:@"Error"

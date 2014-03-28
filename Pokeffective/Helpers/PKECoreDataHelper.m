@@ -65,16 +65,10 @@
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
         NSArray *storedParty = [PKEPokemonManagedObject MR_findAllInContext:localContext];
         BOOL shouldSave = YES;
-        if ([storedParty count] >= 6) {
-            pokemonError = [NSError PKE_errorSavingMoreThanSixPokemons];
-            shouldSave = NO;
-        }
-        else {
-            for (PKEPokemonManagedObject *pokemonManagedObject in storedParty) {
-                if ([[pokemonManagedObject identifier] unsignedIntegerValue] == [pokemon identifier]) {
-                    pokemonError = [NSError PKE_errorSavingSamePokemon];
-                    shouldSave = NO;
-                }
+        for (PKEPokemonManagedObject *pokemonManagedObject in storedParty) {
+            if ([[pokemonManagedObject identifier] unsignedIntegerValue] == [pokemon identifier]) {
+                pokemonError = [NSError PKE_errorSavingSamePokemon];
+                shouldSave = NO;
             }
         }
         if (shouldSave) {

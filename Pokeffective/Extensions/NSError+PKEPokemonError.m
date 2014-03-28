@@ -13,13 +13,6 @@ NSString * const PKEErrorMoveDomain = @"PKEErrorMoveDomain";
 
 @implementation NSError (PKEPokemonError)
 
-+ (NSError *)PKE_errorSavingMoreThanSixPokemons
-{
-    return [NSError errorWithDomain:PKEErrorPokemonDomain
-                               code:kPKEErrorCodeSavingMoreThanSixPokemons
-                           userInfo:nil];
-}
-
 + (NSError *)PKE_errorSavingSamePokemon
 {
     return [NSError errorWithDomain:PKEErrorPokemonDomain
