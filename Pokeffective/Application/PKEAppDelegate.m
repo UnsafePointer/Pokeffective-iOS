@@ -60,7 +60,7 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[CRGradientNavigationBar appearance] setBarTintGradientColors:@[[UIColor colorWithHexString:@"#1AD6FD"],
             [UIColor colorWithHexString:@"#1D62F0"]]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{
+    [[CRGradientNavigationBar appearance] setTitleTextAttributes:@{
             NSForegroundColorAttributeName : [UIColor colorWithHexString:@"#ffffff"]
     }];
 }
