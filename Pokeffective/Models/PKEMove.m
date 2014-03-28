@@ -15,7 +15,10 @@
 {
     PKEMove *move = [PKEMove new];
     [move setType:[resultSet intForColumn:@"type"]];
-    [move setName:[[resultSet stringForColumn:@"name"] capitalizedString]];
+    NSString *name = [resultSet stringForColumn:@"name"];
+    NSString *moveName = [name lowercaseString];
+    moveName = [moveName stringByReplacingOccurrencesOfString:@"-" withString:@" "];
+    [move setName:[moveName capitalizedString]];
     [move setCategory:[resultSet intForColumn:@"category"]];
     [move setPower:[resultSet intForColumn:@"power"]];
     [move setAccuracy:[resultSet intForColumn:@"accuracy"]];

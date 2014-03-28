@@ -75,12 +75,13 @@
         NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[gestureRecognizer locationInView:[self collectionView]]];
         if (indexPath != nil) {
             [self setSelectedIndexPath:indexPath];
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Remove from moveset"
+            PKEMove *move = [[self dataSource] objectAtIndex:[indexPath row]];
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"Remove %@ from %@?", [move name], [[self pokemon] name]]
                                                                      delegate:self
                                                             cancelButtonTitle:@"Cancel"
                                                        destructiveButtonTitle:@"Remove"
                                                             otherButtonTitles:nil];
-            [actionSheet showInView:[self view]];
+            [actionSheet showFromTabBar:[[self tabBarController] tabBar]];
         }
     }
 }

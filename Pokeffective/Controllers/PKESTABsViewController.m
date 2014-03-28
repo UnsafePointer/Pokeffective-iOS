@@ -56,9 +56,7 @@
 {
     PKESTAB *STAB = [[self dataSource] objectAtIndex:[indexPath row]];
     [[collectionViewCell lblPokemonName] setText:[[STAB pokemon] name]];
-    NSString *moveName = [[[STAB move] name] lowercaseString];
-    moveName = [moveName stringByReplacingOccurrencesOfString:@"-" withString:@" "];
-    [[collectionViewCell lblMoveName] setText:[moveName capitalizedString]];
+    [[collectionViewCell lblMoveName] setText:[[STAB move] name]];
     [collectionViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[[STAB move] type]]];
 }
 

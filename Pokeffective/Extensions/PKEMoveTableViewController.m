@@ -87,9 +87,7 @@
     [[tableViewCell contentView] setBackgroundColor:[UIColor clearColor]];
     PKEMove *move = [self getMoveForIndexPath:indexPath
                                   inTableView:tableView];
-    NSString *moveName = [[move name] lowercaseString];
-    moveName = [moveName stringByReplacingOccurrencesOfString:@"-" withString:@" "];
-    [[tableViewCell lblName] setText:[moveName capitalizedString]];
+    [[tableViewCell lblName] setText:[move name]];
     [[tableViewCell lblCategory] setText:[[PKEPokemonManager sharedManager] nameForCategory:[move category]]];
     [[tableViewCell lblDetails] setText:[NSString stringWithFormat:@"%d / %d", [move power], [move accuracy]]];
     [tableViewCell addBackgroundLayersWithColor:[[PKEPokemonManager sharedManager] colorForType:[move type]]];
