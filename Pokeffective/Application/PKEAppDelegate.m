@@ -72,8 +72,8 @@
     UITabBarItem *onlineTabBarItem = [[[tabBarController tabBar] items] objectAtIndex:1];
     partyTabBarItem.image = [[UIImage imageNamed:@"Party"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     onlineTabBarItem.image = [[UIImage imageNamed:@"Online"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    partyTabBarItem.selectedImage = [UIImage imageNamed:@"Party-Selected"];
-    onlineTabBarItem.selectedImage = [UIImage imageNamed:@"Online-Selected"];
+    partyTabBarItem.selectedImage = [[UIImage imageNamed:@"Party-Selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    onlineTabBarItem.selectedImage = [[UIImage imageNamed:@"Online-Selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }
                                              forState:UIControlStateNormal];
 }
