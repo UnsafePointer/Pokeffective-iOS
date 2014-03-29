@@ -795,6 +795,7 @@
 		3FDEF34818DD9456006C2D7B /* PKEMoveCollectionViewFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEF34718DD9456006C2D7B /* PKEMoveCollectionViewFlow.m */; };
 		3FDEF34A18DDA3B6006C2D7B /* PKEMoveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FDEF34918DDA3B6006C2D7B /* PKEMoveCollectionViewCell.xib */; };
 		3FDEF34D18DDB07A006C2D7B /* PKEMoveCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEF34C18DDB07A006C2D7B /* PKEMoveCollectionViewController.m */; };
+		3FF4949518E75CCA004A7634 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF4949418E75CCA004A7634 /* StoreKit.framework */; };
 		89EF30601966462586F702FA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82FCB715879F48319E6F6D82 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1644,6 +1645,7 @@
 		3FDEF34B18DDB07A006C2D7B /* PKEMoveCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMoveCollectionViewController.h; path = Extensions/PKEMoveCollectionViewController.h; sourceTree = "<group>"; };
 		3FDEF34C18DDB07A006C2D7B /* PKEMoveCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEMoveCollectionViewController.m; path = Extensions/PKEMoveCollectionViewController.m; sourceTree = "<group>"; };
 		3FDEF34F18DDB193006C2D7B /* PKEMoveControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PKEMoveControllerDelegate.h; path = Definitions/PKEMoveControllerDelegate.h; sourceTree = "<group>"; };
+		3FF4949418E75CCA004A7634 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		82FCB715879F48319E6F6D82 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8EE4AC78B264D2FB149AB3C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1656,6 +1658,7 @@
 				3FCC8A9E18CCEE9500F4F0A3 /* MessageUI.framework in Frameworks */,
 				3FCC8A9C18CCEE9000F4F0A3 /* Accounts.framework in Frameworks */,
 				3FCC8A9A18CCEE8400F4F0A3 /* Social.framework in Frameworks */,
+				3FF4949518E75CCA004A7634 /* StoreKit.framework in Frameworks */,
 				3F87BD8718C7A60F00400F64 /* CoreGraphics.framework in Frameworks */,
 				3F87BD8918C7A60F00400F64 /* UIKit.framework in Frameworks */,
 				3F87BD8518C7A60F00400F64 /* Foundation.framework in Frameworks */,
@@ -2529,6 +2532,7 @@
 		3F87BD8318C7A60F00400F64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FF4949418E75CCA004A7634 /* StoreKit.framework */,
 				3FCC8A9D18CCEE9500F4F0A3 /* MessageUI.framework */,
 				3FCC8A9B18CCEE9000F4F0A3 /* Accounts.framework */,
 				3FCC8A9918CCEE8400F4F0A3 /* Social.framework */,
@@ -2663,6 +2667,16 @@
 				CLASSPREFIX = PKE;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Renzo Crisóstomo";
+				TargetAttributes = {
+					3F87BD8018C7A60F00400F64 = {
+						DevelopmentTeam = 36AFPDVAX2;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 3F87BD7C18C7A60F00400F64 /* Build configuration list for PBXProject "Pokeffective" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3616,11 +3630,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pokeffective/Supporting/Pokeffective-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Pokeffective/Supporting/Pokeffective-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "09568585-07A6-45C3-9F21-C046588D2A72";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3631,11 +3647,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pokeffective/Supporting/Pokeffective-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Pokeffective/Supporting/Pokeffective-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7A8F9A7E-13E3-4F78-B31F-A628324F2675";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

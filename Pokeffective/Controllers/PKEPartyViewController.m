@@ -143,7 +143,14 @@
                                                     leftButtonTitle:@"Buy"
                                                    rightButtonTitle:@"OK"
                                                             handler:^(int buttonIndex) {
-                                                                NSLog(@"%d", buttonIndex);
+                                                                if (buttonIndex == 1) {
+                                                                    [[CargoBay sharedManager] productsWithIdentifiers:[NSSet setWithObject:@"com.ruenzuo.Pokeffective.Storage"]
+                                                                                                              success:^(NSArray *products, NSArray *invalidIdentifiers) {
+                                                                                                                  NSLog(@"%@", products);
+                                                                                                              } failure:^(NSError *error) {
+                                                                                                                  NSLog(@"%@", [error localizedDescription]);
+                                                                                                              }];
+                                                                }
                                                         }];
         [alertView show];
     }
