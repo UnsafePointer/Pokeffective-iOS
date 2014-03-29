@@ -78,6 +78,7 @@ PODS:
   - VTAcknowledgementsViewController (0.10)
 
 DEPENDENCIES:
+  - AFNetworking (~> 2.2.1)
   - CargoBay (~> 2.0.3)
   - CRGradientNavigationBar (~> 0.3.2)
   - FMDB (~> 2.2)

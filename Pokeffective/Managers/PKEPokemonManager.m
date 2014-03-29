@@ -15,12 +15,14 @@
 #import "PKECoreDataHelper.h"
 #import "PKEEffective.h"
 #import "PKESTAB.h"
+#import "PKEIAPHelper.h"
 
 @interface PKEPokemonManager ()
 
 @property (nonatomic, strong) PKEFormatHelper *formatHelper;
 @property (nonatomic, strong) PKESQLiteHelper *sqliteHelper;
 @property (nonatomic, strong) PKECoreDataHelper *coreDataHelper;
+@property (nonatomic, strong) PKEIAPHelper *IAPHelper;
 
 - (void)getEfficacyWithCompletion:(ObjectCompletionBlock)completionBlock;
 
@@ -70,6 +72,14 @@ static dispatch_once_t oncePredicate;
         _coreDataHelper = [PKECoreDataHelper new];
     }
     return _coreDataHelper;
+}
+
+- (PKEIAPHelper *)IAPHelper
+{
+    if (_IAPHelper == nil) {
+        _IAPHelper = [PKEIAPHelper new];
+    }
+    return _IAPHelper;
 }
 
 #pragma mark - Public Methods
@@ -171,6 +181,38 @@ static dispatch_once_t oncePredicate;
             completionBlock(pokeffective, nil);
         }
     }];
+}
+
+- (void)getProductsWithIdentifiers:(NSSet *)identifiers
+                        completion:(ArrayCompletionBlock)completionBlock
+{
+    [[self IAPHelper] getProductsWithIdentifiers:identifiers
+                                      completion:completionBlock];
+}
+
+- (void)buyProduct:(SKProduct *)product
+{
+    [[self IAPHelper] buyProduct:product];
+}
+
+- (void)completeTransaction:(SKPaymentTransaction *)paymentTransaction
+{
+    [[self IAPHelper] completeTransaction:paymentTransaction];
+}
+
+- (void)restoreTransaction:(SKPaymentTransaction *)paymentTransaction
+{
+    [[self IAPHelper] restoreTransaction:paymentTransaction];
+}
+
+- (void)failedTransaction:(SKPaymentTransaction *)paymentTransaction
+{
+    [[self IAPHelper] failedTransaction:paymentTransaction];
+}
+
+- (void)restoreCompletedTransactions
+{
+    [[self IAPHelper] restoreCompletedTransactions];
 }
 
 - (UIColor *)colorForType:(PKEPokemonType)pokemonType

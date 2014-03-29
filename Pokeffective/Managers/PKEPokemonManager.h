@@ -38,6 +38,13 @@
         completion:(BooleanCompletionBlock)completionBlock;
 - (void)calculatePokeffectiveWithParty:(NSArray *)party
                             completion:(ArrayCompletionBlock)completionBlock;
+- (void)getProductsWithIdentifiers:(NSSet *)identifiers
+                        completion:(ArrayCompletionBlock)completionBlock;
+- (void)buyProduct:(SKProduct *)product;
+- (void)completeTransaction:(SKPaymentTransaction *)paymentTransaction;
+- (void)restoreTransaction:(SKPaymentTransaction *)paymentTransaction;
+- (void)failedTransaction:(SKPaymentTransaction *)paymentTransaction;
+- (void)restoreCompletedTransactions;
 
 - (UIColor *)colorForType:(PKEPokemonType)pokemonType;
 - (NSString *)nameForType:(PKEPokemonType)pokemonType;

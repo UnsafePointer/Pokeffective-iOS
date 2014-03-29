@@ -138,20 +138,25 @@
                                   sender:self];
     }
     else {
-        TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Error"
-                                                            message:@"You can't save more than six pokemons in your party. Remove one first in order to add another or buy unlimited space."
-                                                    leftButtonTitle:@"Buy"
-                                                   rightButtonTitle:@"OK"
-                                                            handler:^(int buttonIndex) {
-                                                                if (buttonIndex == 1) {
-                                                                    [[CargoBay sharedManager] productsWithIdentifiers:[NSSet setWithObject:@"com.ruenzuo.Pokeffective.Storage"]
-                                                                                                              success:^(NSArray *products, NSArray *invalidIdentifiers) {
-                                                                                                                  NSLog(@"%@", products);
-                                                                                                              } failure:^(NSError *error) {
-                                                                                                                  NSLog(@"%@", [error localizedDescription]);
-                                                                                                              }];
-                                                                }
-                                                        }];
+        TLAlertView *alertView = [[TLAlertView alloc]
+                                  initWithTitle:@"Error"
+                                  message:@"You can't save more than six pokemons in your party."
+                                  "Remove one first in order to add another or buy unlimited space."
+                                  leftButtonTitle:@"OK"
+                                  rightButtonTitle:@"Buy"
+                                  handler:^(int buttonIndex) {
+                                      if (buttonIndex == 0) {
+                                          [[PKEPokemonManager sharedManager]
+                                           getProductsWithIdentifiers:[NSSet setWithObject:IAP_IDENTIFIER]
+                                           completion:^(NSArray *array, NSError *error) {
+                                               if (!error) {
+                                                   if ([array count] > 0) {
+                                                       [[PKEPokemonManager sharedManager] buyProduct:[array firstObject]];
+                                                   }
+                                               }
+                                           }];
+                                      }
+                                  }];
         [alertView show];
     }
 }

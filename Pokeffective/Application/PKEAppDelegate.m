@@ -7,9 +7,11 @@
 //
 
 #import "PKEAppDelegate.h"
+#import "PKEPokemonManager.h"
 
 @interface PKEAppDelegate ()
 
+- (void)setupCargoBay;
 - (void)setNavigationBarAppearance;
 - (void)setTabBarAppearance;
 - (void)configureHockeyApp;
@@ -20,7 +22,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self setupCargoBay];
     [MagicalRecord setupAutoMigratingCoreDataStack];
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     [self setNavigationBarAppearance];
     [self setTabBarAppearance];
     [self configureHockeyApp];
@@ -46,6 +50,27 @@
 }
 
 #pragma mark - Private Methods
+
+- (void)setupCargoBay
+{
+    [[CargoBay sharedManager] setPaymentQueueUpdatedTransactionsBlock:^(SKPaymentQueue *queue, NSArray *transactions) {
+        for (SKPaymentTransaction * transaction in transactions) {
+            switch (transaction.transactionState) {
+                case SKPaymentTransactionStatePurchased:
+                    [[PKEPokemonManager sharedManager] completeTransaction:transaction];
+                    break;
+                case SKPaymentTransactionStateFailed:
+                    [[PKEPokemonManager sharedManager] failedTransaction:transaction];
+                    break;
+                case SKPaymentTransactionStateRestored:
+                    [[PKEPokemonManager sharedManager] restoreTransaction:transaction];
+                default:
+                    break;
+            }
+        };
+    }];
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:[CargoBay sharedManager]];
+}
 
 - (void)configureHockeyApp
 {
