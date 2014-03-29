@@ -30,6 +30,7 @@
     #import <HockeySDK/HockeySDK.h>
     #import <Masonry/Masonry.h>
     #import <M13ProgressSuite/UINavigationController+M13ProgressViewBar.h>
+    #import <MFFadeBackModalAnimation/UIViewController+MFFadeBackModalAnimation.h>
     #import "Includes.h"
     #import "Blocks.h"
 #endif

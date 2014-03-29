@@ -52,6 +52,13 @@
     }
 }
 
+#pragma mark - Public Methods
+
+- (IBAction)onTapExitButton:(id)sender
+{
+    [self dismissViewControllerWithFadebackAnimationCompletion:nil];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section;

@@ -28,6 +28,13 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Public Methods
+
+- (IBAction)onTapExitButton:(id)sender
+{
+    [self dismissViewControllerWithFadebackAnimationCompletion:nil];
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

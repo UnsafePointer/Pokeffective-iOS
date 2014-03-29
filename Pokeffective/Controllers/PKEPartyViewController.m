@@ -94,16 +94,22 @@
         PKEPokemonListViewController *controller = [segue destinationViewController];
         [controller setDelegate:self];
     }
-    if ([[segue identifier] isEqualToString:@"EffectiveSegue"]) {
-        PKEEffectiveViewController *controller = [segue destinationViewController];
-        [controller setParty:[self dataSource]];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [[self collectionView] deselectItemAtIndexPath:[[[self collectionView] indexPathsForSelectedItems] firstObject]
                                           animated:YES];
+}
+
+#pragma mark - Public Methods
+
+- (IBAction)onTapInfoButton:(id)sender
+{
+    UINavigationController *navigationController = [[UIStoryboard storyboardWithName:@"Main"
+                                                                              bundle:nil] instantiateViewControllerWithIdentifier:@"PKEAboutViewController"];
+    [self presentViewControllerWithFadebackAnimation:navigationController
+                                          completion:nil];
 }
 
 #pragma mark - Private Methods
@@ -146,8 +152,12 @@
 - (void)chartButtonTapped:(id)sender
 {
     if ([[PKEPokemonManager sharedManager] progress] >= 1.0f) {
-        [self performSegueWithIdentifier:@"EffectiveSegue"
-                                  sender:self];
+        UINavigationController *navigationController = [[UIStoryboard storyboardWithName:@"Main"
+                                                                                  bundle:nil] instantiateViewControllerWithIdentifier:@"PKEEffectiveViewController"];
+        PKEEffectiveViewController *controller = [[navigationController viewControllers] objectAtIndex:0];
+        [controller setParty:[self dataSource]];
+        [self presentViewControllerWithFadebackAnimation:navigationController
+                                              completion:nil];
     }
     else {
         TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Error"

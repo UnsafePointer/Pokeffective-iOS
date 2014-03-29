@@ -10,4 +10,6 @@
 
 @interface PKEAboutViewController : UITableViewController
 
+- (IBAction)onTapExitButton:(id)sender;
+
 @end

@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSArray *party;
 
+- (IBAction)onTapExitButton:(id)sender;
+
 @end

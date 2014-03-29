@@ -10,4 +10,6 @@
 
 @interface PKEPartyViewController : UIViewController
 
+- (IBAction)onTapInfoButton:(id)sender;
+
 @end
