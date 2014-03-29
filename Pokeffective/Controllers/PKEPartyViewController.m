@@ -32,7 +32,6 @@
 - (void)configureCollectionView;
 - (void)onLongPressMemberCell:(UIGestureRecognizer *)gestureRecognizer;
 - (void)updatePartyWithPokemon:(PKEPokemon *)pokemon;
-- (BOOL)validateParty;
 - (void)calculateProgress;
 - (void)updateProgress;
 
@@ -126,21 +125,6 @@
                                     animated:YES];
 }
 
-- (BOOL)validateParty
-{
-    if ([[self dataSource] count] < 6) {
-        return NO;
-    }
-    BOOL isPartyValid = YES;
-    for (PKEPokemon *pokemon in [self dataSource]) {
-        if ([[pokemon moves] count] < 4) {
-            isPartyValid = NO;
-            break;
-        }
-    }
-    return isPartyValid;
-}
-
 - (void)addButtonTapped:(id)sender
 {
     if ([[self dataSource] count] < MAX_POKEMON_PARTY) {
@@ -157,7 +141,7 @@
 
 - (void)chartButtonTapped:(id)sender
 {
-    if ([self validateParty]) {
+    if ([[PKEPokemonManager sharedManager] progress] >= 1.0f) {
         [self performSegueWithIdentifier:@"EffectiveSegue"
                                   sender:self];
     }
