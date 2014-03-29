@@ -42,6 +42,7 @@ PODS:
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.4)
   - libextobjc/UmbrellaHeader (0.4)
+  - M13ProgressSuite (1.0.1)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
@@ -60,6 +61,7 @@ DEPENDENCIES:
   - HexColors (~> 2.2.1)
   - HockeySDK (~> 3.5.4)
   - libextobjc (~> 0.4)
+  - M13ProgressSuite (~> 1.0.1)
   - MagicalRecord (~> 2.2)
   - Mantle (~> 1.4.1)
   - Masonry (~> 0.4.0)
@@ -73,6 +75,7 @@ SPEC CHECKSUMS:
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
   HockeySDK: aa28abb106de7804d31acf515f2c9aa4e6481fd0
   libextobjc: 2c9fc8226f0f38e562587f65172f93f0c9b4a47a
+  M13ProgressSuite: 07883a4a87b3d36a3a1cee52b6145d37eed10ce0
   MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
   Mantle: 0714cdb2b8559d9e6c2410d6a8529e3307bff189
   Masonry: d673617c9cbc24aaea90fba20b10e47fd9970a39

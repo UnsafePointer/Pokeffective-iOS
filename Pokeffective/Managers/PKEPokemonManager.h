@@ -18,6 +18,7 @@
 @property (nonatomic, assign) PKEPokemonType filteringMoveType;
 @property (nonatomic, assign) PKEMoveMethod filteringMoveMethod;
 @property (nonatomic, assign) PKEMoveCategory filteringMoveCategory;
+@property (nonatomic, assign) CGFloat progress;
 
 + (instancetype)sharedManager;
 

@@ -29,6 +29,7 @@
     #import <FMDB/FMResultSet.h>
     #import <HockeySDK/HockeySDK.h>
     #import <Masonry/Masonry.h>
+    #import <M13ProgressSuite/UINavigationController+M13ProgressViewBar.h>
     #import "Includes.h"
     #import "Blocks.h"
 #endif

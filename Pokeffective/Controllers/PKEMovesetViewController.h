@@ -9,9 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "PKEMoveCollectionViewController.h"
 
+@protocol PKEMovesetViewControllerDelegate <NSObject>
+
+- (void)shouldCalculateProgress;
+
+@end
+
 @class PKEPokemon;
 
 @interface PKEMovesetViewController : PKEMoveCollectionViewController
+
+@property (nonatomic, weak) id<PKEMovesetViewControllerDelegate> delegate;
 
 - (IBAction)onTapAddButton:(id)sender;
 

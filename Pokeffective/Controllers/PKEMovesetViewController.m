@@ -23,6 +23,8 @@
 
 - (void)updateMovesetWithMove:(PKEMove *)move;
 - (void)onLongPressMoveCell:(UIGestureRecognizer *)gestureRecognizer;
+- (void)calculateProgress;
+- (void)updateProgress;
 
 @end
 
@@ -85,6 +87,20 @@
 
 #pragma mark - Private Methods
 
+- (void)calculateProgress
+{
+    if ([[self delegate] respondsToSelector:@selector(shouldCalculateProgress)]) {
+        [[self delegate] performSelector:@selector(shouldCalculateProgress)];
+    }
+}
+
+- (void)updateProgress
+{
+    [self calculateProgress];
+    [[self navigationController] setProgress:[[PKEPokemonManager sharedManager] progress]
+                                    animated:YES];
+}
+
 - (void)onLongPressMoveCell:(UIGestureRecognizer *)gestureRecognizer;
 {
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
@@ -121,6 +137,7 @@
                                                                                                                inSection:0]
                                                                           atScrollPosition:UICollectionViewScrollPositionCenteredVertically
                                                                                   animated:YES];
+                                            [self updateProgress];
                                         }
                                     }];
 }
@@ -186,6 +203,7 @@
                                                            [self setDataSource:[mutableDataSource copy]];
                                                            [[self pokemon] setMoves:[NSSet setWithArray:[self dataSource]]];
                                                            [[self collectionView] deleteItemsAtIndexPaths:@[[self selectedIndexPath]]];
+                                                           [self updateProgress];
                                                        }
                                                    } completion:^(BOOL finished) {
                                                        if (finished) {

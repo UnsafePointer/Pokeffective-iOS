@@ -17,7 +17,7 @@
 #import "TLAlertView.h"
 #import "PKEEffectiveViewController.h"
 
-@interface PKEPartyViewController () <PKEPokemonTableViewControllerDelegate, UIActionSheetDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface PKEPartyViewController () <PKEPokemonTableViewControllerDelegate, UIActionSheetDelegate, UICollectionViewDataSource, UICollectionViewDelegate, PKEMovesetViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
@@ -33,6 +33,8 @@
 - (void)onLongPressMemberCell:(UIGestureRecognizer *)gestureRecognizer;
 - (void)updatePartyWithPokemon:(PKEPokemon *)pokemon;
 - (BOOL)validateParty;
+- (void)calculateProgress;
+- (void)updateProgress;
 
 @end
 
@@ -68,6 +70,7 @@
                 else {
                     [[self collectionView] reloadData];
                 }
+                [self updateProgress];
             }
         });
     }];
@@ -85,6 +88,7 @@
         NSArray *selectedIndexPaths = [[self collectionView] indexPathsForSelectedItems];
         NSIndexPath *selectedIndesPath = [selectedIndexPaths objectAtIndex:0];
         PKEPokemon *selectedPKMN = [[self dataSource] objectAtIndex:[selectedIndesPath row]];
+        controller.delegate = self;
         [controller setPokemon:selectedPKMN];
     }
     if ([[segue identifier] isEqualToString:@"AddSegue"]) {
@@ -104,6 +108,23 @@
 }
 
 #pragma mark - Private Methods
+
+- (void)calculateProgress
+{
+    CGFloat progress = 0.0f;
+    for (PKEPokemon *pokemon in [self dataSource]) {
+        progress += 18.0f;
+        progress += 4.0f * [[pokemon moves] count];
+    }
+    [[PKEPokemonManager sharedManager] setProgress:(progress / 100.0f)];
+}
+
+- (void)updateProgress
+{
+    [self calculateProgress];
+    [[self navigationController] setProgress:[[PKEPokemonManager sharedManager] progress]
+                                    animated:YES];
+}
 
 - (BOOL)validateParty
 {
@@ -142,7 +163,7 @@
     }
     else {
         TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Error"
-                                                            message:@"Please, complete your party and movesets first."
+                                                            message:@"You need at least three pokemons with four moves each one in your party to analyze it."
                                                         buttonTitle:@"OK"];
         [alertView show];
     }
@@ -213,7 +234,7 @@
                                                                                inSection:0]
                                           atScrollPosition:UICollectionViewScrollPositionCenteredVertically
                                                   animated:YES];
-            
+            [self updateProgress];
         }
     }];
 }
@@ -233,6 +254,13 @@
             [actionSheet showFromTabBar:[[self tabBarController] tabBar]];
         }
     }
+}
+
+#pragma mark - PKEMovesetViewControllerDelegate
+
+- (void)shouldCalculateProgress
+{
+    [self calculateProgress];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -330,6 +358,7 @@
                                                                                                 }];
                                                                            }
                                                                        }
+                                                                       [self updateProgress];
                                                                    }
                                                                }];
                                                            }

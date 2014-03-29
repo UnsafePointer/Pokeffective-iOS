@@ -21,7 +21,6 @@
 @property (nonatomic, assign) BOOL currentlyShowingButtons;
 
 - (void)checkForCurrentModifications;
-- (void)showApplyButton;
 - (void)showRestoreButton;
 - (void)showApplyAndRestoreButtons;
 - (void)hideButtons;
