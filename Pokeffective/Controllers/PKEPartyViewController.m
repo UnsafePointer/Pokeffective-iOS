@@ -133,8 +133,12 @@
     }
     else {
         TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Error"
-                                                            message:@"You can't save more than six pokemons in your party. Remove one first in order to add another."
-                                                        buttonTitle:@"OK"];
+                                                            message:@"You can't save more than six pokemons in your party. Remove one first in order to add another or buy unlimited space."
+                                                    leftButtonTitle:@"Buy"
+                                                   rightButtonTitle:@"OK"
+                                                            handler:^(int buttonIndex) {
+                                                                NSLog(@"%d", buttonIndex);
+                                                        }];
         [alertView show];
     }
 }
