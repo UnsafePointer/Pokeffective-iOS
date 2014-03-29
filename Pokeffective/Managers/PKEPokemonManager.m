@@ -208,6 +208,11 @@ static dispatch_once_t oncePredicate;
     return [[self formatHelper] moveMethodForIndexPath:indexPath];
 }
 
+- (PKEPokemonType)pokemonTypeForIndexPath:(NSIndexPath *)indexPath
+{
+    return [[self formatHelper] pokemonTypeForIndexPath:indexPath];
+}
+
 - (NSIndexPath *)indexPathForPokedexType:(PKEPokedexType)pokedexType
 {
     return [[self formatHelper] indexPathForPokedexType:pokedexType];
@@ -221,6 +226,11 @@ static dispatch_once_t oncePredicate;
 - (NSIndexPath *)indexPathForMoveCategory:(PKEMoveCategory)moveCategory
 {
     return [[self formatHelper] indexPathForMoveCategory:moveCategory];
+}
+
+- (NSIndexPath *)indexPathForPokemonType:(PKEPokemonType)pokemonType
+{
+    return [[self formatHelper] indexPathForPokemonType:pokemonType];
 }
 
 - (NSString *)getRandomEffective

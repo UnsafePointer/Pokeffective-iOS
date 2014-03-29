@@ -46,10 +46,12 @@
 - (PKEPokedexType)pokedexTypeForIndexPath:(NSIndexPath *)indexPath;
 - (PKEMoveCategory)moveCategoryForIndexPath:(NSIndexPath *)indexPath;
 - (PKEMoveMethod)moveMethodForIndexPath:(NSIndexPath *)indexPath;
+- (PKEPokemonType)pokemonTypeForIndexPath:(NSIndexPath *)indexPath;
 
 - (NSIndexPath *)indexPathForPokedexType:(PKEPokedexType)pokedexType;
 - (NSIndexPath *)indexPathForMoveMethod:(PKEMoveMethod)moveMethod;
 - (NSIndexPath *)indexPathForMoveCategory:(PKEMoveCategory)moveCategory;
+- (NSIndexPath *)indexPathForPokemonType:(PKEPokemonType)pokemonType;
 
 - (UIColor *)getColorForEffective:(NSString *)effective;
 

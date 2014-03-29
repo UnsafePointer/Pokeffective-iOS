@@ -30,34 +30,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    BOOL isSelected = NO;
-    switch ([self filterType]) {
-        case kPKEFilerTypePokemon:
-            isSelected = [[PKEPokemonManager sharedManager] filteringPokemonType] != PKEPokemonTypeNone;
-            break;
-        case kPKEFilerTypeMoves:
-            isSelected = [[PKEPokemonManager sharedManager] filteringMoveType] != PKEPokemonTypeNone;
-            break;
-    }
-    if (isSelected) {
-        PKEPokemonType pokemonType = PKEPokemonTypeNone;
-        switch ([self filterType]) {
-            case kPKEFilerTypePokemon:
-                pokemonType = [[PKEPokemonManager sharedManager] filteringPokemonType];
-                break;
-            case kPKEFilerTypeMoves:
-                pokemonType = [[PKEPokemonManager sharedManager] filteringMoveType];
-                break;
-        }
-        [[self collectionView] selectItemAtIndexPath:[NSIndexPath indexPathForItem:pokemonType - 1
-                                                                         inSection:0]
+    if ([self pokemonTypeFiltered] != PKEPokemonTypeNone) {
+        [[self collectionView] selectItemAtIndexPath:[[PKEPokemonManager sharedManager] indexPathForPokemonType:[self pokemonTypeFiltered]]
                                             animated:YES
-                                      scrollPosition:UICollectionViewScrollPositionCenteredVertically];
+                                      scrollPosition:UICollectionViewScrollPositionNone];
     }
     else {
         NSMutableArray *barButtoms = [[[self navigationItem] rightBarButtonItems] mutableCopy];
         [barButtoms removeObject:[self clearButton]];
-        [[self navigationItem] setRightBarButtonItems:[barButtoms copy]];
+        [[self navigationItem] setRightBarButtonItems:[barButtoms copy] animated:YES];
     }
 }
 
@@ -65,13 +46,8 @@
 
 - (IBAction)clearButtonTapped:(id)sender
 {
-    switch ([self filterType]) {
-        case kPKEFilerTypePokemon:
-            [[PKEPokemonManager sharedManager] setFilteringPokemonType:PKEPokemonTypeNone];
-            break;
-        case kPKEFilerTypeMoves:
-            [[PKEPokemonManager sharedManager] setFilteringMoveType:PKEPokemonTypeNone];
-            break;
+    if ([[self delegate] respondsToSelector:@selector(onSelectPokemonType:)]) {
+        [[self delegate] onSelectPokemonType:PKEPokemonTypeNone];
     }
     [[self navigationController] popViewControllerAnimated:YES];
 }
@@ -97,15 +73,21 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch ([self filterType]) {
-        case kPKEFilerTypePokemon:
-            [[PKEPokemonManager sharedManager] setFilteringPokemonType:[indexPath row] + 1];
-            break;
-        case kPKEFilerTypeMoves:
-            [[PKEPokemonManager sharedManager] setFilteringMoveType:[indexPath row] + 1];
-            break;
+    if ([[self delegate] respondsToSelector:@selector(onSelectPokemonType:)]) {
+        PKEPokemonType selectedPokemonType = [[PKEPokemonManager sharedManager] pokemonTypeForIndexPath:indexPath];
+        [[self delegate] onSelectPokemonType:selectedPokemonType];
     }
     [[self navigationController] popViewControllerAnimated:YES];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self pokemonTypeFiltered] == [[PKEPokemonManager sharedManager] pokemonTypeForIndexPath:indexPath]) {
+        [[self navigationItem] setRightBarButtonItems:nil animated:YES];
+        if ([[self delegate] respondsToSelector:@selector(onSelectPokemonType:)]) {
+            [[self delegate] onSelectPokemonType:PKEPokemonTypeNone];
+        }
+    }
 }
 
 #pragma mark - Private Methods

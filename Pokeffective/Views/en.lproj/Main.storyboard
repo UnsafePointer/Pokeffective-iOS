@@ -337,7 +337,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Types" id="Jc6-ow-ZRY">
-                        <barButtonItem key="rightBarButtonItem" title="Clear" id="qQz-ax-n9m">
+                        <barButtonItem key="rightBarButtonItem" image="Trash" id="qQz-ax-n9m">
                             <connections>
                                 <action selector="clearButtonTapped:" destination="gze-D5-afD" id="Hxk-Zr-cPs"/>
                             </connections>
@@ -1129,6 +1129,7 @@
         <image name="Online" width="28" height="28"/>
         <image name="Party" width="28" height="26"/>
         <image name="Right" width="14" height="28"/>
+        <image name="Trash" width="21" height="28"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

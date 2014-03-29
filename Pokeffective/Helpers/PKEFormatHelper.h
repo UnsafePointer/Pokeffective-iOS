@@ -17,8 +17,10 @@
 - (PKEPokedexType)pokedexTypeForIndexPath:(NSIndexPath *)indexPath;
 - (PKEMoveMethod)moveMethodForIndexPath:(NSIndexPath *)indexPath;
 - (PKEMoveCategory)moveCategoryForIndexPath:(NSIndexPath *)indexPath;
+- (PKEPokemonType)pokemonTypeForIndexPath:(NSIndexPath *)indexPath;
 - (NSIndexPath *)indexPathForPokedexType:(PKEPokedexType)pokedexType;
 - (NSIndexPath *)indexPathForMoveCategory:(PKEMoveCategory)moveCategory;
 - (NSIndexPath *)indexPathForMoveMethod:(PKEMoveMethod)moveMethod;
+- (NSIndexPath *)indexPathForPokemonType:(PKEPokemonType)pokemonType;
 
 @end

@@ -178,6 +178,12 @@
     return PKEMoveCategoryAll;
 }
 
+- (PKEPokemonType)pokemonTypeForIndexPath:(NSIndexPath *)indexPath
+{
+    PKEPokemonType pokemonType = [indexPath row] + 1;
+    return pokemonType;
+}
+
 - (NSIndexPath *)indexPathForPokedexType:(PKEPokedexType)pokedexType
 {
     if (pokedexType == PKEPokedexTypeNational) {
@@ -263,6 +269,12 @@
                                   inSection:0];
     }
     return nil;
+}
+
+- (NSIndexPath *)indexPathForPokemonType:(PKEPokemonType)pokemonType
+{
+    return [NSIndexPath indexPathForItem:pokemonType - 1
+                               inSection:0];
 }
 
 @end
