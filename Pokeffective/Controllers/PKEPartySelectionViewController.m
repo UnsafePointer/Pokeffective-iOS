@@ -80,7 +80,7 @@
 
 - (void)applyButtonTapped:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Select an option to begging the analysis"
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Select an option to begin the analysis"
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
