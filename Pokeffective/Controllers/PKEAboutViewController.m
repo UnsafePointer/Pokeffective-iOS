@@ -7,12 +7,15 @@
 //
 
 #import "PKEAboutViewController.h"
+#import "PKEPokemonManager.h"
 
 @interface PKEAboutViewController () <MFMailComposeViewControllerDelegate>
 
 - (void)follow;
 - (void)email;
 - (void)acknowledgements;
+- (void)shareOnFacebook;
+- (void)shareOnTwitter;
 
 @end
 
@@ -43,6 +46,23 @@
                                   animated:true];
     if (indexPath.section == 0) {
         switch (indexPath.row) {
+            case 0:
+                [[PKEPokemonManager sharedManager] restoreCompletedTransactions];
+                break;
+        }
+    }
+    if (indexPath.section == 1) {
+        switch (indexPath.row) {
+            case 0:
+                [self shareOnFacebook];
+                break;
+            case 1:
+                [self shareOnTwitter];
+                break;
+        }
+    }
+    if (indexPath.section == 2) {
+        switch (indexPath.row) {
             case 1:
                 [self follow];
                 break;
@@ -57,7 +77,7 @@
                 break;
         }
     }
-    else if (indexPath.section == 1) {
+    else if (indexPath.section == 3) {
         switch (indexPath.row) {
             case 0:
                 [self acknowledgements];
@@ -69,11 +89,56 @@
     }
 }
 
+#pragma mark - Private Methods
+
+- (void)shareOnFacebook
+{
+    SLComposeViewController *facebookStatus = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+    [facebookStatus setInitialText:@"Check PokeApp in the AppStore!"];
+    [facebookStatus addURL:[NSURL URLWithString:PKE_APP_URL]];
+    [self presentViewController:facebookStatus
+                       animated:YES
+                     completion:nil];
+}
+
+- (void)shareOnTwitter
+{
+    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    [accountStore requestAccessToAccountsWithType:accountType
+                                          options:nil
+                                       completion:^(BOOL granted, NSError *error) {
+                                           if(granted) {
+                                               NSArray *accounts = [accountStore accountsWithAccountType:accountType];
+                                               if ([accounts count] > 0) {
+                                                   SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+                                                   [tweetSheet setInitialText:@"Check PokeApp in the AppStore!"];
+                                                   [tweetSheet addURL:[NSURL URLWithString:PKE_APP_URL]];
+                                                   [self presentViewController:tweetSheet
+                                                                      animated:YES
+                                                                    completion:nil];
+                                               }
+                                               else {
+                                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                                       [TSMessage showNotificationInViewController:self
+                                                                                             title:@"Error"
+                                                                                          subtitle:@"It seems that you don't have a Twitter account configured."
+                                                                                              type:TSMessageNotificationTypeError
+                                                                                          duration:3.0f
+                                                                              canBeDismissedByUser:YES];
+                                                   });
+                                               }
+        }
+    }];
+}
+
 - (void)follow
 {
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+    [accountStore requestAccessToAccountsWithType:accountType
+                                          options:nil
+                                       completion:^(BOOL granted, NSError *error) {
         if(granted) {
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
             if ([accounts count] > 0) {
