@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PKEPartyViewController : UIViewController
+@interface PKEBoxViewController : UIViewController
 
 - (IBAction)onTapInfoButton:(id)sender;
 

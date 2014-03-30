@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Renzo Crisóstomo. All rights reserved.
 //
 
-#import "PKEPartyViewController.h"
+#import "PKEBoxViewController.h"
 #import "PKEPokemonManager.h"
 #import "PKEMemberCollectionViewCell.h"
 #import "PKEPokemon.h"
@@ -17,7 +17,7 @@
 #import "TLAlertView.h"
 #import "PKEEffectiveViewController.h"
 
-@interface PKEPartyViewController () <PKEPokemonTableViewControllerDelegate, UIActionSheetDelegate, UICollectionViewDataSource, UICollectionViewDelegate, PKEMovesetViewControllerDelegate>
+@interface PKEBoxViewController () <PKEPokemonTableViewControllerDelegate, UIActionSheetDelegate, UICollectionViewDataSource, UICollectionViewDelegate, PKEMovesetViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
@@ -37,7 +37,7 @@
 
 @end
 
-@implementation PKEPartyViewController
+@implementation PKEBoxViewController
 
 - (void)viewDidLoad
 {

@@ -28,7 +28,7 @@
 		3F32363718E77AEC007388B0 /* PKEViewControllerHierarchyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F32363618E77AEC007388B0 /* PKEViewControllerHierarchyHelper.m */; };
 		3F375C7518CC7B6A00A93DB4 /* PKEPokemonSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C7418CC7B6A00A93DB4 /* PKEPokemonSearchViewController.m */; };
 		3F375C7A18CC818F00A93DB4 /* PKEPokemonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F375C7918CC818F00A93DB4 /* PKEPokemonTableViewCell.xib */; };
-		3F375C7D18CCA6D300A93DB4 /* PKEPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C7C18CCA6D300A93DB4 /* PKEPartyViewController.m */; };
+		3F375C7D18CCA6D300A93DB4 /* PKEBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C7C18CCA6D300A93DB4 /* PKEBoxViewController.m */; };
 		3F375C8018CCA71B00A93DB4 /* PKEPokemonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C7F18CCA71B00A93DB4 /* PKEPokemonTableViewController.m */; };
 		3F375C8518CCB27B00A93DB4 /* PKEMemberCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F375C8418CCB27B00A93DB4 /* PKEMemberCollectionViewCell.m */; };
 		3F43557E18CF6AB900806A8F /* PKEMovesetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F43557D18CF6AB900806A8F /* PKEMovesetViewController.m */; };
@@ -841,8 +841,8 @@
 		3F375C7318CC7B6A00A93DB4 /* PKEPokemonSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemonSearchViewController.h; path = Controllers/PKEPokemonSearchViewController.h; sourceTree = "<group>"; };
 		3F375C7418CC7B6A00A93DB4 /* PKEPokemonSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPokemonSearchViewController.m; path = Controllers/PKEPokemonSearchViewController.m; sourceTree = "<group>"; };
 		3F375C7918CC818F00A93DB4 /* PKEPokemonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PKEPokemonTableViewCell.xib; path = Views/PKEPokemonTableViewCell.xib; sourceTree = "<group>"; };
-		3F375C7B18CCA6D300A93DB4 /* PKEPartyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPartyViewController.h; path = Controllers/PKEPartyViewController.h; sourceTree = "<group>"; };
-		3F375C7C18CCA6D300A93DB4 /* PKEPartyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPartyViewController.m; path = Controllers/PKEPartyViewController.m; sourceTree = "<group>"; };
+		3F375C7B18CCA6D300A93DB4 /* PKEBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEBoxViewController.h; path = Controllers/PKEBoxViewController.h; sourceTree = "<group>"; };
+		3F375C7C18CCA6D300A93DB4 /* PKEBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEBoxViewController.m; path = Controllers/PKEBoxViewController.m; sourceTree = "<group>"; };
 		3F375C7E18CCA71B00A93DB4 /* PKEPokemonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEPokemonTableViewController.h; path = Extensions/PKEPokemonTableViewController.h; sourceTree = "<group>"; };
 		3F375C7F18CCA71B00A93DB4 /* PKEPokemonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PKEPokemonTableViewController.m; path = Extensions/PKEPokemonTableViewController.m; sourceTree = "<group>"; };
 		3F375C8318CCB27B00A93DB4 /* PKEMemberCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PKEMemberCollectionViewCell.h; path = Views/PKEMemberCollectionViewCell.h; sourceTree = "<group>"; };
@@ -2501,8 +2501,8 @@
 				3F778FBC18C7AE3400771A9E /* PKEPokemonListViewController.m */,
 				3F375C7318CC7B6A00A93DB4 /* PKEPokemonSearchViewController.h */,
 				3F375C7418CC7B6A00A93DB4 /* PKEPokemonSearchViewController.m */,
-				3F375C7B18CCA6D300A93DB4 /* PKEPartyViewController.h */,
-				3F375C7C18CCA6D300A93DB4 /* PKEPartyViewController.m */,
+				3F375C7B18CCA6D300A93DB4 /* PKEBoxViewController.h */,
+				3F375C7C18CCA6D300A93DB4 /* PKEBoxViewController.m */,
 				3FCC8A9618CCECF500F4F0A3 /* PKEAboutViewController.h */,
 				3FCC8A9718CCECF500F4F0A3 /* PKEAboutViewController.m */,
 				3F43557C18CF6AB900806A8F /* PKEMovesetViewController.h */,
@@ -3493,7 +3493,7 @@
 				3FB70A0F18D59F25007F1C7C /* PKEMoveManagedObject.m in Sources */,
 				3F13973718CBBAF7009B31A3 /* PKETypeCell.m in Sources */,
 				3F9DF09D18DE1C4C001ACA19 /* PKEEffective.m in Sources */,
-				3F375C7D18CCA6D300A93DB4 /* PKEPartyViewController.m in Sources */,
+				3F375C7D18CCA6D300A93DB4 /* PKEBoxViewController.m in Sources */,
 				3F93181C18CF88DF0023E7A5 /* PKEEffectiveViewController.m in Sources */,
 				3F05523618D5FBCF00AF72D4 /* PKEPartyCollectionViewFlowLayout.m in Sources */,
 				3F93181618CF70ED0023E7A5 /* PKEMoveTableViewCell.m in Sources */,

@@ -821,10 +821,10 @@
             </objects>
             <point key="canvasLocation" x="1989" y="1316"/>
         </scene>
-        <!--Party View Controller - Party-->
+        <!--Box View Controller - Party-->
         <scene sceneID="03d-jG-pYk">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="JD2-fe-fBj" customClass="PKEPartyViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="JD2-fe-fBj" customClass="PKEBoxViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="51K-gA-86H"/>
                         <viewControllerLayoutGuide type="bottom" id="Aca-hc-84j"/>
