@@ -13,9 +13,9 @@
 #import "PKEMovesetViewController.h"
 #import "PKEPokemonListViewController.h"
 #import "NSError+PKEPokemonError.h"
-#import "PKEPartyCollectionViewFlowLayout.h"
+#import "PKEBoxCollectionViewFlowLayout.h"
 #import "TLAlertView.h"
-#import "PKEEffectiveViewController.h"
+#import "PKEPartySelectionViewController.h"
 
 @interface PKEBoxViewController () <PKEPokemonTableViewControllerDelegate, UIActionSheetDelegate, UICollectionViewDataSource, UICollectionViewDelegate, PKEMovesetViewControllerDelegate>
 
@@ -185,8 +185,8 @@
     if ([[PKEPokemonManager sharedManager] progress] >= 1.0f) {
         UINavigationController *navigationController = [[UIStoryboard storyboardWithName:@"Main"
                                                                                   bundle:nil] instantiateViewControllerWithIdentifier:@"PKEEffectiveViewController"];
-        PKEEffectiveViewController *controller = [[navigationController viewControllers] objectAtIndex:0];
-        [controller setParty:[self dataSource]];
+        PKEPartySelectionViewController *controller = [[navigationController viewControllers] objectAtIndex:0];
+        [controller setBox:[self dataSource]];
         [self presentViewControllerWithFadebackAnimation:navigationController
                                               completion:nil];
     }
@@ -232,7 +232,7 @@
 
 - (void)configureCollectionView
 {
-    PKEPartyCollectionViewFlowLayout *layout = [[PKEPartyCollectionViewFlowLayout alloc] initWithCoder:nil];
+    PKEBoxCollectionViewFlowLayout *layout = [[PKEBoxCollectionViewFlowLayout alloc] initWithCoder:nil];
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds
                                                           collectionViewLayout:layout];
     [collectionView setDataSource:self];
