@@ -16,6 +16,5 @@
 @property (nonatomic, weak) IBOutlet UILabel *lblThirdMove;
 @property (nonatomic, weak) IBOutlet UILabel *lblFourthMove;
 @property (nonatomic, weak) IBOutlet UIImageView *imgPicture;
-@property (nonatomic, weak) IBOutlet UIImageView *imgApply;
 
 @end

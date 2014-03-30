@@ -22,6 +22,7 @@
 - (void)configureCollectionView;
 - (void)configureTableViewCell:(PKEPartySelectionCollectionViewCell *)collectionViewCell
                   forIndexPath:(NSIndexPath *)indexPath;
+- (void)updateProgress;
 
 @end
 
@@ -38,7 +39,21 @@
             forCellWithReuseIdentifier:@"PartySelectionCollectionViewCell"];
 }
 
+#pragma mark - Public Methods
+
+- (IBAction)onTapExitButton:(id)sender
+{
+    [self dismissViewControllerWithFadebackAnimationCompletion:nil];
+}
+
 #pragma mark - Private Methods
+
+- (void)updateProgress
+{
+    CGFloat progress = [[[self collectionView] indexPathsForSelectedItems] count] * 33.4f;
+    [[self navigationController] setProgress:progress/100.0f
+                                    animated:YES];
+}
 
 - (void)filterDataSource
 {
@@ -104,6 +119,18 @@
     [self configureTableViewCell:cell
                     forIndexPath:indexPath];
     return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self updateProgress];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self updateProgress];
 }
 
 @end

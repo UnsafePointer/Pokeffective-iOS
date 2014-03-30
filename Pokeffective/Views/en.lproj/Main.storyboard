@@ -1143,6 +1143,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Party" id="s7k-oC-rZA">
                         <barButtonItem key="backBarButtonItem" title=" " id="3uR-jj-spo"/>
+                        <barButtonItem key="leftBarButtonItem" image="Exit" id="XtI-AV-wn1">
+                            <connections>
+                                <action selector="onTapExitButton:" destination="Gsy-5q-waZ" id="ZLS-oh-tla"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="VBk-pe-gkc" kind="push" id="DWR-CI-Ynr"/>

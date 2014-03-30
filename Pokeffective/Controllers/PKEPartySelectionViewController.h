@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSArray *box;
 
+- (IBAction)onTapExitButton:(id)sender;
+
 @end
