@@ -236,6 +236,9 @@
             [indexPath row] == [selectionIndexPath row]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
+        else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     }
     return cell;
 }
