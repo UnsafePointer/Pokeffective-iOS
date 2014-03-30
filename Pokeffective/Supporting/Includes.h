@@ -83,7 +83,7 @@ typedef NS_ENUM(NSInteger, PKEEffectiveness) {
 #define FIRST_TYPE_SLOT 1
 #define SECOND_TYPE_SLOT 2
 #define TOTAL_POKEMON_TYPES 18
-#define MAX_POKEMON_PARTY 3
+#define MAX_POKEMON_BOX_WITHOUT_IAP 6
 #define MAX_POKEMON_MOVES 4
 #define PKE_APP_URL @"itunes.com/apps/pokebuilder"
 #define IAP_IDENTIFIER @"com.ruenzuo.Pokeffective.Storage"

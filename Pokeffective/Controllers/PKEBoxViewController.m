@@ -117,10 +117,23 @@
 - (void)calculateProgress
 {
     CGFloat progress = 0.0f;
+    NSUInteger pokemonCount = 0;
+    NSMutableArray *movesCount = [NSMutableArray arrayWithArray:@[@0, @0, @0]];
+    NSArray *movesCountSorted;
     for (PKEPokemon *pokemon in [self dataSource]) {
-        progress += 18.0f;
-        progress += 4.0f * [[pokemon moves] count];
+        if (pokemonCount < 3) {
+            pokemonCount++;
+        }
+        [movesCount addObject:[NSNumber numberWithInt:[[pokemon moves] count]]];
     }
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self"
+                                                                     ascending:NO];
+    movesCountSorted = [movesCount sortedArrayUsingDescriptors:@[sortDescriptor]];
+    for (int i = 0; i < 3; i++) {
+        NSNumber *count = [movesCountSorted objectAtIndex:i];
+        progress += [count intValue] * 4;
+    }
+    progress += pokemonCount * 18;
     [[PKEPokemonManager sharedManager] setProgress:(progress / 100.0f)];
 }
 
@@ -133,31 +146,37 @@
 
 - (void)addButtonTapped:(id)sender
 {
-    if ([[self dataSource] count] < MAX_POKEMON_PARTY) {
+    if ([[PKEPokemonManager sharedManager] isIAPContentAvailable]) {
         [self performSegueWithIdentifier:@"AddSegue"
                                   sender:self];
     }
     else {
-        TLAlertView *alertView = [[TLAlertView alloc]
-                                  initWithTitle:@"Error"
-                                  message:@"You can't save more than six pokemons in your party."
-                                  "Remove one first in order to add another or buy unlimited space."
-                                  leftButtonTitle:@"OK"
-                                  rightButtonTitle:@"Buy"
-                                  handler:^(int buttonIndex) {
-                                      if (buttonIndex == 0) {
-                                          [[PKEPokemonManager sharedManager]
-                                           getProductsWithIdentifiers:[NSSet setWithObject:IAP_IDENTIFIER]
-                                           completion:^(NSArray *array, NSError *error) {
-                                               if (!error) {
-                                                   if ([array count] > 0) {
-                                                       [[PKEPokemonManager sharedManager] buyProduct:[array firstObject]];
+        if ([[self dataSource] count] < MAX_POKEMON_BOX_WITHOUT_IAP) {
+            [self performSegueWithIdentifier:@"AddSegue"
+                                      sender:self];
+        }
+        else {
+            TLAlertView *alertView = [[TLAlertView alloc]
+                                      initWithTitle:@"Error"
+                                      message:@"You can't save more than six pokemons in your party."
+                                      "Remove one first in order to add another or buy unlimited space."
+                                      leftButtonTitle:@"OK"
+                                      rightButtonTitle:@"Buy"
+                                      handler:^(int buttonIndex) {
+                                          if (buttonIndex == 0) {
+                                              [[PKEPokemonManager sharedManager]
+                                               getProductsWithIdentifiers:[NSSet setWithObject:IAP_IDENTIFIER]
+                                               completion:^(NSArray *array, NSError *error) {
+                                                   if (!error) {
+                                                       if ([array count] > 0) {
+                                                           [[PKEPokemonManager sharedManager] buyProduct:[array firstObject]];
+                                                       }
                                                    }
-                                               }
-                                           }];
-                                      }
-                                  }];
-        [alertView show];
+                                               }];
+                                          }
+                                      }];
+            [alertView show];
+        }
     }
 }
 
