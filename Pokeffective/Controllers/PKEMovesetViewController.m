@@ -79,7 +79,7 @@
     }
     else {
         TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Error"
-                                                            message:@"You can't save more than four moves for a pokemon in your party. Remove one first in order to add another."
+                                                            message:@"You can't save more than four moves for a pokémon in your party. Remove one first in order to add another."
                                                         buttonTitle:@"OK"];
         [alertView show];
     }
@@ -173,7 +173,7 @@
                 case kPKEErrorCodeSavingSameMove:
                     [TSMessage showNotificationInViewController:self
                                                           title:@"Error"
-                                                       subtitle:@"You can't save the same move twice for a pokemon in your party."
+                                                       subtitle:@"You can't save the same move twice for a pokémon in your party."
                                                            type:TSMessageNotificationTypeError
                                                        duration:3.0f
                                            canBeDismissedByUser:YES];

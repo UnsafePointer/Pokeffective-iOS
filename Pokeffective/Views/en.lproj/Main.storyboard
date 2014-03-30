@@ -351,7 +351,7 @@
             </objects>
             <point key="canvasLocation" x="2545" y="-235"/>
         </scene>
-        <!--Effective View Controller - Pokeffective-->
+        <!--Effective View Controller - Effectiveness-->
         <scene sceneID="Ecc-y6-Gqz">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="VBk-pe-gkc" customClass="PKEEffectiveViewController" sceneMemberID="viewController">
@@ -406,7 +406,7 @@
                             <outlet property="delegate" destination="VBk-pe-gkc" id="MU9-Qj-V8n"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Pokeffective" id="QrB-Vd-irI">
+                    <navigationItem key="navigationItem" title="Effectiveness" id="QrB-Vd-irI">
                         <barButtonItem key="backBarButtonItem" title=" " id="8sA-hQ-bRR"/>
                     </navigationItem>
                     <connections>

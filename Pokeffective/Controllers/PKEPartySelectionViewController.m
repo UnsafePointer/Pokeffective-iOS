@@ -230,7 +230,7 @@
                                               animated:YES];
         TLAlertView *alertView = [[TLAlertView alloc]
                                   initWithTitle:@"Error"
-                                  message:@"You can't analize a party with more than three pokemons."
+                                  message:@"You can't analize a party with more than three pokémon."
                                   buttonTitle:@"OK"];
         [alertView show];
     }

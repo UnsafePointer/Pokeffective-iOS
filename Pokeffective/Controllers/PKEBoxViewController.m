@@ -158,7 +158,7 @@
         else {
             TLAlertView *alertView = [[TLAlertView alloc]
                                       initWithTitle:@"Error"
-                                      message:@"You can't save more than six pokemons in your party."
+                                      message:@"You can't save more than six pokémon in your party."
                                       "Remove one first in order to add another or buy unlimited space."
                                       leftButtonTitle:@"OK"
                                       rightButtonTitle:@"Buy"
@@ -192,7 +192,7 @@
     }
     else {
         TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Error"
-                                                            message:@"You need at least three pokemons with four moves each one in your box to analyze a party."
+                                                            message:@"You need at least three pokémon with four moves each one in your box to analyze a party."
                                                         buttonTitle:@"OK"];
         [alertView show];
     }
@@ -348,7 +348,7 @@
                 case kPKEErrorCodeSavingSamePokemon:
                     [TSMessage showNotificationInViewController:self
                                                           title:@"Error"
-                                                       subtitle:@"You can't save the same pokemon twice in your party."
+                                                       subtitle:@"You can't save the same pokémon twice in your party."
                                                            type:TSMessageNotificationTypeError
                                                        duration:3.0f
                                            canBeDismissedByUser:YES];
