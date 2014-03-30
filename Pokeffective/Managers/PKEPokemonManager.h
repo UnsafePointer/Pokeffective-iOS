@@ -37,6 +37,7 @@
          toPokemon:(PKEPokemon *)pokemon
         completion:(BooleanCompletionBlock)completionBlock;
 - (void)calculatePokeffectiveWithParty:(NSArray *)party
+                               andType:(PKEAnalysisType)analysisType
                             completion:(ArrayCompletionBlock)completionBlock;
 - (void)getProductsWithIdentifiers:(NSSet *)identifiers
                         completion:(ArrayCompletionBlock)completionBlock;

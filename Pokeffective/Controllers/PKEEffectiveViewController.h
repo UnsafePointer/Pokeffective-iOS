@@ -11,5 +11,6 @@
 @interface PKEEffectiveViewController : UICollectionViewController
 
 @property (nonatomic, strong) NSArray *party;
+@property (nonatomic, assign) PKEAnalysisType analysisType;
 
 @end

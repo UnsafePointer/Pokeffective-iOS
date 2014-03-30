@@ -143,7 +143,8 @@
     }];
 }
 
-- (void)getEfficacyWithCompletion:(ObjectCompletionBlock)completionBlock
+- (void)getEfficacyWithType:(PKEAnalysisType)type
+                 completion:(ObjectCompletionBlock)completionBlock
 {
     FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[[NSBundle mainBundle]
                                                                      pathForResource:@"PokeffectiveData"
@@ -158,17 +159,32 @@
             PKEPokemonType damager = [resultSet intForColumn:@"damager"];
             PKEPokemonType target = [resultSet intForColumn:@"target"];
             PKEEffectiveness effectiveness = [resultSet intForColumn:@"factor"];
-            NSMutableArray *type = [efficacy objectForKey:[NSNumber numberWithInt:target]];
-            if (!type) {
-                type = [[NSMutableArray alloc] initWithCapacity:TOTAL_POKEMON_TYPES];
-                for (int i = 0; i < TOTAL_POKEMON_TYPES; i++) {
-                    [type addObject:[NSNull null]];
+            if (type == PKEAnalysisTypeAttack) {
+                NSMutableArray *type = [efficacy objectForKey:[NSNumber numberWithInt:target]];
+                if (!type) {
+                    type = [[NSMutableArray alloc] initWithCapacity:TOTAL_POKEMON_TYPES];
+                    for (int i = 0; i < TOTAL_POKEMON_TYPES; i++) {
+                        [type addObject:[NSNull null]];
+                    }
                 }
+                [type replaceObjectAtIndex:(damager - 1)
+                                withObject:[NSNumber numberWithInt:effectiveness]];
+                [efficacy setObject:type
+                             forKey:[NSNumber numberWithInt:target]];
             }
-            [type replaceObjectAtIndex:(damager - 1)
-                            withObject:[NSNumber numberWithInt:effectiveness]];
-            [efficacy setObject:type
-                         forKey:[NSNumber numberWithInt:target]];
+            else {
+                NSMutableArray *type = [efficacy objectForKey:[NSNumber numberWithInt:damager]];
+                if (!type) {
+                    type = [[NSMutableArray alloc] initWithCapacity:TOTAL_POKEMON_TYPES];
+                    for (int i = 0; i < TOTAL_POKEMON_TYPES; i++) {
+                        [type addObject:[NSNull null]];
+                    }
+                }
+                [type replaceObjectAtIndex:(target - 1)
+                                withObject:[NSNumber numberWithInt:effectiveness]];
+                [efficacy setObject:type
+                             forKey:[NSNumber numberWithInt:damager]];
+            }
         }
         [db close];
         if (completionBlock) {

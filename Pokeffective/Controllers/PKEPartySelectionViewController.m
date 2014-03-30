@@ -15,12 +15,13 @@
 #import "TLAlertView.h"
 #import "PKEEffectiveViewController.h"
 
-@interface PKEPartySelectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface PKEPartySelectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *dataSource;
 @property (nonatomic, assign) BOOL currentlyShowingRestoreButton;
 @property (nonatomic, assign) BOOL currentlyShowingBothButtons;
+@property (nonatomic, assign) PKEAnalysisType analysisTypeSelected;
 
 - (void)filterDataSource;
 - (void)configureCollectionView;
@@ -39,6 +40,7 @@
     if (self = [super initWithCoder:aDecoder]) {
         [self setCurrentlyShowingRestoreButton:NO];
         [self setCurrentlyShowingBothButtons:NO];
+        [self setAnalysisTypeSelected:PKEAnalysisTypeNone];
     }
     return self;
 }
@@ -62,6 +64,7 @@
             [party addObject:[[self dataSource] objectAtIndex:[indexPath row]]];
         }
         PKEEffectiveViewController *controller = [segue destinationViewController];
+        [controller setAnalysisType:[self analysisTypeSelected]];
         [controller setParty:party];
     }
 }
@@ -77,8 +80,12 @@
 
 - (void)applyButtonTapped:(id)sender
 {
-    [self performSegueWithIdentifier:@"EffectiveSegue"
-                              sender:self];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Select an option to begging the analysis"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Attacking", @"Defending", nil];
+    [actionSheet showInView:[self view]];
 }
 
 - (void)restoreButtonTapped:(id)sender
@@ -176,6 +183,22 @@
     else {
         [collectionViewCell addBackgroundLayersWithFirstColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon firstType]]
                                              secondColor:[[PKEPokemonManager sharedManager] colorForType:[pokemon secondType]]];
+    }
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == actionSheet.firstOtherButtonIndex) {
+        [self setAnalysisTypeSelected:PKEAnalysisTypeAttack];
+        [self performSegueWithIdentifier:@"EffectiveSegue"
+                                  sender:self];
+    }
+    else if (buttonIndex == actionSheet.firstOtherButtonIndex + 1) {
+        [self setAnalysisTypeSelected:PKEAnalysisTypeDefense];
+        [self performSegueWithIdentifier:@"EffectiveSegue"
+                                  sender:self];
     }
 }
 

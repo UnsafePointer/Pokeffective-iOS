@@ -25,6 +25,7 @@
     [super viewDidLoad];
     [SVProgressHUD show];
     [[PKEPokemonManager sharedManager] calculatePokeffectiveWithParty:[self party]
+                                                              andType:[self analysisType]
                                                            completion:^(NSArray *array, NSError *error) {
                                                                @weakify(self);
                                                                dispatch_async(dispatch_get_main_queue(), ^{

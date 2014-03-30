@@ -24,7 +24,8 @@
 @property (nonatomic, strong) PKECoreDataHelper *coreDataHelper;
 @property (nonatomic, strong) PKEIAPHelper *IAPHelper;
 
-- (void)getEfficacyWithCompletion:(ObjectCompletionBlock)completionBlock;
+- (void)getEfficacyWithType:(PKEAnalysisType)analysisType
+                 completion:(ObjectCompletionBlock)completionBlock;
 
 @end
 
@@ -138,15 +139,19 @@ static dispatch_once_t oncePredicate;
                            completion:completionBlock];
 }
 
-- (void)getEfficacyWithCompletion:(ObjectCompletionBlock)completionBlock
+- (void)getEfficacyWithType:(PKEAnalysisType)analysisType
+                 completion:(ObjectCompletionBlock)completionBlock
 {
-    [[self sqliteHelper] getEfficacyWithCompletion:completionBlock];
+    [[self sqliteHelper] getEfficacyWithType:analysisType
+                                  completion:completionBlock];
 }
 
 - (void)calculatePokeffectiveWithParty:(NSArray *)party
-                            completion:(ArrayCompletionBlock)completionBlock;
+                               andType:(PKEAnalysisType)analysisType
+                            completion:(ArrayCompletionBlock)completionBlock
 {
-    [self getEfficacyWithCompletion:^(id object, NSError *error) {
+    [self getEfficacyWithType:analysisType
+                   completion:^(id object, NSError *error) {
         NSDictionary *efficacy = (NSDictionary *)object;
         NSMutableArray *pokeffective = [NSMutableArray arrayWithCapacity:TOTAL_POKEMON_TYPES];
         for (PKEPokemonType pokemonTypeTarget = PKEPokemonTypeNormal; pokemonTypeTarget <= TOTAL_POKEMON_TYPES; pokemonTypeTarget++) {
@@ -174,7 +179,9 @@ static dispatch_once_t oncePredicate;
             PKEEffective *effective = [PKEEffective new];
             [effective setPokemonType:pokemonTypeTarget];
             [effective setEffectiveness:effectiviness];
-            [effective setSTABs:[STABs copy]];
+            if (analysisType == PKEAnalysisTypeAttack) {
+                [effective setSTABs:[STABs copy]];
+            }
             [pokeffective addObject:effective];
         }
         if (completionBlock) {

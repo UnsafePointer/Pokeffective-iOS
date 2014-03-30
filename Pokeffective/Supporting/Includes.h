@@ -73,6 +73,12 @@ typedef NS_ENUM(NSInteger, PKEFilerType) {
     kPKEFilerTypeMoves
 };
 
+typedef NS_ENUM(NSInteger, PKEAnalysisType) {
+    PKEAnalysisTypeNone,
+    PKEAnalysisTypeAttack,
+    PKEAnalysisTypeDefense
+};
+
 typedef NS_ENUM(NSInteger, PKEEffectiveness) {
     PKEEffectivenessNoEffect = 0,
     PKEEffectivenessNotVeryEffective = 50,
