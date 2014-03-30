@@ -235,10 +235,14 @@
         if ([indexPath section] == [selectionIndexPath section] &&
             [indexPath row] == [selectionIndexPath row]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            break;
         }
         else {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
+    }
+    if ([indexPath section] == ([tableView numberOfSections] - 1)) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     return cell;
 }

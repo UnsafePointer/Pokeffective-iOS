@@ -113,7 +113,7 @@
                                                             cancelButtonTitle:@"Cancel"
                                                        destructiveButtonTitle:@"Remove"
                                                             otherButtonTitles:nil];
-            [actionSheet showFromTabBar:[[self tabBarController] tabBar]];
+            [actionSheet showInView:[self view]];
         }
     }
 }

@@ -13,7 +13,6 @@
 
 - (void)setupCargoBay;
 - (void)setNavigationBarAppearance;
-- (void)setTabBarAppearance;
 - (void)configureHockeyApp;
 
 @end
@@ -26,7 +25,6 @@
     [MagicalRecord setupAutoMigratingCoreDataStack];
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     [self setNavigationBarAppearance];
-    [self setTabBarAppearance];
     [self configureHockeyApp];
     return YES;
 }
@@ -75,7 +73,9 @@
 - (void)configureHockeyApp
 {
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"985be260844cf58133850a264ae0466a"];
-    [[[BITHockeyManager sharedHockeyManager] authenticator] setIdentificationType:BITAuthenticatorIdentificationTypeDevice];
+    if (!APP_STORE) {
+        [[[BITHockeyManager sharedHockeyManager] authenticator] setIdentificationType:BITAuthenticatorIdentificationTypeDevice];
+    }
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[[BITHockeyManager sharedHockeyManager] authenticator] authenticateInstallation];
 }
@@ -88,19 +88,6 @@
     [[CRGradientNavigationBar appearance] setTitleTextAttributes:@{
             NSForegroundColorAttributeName : [UIColor colorWithHexString:@"#ffffff"]
     }];
-}
-
-- (void)setTabBarAppearance
-{
-    UITabBarController *tabBarController = (UITabBarController *)[[self window] rootViewController];
-    UITabBarItem *partyTabBarItem = [[[tabBarController tabBar] items] objectAtIndex:0];
-    UITabBarItem *onlineTabBarItem = [[[tabBarController tabBar] items] objectAtIndex:1];
-    partyTabBarItem.image = [[UIImage imageNamed:@"Party"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    onlineTabBarItem.image = [[UIImage imageNamed:@"Online"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    partyTabBarItem.selectedImage = [[UIImage imageNamed:@"Party-Selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    onlineTabBarItem.selectedImage = [[UIImage imageNamed:@"Online-Selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor] }
-                                             forState:UIControlStateNormal];
 }
 
 @end

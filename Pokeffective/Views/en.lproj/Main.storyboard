@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9Ad-we-e47">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="x3i-0g-uuQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -9,7 +9,7 @@
             <objects>
                 <tableViewController id="KY5-fL-3ks" customClass="PKEPokemonSearchViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bdW-No-eow">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -62,7 +62,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cW6-lG-h5G"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2Cu-uC-r7q">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -83,7 +83,7 @@
             <objects>
                 <tableViewController id="hs2-yD-Aac" customClass="PKEFilterViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="MZw-rI-kdK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" red="0.1137254902" green="0.38431372549999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -298,7 +298,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="gze-D5-afD" customClass="PKETypeViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="VjP-Cx-8Qv">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="gmZ-OI-e1b" customClass="PKETypeCollectionViewFlowLayout">
@@ -350,25 +350,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dr8-hh-VnY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2545" y="-235"/>
-        </scene>
-        <!--Temporal View Controller - Online-->
-        <scene sceneID="zyX-ZL-hdU">
-            <objects>
-                <viewController id="w6s-00-GFC" customClass="PKETemporalViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CJo-Qe-JQy"/>
-                        <viewControllerLayoutGuide type="bottom" id="peG-vN-XRL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2b9-bJ-vhK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Online" id="3kr-CV-GAe"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a22-hN-qog" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="360" y="537"/>
         </scene>
         <!--Effective View Controller - Pokeffective-->
         <scene sceneID="Ecc-y6-Gqz">
@@ -503,7 +484,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5sD-i3-8OP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9rv-Vy-PAD">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -532,7 +513,7 @@
                         <viewControllerLayoutGuide type="bottom" id="37d-BK-C71"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="b1i-QT-fPf">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -553,7 +534,7 @@
             <objects>
                 <tableViewController id="kLH-FC-JQk" customClass="PKEFilterViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="B4o-B2-227">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" red="0.1137254902" green="0.38431372549999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -772,7 +753,7 @@
             <objects>
                 <tableViewController id="M6b-5r-MpP" customClass="PKEMoveSearchViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AJF-FM-IWR">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -825,7 +806,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Aca-hc-84j"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="O6a-rp-JNy">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1152,27 +1133,6 @@
             </objects>
             <point key="canvasLocation" x="360" y="2116"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="zmF-7b-uuI">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="9Ad-we-e47" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" itemPositioning="fill" id="pSV-DE-CLN">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.1137254902" green="0.38431372549999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="x3i-0g-uuQ" kind="relationship" relationship="viewControllers" id="yka-Kx-ayO"/>
-                        <segue destination="wv0-I9-rKf" kind="relationship" relationship="viewControllers" id="Jyi-eb-bGL"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TBV-7N-oRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-692" y="-235"/>
-        </scene>
         <!--Navigation Controller - Party-->
         <scene sceneID="Pcv-dy-RnA">
             <objects>
@@ -1193,27 +1153,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MCl-bD-B26" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-166" y="-235"/>
-        </scene>
-        <!--Navigation Controller - Online-->
-        <scene sceneID="B5W-PZ-eEx">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wv0-I9-rKf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Online" image="Online" id="13L-pl-gwx">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Eaj-Cc-lzG" customClass="CRGradientNavigationBar">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="w6s-00-GFC" kind="relationship" relationship="rootViewController" id="xlK-lD-o0n"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MkL-iD-mTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-166" y="537"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X2F-MO-f7k">
@@ -1258,7 +1197,6 @@
         <image name="Add" width="28" height="28"/>
         <image name="Exit" width="20" height="28"/>
         <image name="Info" width="28" height="28"/>
-        <image name="Online" width="28" height="28"/>
         <image name="Party" width="28" height="26"/>
         <image name="Right" width="14" height="28"/>
         <image name="Trash" width="21" height="28"/>
