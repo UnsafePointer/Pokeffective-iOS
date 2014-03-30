@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const DidRestoreCompletedTransactionsNotification;
+
 @interface PKEIAPHelper : NSObject
 
 - (void)getProductsWithIdentifiers:(NSSet *)identifiers

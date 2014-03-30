@@ -8,6 +8,7 @@
 
 #import "PKEAboutViewController.h"
 #import "PKEPokemonManager.h"
+#import "PKEIAPHelper.h"
 
 @interface PKEAboutViewController () <MFMailComposeViewControllerDelegate>
 
@@ -16,10 +17,29 @@
 - (void)acknowledgements;
 - (void)shareOnFacebook;
 - (void)shareOnTwitter;
+- (void)onDidRestoreCompletedTransactionsNotification:(NSNotification *)notification;
 
 @end
 
 @implementation PKEAboutViewController
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(onDidRestoreCompletedTransactionsNotification:)
+                                                     name:DidRestoreCompletedTransactionsNotification
+                                                   object:nil];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:DidRestoreCompletedTransactionsNotification
+                                                  object:nil];
+}
 
 - (void)viewDidLoad
 {
@@ -38,6 +58,23 @@
     [self dismissViewControllerWithFadebackAnimationCompletion:nil];
 }
 
+#pragma mark - UITableViewDataSource
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    if ([[PKEPokemonManager sharedManager] isIAPContentAvailable]) {
+        if ([indexPath section] == 0 &&
+            [indexPath row] == 0) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    return cell;
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -46,9 +83,20 @@
                                   animated:true];
     if (indexPath.section == 0) {
         switch (indexPath.row) {
-            case 0:
-                [[PKEPokemonManager sharedManager] restoreCompletedTransactions];
+            case 0: {
+                if ([[PKEPokemonManager sharedManager] isIAPContentAvailable]) {
+                    [TSMessage showNotificationInViewController:self
+                                                          title:@"Success"
+                                                       subtitle:@"This content is already restored and available."
+                                                           type:TSMessageNotificationTypeSuccess
+                                                       duration:3.0f
+                                           canBeDismissedByUser:YES];
+                }
+                else {
+                    [[PKEPokemonManager sharedManager] restoreCompletedTransactions];
+                }
                 break;
+            }
         }
     }
     if (indexPath.section == 1) {
@@ -240,6 +288,13 @@
     }
     [self dismissViewControllerAnimated:true
                              completion:nil];
+}
+
+#pragma mark - NSNotificationCenter
+
+- (void)onDidRestoreCompletedTransactionsNotification:(NSNotification *)notification
+{
+    [[self tableView] reloadData];
 }
 
 @end

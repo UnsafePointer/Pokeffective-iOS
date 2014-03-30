@@ -45,6 +45,7 @@
 - (void)restoreTransaction:(SKPaymentTransaction *)paymentTransaction;
 - (void)failedTransaction:(SKPaymentTransaction *)paymentTransaction;
 - (void)restoreCompletedTransactions;
+- (BOOL)isIAPContentAvailable;
 
 - (UIColor *)colorForType:(PKEPokemonType)pokemonType;
 - (NSString *)nameForType:(PKEPokemonType)pokemonType;

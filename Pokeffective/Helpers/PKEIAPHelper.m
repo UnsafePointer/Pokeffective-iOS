@@ -9,6 +9,8 @@
 #import "PKEIAPHelper.h"
 #import "PKEViewControllerHierarchyHelper.h"
 
+NSString * const DidRestoreCompletedTransactionsNotification = @"DidRestoreCompletedTransactionsNotification";
+
 @interface PKEIAPHelper ()
 
 - (void)provideContentForProductIdentifier:(NSString *)productIdentifier;
@@ -80,6 +82,9 @@
                                            type:TSMessageNotificationTypeSuccess
                                        duration:3.0f
                            canBeDismissedByUser:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DidRestoreCompletedTransactionsNotification
+                                                        object:nil
+                                                      userInfo:nil];
 }
 
 @end

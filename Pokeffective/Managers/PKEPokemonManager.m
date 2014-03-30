@@ -215,6 +215,11 @@ static dispatch_once_t oncePredicate;
     [[self IAPHelper] restoreCompletedTransactions];
 }
 
+- (BOOL)isIAPContentAvailable
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:IAP_IDENTIFIER];
+}
+
 - (UIColor *)colorForType:(PKEPokemonType)pokemonType
 {
     return [[self formatHelper] colorForType:pokemonType];
