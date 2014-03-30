@@ -13,11 +13,11 @@
 
 @interface PKECoreDataHelper : NSObject
 
-- (void)addPokemonToParty:(PKEPokemon *)pokemon
-               completion:(BooleanCompletionBlock)completionBlock;
-- (void)removePokemonFromParty:(PKEPokemon *)pokemon
-                    completion:(BooleanCompletionBlock)completionBlock;
-- (void)getPartyWithCompletion:(ArrayCompletionBlock)completionBlock;
+- (void)addPokemonToBox:(PKEPokemon *)pokemon
+             completion:(BooleanCompletionBlock)completionBlock;
+- (void)removePokemonFromBox:(PKEPokemon *)pokemon
+                  completion:(BooleanCompletionBlock)completionBlock;
+- (void)getBoxWithCompletion:(ArrayCompletionBlock)completionBlock;
 - (void)addMove:(PKEMove *)move
       toPokemon:(PKEPokemon *)pokemon
      completion:(BooleanCompletionBlock)completionBlock;

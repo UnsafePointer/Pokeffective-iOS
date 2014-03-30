@@ -91,23 +91,23 @@ static dispatch_once_t oncePredicate;
                                                   completion:completionBlock];
 }
 
-- (void)addPokemonToParty:(PKEPokemon *)pokemon
-               completion:(BooleanCompletionBlock)completionBlock;
+- (void)addPokemonToBox:(PKEPokemon *)pokemon
+             completion:(BooleanCompletionBlock)completionBlock;
 {
-    [[self coreDataHelper] addPokemonToParty:pokemon
-                                  completion:completionBlock];
+    [[self coreDataHelper] addPokemonToBox:pokemon
+                                completion:completionBlock];
 }
 
-- (void)removePokemonFromParty:(PKEPokemon *)pokemon
-                    completion:(BooleanCompletionBlock)completionBlock
+- (void)removePokemonFromBox:(PKEPokemon *)pokemon
+                  completion:(BooleanCompletionBlock)completionBlock
 {
-    [[self coreDataHelper] removePokemonFromParty:pokemon
-                                       completion:completionBlock];
+    [[self coreDataHelper] removePokemonFromBox:pokemon
+                                     completion:completionBlock];
 }
 
-- (void)getPartyWithCompletion:(ArrayCompletionBlock)completionBlock
+- (void)getBoxWithCompletion:(ArrayCompletionBlock)completionBlock
 {
-    [[self coreDataHelper] getPartyWithCompletion:completionBlock];
+    [[self coreDataHelper] getBoxWithCompletion:completionBlock];
 }
 
 - (void)getMovesForPokemon:(PKEPokemon *)pokemon

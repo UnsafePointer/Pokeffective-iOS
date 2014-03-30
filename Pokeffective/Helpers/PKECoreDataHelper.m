@@ -58,8 +58,8 @@
 
 #pragma mark - Public Methods
 
-- (void)addPokemonToParty:(PKEPokemon *)pokemon
-               completion:(BooleanCompletionBlock)completionBlock;
+- (void)addPokemonToBox:(PKEPokemon *)pokemon
+             completion:(BooleanCompletionBlock)completionBlock;
 {
     __block NSError *pokemonError;
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
@@ -131,8 +131,8 @@
     }];
 }
 
-- (void)removePokemonFromParty:(PKEPokemon *)pokemon
-                    completion:(BooleanCompletionBlock)completionBlock
+- (void)removePokemonFromBox:(PKEPokemon *)pokemon
+                  completion:(BooleanCompletionBlock)completionBlock
 {
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
         PKEPokemonManagedObject *pokemonManagedObject =
@@ -167,7 +167,7 @@
     }];
 }
 
-- (void)getPartyWithCompletion:(ArrayCompletionBlock)completionBlock
+- (void)getBoxWithCompletion:(ArrayCompletionBlock)completionBlock
 {
     NSFetchRequest *fetchRequest = [self backgroundFetchRequestForEntityName:@"PKEPokemonManagedObject"
                                                        withSortDescriptorKey:@"identifier"

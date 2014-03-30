@@ -23,11 +23,11 @@
 + (instancetype)sharedManager;
 
 - (void)getPokemonsWithCompletion:(ArrayCompletionBlock)completionBlock;
-- (void)getPartyWithCompletion:(ArrayCompletionBlock)completionBlock;
-- (void)addPokemonToParty:(PKEPokemon *)pokemon
-               completion:(BooleanCompletionBlock)completionBlock;
-- (void)removePokemonFromParty:(PKEPokemon *)pokemon
-                    completion:(BooleanCompletionBlock)completionBlock;
+- (void)addPokemonToBox:(PKEPokemon *)pokemon
+             completion:(BooleanCompletionBlock)completionBlock;
+- (void)removePokemonFromBox:(PKEPokemon *)pokemon
+                  completion:(BooleanCompletionBlock)completionBlock;
+- (void)getBoxWithCompletion:(ArrayCompletionBlock)completionBlock;
 - (void)getMovesForPokemon:(PKEPokemon *)pokemon
                 completion:(ArrayCompletionBlock)completionBlock;
 - (void)addMove:(PKEMove *)move

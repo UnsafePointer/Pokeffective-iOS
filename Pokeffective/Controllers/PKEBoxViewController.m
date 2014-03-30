@@ -57,7 +57,7 @@
     [[self collectionView] registerNib:nib
             forCellWithReuseIdentifier:@"MemberCollectionViewCell"];
     [self configureNoContentLabel];
-    [[PKEPokemonManager sharedManager] getPartyWithCompletion:^(NSArray *array, NSError *error) {
+    [[PKEPokemonManager sharedManager] getBoxWithCompletion:^(NSArray *array, NSError *error) {
         @weakify(self)
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!error) {
@@ -192,7 +192,7 @@
     }
     else {
         TLAlertView *alertView = [[TLAlertView alloc] initWithTitle:@"Error"
-                                                            message:@"You need at least three pokemons with four moves each one in your party to analyze it."
+                                                            message:@"You need at least three pokemons with four moves each one in your box to analyze a party."
                                                         buttonTitle:@"OK"];
         [alertView show];
     }
@@ -364,34 +364,35 @@
 {
     if (buttonIndex == [actionSheet destructiveButtonIndex]) {
         PKEPokemon *pokemon = [[self dataSource] objectAtIndex:[[self selectedIndexPath] row]];
-        [[PKEPokemonManager sharedManager] removePokemonFromParty:pokemon
-                                                       completion:^(BOOL result, NSError *error) {
-                                                           @weakify(self)
-                                                           if (!error) {
-                                                               [[self collectionView] performBatchUpdates:^{
-                                                                   @strongify(self);
-                                                                   if (!error) {
-                                                                       NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
-                                                                       [mutableDataSource removeObject:pokemon];
-                                                                       [self setDataSource:[mutableDataSource copy]];
-                                                                       [[self collectionView] deleteItemsAtIndexPaths:@[[self selectedIndexPath]]];
-                                                                   }
-                                                               } completion:^(BOOL finished) {
-                                                                   if (finished) {
-                                                                       if ([[self dataSource] count] <= 0) {
-                                                                           if (![[self lblNoContent] alpha]) {
-                                                                               [UIView animateWithDuration:0.5f
-                                                                                                animations:^{
-                                                                                                    @strongify(self)
-                                                                                                    [[self lblNoContent] setAlpha:1.0f];
-                                                                                                }];
-                                                                           }
-                                                                       }
-                                                                       [self updateProgress];
-                                                                   }
-                                                               }];
-                                                           }
-                                                       }];
+        [[PKEPokemonManager sharedManager] removePokemonFromBox:pokemon
+                                                     completion:^(BOOL result, NSError *error) {
+                                                         @weakify(self)
+                                                         if (!error) {
+                                                             [[self collectionView] performBatchUpdates:^{
+                                                                 @strongify(self);
+                                                                 if (!error) {
+                                                                     NSMutableArray *mutableDataSource = [[self dataSource] mutableCopy];
+                                                                     [mutableDataSource removeObject:pokemon];
+                                                                     [self setDataSource:[mutableDataSource copy]];
+                                                                     [[self collectionView] deleteItemsAtIndexPaths:@[[self selectedIndexPath]]];
+                                                                 }
+                                                             } completion:^(BOOL finished) {
+                                                                 if (finished) {
+                                                                     if ([[self dataSource] count] <= 0) {
+                                                                         if (![[self lblNoContent] alpha]) {
+                                                                             [UIView animateWithDuration:0.5f
+                                                                                              animations:^{
+                                                                                                  @strongify(self)
+                                                                                                  [[self lblNoContent] setAlpha:1.0f];
+                                                                                              }];
+                                                                         }
+                                                                     }
+                                                                     [self updateProgress];
+                                                                 }
+                                                             }];
+                                                         }
+                                                     }];
+        
     }
 }
 
