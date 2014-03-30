@@ -17,16 +17,29 @@
 
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *dataSource;
+@property (nonatomic, assign) BOOL currentlyShowingRestoreButton;
+@property (nonatomic, assign) BOOL currentlyShowingBothButtons;
 
 - (void)filterDataSource;
 - (void)configureCollectionView;
 - (void)configureTableViewCell:(PKEPartySelectionCollectionViewCell *)collectionViewCell
                   forIndexPath:(NSIndexPath *)indexPath;
 - (void)updateProgress;
+- (void)applyButtonTapped:(id)sender;
+- (void)restoreButtonTapped:(id)sender;
 
 @end
 
 @implementation PKEPartySelectionViewController
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setCurrentlyShowingRestoreButton:NO];
+        [self setCurrentlyShowingBothButtons:NO];
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -48,11 +61,60 @@
 
 #pragma mark - Private Methods
 
+- (void)applyButtonTapped:(id)sender
+{
+    
+}
+
+- (void)restoreButtonTapped:(id)sender
+{
+    for (NSIndexPath *indexPath in [[self collectionView] indexPathsForSelectedItems]) {
+        [[self collectionView] deselectItemAtIndexPath:indexPath animated:YES];
+    }
+    [self updateProgress];
+}
+
 - (void)updateProgress
 {
     CGFloat progress = [[[self collectionView] indexPathsForSelectedItems] count] * 33.4f;
     [[self navigationController] setProgress:progress/100.0f
                                     animated:YES];
+    if (progress > 100.0f) {
+        if (![self currentlyShowingBothButtons]) {
+            UIBarButtonItem *applyBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Apply"]
+                                                                                   style:UIBarButtonItemStyleBordered
+                                                                                  target:self
+                                                                                  action:@selector(applyButtonTapped:)];
+            UIBarButtonItem *restoreBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Trash"]
+                                                                                     style:UIBarButtonItemStyleBordered
+                                                                                    target:self
+                                                                                    action:@selector(restoreButtonTapped:)];
+            [self.navigationItem setRightBarButtonItems:@[applyBarButtonItem, restoreBarButtonItem]
+                                               animated:YES];
+            [self setCurrentlyShowingBothButtons:YES];
+            [self setCurrentlyShowingRestoreButton:NO];
+        }
+    }
+    else if (progress > 0) {
+        if (![self currentlyShowingRestoreButton]) {
+            UIBarButtonItem *restoreBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Trash"]
+                                                                                     style:UIBarButtonItemStyleBordered
+                                                                                    target:self
+                                                                                    action:@selector(restoreButtonTapped:)];
+            [self.navigationItem setRightBarButtonItems:@[restoreBarButtonItem]
+                                               animated:YES];
+            [self setCurrentlyShowingRestoreButton:YES];
+            [self setCurrentlyShowingBothButtons:NO];
+        }
+    }
+    else {
+        if ([self currentlyShowingBothButtons] || [self currentlyShowingRestoreButton]) {
+            [self.navigationItem setRightBarButtonItems:nil
+                                               animated:YES];
+            [self setCurrentlyShowingBothButtons:NO];
+            [self setCurrentlyShowingRestoreButton:NO];
+        }
+    }
 }
 
 - (void)filterDataSource
