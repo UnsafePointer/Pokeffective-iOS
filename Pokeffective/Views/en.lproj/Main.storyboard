@@ -427,11 +427,6 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="Pokeffective" id="QrB-Vd-irI">
                         <barButtonItem key="backBarButtonItem" title=" " id="8sA-hQ-bRR"/>
-                        <barButtonItem key="leftBarButtonItem" image="Exit" id="7ig-c9-Nhw">
-                            <connections>
-                                <action selector="onTapExitButton:" destination="VBk-pe-gkc" id="TPj-TH-Cm2"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="YSK-mL-b9d" kind="push" identifier="STABsSegue" id="dDc-Tz-jDE"/>
@@ -1150,7 +1145,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="VBk-pe-gkc" kind="push" id="DWR-CI-Ynr"/>
+                        <segue destination="VBk-pe-gkc" kind="push" identifier="EffectiveSegue" id="DWR-CI-Ynr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CVa-Vf-2xH" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,6 +12,8 @@
 #import "PKEPartySelectionCollectionViewCell.h"
 #import "PKEPokemonManager.h"
 #import "PKEMove.h"
+#import "TLAlertView.h"
+#import "PKEEffectiveViewController.h"
 
 @interface PKEPartySelectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -52,6 +54,18 @@
             forCellWithReuseIdentifier:@"PartySelectionCollectionViewCell"];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"EffectiveSegue"]) {
+        NSMutableArray *party = [[NSMutableArray alloc] init];
+        for (NSIndexPath *indexPath in [[self collectionView] indexPathsForSelectedItems]) {
+            [party addObject:[[self dataSource] objectAtIndex:[indexPath row]]];
+        }
+        PKEEffectiveViewController *controller = [segue destinationViewController];
+        [controller setParty:party];
+    }
+}
+
 #pragma mark - Public Methods
 
 - (IBAction)onTapExitButton:(id)sender
@@ -63,7 +77,8 @@
 
 - (void)applyButtonTapped:(id)sender
 {
-    
+    [self performSegueWithIdentifier:@"EffectiveSegue"
+                              sender:self];
 }
 
 - (void)restoreButtonTapped:(id)sender
@@ -187,7 +202,18 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self updateProgress];
+    if ([[[self collectionView] indexPathsForSelectedItems] count] > 3) {
+        [[self collectionView] deselectItemAtIndexPath:indexPath
+                                              animated:YES];
+        TLAlertView *alertView = [[TLAlertView alloc]
+                                  initWithTitle:@"Error"
+                                  message:@"You can't analize a party with more than three pokemons."
+                                  buttonTitle:@"OK"];
+        [alertView show];
+    }
+    else {
+        [self updateProgress];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
