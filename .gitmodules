@@ -1,3 +1,6 @@
 [submodule "External/TLAlertView"]
 	path = External/TLAlertView
 	url = git@github.com:Ruenzuo/TLAlertView.git
+[submodule "External/iLink"]
+	path = External/iLink
+	url = git@github.com:Ruenzuo/iLink.git

@@ -9,6 +9,7 @@
 #import "PKEAboutViewController.h"
 #import "PKEPokemonManager.h"
 #import "PKEIAPHelper.h"
+#import "iLink.h"
 
 @interface PKEAboutViewController () <MFMailComposeViewControllerDelegate>
 
@@ -17,6 +18,7 @@
 - (void)acknowledgements;
 - (void)shareOnFacebook;
 - (void)shareOnTwitter;
+- (void)rateOnAppStore;
 - (void)onDidRestoreCompletedTransactionsNotification:(NSNotification *)notification;
 
 @end
@@ -107,6 +109,9 @@
             case 1:
                 [self shareOnTwitter];
                 break;
+            case 2:
+                [self rateOnAppStore];
+                break;
         }
     }
     if (indexPath.section == 2) {
@@ -143,7 +148,7 @@
 {
     SLComposeViewController *facebookStatus = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
     [facebookStatus setInitialText:@"Check PokeApp in the AppStore!"];
-    [facebookStatus addURL:[NSURL URLWithString:PKE_APP_URL]];
+    [facebookStatus addURL:[[iLink sharedInstance] iLinkGetAppURLforSharing]];
     [self presentViewController:facebookStatus
                        animated:YES
                      completion:nil];
@@ -161,7 +166,7 @@
                                                if ([accounts count] > 0) {
                                                    SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
                                                    [tweetSheet setInitialText:@"Check PokeApp in the AppStore!"];
-                                                   [tweetSheet addURL:[NSURL URLWithString:PKE_APP_URL]];
+                                                   [tweetSheet addURL:[[iLink sharedInstance] iLinkGetAppURLforSharing]];
                                                    [self presentViewController:tweetSheet
                                                                       animated:YES
                                                                     completion:nil];
@@ -178,6 +183,11 @@
                                                }
         }
     }];
+}
+
+- (void)rateOnAppStore
+{
+    [[iLink sharedInstance] iLinkOpenRatingsPageInAppStore];
 }
 
 - (void)follow
