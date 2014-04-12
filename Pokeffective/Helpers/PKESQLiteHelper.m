@@ -127,7 +127,13 @@
     [queue inDatabase:^(FMDatabase *db) {
         @strongify(self);
         NSMutableArray *moves = [[NSMutableArray alloc] init];
-        BOOL preEvolutionSearch = ([[pokemon isEvolution] boolValue] && (moveMethod == PKEMoveMethodAll || moveMethod == PKEMoveMethodEgg));
+        BOOL preEvolutionSearch = NO;
+        if (![pokemon isEvolution]) {
+            preEvolutionSearch = YES;
+        }
+        else {
+            preEvolutionSearch = ([[pokemon isEvolution] boolValue] && (moveMethod == PKEMoveMethodAll || moveMethod == PKEMoveMethodEgg));
+        }
         if (preEvolutionSearch) {
             int preEvolutionIdentifier = 0;
             BOOL found = NO;
