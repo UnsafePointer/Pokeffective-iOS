@@ -22,5 +22,6 @@
                                    moveCategory:(PKEMoveCategory)moveCategory
                                     fromPokemon:(PKEPokemon *)pokemon;
 - (NSString *)efficacy;
+- (NSString *)preEvolutionWithIdentifier:(NSInteger)identifier;
 
 @end

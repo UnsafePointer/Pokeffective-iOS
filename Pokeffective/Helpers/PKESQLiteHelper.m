@@ -126,19 +126,71 @@
     @weakify(self);
     [queue inDatabase:^(FMDatabase *db) {
         @strongify(self);
+        NSMutableArray *moves = [[NSMutableArray alloc] init];
+        BOOL preEvolutionSearch = ([[pokemon isEvolution] boolValue] && (moveMethod == PKEMoveMethodAll || moveMethod == PKEMoveMethodEgg));
+        if (preEvolutionSearch) {
+            int preEvolutionIdentifier = 0;
+            BOOL found = NO;
+            do {
+                NSString *query = nil;
+                if (preEvolutionIdentifier == 0) {
+                    query = [[self queryHelper] preEvolutionWithIdentifier:[pokemon identifier]];
+                }
+                else {
+                    query = [[self queryHelper] preEvolutionWithIdentifier:preEvolutionIdentifier];
+                }
+                FMResultSet *resultSet = [db executeQuery:query];
+                if ([resultSet next]) {
+                    int result = [resultSet intForColumn:@"prevolution"];
+                    if (result != 0) {
+                        preEvolutionIdentifier = result;
+                    }
+                    else {
+                        found = YES;
+                    }
+                }
+            } while (!found);
+            PKEPokemon *stubPokemon = [PKEPokemon new];
+            [stubPokemon setIdentifier:preEvolutionIdentifier];
+            NSString *query = [[self queryHelper] moveSearchQueryFilterByMoveMethod:PKEMoveMethodEgg
+                                                                           moveType:moveType
+                                                                       moveCategory:moveCategory
+                                                                        fromPokemon:stubPokemon];
+            FMResultSet *resultSet = [db executeQuery:query];
+            while ([resultSet next]) {
+                PKEMove *model = [PKEMove createMoveWithResultSet:resultSet];
+                [moves addObject:model];
+            }
+        }
         NSString *query = [[self queryHelper] moveSearchQueryFilterByMoveMethod:moveMethod
                                                                        moveType:moveType
                                                                    moveCategory:moveCategory
                                                                     fromPokemon:pokemon];
         FMResultSet *resultSet = [db executeQuery:query];
-        NSMutableArray *moves = [[NSMutableArray alloc] init];
         while ([resultSet next]) {
             PKEMove *model = [PKEMove createMoveWithResultSet:resultSet];
             [moves addObject:model];
         }
         [db close];
-        if (completionBlock) {
-            completionBlock(moves, nil);
+        if (preEvolutionSearch) {
+            if (completionBlock) {
+                NSMutableDictionary *movesFiltered = [NSMutableDictionary dictionary];
+                for (PKEMove *move in moves) {
+                    [movesFiltered setObject:move
+                                      forKey:[move name]];
+                }
+                completionBlock([[movesFiltered objectsForKeys:[movesFiltered allKeys]
+                                                notFoundMarker:[PKEMove new]]
+                                 sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                    return [[(PKEMove *)obj1 name] compare:[(PKEMove *)obj2 name]
+                                                   options:NSCaseInsensitiveSearch];
+                }], nil);
+            }
+        }
+        else {
+            if (completionBlock) {
+                completionBlock(moves, nil);
+            }
         }
     }];
 }

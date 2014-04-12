@@ -107,4 +107,13 @@
             "from type_efficacy ";
 }
 
+- (NSString *)preEvolutionWithIdentifier:(NSInteger)identifier
+{
+    return [NSString stringWithFormat:@"select ps.evolves_from_species_id as prevolution "
+            "from pokemon_species as ps "
+            "  join pokemon as po "
+            "    on ps.id = po.species_id  "
+            "where po.id = %d", identifier];
+}
+
 @end
