@@ -3696,7 +3696,7 @@
 					"$(inherited)",
 					"BITHOCKEY_VERSION=\"@\\\"3.5.4\\\"\"",
 					"BITHOCKEY_BUILD=\"@\\\"27\\\"\"",
-					"APP_STORE=1",
+					"APP_STORE=0",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Pokeffective/Supporting/Pokeffective-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3721,7 +3721,7 @@
 					"$(inherited)",
 					"BITHOCKEY_VERSION=\"@\\\"3.5.4\\\"\"",
 					"BITHOCKEY_BUILD=\"@\\\"27\\\"\"",
-					"APP_STORE=1",
+                    "APP_STORE=0",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Pokeffective/Supporting/Pokeffective-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
