@@ -17,6 +17,7 @@
 @property (nonatomic, assign) NSUInteger pokedexNumber;
 @property (nonatomic, assign) PKEPokemonType firstType;
 @property (nonatomic, assign) PKEPokemonType secondType;
+@property (nonatomic, assign) NSNumber *isEvolution;
 
 @property (nonatomic, strong) NSSet *moves;
 

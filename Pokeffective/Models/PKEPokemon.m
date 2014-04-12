@@ -23,6 +23,12 @@
     [pokemon setPokedexNumber:[resultSet intForColumn:@"number"]];
     [pokemon setFirstType:[resultSet intForColumn:@"type"]];
     [pokemon setSecondType:PKEPokemonTypeNone];
+    if ([resultSet intForColumn:@"evolves"] != 0) {
+        [pokemon setIsEvolution:@1];
+    }
+    else {
+        [pokemon setIsEvolution:@0];
+    }
     return pokemon;
 }
 
@@ -36,6 +42,7 @@
              @"firstType" : @"firstType",
              @"secondType" : @"secondType",
              @"pokedexNumber" : [NSNull null],
+             @"isEvolution" : @"isEvolution",
              @"moves" : @"moves"
             };
 }
