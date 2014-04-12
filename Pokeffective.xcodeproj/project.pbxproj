@@ -3721,11 +3721,11 @@
 					"$(inherited)",
 					"BITHOCKEY_VERSION=\"@\\\"3.5.4\\\"\"",
 					"BITHOCKEY_BUILD=\"@\\\"27\\\"\"",
-                    "APP_STORE=0",
+					"APP_STORE=0",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Pokeffective/Supporting/Pokeffective-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "AE6340D6-3611-46B0-B262-C7DC358F39C0";
+				PROVISIONING_PROFILE = "7A8F9A7E-13E3-4F78-B31F-A628324F2675";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
