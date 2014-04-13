@@ -3697,7 +3697,7 @@
 					"$(inherited)",
 					"BITHOCKEY_VERSION=\"@\\\"3.5.4\\\"\"",
 					"BITHOCKEY_BUILD=\"@\\\"27\\\"\"",
-					"APP_STORE=0",
+					"APP_STORE=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Pokeffective/Supporting/Pokeffective-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3722,11 +3722,11 @@
 					"$(inherited)",
 					"BITHOCKEY_VERSION=\"@\\\"3.5.4\\\"\"",
 					"BITHOCKEY_BUILD=\"@\\\"27\\\"\"",
-					"APP_STORE=0",
+					"APP_STORE=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Pokeffective/Supporting/Pokeffective-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C19B04A2-BE16-4879-88F4-C74D322855F4";
+				PROVISIONING_PROFILE = "AE6340D6-3611-46B0-B262-C7DC358F39C0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
