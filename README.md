@@ -16,4 +16,17 @@ Also available on [Android](https://github.com/Ruenzuo/Pokeffective-Android).
 
 __Please, read:__
 
-Google rejected my app without giving me any reasons, but that's OK, it was a risky project anyway. I'm releasing the source code so anyone interested in check how this app words hopefully can learn something. Beware, I never intended to do this when I first make the app, so the code it's a little messy. Would appreciate feedback. Also, please read the [license](https://github.com/Ruenzuo/Pokeffective-iOS/blob/master/License) and don't be a jackass.
+Google rejected my app without giving me any reasons, but that's OK, it was a risky project anyway. I'm releasing the source code so anyone interested in check how this app works hopefully can learn something. Beware, I never intended to do this when I first make the app, so the code it's a little messy. Would appreciate feedback. Also, please read the [license](https://github.com/Ruenzuo/Pokeffective-iOS/blob/master/License) and don't be a jackass.
+
+Legal
+=====
+
+    This is an unofficial application to Pokémon. I am not affiliated with Nintendo, in any manner. 
+    Neither Nintendo, nor anyone else has authorized, sponsored or sanctioned this unofficial application. 
+    All characters, names, places and events and all other aspects concerning Pokémon are property of 
+    their respective owners. All trademark and copyright concerning Pokémon are property of their respective owners. 
+    I make no claim to and do not have any rights to any of the foregoing. In creating this unofficial 
+    application to Pokémon, I assert its rights under the “fair use” doctrine pursuant to United States 
+    copyright law and the equivalent in other jurisdictions. 
+    If you believe that there has been a contravention of your proprietary rights, then email details 
+    to renzo.crisostomo@me.com.
